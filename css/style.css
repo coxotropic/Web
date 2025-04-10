@@ -1,0 +1,10 @@
+/* Vista móvil */
+.mobile-view nav ul {
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Vista de escritorio */
+.desktop-view nav ul {
+    flex-direction: row;
+}
