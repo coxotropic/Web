@@ -1,12 +1,11 @@
- /*
- * main.js - Punto de entrada principal para el Portal de Inversiones en Criptomonedas
- * 
- * Este archivo contiene la inicialización de la aplicación y la coordinación
- * de todos los módulos y características del portal.
- * 
- * @version 1.0.1
- * @author Coxotropic
- */
+/*
+/* main.js - Punto de entrada principal para el Portal de Inversiones en Criptomonedas
+/* 
+/* Este archivo contiene la inicialización de la aplicación y la coordinación
+/* de todos los módulos y características del portal.
+/* @version 1.0.1
+/* @author Coxotropic
+*/
 
 // Importación de módulos
 import { ComponentLoader } from './utils/component-loader.js';
