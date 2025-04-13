@@ -1,3 +1,8 @@
+# Ajuste del encabezado en un archivo .htaccess
+<IfModule mod_headers.c>
+    Header set Permissions-Policy "browsing-topics=()"
+</IfModule>
+
 # .htaccess
 <IfModule mod_rewrite.c>
     RewriteEngine On
