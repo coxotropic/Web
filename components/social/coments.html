@@ -1,0 +1,157 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DE COMENTARIOS -->
+<div class="comments-container">
+    <!-- INICIO: CABECERA DE COMENTARIOS -->
+    <div class="comments-header">
+        <h3 class="comments-title">
+            Comentarios <span class="comments-count" id="comments-count">24</span>
+        </h3>
+        <div class="comments-controls">
+            <div class="comments-sort">
+                <label for="comments-sort-select" class="sort-label">Ordenar por:</label>
+                <select id="comments-sort-select" class="form-select form-select-sm">
+                    <option value="newest">Más recientes</option>
+                    <option value="oldest">Más antiguos</option>
+                    <option value="popular">Más valorados</option>
+                    <option value="discussed">Más comentados</option>
+                </select>
+            </div>
+            <div class="comments-filter">
+                <button class="btn btn-sm btn-outline active" data-filter="all">
+                    Todos
+                </button>
+                <button class="btn btn-sm btn-outline" data-filter="highlighted">
+                    Destacados
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: CABECERA DE COMENTARIOS -->
+    
+    <!-- INICIO: FORMULARIO DE COMENTARIO -->
+    <div class="comment-form-container">
+        <div class="comment-form-avatar">
+            <img src="assets/images/avatars/default.jpg" alt="Tu avatar" class="avatar-img" id="current-user-avatar">
+        </div>
+        <div class="comment-form-content">
+            <form id="comment-form" class="comment-form">
+                <div class="form-group">
+                    <textarea 
+                        id="comment-textarea" 
+                        class="form-control" 
+                        placeholder="Escribe un comentario..." 
+                        rows="3"
+                        required
+                    ></textarea>
+                </div>
+                <div class="comment-form-toolbar">
+                    <div class="format-buttons">
+                        <button type="button" class="format-btn" data-format="bold" title="Negrita">
+                            <i class="icon-bold"></i>
+                        </button>
+                        <button type="button" class="format-btn" data-format="italic" title="Cursiva">
+                            <i class="icon-italic"></i>
+                        </button>
+                        <button type="button" class="format-btn" data-format="link" title="Enlace">
+                            <i class="icon-link"></i>
+                        </button>
+                        <button type="button" class="format-btn" data-format="code" title="Código">
+                            <i class="icon-code"></i>
+                        </button>
+                    </div>
+                    <div class="submit-buttons">
+                        <button type="button" class="btn btn-sm btn-outline" id="comment-cancel">Cancelar</button>
+                        <button type="submit" class="btn btn-sm btn-primary" id="comment-submit">
+                            <span class="btn-text">Comentar</span>
+                            <span class="btn-loader hidden">
+                                <i class="icon-loader"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="comment-guidelines">
+                <i class="icon-info"></i>
+                <span>Por favor, mantén un tono respetuoso y constructivo. Lee nuestras <a href="/directrices-comunidad" target="_blank">directrices de la comunidad</a>.</span>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: FORMULARIO DE COMENTARIO -->
+    
+    <!-- INICIO: LISTA DE COMENTARIOS -->
+    <div class="comments-list" id="comments-list">
+        <!-- INICIO: COMENTARIO DESTACADO -->
+        <div class="comment-item highlighted" id="comment-1">
+            <div class="comment-votes">
+                <button class="vote-btn upvote" data-vote="up" aria-label="Voto positivo">
+                    <i class="icon-chevron-up"></i>
+                </button>
+                <div class="vote-count">42</div>
+                <button class="vote-btn downvote" data-vote="down" aria-label="Voto negativo">
+                    <i class="icon-chevron-down"></i>
+                </button>
+            </div>
+            
+            <div class="comment-content">
+                <div class="comment-header">
+                    <div class="comment-user">
+                        <img src="assets/images/avatars/user1.jpg" alt="Avatar de usuario" class="avatar-img">
+                        <div class="user-info">
+                            <div class="user-name">
+                                María Rodríguez
+                                <span class="user-badge senior">Senior</span>
+                                <span class="highlighted-badge" title="Comentario destacado por moderadores">
+                                    <i class="icon-star"></i>
+                                </span>
+                            </div>
+                            <div class="comment-meta">
+                                <span class="comment-time">Hace 2 días</span>
+                                <span class="comment-edited" title="Editado por última vez hace 1 día">editado</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-actions dropdown">
+                        <button class="btn-icon dropdown-toggle" id="comment-1-actions" aria-label="Acciones">
+                            <i class="icon-more-horizontal"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="#" class="dropdown-item">
+                                <i class="icon-bookmark"></i> Guardar
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="icon-share-2"></i> Compartir
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="icon-flag"></i> Reportar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comment-body">
+                    <p>Este análisis es muy completo. Quiero añadir que el indicador de Acumulación/Distribución también muestra divergencias interesantes en el gráfico diario de Bitcoin. Cuando se combina con el RSI y el MACD, proporciona señales bastante precisas para movimientos a medio plazo.</p>
+                    <p>He estado siguiendo esta estrategia durante los últimos 6 meses y ha funcionado bien incluso en momentos de alta volatilidad.</p>
+                </div>
+                
+                <div class="comment-footer">
+                    <div class="comment-reactions">
+                        <button class="reaction-btn" data-reaction="like">
+                            <i class="icon-thumbs-up"></i>
+                            <span class="reaction-count">18</span>
+                        </button>
+                        <div class="reaction-users-preview">
+                            <div class="reaction-user-avatar" title="Carlos Martínez">
+                                <img src="assets/images/avatars/user2.jpg" alt="Avatar">
+                            </div>
+                            <div class="reaction-user-avatar" title="Ana López">
+                                <img src="assets/images/avatars/user3.jpg" alt="Avatar">
+                            </div>
+                            <div class="reaction-more">+16</div>
+                        </div>
+                    </div>
+                    
+                    <div class="comment-actions-buttons">
+                        <button class="action-btn reply-btn" data-action="reply">
+                            <i class="icon-message-circle"></i> Responder
+                        </button>
+                        <button class="action-btn share-btn" data-action="share">
+                            <i class="icon-share-2"></i> Compartir

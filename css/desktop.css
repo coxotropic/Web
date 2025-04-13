@@ -1,0 +1,526 @@
+/* desktop.css - Estilos específicos para versión de escritorio */
+
+/* ===== LAYOUT GENERAL ===== */
+body.desktop-device {
+    --sidebar-width: 260px;
+    --content-max-width: 1200px;
+    --header-height: 70px;
+    font-size: 16px;
+}
+
+.app-container {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "menu main"
+        "footer footer";
+    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-rows: var(--header-height) 1fr auto;
+    min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+.header-container {
+    grid-area: header;
+    padding: 0 2rem;
+    height: var(--header-height);
+}
+
+/* ===== MODO SELECTOR ===== */
+.mode-selector {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 100;
+}
+
+.mode-btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.mode-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== MENÚ NAVEGACIÓN ===== */
+.menu-container {
+    grid-area: menu;
+    position: sticky;
+    top: 0;
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+    border-right: 1px solid var(--border-color);
+    padding: 2rem 0;
+    background-color: var(--bg-sidebar);
+    transition: width 0.3s ease;
+}
+
+.menu-item {
+    padding: 12px 20px;
+    margin: 4px 0;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.menu-item:hover {
+    background-color: var(--hover-light);
+    transform: translateX(5px);
+}
+
+.menu-item.active {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.menu-section {
+    margin: 1.5rem 0;
+}
+
+.menu-heading {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+}
+
+.menu-icon {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+.main-content {
+    grid-area: main;
+    padding: 2rem;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    width: 100%;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary);
+}
+
+.content-container,
+.timeframe-container,
+.risk-container,
+.tools-container {
+    margin-bottom: 3rem;
+}
+
+/* ===== CARDS Y CONTENEDORES ===== */
+.card {
+    background: var(--bg-card);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-light);
+}
+
+/* Grid de tarjetas para layout de escritorio */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.card-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* ===== ESTILOS PARA MODO PRO ===== */
+body.pro-mode .card-header {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+body.pro-mode .advanced-controls {
+    display: flex;
+}
+
+body.pro-mode .beginner-info {
+    display: none;
+}
+
+body.pro-mode .data-table {
+    font-size: 0.9rem;
+}
+
+body.pro-mode .chart-controls {
+    display: flex;
+}
+
+/* ===== GRÁFICOS Y TABLAS ===== */
+.chart-container {
+    width: 100%;
+    height: 400px;
+    margin: 1.5rem 0;
+}
+
+.chart-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 1rem;
+    padding: 10px;
+    background-color: var(--bg-light);
+    border-radius: 5px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 1rem;
+}
+
+.data-table th {
+    background-color: var(--bg-light);
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.data-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table tr:hover {
+    background-color: var(--hover-light);
+}
+
+.data-table .numeric {
+    text-align: right;
+}
+
+/* ===== FEAR & GREED INDEX ===== */
+.fear-greed-container {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.fear-greed-meter {
+    width: 100%;
+    height: 120px;
+    margin: 1.5rem auto;
+    position: relative;
+}
+
+.fear-greed-label {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+.fear-greed-value {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.fear-greed-history {
+    width: 100%;
+    height: 100px;
+}
+
+/* ===== NOTICIAS ===== */
+.news-container {
+    margin-top: 2rem;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.news-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.news-image {
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.news-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.news-summary {
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.news-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* ===== SOCIAL Y COMENTARIOS ===== */
+.social-container {
+    margin-top: 2rem;
+}
+
+.comment-item {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.comment-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 0.5rem;
+}
+
+.comment-form {
+    margin-top: 1.5rem;
+}
+
+.comment-textarea {
+    min-height: 100px;
+}
+
+/* ===== OPTIMIZACIONES INTERACTIVAS ===== */
+/* Tooltips */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Focus states para navegación por teclado */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Animaciones hover para elementos interactivos */
+.interactive-element {
+    transition: all 0.2s ease;
+}
+
+.interactive-element:hover {
+    transform: scale(1.05);
+}
+
+/* ===== CALCULADORAS Y HERRAMIENTAS ===== */
+.calculator-container {
+    padding: 1.5rem;
+}
+
+.calculator-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.result-container {
+    background-color: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.result-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 1rem 0;
+}
+
+/* ===== FOOTER ===== */
+.footer-container {
+    grid-area: footer;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    padding: 2rem;
+}
+
+.footer-content {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.footer-logo {
+    grid-column: span 4;
+    margin-bottom: 1.5rem;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+.footer-link {
+    margin-bottom: 0.5rem;
+    color: var(--text-light-secondary);
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: var(--primary-light);
+}
+
+.footer-bottom {
+    grid-column: span 4;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ===== LAYOUT DE PANTALLA GRANDE ===== */
+@media (min-width: 1400px) {
+    .main-content {
+        max-width: 1400px;
+    }
+    
+    .news-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .chart-container {
+        height: 500px;
+    }
+}
+
+/* ===== SCROLL PERSONALIZADO PARA DESKTOP ===== */
+/* Ancho del scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* Track (fondo) del scrollbar */
+::-webkit-scrollbar-track {
+    background: var(--bg-light);
+    border-radius: 10px;
+}
+
+/* Handle (barra deslizante) del scrollbar */
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-light);
+}

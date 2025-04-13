@@ -1,0 +1,884 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DEL CONSTRUCTOR DE WIDGETS -->
+<div class="widget-builder-container">
+    <!-- INICIO: BARRA DE HERRAMIENTAS SUPERIOR -->
+    <div class="builder-header">
+        <div class="builder-title">
+            <h1 class="title">Constructor de Widgets</h1>
+            <p class="subtitle">Crea y personaliza widgets para tu dashboard</p>
+        </div>
+        
+        <div class="builder-actions">
+            <div class="dropdown">
+                <button class="btn btn-outline dropdown-toggle" id="template-dropdown">
+                    <i class="icon-file-text"></i> Plantillas
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-header">Mis Plantillas</div>
+                    <a href="#" class="dropdown-item" data-template="trading-view">Vista de Trading</a>
+                    <a href="#" class="dropdown-item" data-template="portfolio-tracker">Seguimiento de Portfolio</a>
+                    <a href="#" class="dropdown-item" data-template="news-dashboard">Panel de Noticias</a>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-header">Plantillas Populares</div>
+                    <a href="#" class="dropdown-item" data-template="beginner-dashboard">Dashboard para Principiantes</a>
+                    <a href="#" class="dropdown-item" data-template="technical-analysis">Análisis Técnico</a>
+                    <a href="#" class="dropdown-item" data-template="market-overview">Visión del Mercado</a>
+                </div>
+            </div>
+            
+            <button class="btn btn-outline" id="save-template-btn">
+                <i class="icon-save"></i> Guardar como Plantilla
+            </button>
+            
+            <button class="btn btn-outline" id="export-config-btn">
+                <i class="icon-download"></i> Exportar
+            </button>
+            
+            <div class="file-input-wrapper">
+                <button class="btn btn-outline" id="import-btn">
+                    <i class="icon-upload"></i> Importar
+                </button>
+                <input type="file" id="import-config-input" class="file-input" accept=".json">
+            </div>
+            
+            <button class="btn btn-outline" id="share-dashboard-btn">
+                <i class="icon-share-2"></i> Compartir
+            </button>
+            
+            <button class="btn btn-primary" id="save-dashboard-btn">
+                <i class="icon-check"></i> Guardar Dashboard
+            </button>
+        </div>
+    </div>
+    <!-- FIN: BARRA DE HERRAMIENTAS SUPERIOR -->
+    
+    <!-- INICIO: ÁREA PRINCIPAL DEL CONSTRUCTOR -->
+    <div class="builder-main">
+        <!-- INICIO: BIBLIOTECA DE WIDGETS -->
+        <div class="widget-library">
+            <div class="library-header">
+                <h2 class="section-title">Widgets Disponibles</h2>
+                <div class="search-widget">
+                    <div class="input-with-icon">
+                        <i class="icon-search input-icon"></i>
+                        <input type="text" class="form-control form-control-sm" placeholder="Buscar widgets..." id="widget-search">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="library-categories">
+                <button class="category-btn active" data-category="all">Todos</button>
+                <button class="category-btn" data-category="charts">Gráficos</button>
+                <button class="category-btn" data-category="indicators">Indicadores</button>
+                <button class="category-btn" data-category="portfolio">Portfolio</button>
+                <button class="category-btn" data-category="news">Noticias</button>
+                <button class="category-btn" data-category="alerts">Alertas</button>
+                <button class="category-btn" data-category="tools">Herramientas</button>
+            </div>
+            
+            <div class="widget-items-container">
+                <h3 class="widget-category-title">Gráficos</h3>
+                <div class="widget-items">
+                    <div class="widget-item" draggable="true" data-widget-type="price-chart">
+                        <div class="widget-item-icon">
+                            <i class="icon-bar-chart-2"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Gráfico de Precio</div>
+                            <div class="widget-item-desc">Gráfico interactivo de precios de criptomonedas</div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget-item" draggable="true" data-widget-type="candlestick-chart">
+                        <div class="widget-item-icon">
+                            <i class="icon-activity"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Gráfico de Velas</div>
+                            <div class="widget-item-desc">Gráfico de velas japonesas con indicadores</div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget-item" draggable="true" data-widget-type="comparison-chart">
+                        <div class="widget-item-icon">
+                            <i class="icon-git-merge"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Gráfico Comparativo</div>
+                            <div class="widget-item-desc">Compara varias criptomonedas en un gráfico</div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget-item" draggable="true" data-widget-type="depth-chart">
+                        <div class="widget-item-icon">
+                            <i class="icon-layers"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Gráfico de Profundidad</div>
+                            <div class="widget-item-desc">Visualiza la profundidad del mercado</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="widget-category-title">Indicadores</h3>
+                <div class="widget-items">
+                    <div class="widget-item" draggable="true" data-widget-type="fear-greed-index">
+                        <div class="widget-item-icon">
+                            <i class="icon-alert-circle"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Índice Miedo/Codicia</div>
+                            <div class="widget-item-desc">Indicador del sentimiento del mercado</div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget-item" draggable="true" data-widget-type="rsi-indicator">
+                        <div class="widget-item-icon">
+                            <i class="icon-trending-up"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Indicador RSI</div>
+                            <div class="widget-item-desc">Índice de fuerza relativa</div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget-item" draggable="true" data-widget-type="market-dominance">
+                        <div class="widget-item-icon">
+                            <i class="icon-pie-chart"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Dominancia de Mercado</div>
+                            <div class="widget-item-desc">Distribución de capitalización por activo</div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget-item" draggable="true" data-widget-type="volume-indicator">
+                        <div class="widget-item-icon">
+                            <i class="icon-bar-chart"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Indicador de Volumen</div>
+                            <div class="widget-item-desc">Análisis de volumen de operaciones</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="widget-category-title">Portfolio</h3>
+                <div class="widget-items">
+                    <div class="widget-item" draggable="true" data-widget-type="portfolio-summary">
+                        <div class="widget-item-icon">
+                            <i class="icon-briefcase"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Resumen de Portfolio</div>
+                            <div class="widget-item-desc">Visión general de tu cartera</div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget-item" draggable="true" data-widget-type="asset-allocation">
+                        <div class="widget-item-icon">
+                            <i class="icon-pie-chart"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Distribución de Activos</div>
+                            <div class="widget-item-desc">Gráfico de distribución del portfolio</div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget-item" draggable="true" data-widget-type="performance-chart">
+                        <div class="widget-item-icon">
+                            <i class="icon-trending-up"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Rendimiento</div>
+                            <div class="widget-item-desc">Gráfico de rendimiento del portfolio</div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget-item" draggable="true" data-widget-type="transaction-history">
+                        <div class="widget-item-icon">
+                            <i class="icon-list"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Historial de Transacciones</div>
+                            <div class="widget-item-desc">Listado de operaciones recientes</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="widget-category-title">Noticias</h3>
+                <div class="widget-items">
+                    <div class="widget-item" draggable="true" data-widget-type="news-feed">
+                        <div class="widget-item-icon">
+                            <i class="icon-globe"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Feed de Noticias</div>
+                            <div class="widget-item-desc">Últimas noticias de criptomonedas</div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget-item" draggable="true" data-widget-type="twitter-feed">
+                        <div class="widget-item-icon">
+                            <i class="icon-twitter"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Twitter Feed</div>
+                            <div class="widget-item-desc">Tweets relevantes de criptomonedas</div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget-item" draggable="true" data-widget-type="market-sentiment">
+                        <div class="widget-item-icon">
+                            <i class="icon-message-circle"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Sentimiento Social</div>
+                            <div class="widget-item-desc">Análisis de sentimiento en redes</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="widget-category-title">Alertas</h3>
+                <div class="widget-items">
+                    <div class="widget-item" draggable="true" data-widget-type="price-alerts">
+                        <div class="widget-item-icon">
+                            <i class="icon-bell"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Alertas de Precio</div>
+                            <div class="widget-item-desc">Gestor de alertas de precio</div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget-item" draggable="true" data-widget-type="technical-alerts">
+                        <div class="widget-item-icon">
+                            <i class="icon-alert-triangle"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Alertas Técnicas</div>
+                            <div class="widget-item-desc">Alertas basadas en indicadores técnicos</div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget-item" draggable="true" data-widget-type="news-alerts">
+                        <div class="widget-item-icon">
+                            <i class="icon-rss"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Alertas de Noticias</div>
+                            <div class="widget-item-desc">Notificaciones de noticias importantes</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="widget-category-title">Herramientas</h3>
+                <div class="widget-items">
+                    <div class="widget-item" draggable="true" data-widget-type="calculator">
+                        <div class="widget-item-icon">
+                            <i class="icon-calculator"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Calculadora</div>
+                            <div class="widget-item-desc">Calculadora de inversiones y conversión</div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget-item" draggable="true" data-widget-type="calendar">
+                        <div class="widget-item-icon">
+                            <i class="icon-calendar"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Calendario de Eventos</div>
+                            <div class="widget-item-desc">Próximos eventos y fechas importantes</div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget-item" draggable="true" data-widget-type="watchlist">
+                        <div class="widget-item-icon">
+                            <i class="icon-star"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Lista de Seguimiento</div>
+                            <div class="widget-item-desc">Monitorea tus criptomonedas favoritas</div>
+                        </div>
+                    </div>
+                    
+                    <div class="widget-item" draggable="true" data-widget-type="heat-map">
+                        <div class="widget-item-icon">
+                            <i class="icon-grid"></i>
+                        </div>
+                        <div class="widget-item-info">
+                            <div class="widget-item-name">Mapa de Calor</div>
+                            <div class="widget-item-desc">Visualización del rendimiento del mercado</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIN: BIBLIOTECA DE WIDGETS -->
+        
+        <!-- INICIO: ÁREA DE DISEÑO DE DASHBOARD -->
+        <div class="dashboard-canvas">
+            <div class="canvas-header">
+                <div class="canvas-title">
+                    <h2 class="section-title">Diseño del Dashboard</h2>
+                    <div class="canvas-subtitle">Arrastra y suelta widgets para personalizarlo</div>
+                </div>
+                
+                <div class="canvas-controls">
+                    <div class="grid-size-control">
+                        <label for="grid-size">Tamaño de cuadrícula:</label>
+                        <select id="grid-size" class="form-select form-select-sm">
+                            <option value="small">Pequeña (6x6)</option>
+                            <option value="medium" selected>Media (4x4)</option>
+                            <option value="large">Grande (3x3)</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn btn-sm btn-outline" id="clear-canvas-btn">
+                        <i class="icon-trash-2"></i> Limpiar
+                    </button>
+                    
+                    <button class="btn btn-sm btn-outline" id="undo-btn" disabled>
+                        <i class="icon-corner-up-left"></i> Deshacer
+                    </button>
+                    
+                    <button class="btn btn-sm btn-outline" id="redo-btn" disabled>
+                        <i class="icon-corner-up-right"></i> Rehacer
+                    </button>
+                    
+                    <div class="view-mode-toggle">
+                        <button class="btn btn-sm btn-outline active" data-view="edit">
+                            <i class="icon-edit-2"></i> Editar
+                        </button>
+                        <button class="btn btn-sm btn-outline" data-view="preview">
+                            <i class="icon-eye"></i> Vista previa
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="canvas-grid" id="dashboard-canvas">
+                <div class="grid-item empty" data-row="0" data-col="0" data-width="1" data-height="1">
+                    <div class="empty-message">Arrastra aquí</div>
+                </div>
+                <div class="grid-item empty" data-row="0" data-col="1" data-width="1" data-height="1">
+                    <div class="empty-message">Arrastra aquí</div>
+                </div>
+                <div class="grid-item empty" data-row="0" data-col="2" data-width="1" data-height="1">
+                    <div class="empty-message">Arrastra aquí</div>
+                </div>
+                <div class="grid-item empty" data-row="0" data-col="3" data-width="1" data-height="1">
+                    <div class="empty-message">Arrastra aquí</div>
+                </div>
+                <div class="grid-item empty" data-row="1" data-col="0" data-width="1" data-height="1">
+                    <div class="empty-message">Arrastra aquí</div>
+                </div>
+                <div class="grid-item empty" data-row="1" data-col="1" data-width="1" data-height="1">
+                    <div class="empty-message">Arrastra aquí</div>
+                </div>
+                <div class="grid-item empty" data-row="1" data-col="2" data-width="1" data-height="1">
+                    <div class="empty-message">Arrastra aquí</div>
+                </div>
+                <div class="grid-item empty" data-row="1" data-col="3" data-width="1" data-height="1">
+                    <div class="empty-message">Arrastra aquí</div>
+                </div>
+                <div class="grid-item empty" data-row="2" data-col="0" data-width="1" data-height="1">
+                    <div class="empty-message">Arrastra aquí</div>
+                </div>
+                <div class="grid-item empty" data-row="2" data-col="1" data-width="1" data-height="1">
+                    <div class="empty-message">Arrastra aquí</div>
+                </div>
+                <div class="grid-item empty" data-row="2" data-col="2" data-width="1" data-height="1">
+                    <div class="empty-message">Arrastra aquí</div>
+                </div>
+                <div class="grid-item empty" data-row="2" data-col="3" data-width="1" data-height="1">
+                    <div class="empty-message">Arrastra aquí</div>
+                </div>
+                <div class="grid-item empty" data-row="3" data-col="0" data-width="1" data-height="1">
+                    <div class="empty-message">Arrastra aquí</div>
+                </div>
+                <div class="grid-item empty" data-row="3" data-col="1" data-width="1" data-height="1">
+                    <div class="empty-message">Arrastra aquí</div>
+                </div>
+                <div class="grid-item empty" data-row="3" data-col="2" data-width="1" data-height="1">
+                    <div class="empty-message">Arrastra aquí</div>
+                </div>
+                <div class="grid-item empty" data-row="3" data-col="3" data-width="1" data-height="1">
+                    <div class="empty-message">Arrastra aquí</div>
+                </div>
+                
+                <!-- Ejemplo de widget ya colocado en el grid -->
+                <div class="grid-item widget-container" data-row="0" data-col="0" data-width="2" data-height="2" data-widget-type="price-chart" style="grid-row: 1 / span 2; grid-column: 1 / span 2;">
+                    <div class="widget-header">
+                        <div class="widget-title">
+                            <i class="icon-bar-chart-2"></i>
+                            <span>Gráfico de Precio - Bitcoin</span>
+                        </div>
+                        <div class="widget-controls">
+                            <button class="widget-control-btn" data-action="edit" title="Editar widget">
+                                <i class="icon-settings"></i>
+                            </button>
+                            <button class="widget-control-btn" data-action="resize" title="Cambiar tamaño">
+                                <i class="icon-maximize-2"></i>
+                            </button>
+                            <button class="widget-control-btn" data-action="remove" title="Eliminar widget">
+                                <i class="icon-x"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="widget-content">
+                        <div class="chart-placeholder">
+                            <img src="assets/images/widgets/price-chart-placeholder.svg" alt="Gráfico de Precio" class="placeholder-img">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid-item widget-container" data-row="0" data-col="2" data-width="2" data-height="1" data-widget-type="fear-greed-index" style="grid-row: 1 / span 1; grid-column: 3 / span 2;">
+                    <div class="widget-header">
+                        <div class="widget-title">
+                            <i class="icon-alert-circle"></i>
+                            <span>Índice de Miedo y Codicia</span>
+                        </div>
+                        <div class="widget-controls">
+                            <button class="widget-control-btn" data-action="edit" title="Editar widget">
+                                <i class="icon-settings"></i>
+                            </button>
+                            <button class="widget-control-btn" data-action="resize" title="Cambiar tamaño">
+                                <i class="icon-maximize-2"></i>
+                            </button>
+                            <button class="widget-control-btn" data-action="remove" title="Eliminar widget">
+                                <i class="icon-x"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="widget-content">
+                        <div class="fear-greed-placeholder">
+                            <div class="gauge-container">
+                                <div class="gauge-value">65</div>
+                                <div class="gauge-label">Codicia</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="drop-indicator hidden">
+                <div class="drop-area"></div>
+            </div>
+        </div>
+        <!-- FIN: ÁREA DE DISEÑO DE DASHBOARD -->
+        
+        <!-- INICIO: PANEL DE CONFIGURACIÓN DE WIDGET -->
+        <div class="widget-config-panel" id="widget-config-panel">
+            <div class="panel-header">
+                <h2 class="panel-title">
+                    <i class="icon-settings"></i>
+                    <span id="config-panel-title">Configurar Widget</span>
+                </h2>
+                <button class="btn-close" id="close-config-panel">
+                    <i class="icon-x"></i>
+                </button>
+            </div>
+            
+            <div class="panel-content">
+                <div class="widget-preview">
+                    <div class="preview-header">
+                        <h3 class="preview-title">Vista Previa</h3>
+                    </div>
+                    <div class="preview-container" id="widget-preview-container">
+                        <img src="assets/images/widgets/price-chart-preview.svg" alt="Vista previa" class="preview-img">
+                    </div>
+                </div>
+                
+                <div class="config-sections">
+                    <div class="config-section">
+                        <h3 class="section-title">Configuración General</h3>
+                        
+                        <div class="form-group">
+                            <label for="widget-title" class="form-label">Título del Widget</label>
+                            <input type="text" id="widget-title" class="form-control" value="Gráfico de Precio - Bitcoin">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="widget-refresh" class="form-label">Frecuencia de Actualización</label>
+                            <select id="widget-refresh" class="form-select">
+                                <option value="realtime">Tiempo real</option>
+                                <option value="10s">Cada 10 segundos</option>
+                                <option value="30s">Cada 30 segundos</option>
+                                <option value="1m" selected>Cada minuto</option>
+                                <option value="5m">Cada 5 minutos</option>
+                                <option value="manual">Manual</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Tamaño</label>
+                            <div class="size-selector">
+                                <div class="size-option">
+                                    <input type="radio" id="size-1x1" name="widget-size" value="1x1">
+                                    <label for="size-1x1" class="size-label">1x1</label>
+                                </div>
+                                <div class="size-option">
+                                    <input type="radio" id="size-1x2" name="widget-size" value="1x2">
+                                    <label for="size-1x2" class="size-label">1x2</label>
+                                </div>
+                                <div class="size-option">
+                                    <input type="radio" id="size-2x1" name="widget-size" value="2x1">
+                                    <label for="size-2x1" class="size-label">2x1</label>
+                                </div>
+                                <div class="size-option">
+                                    <input type="radio" id="size-2x2" name="widget-size" value="2x2" checked>
+                                    <label for="size-2x2" class="size-label">2x2</label>
+                                </div>
+                                <div class="size-option">
+                                    <input type="radio" id="size-3x2" name="widget-size" value="3x2">
+                                    <label for="size-3x2" class="size-label">3x2</label>
+                                </div>
+                                <div class="size-option">
+                                    <input type="radio" id="size-2x3" name="widget-size" value="2x3">
+                                    <label for="size-2x3" class="size-label">2x3</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="config-section">
+                        <h3 class="section-title">Configuración Específica</h3>
+                        
+                        <!-- Configuración específica para gráfico de precio -->
+                        <div class="specific-config" id="price-chart-config">
+                            <div class="form-group">
+                                <label for="chart-crypto" class="form-label">Criptomoneda</label>
+                                <select id="chart-crypto" class="form-select">
+                                    <option value="BTC" selected>Bitcoin (BTC)</option>
+                                    <option value="ETH">Ethereum (ETH)</option>
+                                    <option value="SOL">Solana (SOL)</option>
+                                    <option value="ADA">Cardano (ADA)</option>
+                                    <option value="DOT">Polkadot (DOT)</option>
+                                    <option value="AVAX">Avalanche (AVAX)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="chart-type" class="form-label">Tipo de Gráfico</label>
+                                <select id="chart-type" class="form-select">
+                                    <option value="line">Línea</option>
+                                    <option value="candle" selected>Velas</option>
+                                    <option value="area">Área</option>
+                                    <option value="bar">Barras</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="chart-timeframe" class="form-label">Intervalo de Tiempo</label>
+                                <select id="chart-timeframe" class="form-select">
+                                    <option value="5m">5 minutos</option>
+                                    <option value="15m">15 minutos</option>
+                                    <option value="1h" selected>1 hora</option>
+                                    <option value="4h">4 horas</option>
+                                    <option value="1d">1 día</option>
+                                    <option value="1w">1 semana</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="chart-period" class="form-label">Período</label>
+                                <select id="chart-period" class="form-select">
+                                    <option value="1d">1 día</option>
+                                    <option value="1w">1 semana</option>
+                                    <option value="1m" selected>1 mes</option>
+                                    <option value="3m">3 meses</option>
+                                    <option value="6m">6 meses</option>
+                                    <option value="1y">1 año</option>
+                                    <option value="all">Todo</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Indicadores</label>
+                                <div class="checkbox-group">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="indicator-ma" checked>
+                                        <label class="form-check-label" for="indicator-ma">Media Móvil</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="indicator-ema">
+                                        <label class="form-check-label" for="indicator-ema">EMA</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="indicator-bb">
+                                        <label class="form-check-label" for="indicator-bb">Bandas de Bollinger</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="indicator-rsi">
+                                        <label class="form-check-label" for="indicator-rsi">RSI</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="indicator-macd">
+                                        <label class="form-check-label" for="indicator-macd">MACD</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Opciones Adicionales</label>
+                                <div class="checkbox-group">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="option-volume" checked>
+                                        <label class="form-check-label" for="option-volume">Mostrar Volumen</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="option-grid" checked>
+                                        <label class="form-check-label" for="option-grid">Mostrar Cuadrícula</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="option-events">
+                                        <label class="form-check-label" for="option-events">Mostrar Eventos</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="option-toolbar" checked>
+                                        <label class="form-check-label" for="option-toolbar">Mostrar Barra de Herramientas</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="config-section">
+                        <h3 class="section-title">Apariencia</h3>
+                        
+                        <div class="form-group">
+                            <label for="widget-theme" class="form-label">Tema</label>
+                            <select id="widget-theme" class="form-select">
+                                <option value="default">Predeterminado</option>
+                                <option value="light">Claro</option>
+                                <option value="dark" selected>Oscuro</option>
+                                <option value="blue">Azul</option>
+                                <option value="contrast">Alto Contraste</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="widget-border" class="form-label">Borde</label>
+                            <select id="widget-border" class="form-select">
+                                <option value="none">Ninguno</option>
+                                <option value="thin" selected>Fino</option>
+                                <option value="medium">Medio</option>
+                                <option value="thick">Grueso</option>
+                                <option value="rounded">Redondeado</option>
+                                <option value="shadowed">Con sombra</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="color-scheme" class="form-label">Esquema de Colores</label>
+                            <div class="color-scheme-selector">
+                                <div class="color-scheme-option">
+                                    <input type="radio" id="color-scheme-default" name="color-scheme" value="default" checked>
+                                    <label for="color-scheme-default" class="color-scheme-label default-scheme"></label>
+                                </div>
+                                <div class="color-scheme-option">
+                                    <input type="radio" id="color-scheme-blue" name="color-scheme" value="blue">
+                                    <label for="color-scheme-blue" class="color-scheme-label blue-scheme"></label>
+                                </div>
+                                <div class="color-scheme-option">
+                                    <input type="radio" id="color-scheme-green" name="color-scheme" value="green">
+                                    <label for="color-scheme-green" class="color-scheme-label green-scheme"></label>
+                                </div>
+                                <div class="color-scheme-option">
+                                    <input type="radio" id="color-scheme-purple" name="color-scheme" value="purple">
+                                    <label for="color-scheme-purple" class="color-scheme-label purple-scheme"></label>
+                                </div>
+                                <div class="color-scheme-option">
+                                    <input type="radio" id="color-scheme-custom" name="color-scheme" value="custom">
+                                    <label for="color-scheme-custom" class="color-scheme-label custom-scheme">
+                                        <i class="icon-plus"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Opciones de Visualización</label>
+                            <div class="checkbox-group">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="show-header" checked>
+                                    <label class="form-check-label" for="show-header">Mostrar Encabezado</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="show-border" checked>
+                                    <label class="form-check-label" for="show-border">Mostrar Borde</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="show-shadow">
+                                    <label class="form-check-label" for="show-shadow">Mostrar Sombra</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="transparent-bg">
+                                    <label class="form-check-label" for="transparent-bg">Fondo Transparente</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="config-actions">
+                    <button class="btn btn-outline" id="reset-config-btn">
+                        <i class="icon-refresh-cw"></i> Restablecer
+                    </button>
+                    <button class="btn btn-primary" id="apply-config-btn">
+                        <i class="icon-check"></i> Aplicar Cambios
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- FIN: PANEL DE CONFIGURACIÓN DE WIDGET -->
+    </div>
+    <!-- FIN: ÁREA PRINCIPAL DEL CONSTRUCTOR -->
+</div>
+<!-- FIN: CONTENEDOR PRINCIPAL DEL CONSTRUCTOR DE WIDGETS -->
+
+<!-- INICIO: MODALES -->
+<!-- Modal para guardar plantilla -->
+<div class="modal" id="save-template-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Guardar como Plantilla</h3>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar">
+                    <i class="icon-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="template-name" class="form-label">Nombre de la Plantilla</label>
+                    <input type="text" id="template-name" class="form-control" placeholder="Mi Dashboard Personalizado">
+                </div>
+                <div class="form-group">
+                    <label for="template-description" class="form-label">Descripción (Opcional)</label>
+                    <textarea id="template-description" class="form-control" rows="3" placeholder="Describe brevemente esta configuración de dashboard..."></textarea>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="template-public">
+                        <label class="form-check-label" for="template-public">Hacer pública esta plantilla</label>
+                    </div>
+                    <div class="form-text">Las plantillas públicas pueden ser vistas y utilizadas por otros usuarios.</div>
+                </div>
+                <div class="template-preview">
+                    <div class="preview-label">Vista Previa</div>
+                    <div class="template-preview-image">
+                        <img src="assets/images/widgets/template-preview.svg" alt="Vista previa de plantilla" class="preview-img">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="confirm-save-template">Guardar Plantilla</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para compartir dashboard -->
+<div class="modal" id="share-dashboard-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Compartir Dashboard</h3>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar">
+                    <i class="icon-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="share-options">
+                    <div class="share-option">
+                        <div class="option-header">
+                            <h4 class="option-title">Enlace Compartible</h4>
+                            <p class="option-desc">Cualquiera con este enlace podrá ver tu dashboard</p>
+                        </div>
+                        <div class="option-content">
+                            <div class="input-with-copy">
+                                <input type="text" class="form-control" value="https://cryptinvest.com/dashboard/share/abc123" readonly id="share-link">
+                                <button class="btn btn-copy" id="copy-link-btn">
+                                    <i class="icon-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="share-option">
+                        <div class="option-header">
+                            <h4 class="option-title">Compartir en Redes Sociales</h4>
+                        </div>
+                        <div class="option-content">
+                            <div class="social-share-buttons">
+                                <button class="social-btn twitter">
+                                    <i class="icon-twitter"></i>
+                                    <span>Twitter</span>
+                                </button>
+                                <button class="social-btn facebook">
+                                    <i class="icon-facebook"></i>
+                                    <span>Facebook</span>
+                                </button>
+                                <button class="social-btn linkedin">
+                                    <i class="icon-linkedin"></i>
+                                    <span>LinkedIn</span>
+                                </button>
+                                <button class="social-btn telegram">
+                                    <i class="icon-send"></i>
+                                    <span>Telegram</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="share-option">
+                        <div class="option-header">
+                            <h4 class="option-title">Código para Embeber</h4>
+                            <p class="option-desc">Añade este dashboard en tu sitio web o blog</p>
+                        </div>
+                        <div class="option-content">
+                            <div class="input-with-copy">
+                                <input type="text" class="form-control" value='<iframe src="https://cryptinvest.com/dashboard/embed/abc123" width="100%" height="600" frameborder="0"></iframe>' readonly id="embed-code">
+                                <button class="btn btn-copy" id="copy-embed-btn">
+                                    <i class="icon-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="share-option">
+                        <div class="option-header">
+                            <h4 class="option-title">Opciones de Privacidad</h4>
+                        </div>
+                        <div class="option-content">
+                            <div class="privacy-settings">
+                                <div class="form-group">
+                                    <label for="share-permission" class="form-label">¿Quién puede ver este dashboard?</label>
+                                    <select id="share-permission" class="form-select">
+                                        <option value="private">Solo yo</option>
+                                        <option value="link" selected>Cualquiera con el enlace</option>
+                                        <option value="public">Público (visible en la galería)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="allow-copy">
+                                        <label class="form-check-label" for="allow-copy">Permitir que otros dupliquen este dashboard</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" id="update-share-settings">Actualizar Configuración</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN: MODALES -->

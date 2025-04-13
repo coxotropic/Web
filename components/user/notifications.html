@@ -1,0 +1,263 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DE NOTIFICACIONES -->
+<div class="notifications-container">
+    <!-- INICIO: CABECERA DE NOTIFICACIONES -->
+    <div class="notifications-header">
+        <h1 class="section-title">Centro de Notificaciones</h1>
+        <div class="notifications-actions">
+            <button class="btn btn-outline" id="mark-all-read-btn">
+                <i class="icon-check"></i> Marcar todas como leídas
+            </button>
+            <button class="btn btn-outline" id="notification-settings-btn">
+                <i class="icon-settings"></i> Configuración
+            </button>
+        </div>
+    </div>
+    <!-- FIN: CABECERA DE NOTIFICACIONES -->
+    
+    <!-- INICIO: ESTADÍSTICAS DE NOTIFICACIONES -->
+    <div class="notifications-stats">
+        <div class="stats-card">
+            <div class="stats-value">28</div>
+            <div class="stats-label">Total</div>
+        </div>
+        <div class="stats-card">
+            <div class="stats-value">12</div>
+            <div class="stats-label">No leídas</div>
+        </div>
+        <div class="stats-card">
+            <div class="stats-value">8</div>
+            <div class="stats-label">Alertas</div>
+        </div>
+        <div class="stats-card">
+            <div class="stats-value">5</div>
+            <div class="stats-label">Sistema</div>
+        </div>
+        <div class="stats-card">
+            <div class="stats-value">15</div>
+            <div class="stats-label">Social</div>
+        </div>
+    </div>
+    <!-- FIN: ESTADÍSTICAS DE NOTIFICACIONES -->
+    
+    <!-- INICIO: FILTROS DE NOTIFICACIONES -->
+    <div class="notifications-filters">
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">
+                <i class="icon-bell"></i> Todas
+            </button>
+            <button class="filter-tab" data-filter="unread">
+                <i class="icon-alert-circle"></i> No leídas <span class="badge">12</span>
+            </button>
+            <button class="filter-tab" data-filter="alerts">
+                <i class="icon-bell"></i> Alertas
+            </button>
+            <button class="filter-tab" data-filter="system">
+                <i class="icon-info"></i> Sistema
+            </button>
+            <button class="filter-tab" data-filter="social">
+                <i class="icon-users"></i> Social
+            </button>
+        </div>
+        
+        <div class="filter-controls">
+            <div class="search-filter">
+                <div class="input-with-icon">
+                    <i class="icon-search input-icon"></i>
+                    <input type="text" class="form-control form-control-sm" placeholder="Buscar notificaciones..." id="notifications-search">
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <button class="btn btn-sm btn-outline dropdown-toggle" id="sort-dropdown-btn">
+                    <i class="icon-filter"></i> Ordenar
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="#" class="dropdown-item active" data-sort="newest">Más recientes</a>
+                    <a href="#" class="dropdown-item" data-sort="oldest">Más antiguas</a>
+                    <a href="#" class="dropdown-item" data-sort="unread">No leídas primero</a>
+                    <a href="#" class="dropdown-item" data-sort="type">Por tipo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: FILTROS DE NOTIFICACIONES -->
+    
+    <!-- INICIO: LISTA DE NOTIFICACIONES -->
+    <div class="notifications-list">
+        <!-- Notificación 1: Alerta de precio (no leída) -->
+        <div class="notification-item unread" data-type="alert">
+            <div class="notification-icon alert">
+                <i class="icon-trending-up"></i>
+            </div>
+            <div class="notification-content">
+                <div class="notification-header">
+                    <div class="notification-title">
+                        <span class="notification-text">Bitcoin superó tu alerta de precio de $45,000</span>
+                        <span class="unread-indicator"></span>
+                    </div>
+                    <div class="notification-time">Hace 2 horas</div>
+                </div>
+                <div class="notification-body">
+                    <p>El precio actual es $45,230.65 (+2.45% en las últimas 24h)</p>
+                </div>
+                <div class="notification-actions">
+                    <a href="/crypto/bitcoin" class="notification-action">
+                        <i class="icon-external-link"></i> Ver Bitcoin
+                    </a>
+                    <a href="/herramientas/alertas" class="notification-action">
+                        <i class="icon-bell"></i> Gestionar alertas
+                    </a>
+                </div>
+            </div>
+            <div class="notification-options">
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-icon dropdown-toggle" aria-label="Opciones">
+                        <i class="icon-more-vertical"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#" class="dropdown-item" data-action="mark-read">
+                            <i class="icon-check"></i> Marcar como leída
+                        </a>
+                        <a href="#" class="dropdown-item" data-action="disable-similar">
+                            <i class="icon-bell-off"></i> Desactivar este tipo
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item text-danger" data-action="delete">
+                            <i class="icon-trash-2"></i> Eliminar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Notificación 2: Noticia importante (no leída) -->
+        <div class="notification-item unread" data-type="news">
+            <div class="notification-icon news">
+                <i class="icon-globe"></i>
+            </div>
+            <div class="notification-content">
+                <div class="notification-header">
+                    <div class="notification-title">
+                        <span class="notification-text">Noticia destacada: "La SEC aprueba nuevos ETFs de Bitcoin"</span>
+                        <span class="unread-indicator"></span>
+                    </div>
+                    <div class="notification-time">Hace 5 horas</div>
+                </div>
+                <div class="notification-body">
+                    <p>Esta decisión podría tener un impacto significativo en el mercado de criptomonedas.</p>
+                </div>
+                <div class="notification-actions">
+                    <a href="/noticias/123" class="notification-action">
+                        <i class="icon-file-text"></i> Leer noticia
+                    </a>
+                </div>
+            </div>
+            <div class="notification-options">
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-icon dropdown-toggle" aria-label="Opciones">
+                        <i class="icon-more-vertical"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <!-- Opciones similares a la notificación 1 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Notificación 3: Interacción social (no leída) -->
+        <div class="notification-item unread" data-type="social">
+            <div class="notification-icon social">
+                <i class="icon-user-plus"></i>
+            </div>
+            <div class="notification-content">
+                <div class="notification-header">
+                    <div class="notification-title">
+                        <span class="notification-text">Carlos Rodríguez comenzó a seguirte</span>
+                        <span class="unread-indicator"></span>
+                    </div>
+                    <div class="notification-time">Ayer</div>
+                </div>
+                <div class="notification-body">
+                    <div class="user-preview">
+                        <img src="assets/images/avatars/user2.jpg" alt="Carlos Rodríguez" class="user-avatar">
+                        <div class="user-info">
+                            <div class="user-name">Carlos Rodríguez</div>
+                            <div class="user-meta">24 seguidores • Senior</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="notification-actions">
+                    <a href="/profile/carlosrodriguez" class="notification-action">
+                        <i class="icon-user"></i> Ver perfil
+                    </a>
+                    <button class="btn btn-sm btn-outline notification-action" data-action="follow-back">
+                        <i class="icon-user-plus"></i> Seguir
+                    </button>
+                </div>
+            </div>
+            <div class="notification-options">
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-icon dropdown-toggle" aria-label="Opciones">
+                        <i class="icon-more-vertical"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <!-- Opciones similares a las anteriores -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Notificación 4: Sistema (leída) -->
+        <div class="notification-item" data-type="system">
+            <div class="notification-icon system">
+                <i class="icon-shield"></i>
+            </div>
+            <div class="notification-content">
+                <div class="notification-header">
+                    <div class="notification-title">
+                        <span class="notification-text">Actualización de seguridad completada</span>
+                    </div>
+                    <div class="notification-time">Hace 2 días</div>
+                </div>
+                <div class="notification-body">
+                    <p>Hemos actualizado nuestras medidas de seguridad. Tu cuenta ahora está mejor protegida.</p>
+                </div>
+                <div class="notification-actions">
+                    <a href="/configuracion/seguridad" class="notification-action">
+                        <i class="icon-shield"></i> Revisar seguridad
+                    </a>
+                </div>
+            </div>
+            <div class="notification-options">
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-icon dropdown-toggle" aria-label="Opciones">
+                        <i class="icon-more-vertical"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#" class="dropdown-item" data-action="mark-unread">
+                            <i class="icon-circle"></i> Marcar como no leída
+                        </a>
+                        <!-- Otras opciones -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Más notificaciones... -->
+        <!-- Se omiten por brevedad -->
+    </div>
+    <!-- FIN: LISTA DE NOTIFICACIONES -->
+    
+    <!-- INICIO: CARGA INFINITA / PAGINACIÓN -->
+    <div class="load-more-container">
+        <button class="btn btn-outline" id="load-more-notifications">
+            <i class="icon-plus"></i> Cargar más notificaciones
+        </button>
+        <div class="loading-indicator">
+            <div class="spinner"></div>
+            <span>Cargando notificaciones...</span>
+        </div>
+    </div>
+    <!-- FIN: CARGA INFINITA / PAGINACIÓN -->
+</div>
+<!-- FIN: CONTENEDOR PRINCIPAL DE NOTIFICACIONES -->

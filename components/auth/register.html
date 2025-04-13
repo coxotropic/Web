@@ -1,0 +1,383 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DE REGISTRO -->
+<div class="auth-container register-container">
+    <!-- INICIO: ENCABEZADO DE REGISTRO -->
+    <div class="auth-header">
+        <div class="auth-logo">
+            <img src="assets/images/logo.svg" alt="CryptInvest Logo" class="auth-logo-img">
+        </div>
+        <h1 class="auth-title">Crear una cuenta</h1>
+        <p class="auth-subtitle">Únete a nuestra comunidad de inversores en criptomonedas</p>
+    </div>
+    <!-- FIN: ENCABEZADO DE REGISTRO -->
+    
+    <!-- INICIO: PROGRESO DE REGISTRO -->
+    <div class="register-progress">
+        <div class="progress-step active" data-step="1">
+            <div class="step-number">1</div>
+            <div class="step-title">Cuenta</div>
+        </div>
+        <div class="progress-connector"></div>
+        <div class="progress-step" data-step="2">
+            <div class="step-number">2</div>
+            <div class="step-title">Perfil</div>
+        </div>
+        <div class="progress-connector"></div>
+        <div class="progress-step" data-step="3">
+            <div class="step-number">3</div>
+            <div class="step-title">Preferencias</div>
+        </div>
+    </div>
+    <!-- FIN: PROGRESO DE REGISTRO -->
+
+    <!-- INICIO: FORMULARIO DE REGISTRO -->
+    <form class="auth-form register-form" id="register-form" novalidate>
+        <!-- Mensajes de alerta -->
+        <div class="alert alert-danger hidden" id="register-error">
+            <i class="icon-alert-circle"></i>
+            <span id="register-error-message">Se ha producido un error en el registro. Por favor, inténtalo de nuevo.</span>
+        </div>
+        
+        <!-- INICIO: PASO 1 - DATOS DE LA CUENTA -->
+        <div class="register-step active" id="register-step-1">
+            <h2 class="step-heading">Información de la cuenta</h2>
+            
+            <!-- Email -->
+            <div class="form-group">
+                <label for="register-email" class="form-label">Email <span class="required">*</span></label>
+                <div class="input-with-icon">
+                    <i class="icon-mail input-icon"></i>
+                    <input 
+                        type="email" 
+                        id="register-email" 
+                        name="email" 
+                        class="form-control" 
+                        placeholder="tu@email.com" 
+                        required 
+                        autocomplete="email">
+                </div>
+                <div class="form-error" id="email-error"></div>
+                <div class="form-text">Usaremos este email para verificar tu cuenta y para notificaciones importantes.</div>
+            </div>
+            
+            <!-- Nombre de usuario -->
+            <div class="form-group">
+                <label for="register-username" class="form-label">Nombre de usuario <span class="required">*</span></label>
+                <div class="input-with-icon">
+                    <i class="icon-user input-icon"></i>
+                    <input 
+                        type="text" 
+                        id="register-username" 
+                        name="username" 
+                        class="form-control" 
+                        placeholder="usuario123" 
+                        required 
+                        autocomplete="username"
+                        minlength="4"
+                        maxlength="20"
+                        pattern="^[a-zA-Z0-9_-]{4,20}$">
+                </div>
+                <div class="form-error" id="username-error"></div>
+                <div class="form-text">Entre 4 y 20 caracteres. Solo letras, números, guiones y guiones bajos.</div>
+            </div>
+            
+            <!-- Contraseña -->
+            <div class="form-group">
+                <label for="register-password" class="form-label">Contraseña <span class="required">*</span></label>
+                <div class="input-with-icon">
+                    <i class="icon-lock input-icon"></i>
+                    <input 
+                        type="password" 
+                        id="register-password" 
+                        name="password" 
+                        class="form-control" 
+                        placeholder="Contraseña segura" 
+                        required 
+                        autocomplete="new-password"
+                        minlength="8">
+                    <button type="button" class="input-icon-toggle" id="toggle-reg-password" aria-label="Mostrar/ocultar contraseña">
+                        <i class="icon-eye"></i>
+                    </button>
+                </div>
+                <div class="password-strength">
+                    <div class="strength-meter">
+                        <div class="strength-meter-fill" id="password-strength-meter"></div>
+                    </div>
+                    <div class="strength-text" id="password-strength-text">Fuerza de la contraseña</div>
+                </div>
+                <div class="form-error" id="password-error"></div>
+                <div class="form-text">
+                    Mínimo 8 caracteres. Debe incluir al menos una letra mayúscula, una minúscula, un número y un carácter especial.
+                </div>
+            </div>
+            
+            <!-- Confirmar contraseña -->
+            <div class="form-group">
+                <label for="register-password-confirm" class="form-label">Confirmar contraseña <span class="required">*</span></label>
+                <div class="input-with-icon">
+                    <i class="icon-lock input-icon"></i>
+                    <input 
+                        type="password" 
+                        id="register-password-confirm" 
+                        name="password_confirm" 
+                        class="form-control" 
+                        placeholder="Repite tu contraseña" 
+                        required 
+                        autocomplete="new-password">
+                </div>
+                <div class="form-error" id="password-confirm-error"></div>
+            </div>
+            
+            <!-- Botones de navegación -->
+            <div class="form-actions">
+                <button type="button" class="btn btn-primary btn-block" id="step-1-next">Continuar</button>
+            </div>
+        </div>
+        <!-- FIN: PASO 1 - DATOS DE LA CUENTA -->
+        
+        <!-- INICIO: PASO 2 - DATOS DE PERFIL -->
+        <div class="register-step" id="register-step-2">
+            <h2 class="step-heading">Cuéntanos sobre ti</h2>
+            
+            <!-- Nombre -->
+            <div class="form-group">
+                <label for="register-name" class="form-label">Nombre <span class="required">*</span></label>
+                <div class="input-with-icon">
+                    <i class="icon-user input-icon"></i>
+                    <input 
+                        type="text" 
+                        id="register-name" 
+                        name="name" 
+                        class="form-control" 
+                        placeholder="Tu nombre" 
+                        required 
+                        autocomplete="given-name">
+                </div>
+                <div class="form-error" id="name-error"></div>
+            </div>
+            
+            <!-- Apellido -->
+            <div class="form-group">
+                <label for="register-lastname" class="form-label">Apellido <span class="required">*</span></label>
+                <div class="input-with-icon">
+                    <i class="icon-user input-icon"></i>
+                    <input 
+                        type="text" 
+                        id="register-lastname" 
+                        name="lastname" 
+                        class="form-control" 
+                        placeholder="Tu apellido" 
+                        required 
+                        autocomplete="family-name">
+                </div>
+                <div class="form-error" id="lastname-error"></div>
+            </div>
+            
+            <!-- País -->
+            <div class="form-group">
+                <label for="register-country" class="form-label">País <span class="required">*</span></label>
+                <div class="input-with-icon">
+                    <i class="icon-globe input-icon"></i>
+                    <select id="register-country" name="country" class="form-control" required>
+                        <option value="" selected disabled>Selecciona tu país</option>
+                        <option value="ES">España</option>
+                        <option value="MX">México</option>
+                        <option value="AR">Argentina</option>
+                        <option value="CO">Colombia</option>
+                        <option value="CL">Chile</option>
+                        <option value="PE">Perú</option>
+                        <option value="US">Estados Unidos</option>
+                        <!-- Más países serían añadidos aquí -->
+                    </select>
+                </div>
+                <div class="form-error" id="country-error"></div>
+            </div>
+            
+            <!-- Nivel de experiencia -->
+            <div class="form-group">
+                <label class="form-label">Nivel de experiencia <span class="required">*</span></label>
+                <div class="experience-selector">
+                    <div class="experience-option">
+                        <input type="radio" id="exp-novato" name="experience" value="novato" checked>
+                        <label for="exp-novato" class="experience-label">
+                            <div class="experience-icon"><i class="icon-user"></i></div>
+                            <div class="experience-name">Novato</div>
+                            <div class="experience-desc">Nuevo en criptomonedas</div>
+                        </label>
+                    </div>
+                    <div class="experience-option">
+                        <input type="radio" id="exp-intermedio" name="experience" value="intermedio">
+                        <label for="exp-intermedio" class="experience-label">
+                            <div class="experience-icon"><i class="icon-users"></i></div>
+                            <div class="experience-name">Intermedio</div>
+                            <div class="experience-desc">Alguna experiencia</div>
+                        </label>
+                    </div>
+                    <div class="experience-option">
+                        <input type="radio" id="exp-senior" name="experience" value="senior">
+                        <label for="exp-senior" class="experience-label">
+                            <div class="experience-icon"><i class="icon-award"></i></div>
+                            <div class="experience-name">Senior</div>
+                            <div class="experience-desc">Amplia experiencia</div>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-error" id="experience-error"></div>
+            </div>
+            
+            <!-- Botones de navegación -->
+            <div class="form-actions">
+                <button type="button" class="btn btn-outline" id="step-2-prev">Atrás</button>
+                <button type="button" class="btn btn-primary" id="step-2-next">Continuar</button>
+            </div>
+        </div>
+        <!-- FIN: PASO 2 - DATOS DE PERFIL -->
+        
+        <!-- INICIO: PASO 3 - PREFERENCIAS -->
+        <div class="register-step" id="register-step-3">
+            <h2 class="step-heading">Personaliza tu experiencia</h2>
+            
+            <!-- Intereses -->
+            <div class="form-group">
+                <label class="form-label">¿Qué te interesa? <span class="required">*</span></label>
+                <p class="form-text mb-sm">Selecciona los temas que más te interesan (mínimo 3)</p>
+                <div class="interests-grid">
+                    <div class="interest-option">
+                        <input type="checkbox" id="interest-bitcoin" name="interests[]" value="bitcoin">
+                        <label for="interest-bitcoin" class="interest-label">
+                            <i class="interest-icon icon-bitcoin"></i>
+                            <span>Bitcoin</span>
+                        </label>
+                    </div>
+                    <div class="interest-option">
+                        <input type="checkbox" id="interest-ethereum" name="interests[]" value="ethereum">
+                        <label for="interest-ethereum" class="interest-label">
+                            <i class="interest-icon icon-ethereum"></i>
+                            <span>Ethereum</span>
+                        </label>
+                    </div>
+                    <div class="interest-option">
+                        <input type="checkbox" id="interest-altcoins" name="interests[]" value="altcoins">
+                        <label for="interest-altcoins" class="interest-label">
+                            <i class="interest-icon icon-coins"></i>
+                            <span>Altcoins</span>
+                        </label>
+                    </div>
+                    <div class="interest-option">
+                        <input type="checkbox" id="interest-defi" name="interests[]" value="defi">
+                        <label for="interest-defi" class="interest-label">
+                            <i class="interest-icon icon-layers"></i>
+                            <span>DeFi</span>
+                        </label>
+                    </div>
+                    <div class="interest-option">
+                        <input type="checkbox" id="interest-nft" name="interests[]" value="nft">
+                        <label for="interest-nft" class="interest-label">
+                            <i class="interest-icon icon-image"></i>
+                            <span>NFTs</span>
+                        </label>
+                    </div>
+                    <div class="interest-option">
+                        <input type="checkbox" id="interest-trading" name="interests[]" value="trading">
+                        <label for="interest-trading" class="interest-label">
+                            <i class="interest-icon icon-trending-up"></i>
+                            <span>Trading</span>
+                        </label>
+                    </div>
+                    <div class="interest-option">
+                        <input type="checkbox" id="interest-mining" name="interests[]" value="mining">
+                        <label for="interest-mining" class="interest-label">
+                            <i class="interest-icon icon-cpu"></i>
+                            <span>Minería</span>
+                        </label>
+                    </div>
+                    <div class="interest-option">
+                        <input type="checkbox" id="interest-staking" name="interests[]" value="staking">
+                        <label for="interest-staking" class="interest-label">
+                            <i class="interest-icon icon-lock"></i>
+                            <span>Staking</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-error" id="interests-error"></div>
+            </div>
+            
+            <!-- Términos y condiciones -->
+            <div class="form-group">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="register-terms" name="terms" required>
+                    <label class="form-check-label" for="register-terms">
+                        Acepto los <a href="/legal/terminos" target="_blank" class="form-link">Términos y Condiciones</a> y la <a href="/legal/privacidad" target="_blank" class="form-link">Política de Privacidad</a> <span class="required">*</span>
+                    </label>
+                </div>
+                <div class="form-error" id="terms-error"></div>
+            </div>
+            
+            <!-- Newsletter -->
+            <div class="form-group">
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="register-newsletter" name="newsletter" checked>
+                    <label class="form-check-label" for="register-newsletter">
+                        Deseo recibir noticias, actualizaciones y ofertas por email
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Botones de navegación -->
+            <div class="form-actions">
+                <button type="button" class="btn btn-outline" id="step-3-prev">Atrás</button>
+                <button type="submit" class="btn btn-primary btn-block" id="register-submit-btn">
+                    <span class="btn-text">Crear cuenta</span>
+                    <span class="btn-loader hidden">
+                        <i class="icon-loader"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <!-- FIN: PASO 3 - PREFERENCIAS -->
+    </form>
+    <!-- FIN: FORMULARIO DE REGISTRO -->
+    
+    <!-- INICIO: SEPARADOR -->
+    <div class="auth-divider">
+        <span class="divider-text">O regístrate con</span>
+    </div>
+    <!-- FIN: SEPARADOR -->
+    
+    <!-- INICIO: BOTONES DE REDES SOCIALES -->
+    <div class="social-login">
+        <button class="btn btn-social btn-google">
+            <img src="assets/icons/google.svg" alt="Google" class="social-icon">
+            <span>Google</span>
+        </button>
+        <button class="btn btn-social btn-facebook">
+            <img src="assets/icons/facebook.svg" alt="Facebook" class="social-icon">
+            <span>Facebook</span>
+        </button>
+        <button class="btn btn-social btn-twitter">
+            <img src="assets/icons/twitter.svg" alt="Twitter" class="social-icon">
+            <span>Twitter</span>
+        </button>
+    </div>
+    <!-- FIN: BOTONES DE REDES SOCIALES -->
+    
+    <!-- INICIO: ENLACE A LOGIN -->
+    <div class="auth-footer">
+        <p class="auth-footer-text">
+            ¿Ya tienes una cuenta? <a href="/auth/login" class="auth-link">Inicia sesión</a>
+        </p>
+    </div>
+    <!-- FIN: ENLACE A LOGIN -->
+    
+    <!-- INICIO: SELECTOR DE IDIOMA -->
+    <div class="lang-selector">
+        <select id="register-language-selector" class="form-select form-select-sm">
+            <option value="es" selected>Español</option>
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+        </select>
+    </div>
+    <!-- FIN: SELECTOR DE IDIOMA -->
+</div>
+<!-- FIN: CONTENEDOR PRINCIPAL DE REGISTRO -->

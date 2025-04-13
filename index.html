@@ -3,15 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CryptoGuía - Portal de Inversiones en Criptomonedas</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
-    <script src="js/main.js" defer></script>
+    <title>CryptInvest - Portal de Inversiones en Criptomonedas</title>
+    
+    <!-- CSS Base -->
+    <link rel="stylesheet" href="css/main.css">
+    
+    <!-- CSS Responsivo (se cargará dinámicamente según dispositivo) -->
+    <link rel="stylesheet" id="responsive-css" href="">
+    
+    <!-- Preload de recursos críticos -->
+    <link rel="preload" href="js/main.js" as="script">
+    <link rel="preload" href="js/utils/component-loader.js" as="script">
+    
+    <!-- Favicon y PWA -->
+    <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c3e50">
 </head>
 <body>
-    <!-- Contenedores para los componentes -->
-    <div id="menu-container"></div>
-    <div id="content-container"></div>
-    <div id="footer-container"></div>
+    <!-- Contenedor principal -->
+    <div id="app-container" class="app-container">
+        <!-- Header (se cargará desde components/core/header.html) -->
+        <header id="header-container" class="header-container">
+            <!-- Carga dinámica del header -->
+        </header>
+        
+        <!-- Selector de modo (Novato/Pro) -->
+        <div id="mode-selector" class="mode-selector">
+            <button id="novato-mode" class="mode-btn active">Modo Novato</button>
+            <button id="pro-mode" class="mode-btn">Modo Pro</button>
+        </div>
+        
+        <!-- Menú de navegación (se cargará desde components/core/menu.html) -->
+        <nav id="menu-container" class="menu-container">
+            <!-- Carga dinámica del menú -->
+        </nav>
+        
+        <!-- Contenido principal -->
+        <main id="main-content" class="main-content">
+            <!-- Áreas de contenido por nivel -->
+            <section id="content-container" class="content-container">
+                <!-- Carga dinámica del contenido según nivel seleccionado -->
+            </section>
+            
+            <!-- Área de inversiones por tiempo -->
+            <section id="timeframe-container" class="timeframe-container">
+                <!-- Carga dinámica de timeframes -->
+            </section>
+            
+            <!-- Área de inversiones por riesgo -->
+            <section id="risk-container" class="risk-container">
+                <!-- Carga dinámica de niveles de riesgo -->
+            </section>
+            
+            <!-- Herramientas interactivas -->
+            <section id="tools-container" class="tools-container">
+                <!-- Carga dinámica de herramientas -->
+            </section>
+        </main>
+        
+        <!-- Sistema de autenticación -->
+        <section id="auth-container" class="auth-container hidden">
+            <!-- Carga dinámica de componentes de autenticación -->
+        </section>
+        
+        <!-- Sistema de noticias -->
+        <section id="news-container" class="news-container">
+            <!-- Carga dinámica de noticias -->
+        </section>
+        
+        <!-- Componentes sociales -->
+        <section id="social-container" class="social-container">
+            <!-- Carga dinámica de componentes sociales -->
+        </section>
+        
+        <!-- Footer (se cargará desde components/core/footer.html) -->
+        <footer id="footer-container" class="footer-container">
+            <!-- Carga dinámica del footer -->
+        </footer>
+    </div>
+    
+    <!-- Indicador de carga -->
+    <div id="loading-indicator" class="loading-indicator">
+        <div class="spinner"></div>
+    </div>
+    
+    <!-- Modal para mensajes del sistema -->
+    <div id="system-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="modal-message"></div>
+        </div>
+    </div>
+    
+    <!-- Scripts principales -->
+    <script type="module" src="js/main.js"></script>
+    
+    <!-- Detector de dispositivo (inline para carga inmediata) -->
+    <script>
+        // Detector de dispositivo para cargar CSS adecuado
+        function loadResponsiveCSS() {
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
+            const cssLink = document.getElementById('responsive-css');
+            cssLink.href = isMobile ? 'css/mobile.css' : 'css/desktop.css';
+            
+            // Añadir clase al body para estilos específicos
+            document.body.classList.add(isMobile ? 'mobile-device' : 'desktop-device');
+        }
+        
+        // Cargar CSS al iniciar
+        loadResponsiveCSS();
+        
+        // Recargar CSS si cambia el tamaño de la ventana
+        window.addEventListener('resize', loadResponsiveCSS);
+    </script>
 </body>
 </html>

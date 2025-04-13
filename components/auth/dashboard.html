@@ -1,0 +1,112 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DE DASHBOARD -->
+<div class="dashboard-container">
+    <!-- INICIO: CABECERA DE DASHBOARD -->
+    <div class="dashboard-header">
+        <div class="greeting-section">
+            <h1 class="greeting-title">
+                <span id="greeting-time">Buenos días</span>, <span id="user-name">Usuario</span>
+            </h1>
+            <p class="greeting-subtitle" id="date-display">Miércoles, 11 de Abril de 2025</p>
+        </div>
+        
+        <div class="dashboard-controls">
+            <button class="btn btn-sm btn-outline" id="customize-dashboard-btn">
+                <i class="icon-sliders"></i> Personalizar Dashboard
+            </button>
+            <div class="view-mode-toggle">
+                <span class="toggle-label">Modo:</span>
+                <div class="toggle-buttons">
+                    <button class="toggle-btn active" data-mode="novato">
+                        <i class="icon-user"></i> Novato
+                    </button>
+                    <button class="toggle-btn" data-mode="pro">
+                        <i class="icon-zap"></i> Pro
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: CABECERA DE DASHBOARD -->
+    
+    <!-- INICIO: RESUMEN DEL DASHBOARD -->
+    <div class="dashboard-summary">
+        <div class="summary-card portfolio-summary">
+            <div class="card-header">
+                <h2 class="card-title">Valor del Portfolio</h2>
+                <div class="portfolio-actions">
+                    <button class="btn btn-sm btn-primary" id="add-asset-btn">
+                        <i class="icon-plus"></i> Añadir Activo
+                    </button>
+                    <button class="btn btn-sm btn-outline" id="portfolio-settings-btn">
+                        <i class="icon-settings"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="portfolio-value">
+                    <div class="current-value">
+                        <div class="value-label">Valor Total</div>
+                        <div class="value-amount">$12,458.34</div>
+                    </div>
+                    <div class="value-change positive">
+                        <div class="change-value">+$324.56</div>
+                        <div class="change-percent">+2.67%</div>
+                        <div class="change-period">Último día</div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-chart-container">
+                    <div class="chart-controls">
+                        <div class="timeframe-selector">
+                            <button class="timeframe-btn" data-timeframe="1d">1D</button>
+                            <button class="timeframe-btn" data-timeframe="1w">1S</button>
+                            <button class="timeframe-btn active" data-timeframe="1m">1M</button>
+                            <button class="timeframe-btn" data-timeframe="3m">3M</button>
+                            <button class="timeframe-btn" data-timeframe="1y">1A</button>
+                            <button class="timeframe-btn" data-timeframe="all">Todo</button>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-chart" id="portfolio-chart">
+                        <!-- Gráfico generado dinámicamente -->
+                        <div class="chart-placeholder">Cargando gráfico de portfolio...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="summary-card market-summary">
+            <div class="card-header">
+                <h2 class="card-title">Mercado Hoy</h2>
+                <a href="/mercado" class="btn-link">Ver Todo</a>
+            </div>
+            <div class="card-body">
+                <div class="market-overview">
+                    <div class="market-metric">
+                        <div class="metric-label">Mercado Global</div>
+                        <div class="metric-value">$1.92T</div>
+                        <div class="metric-change positive">+1.7%</div>
+                    </div>
+                    <div class="market-metric">
+                        <div class="metric-label">Dominancia BTC</div>
+                        <div class="metric-value">42.3%</div>
+                        <div class="metric-change negative">-0.5%</div>
+                    </div>
+                    <div class="market-metric">
+                        <div class="metric-label">Miedo/Codicia</div>
+                        <div class="metric-value">65</div>
+                        <div class="metric-label-sub">Codicia</div>
+                    </div>
+                </div>
+                
+                <div class="trending-coins">
+                    <div class="trending-label">Tendencias 24h</div>
+                    <div class="trending-list">
+                        <div class="trending-item positive">
+                            <img src="assets/images/crypto/solana.svg" alt="SOL" class="coin-icon">
+                            <div class="trending-name">Solana</div>
+                            <div class="trending-change">+12.3%</div>
+                        </div>
+                        <div class="trending-item positive">
+                            <img src="assets/images/crypto/cardano.svg" alt="ADA" class="coin-icon">
+                            <div class="trending-name">Cardano</div>

@@ -1,0 +1,539 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DE DETALLE DE CRIPTOMONEDA -->
+<div class="coin-detail-container">
+    <!-- INICIO: CABECERA DE LA CRIPTOMONEDA -->
+    <div class="coin-header">
+        <div class="coin-basic-info">
+            <div class="coin-icon-container">
+                <img src="assets/images/crypto/bitcoin.svg" alt="Bitcoin" class="coin-icon" id="coin-icon">
+                <div class="coin-rank" title="Ranking por capitalización de mercado">#1</div>
+            </div>
+            
+            <div class="coin-title-info">
+                <h1 class="coin-name" id="coin-name">Bitcoin</h1>
+                <div class="coin-ticker" id="coin-ticker">BTC</div>
+                <div class="coin-tags">
+                    <span class="coin-tag">Capa 1</span>
+                    <span class="coin-tag">Store of Value</span>
+                    <span class="coin-tag">PoW</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="coin-price-info">
+            <div class="current-price-container">
+                <div class="price-label">Precio Actual</div>
+                <div class="current-price" id="current-price">$45,230.65</div>
+                <div class="price-change positive" id="price-change">
+                    <i class="icon-trending-up"></i>
+                    <span class="change-value">+2.45%</span>
+                    <span class="change-period">(24h)</span>
+                </div>
+            </div>
+            
+            <div class="price-alerts">
+                <button class="btn btn-sm btn-outline" id="set-alert-btn">
+                    <i class="icon-bell"></i> Crear Alerta
+                </button>
+                <button class="btn btn-sm btn-outline" id="add-watchlist-btn">
+                    <i class="icon-star"></i> Añadir a Favoritos
+                </button>
+            </div>
+        </div>
+        
+        <div class="coin-action-buttons">
+            <button class="btn btn-primary" id="buy-btn">
+                <i class="icon-shopping-cart"></i> Comprar
+            </button>
+            <button class="btn btn-outline" id="sell-btn">
+                <i class="icon-dollar-sign"></i> Vender
+            </button>
+            <div class="dropdown">
+                <button class="btn btn-icon" id="more-actions-btn" aria-label="Más acciones">
+                    <i class="icon-more-horizontal"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="#" class="dropdown-item" id="share-coin">
+                        <i class="icon-share-2"></i> Compartir
+                    </a>
+                    <a href="#" class="dropdown-item" id="coin-calculator">
+                        <i class="icon-calculator"></i> Calculadora
+                    </a>
+                    <a href="#" class="dropdown-item" id="coin-news">
+                        <i class="icon-globe"></i> Noticias
+                    </a>
+                    <a href="#" class="dropdown-item" id="coin-report">
+                        <i class="icon-file-text"></i> Informe Completo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: CABECERA DE LA CRIPTOMONEDA -->
+    
+    <!-- INICIO: CONTENIDO PRINCIPAL DE LA CRIPTOMONEDA -->
+    <div class="coin-content">
+        <div class="coin-main-panel">
+            <!-- INICIO: GRÁFICO DE PRECIO -->
+            <div class="price-chart-container card">
+                <div class="card-header chart-header">
+                    <div class="chart-title">
+                        <h2>Gráfico de Precio</h2>
+                        <div class="chart-subtitle" id="chart-range">May 15, 2024 - Jun 15, 2024</div>
+                    </div>
+                    
+                    <div class="chart-controls">
+                        <div class="timeframe-selector">
+                            <button class="timeframe-btn" data-timeframe="1d">1D</button>
+                            <button class="timeframe-btn" data-timeframe="1w">1S</button>
+                            <button class="timeframe-btn active" data-timeframe="1m">1M</button>
+                            <button class="timeframe-btn" data-timeframe="3m">3M</button>
+                            <button class="timeframe-btn" data-timeframe="1y">1A</button>
+                            <button class="timeframe-btn" data-timeframe="all">Todo</button>
+                        </div>
+                        
+                        <div class="chart-type-selector">
+                            <button class="chart-type-btn active" data-chart-type="candle" title="Velas Japonesas">
+                                <i class="icon-bar-chart-2"></i>
+                            </button>
+                            <button class="chart-type-btn" data-chart-type="line" title="Gráfico de Línea">
+                                <i class="icon-trending-up"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="chart-settings">
+                            <button class="btn btn-icon" id="chart-indicators-btn" title="Indicadores">
+                                <i class="icon-activity"></i>
+                            </button>
+                            <button class="btn btn-icon" id="chart-drawing-btn" title="Herramientas de Dibujo">
+                                <i class="icon-edit-2"></i>
+                            </button>
+                            <button class="btn btn-icon" id="chart-fullscreen-btn" title="Pantalla Completa">
+                                <i class="icon-maximize-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-body">
+                    <div class="chart-container" id="price-chart">
+                        <!-- Gráfico generado dinámicamente -->
+                        <div class="chart-placeholder">Cargando gráfico...</div>
+                    </div>
+                    
+                    <div class="volume-chart" id="volume-chart">
+                        <!-- Gráfico de volumen generado dinámicamente -->
+                    </div>
+                </div>
+            </div>
+            <!-- FIN: GRÁFICO DE PRECIO -->
+            
+            <!-- INICIO: PESTAÑAS DE INFORMACIÓN -->
+            <div class="coin-tabs card">
+                <div class="card-header tab-header">
+                    <ul class="nav-tabs">
+                        <li class="nav-item active">
+                            <a href="#overview-tab" class="nav-link" data-tab="overview">
+                                Resumen
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#markets-tab" class="nav-link" data-tab="markets">
+                                Mercados
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#fundamentals-tab" class="nav-link" data-tab="fundamentals">
+                                Fundamentos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#technical-tab" class="nav-link" data-tab="technical">
+                                Análisis Técnico
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#onchain-tab" class="nav-link" data-tab="onchain">
+                                On-Chain
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#news-tab" class="nav-link" data-tab="news">
+                                Noticias
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#social-tab" class="nav-link" data-tab="social">
+                                Social
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="card-body tab-content">
+                    <!-- INICIO: TAB RESUMEN -->
+                    <div class="tab-pane active" id="overview-tab">
+                        <div class="overview-grid">
+                            <!-- Información general en formato de grid -->
+                            <div class="overview-item">
+                                <div class="overview-label">Capitalización de Mercado</div>
+                                <div class="overview-value">$865.4B</div>
+                                <div class="overview-rank">#1</div>
+                            </div>
+                            
+                            <div class="overview-item">
+                                <div class="overview-label">Volumen 24h</div>
+                                <div class="overview-value">$28.6B</div>
+                                <div class="overview-change positive">+12.4%</div>
+                            </div>
+                            
+                            <div class="overview-item">
+                                <div class="overview-label">Suministro Circulante</div>
+                                <div class="overview-value">19.12M BTC</div>
+                                <div class="overview-percentage">91.05%</div>
+                            </div>
+                            
+                            <div class="overview-item">
+                                <div class="overview-label">Suministro Máximo</div>
+                                <div class="overview-value">21M BTC</div>
+                                <div class="overview-info">
+                                    <i class="icon-info" title="Límite máximo establecido en el código"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="overview-item">
+                                <div class="overview-label">Dominio del Mercado</div>
+                                <div class="overview-value">42.3%</div>
+                                <div class="overview-change negative">-0.5%</div>
+                            </div>
+                            
+                            <div class="overview-item">
+                                <div class="overview-label">Ranking</div>
+                                <div class="overview-value">#1</div>
+                                <div class="overview-change">sin cambios</div>
+                            </div>
+                            
+                            <div class="overview-item">
+                                <div class="overview-label">ATH (Máximo histórico)</div>
+                                <div class="overview-value">$69,000</div>
+                                <div class="overview-date">Nov 10, 2021</div>
+                            </div>
+                            
+                            <div class="overview-item">
+                                <div class="overview-label">ATL (Mínimo histórico)</div>
+                                <div class="overview-value">$67.81</div>
+                                <div class="overview-date">Jul 6, 2013</div>
+                            </div>
+                        </div>
+                        
+                        <div class="overview-description">
+                            <h3>Sobre Bitcoin (BTC)</h3>
+                            <div class="description-content">
+                                <p>Bitcoin es la primera criptomoneda descentralizada del mundo. Fue creada en 2009 por un desarrollador anónimo (o grupo de desarrolladores) bajo el seudónimo de Satoshi Nakamoto. Funciona sin una autoridad central o banco, y la gestión de transacciones y la emisión de bitcoins se lleva a cabo colectivamente por la red.</p>
+                                <p>Bitcoin usa tecnología peer-to-peer para operar sin autoridad central: la gestión de transacciones y la emisión de bitcoins se lleva a cabo de forma colectiva por la red. Bitcoin es de código abierto; su diseño es público, nadie es dueño o controla Bitcoin y todo el mundo puede participar.</p>
+                                <button class="btn btn-link" id="read-more-btn">Leer más</button>
+                            </div>
+                        </div>
+                        
+                        <div class="price-statistics">
+                            <h3>Estadísticas de Precio</h3>
+                            <div class="stats-table">
+                                <div class="stats-row">
+                                    <div class="stats-label">Precio de Bitcoin</div>
+                                    <div class="stats-value">$45,230.65</div>
+                                </div>
+                                <div class="stats-row">
+                                    <div class="stats-label">Cambio 24h</div>
+                                    <div class="stats-value positive">+2.45% ($1,084.52)</div>
+                                </div>
+                                <div class="stats-row">
+                                    <div class="stats-label">Cambio 7d</div>
+                                    <div class="stats-value negative">-3.21% ($1,498.76)</div>
+                                </div>
+                                <div class="stats-row">
+                                    <div class="stats-label">Cambio 30d</div>
+                                    <div class="stats-value positive">+8.67% ($3,606.14)</div>
+                                </div>
+                                <div class="stats-row">
+                                    <div class="stats-label">Cambio 60d</div>
+                                    <div class="stats-value positive">+11.24% ($4,574.31)</div>
+                                </div>
+                                <div class="stats-row">
+                                    <div class="stats-label">Cambio 1a</div>
+                                    <div class="stats-value positive">+54.32% ($15,936.21)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FIN: TAB RESUMEN -->
+                    
+                    <!-- INICIO: TAB MERCADOS -->
+                    <div class="tab-pane" id="markets-tab">
+                        <!-- Tabla de mercados donde se opera la criptomoneda -->
+                        <!-- Se omite por brevedad -->
+                    </div>
+                    <!-- FIN: TAB MERCADOS -->
+                    
+                    <!-- Otros tabs omitidos por brevedad -->
+                </div>
+            </div>
+            <!-- FIN: PESTAÑAS DE INFORMACIÓN -->
+        </div>
+        
+        <!-- INICIO: PANEL LATERAL -->
+        <div class="coin-side-panel">
+            <!-- INICIO: CONVERSOR RÁPIDO -->
+            <div class="quick-converter card">
+                <div class="card-header">
+                    <h3 class="card-title">Conversor</h3>
+                </div>
+                <div class="card-body">
+                    <div class="converter-form">
+                        <div class="form-group">
+                            <label for="crypto-amount" class="form-label">BTC</label>
+                            <input type="number" id="crypto-amount" class="form-control" value="1" min="0" step="0.01">
+                        </div>
+                        
+                        <div class="converter-equals">
+                            <i class="icon-repeat"></i>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fiat-amount" class="form-label">USD</label>
+                            <input type="number" id="fiat-amount" class="form-control" value="45230.65" min="0" step="0.01">
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="fiat-currency" class="form-control">
+                                <option value="USD" selected>USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="GBP">GBP</option>
+                                <option value="JPY">JPY</option>
+                                <option value="KRW">KRW</option>
+                                <option value="CNY">CNY</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary btn-block mt-md" id="go-to-calculator">
+                        <i class="icon-calculator"></i> Calculadora Avanzada
+                    </button>
+                </div>
+            </div>
+            <!-- FIN: CONVERSOR RÁPIDO -->
+            
+            <!-- INICIO: PREDICCIÓN Y SENTIMIENTO -->
+            <div class="price-prediction card">
+                <div class="card-header">
+                    <h3 class="card-title">Predicción y Sentimiento</h3>
+                </div>
+                <div class="card-body">
+                    <div class="sentiment-meter">
+                        <div class="sentiment-label">Sentimiento del Mercado</div>
+                        <div class="sentiment-gauge">
+                            <div class="gauge-scale">
+                                <div class="gauge-pointer" style="transform: rotate(60deg);"></div>
+                                <div class="gauge-arc fear">Miedo</div>
+                                <div class="gauge-arc neutral">Neutral</div>
+                                <div class="gauge-arc greed">Codicia</div>
+                            </div>
+                            <div class="gauge-value">65</div>
+                        </div>
+                        <div class="sentiment-caption">Codicia</div>
+                    </div>
+                    
+                    <div class="prediction-summary">
+                        <div class="prediction-label">Consenso de Analistas</div>
+                        <div class="prediction-votes">
+                            <div class="vote-item">
+                                <div class="vote-percentage positive" style="width: 65%;">65%</div>
+                                <div class="vote-label">Comprar</div>
+                            </div>
+                            <div class="vote-item">
+                                <div class="vote-percentage neutral" style="width: 25%;">25%</div>
+                                <div class="vote-label">Mantener</div>
+                            </div>
+                            <div class="vote-item">
+                                <div class="vote-percentage negative" style="width: 10%;">10%</div>
+                                <div class="vote-label">Vender</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="price-targets">
+                        <div class="targets-label">Objetivos de Precio (30 días)</div>
+                        <div class="targets-values">
+                            <div class="target-item">
+                                <div class="target-value">$42,500</div>
+                                <div class="target-label negative">Bajista</div>
+                            </div>
+                            <div class="target-item">
+                                <div class="target-value">$48,200</div>
+                                <div class="target-label neutral">Medio</div>
+                            </div>
+                            <div class="target-item">
+                                <div class="target-value">$52,800</div>
+                                <div class="target-label positive">Alcista</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="/analisis/btc" class="btn btn-outline btn-block mt-md">
+                        <i class="icon-bar-chart-2"></i> Análisis Completo
+                    </a>
+                </div>
+            </div>
+            <!-- FIN: PREDICCIÓN Y SENTIMIENTO -->
+            
+            <!-- INICIO: NOTICIAS RECIENTES -->
+            <div class="recent-news card">
+                <div class="card-header">
+                    <h3 class="card-title">Noticias Recientes</h3>
+                    <a href="#news-tab" class="btn-link" data-tab-link="news">Ver todas</a>
+                </div>
+                <div class="card-body">
+                    <div class="news-list">
+                        <a href="#" class="news-item">
+                            <div class="news-date">Hace 2 horas</div>
+                            <div class="news-title">Bitcoin supera los $45K mientras el mercado se recupera</div>
+                            <div class="news-source">CoinDesk</div>
+                        </a>
+                        <a href="#" class="news-item">
+                            <div class="news-date">Hace 5 horas</div>
+                            <div class="news-title">ETF de Bitcoin registra entradas masivas esta semana</div>
+                            <div class="news-source">CryptoNews</div>
+                        </a>
+                        <a href="#" class="news-item">
+                            <div class="news-date">Hace 1 día</div>
+                            <div class="news-title">Análisis: ¿Se acerca Bitcoin a un nuevo ATH?</div>
+                            <div class="news-source">Cointelegraph</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN: NOTICIAS RECIENTES -->
+        </div>
+        <!-- FIN: PANEL LATERAL -->
+    </div>
+    <!-- FIN: CONTENIDO PRINCIPAL DE LA CRIPTOMONEDA -->
+    
+    <!-- INICIO: SECCIÓN DE CORRELACIONES Y COMPARATIVAS -->
+    <div class="correlations-section">
+        <h2 class="section-title">Correlaciones y Comparativas</h2>
+        
+        <div class="correlation-grid">
+            <div class="correlation-chart card">
+                <div class="card-header">
+                    <h3 class="card-title">Correlación con Otras Criptomonedas</h3>
+                    <div class="timeframe-selector small">
+                        <button class="timeframe-btn" data-timeframe="7d">7D</button>
+                        <button class="timeframe-btn active" data-timeframe="30d">30D</button>
+                        <button class="timeframe-btn" data-timeframe="90d">90D</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart-container" id="correlation-chart">
+                        <!-- Gráfico generado dinámicamente -->
+                        <div class="chart-placeholder">Cargando correlaciones...</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comparison-table card">
+                <div class="card-header">
+                    <h3 class="card-title">Comparativa de Activos</h3>
+                </div>
+                <div class="card-body">
+                    <div class="comparison-filters">
+                        <div class="filter-label">Comparar con:</div>
+                        <div class="asset-selector">
+                            <button class="asset-btn active" data-asset="eth">ETH</button>
+                            <button class="asset-btn" data-asset="gold">Oro</button>
+                            <button class="asset-btn" data-asset="sp500">S&P 500</button>
+                            <button class="asset-btn" data-asset="custom" id="add-compare-asset">
+                                <i class="icon-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <table class="comparison-stats">
+                        <thead>
+                            <tr>
+                                <th>Métrica</th>
+                                <th>
+                                    <img src="assets/images/crypto/bitcoin.svg" alt="BTC" class="asset-icon-sm">
+                                    BTC
+                                </th>
+                                <th>
+                                    <img src="assets/images/crypto/ethereum.svg" alt="ETH" class="asset-icon-sm">
+                                    ETH
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Precio Actual</td>
+                                <td>$45,230.65</td>
+                                <td>$2,456.78</td>
+                            </tr>
+                            <tr>
+                                <td>Rendimiento 7D</td>
+                                <td class="negative">-3.21%</td>
+                                <td class="negative">-5.43%</td>
+                            </tr>
+                            <tr>
+                                <td>Rendimiento 30D</td>
+                                <td class="positive">+8.67%</td>
+                                <td class="positive">+12.34%</td>
+                            </tr>
+                            <tr>
+                                <td>Rendimiento 1A</td>
+                                <td class="positive">+54.32%</td>
+                                <td class="positive">+72.45%</td>
+                            </tr>
+                            <tr>
+                                <td>Capitalización</td>
+                                <td>$865.4B</td>
+                                <td>$295.6B</td>
+                            </tr>
+                            <tr>
+                                <td>Volumen 24h</td>
+                                <td>$28.6B</td>
+                                <td>$15.2B</td>
+                            </tr>
+                            <tr>
+                                <td>Volatilidad 30D</td>
+                                <td>3.8%</td>
+                                <td>4.6%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: SECCIÓN DE CORRELACIONES Y COMPARATIVAS -->
+    
+    <!-- INICIO: SECCIÓN DE COMENTARIOS -->
+    <div class="coin-comments-section">
+        <h2 class="section-title">Comentarios y Discusión</h2>
+        <div id="comments-container">
+            <!-- Se cargará el componente de comentarios -->
+        </div>
+    </div>
+    <!-- FIN: SECCIÓN DE COMENTARIOS -->
+</div>
+<!-- FIN: CONTENEDOR PRINCIPAL DE DETALLE DE CRIPTOMONEDA -->
+
+<!-- INICIO: MODALES -->
+<div class="modal" id="alert-modal">
+    <!-- Modal para configurar alertas -->
+</div>
+
+<div class="modal" id="share-modal">
+    <!-- Modal para compartir -->
+</div>
+
+<div class="modal" id="indicators-modal">
+    <!-- Modal para añadir indicadores -->
+</div>
+<!-- FIN: MODALES -->

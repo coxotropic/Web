@@ -1,0 +1,445 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DE ALERTAS -->
+<div class="alerts-container">
+    <!-- INICIO: CABECERA DE ALERTAS -->
+    <div class="alerts-header">
+        <h1 class="section-title">Alertas de Precios</h1>
+        <p class="section-subtitle">Configura notificaciones personalizadas para mantenerte informado sobre movimientos importantes en el mercado</p>
+        
+        <div class="alerts-actions">
+            <button class="btn btn-primary" id="create-alert-btn">
+                <i class="icon-plus"></i> Nueva Alerta
+            </button>
+            <button class="btn btn-outline" id="alert-settings-btn">
+                <i class="icon-settings"></i> Configuración
+            </button>
+        </div>
+    </div>
+    <!-- FIN: CABECERA DE ALERTAS -->
+    
+    <!-- INICIO: RESUMEN DE ALERTAS -->
+    <div class="alerts-summary">
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="icon-bell"></i>
+            </div>
+            <div class="summary-value">12</div>
+            <div class="summary-label">Alertas Activas</div>
+        </div>
+        
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="icon-check-circle"></i>
+            </div>
+            <div class="summary-value">8</div>
+            <div class="summary-label">Alertas Activadas</div>
+        </div>
+        
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="icon-clock"></i>
+            </div>
+            <div class="summary-value">4</div>
+            <div class="summary-label">Pendientes Hoy</div>
+        </div>
+        
+        <div class="summary-card">
+            <div class="summary-icon">
+                <i class="icon-alert-triangle"></i>
+            </div>
+            <div class="summary-value">2</div>
+            <div class="summary-label">Próximas a Activarse</div>
+        </div>
+    </div>
+    <!-- FIN: RESUMEN DE ALERTAS -->
+    
+    <!-- INICIO: NAVEGACIÓN DE ALERTAS -->
+    <div class="alerts-navigation">
+        <ul class="nav-tabs">
+            <li class="nav-item active">
+                <a href="#active-alerts" class="nav-link" data-tab="active">
+                    <i class="icon-bell"></i> Alertas Activas
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#history-alerts" class="nav-link" data-tab="history">
+                    <i class="icon-clock"></i> Historial
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#favorite-alerts" class="nav-link" data-tab="favorites">
+                    <i class="icon-star"></i> Favoritas
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- FIN: NAVEGACIÓN DE ALERTAS -->
+    
+    <!-- INICIO: CONTENIDO DE ALERTAS -->
+    <div class="alerts-content">
+        <!-- INICIO: FILTROS DE ALERTAS -->
+        <div class="alerts-filters">
+            <div class="search-filter">
+                <div class="input-with-icon">
+                    <i class="icon-search input-icon"></i>
+                    <input type="text" class="form-control" placeholder="Buscar alertas..." id="alerts-search">
+                </div>
+            </div>
+            
+            <div class="dropdown filter-dropdown">
+                <button class="btn btn-sm btn-outline dropdown-toggle" id="coin-filter-btn">
+                    <i class="icon-filter"></i> Criptomoneda
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item active" data-filter="all">Todas</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item" data-filter="btc">Bitcoin (BTC)</a>
+                    <a href="#" class="dropdown-item" data-filter="eth">Ethereum (ETH)</a>
+                    <a href="#" class="dropdown-item" data-filter="sol">Solana (SOL)</a>
+                    <a href="#" class="dropdown-item" data-filter="ada">Cardano (ADA)</a>
+                    <a href="#" class="dropdown-item" data-filter="xrp">XRP (XRP)</a>
+                </div>
+            </div>
+            
+            <div class="dropdown filter-dropdown">
+                <button class="btn btn-sm btn-outline dropdown-toggle" id="type-filter-btn">
+                    <i class="icon-filter"></i> Tipo
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item active" data-filter="all">Todos</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item" data-filter="price-above">Precio superior a</a>
+                    <a href="#" class="dropdown-item" data-filter="price-below">Precio inferior a</a>
+                    <a href="#" class="dropdown-item" data-filter="percent-change">Cambio porcentual</a>
+                    <a href="#" class="dropdown-item" data-filter="volume-spike">Pico de volumen</a>
+                </div>
+            </div>
+            
+            <div class="dropdown filter-dropdown">
+                <button class="btn btn-sm btn-outline dropdown-toggle" id="sort-filter-btn">
+                    <i class="icon-filter"></i> Ordenar
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item active" data-sort="created-desc">Más recientes</a>
+                    <a href="#" class="dropdown-item" data-sort="created-asc">Más antiguas</a>
+                    <a href="#" class="dropdown-item" data-sort="target-asc">Objetivo más cercano</a>
+                    <a href="#" class="dropdown-item" data-sort="target-desc">Objetivo más lejano</a>
+                    <a href="#" class="dropdown-item" data-sort="alpha-asc">A-Z</a>
+                </div>
+            </div>
+        </div>
+        <!-- FIN: FILTROS DE ALERTAS -->
+        
+        <!-- INICIO: PESTAÑA ALERTAS ACTIVAS -->
+        <div class="alerts-tab-content active" id="active-alerts">
+            <!-- INICIO: LISTA DE ALERTAS -->
+            <div class="alerts-list">
+                <!-- Alerta 1: Bitcoin por encima de $50,000 -->
+                <div class="alert-card">
+                    <div class="alert-header">
+                        <div class="alert-coin">
+                            <img src="assets/images/crypto/bitcoin.svg" alt="Bitcoin" class="coin-icon">
+                            <div class="coin-info">
+                                <div class="coin-name">Bitcoin</div>
+                                <div class="coin-symbol">BTC</div>
+                            </div>
+                        </div>
+                        <div class="alert-actions">
+                            <button class="btn btn-icon btn-sm" title="Editar Alerta">
+                                <i class="icon-edit-2"></i>
+                            </button>
+                            <button class="btn btn-icon btn-sm" title="Añadir a Favoritas">
+                                <i class="icon-star"></i>
+                            </button>
+                            <div class="dropdown">
+                                <button class="btn btn-icon btn-sm dropdown-toggle" id="alert1-actions" aria-label="Más acciones">
+                                    <i class="icon-more-horizontal"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="#" class="dropdown-item" data-action="duplicate">
+                                        <i class="icon-copy"></i> Duplicar
+                                    </a>
+                                    <a href="#" class="dropdown-item" data-action="share">
+                                        <i class="icon-share-2"></i> Compartir
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="#" class="dropdown-item text-danger" data-action="delete">
+                                        <i class="icon-trash-2"></i> Eliminar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert-content">
+                        <div class="alert-type">
+                            <i class="icon-trending-up"></i>
+                            <span class="type-label">Precio por encima de</span>
+                        </div>
+                        
+                        <div class="alert-details">
+                            <div class="alert-target">
+                                <div class="target-label">Objetivo</div>
+                                <div class="target-value">$50,000.00</div>
+                            </div>
+                            
+                            <div class="alert-current">
+                                <div class="current-label">Precio Actual</div>
+                                <div class="current-value">$45,230.65</div>
+                                <div class="distance-value">-9.5%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="alert-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90.5%;"></div>
+                                <div class="progress-marker" style="left: 100%;"></div>
+                            </div>
+                            <div class="progress-labels">
+                                <div class="start-label">$0</div>
+                                <div class="target-label">$50,000</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert-footer">
+                        <div class="alert-notification">
+                            <i class="icon-bell"></i>
+                            <span>Notificar vía: </span>
+                            <span class="notification-methods">Email, Navegador</span>
+                        </div>
+                        
+                        <div class="alert-created">
+                            Creada: 05 Abr 2025
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Alerta 2: Ethereum por debajo de $2,000 -->
+                <div class="alert-card">
+                    <div class="alert-header">
+                        <div class="alert-coin">
+                            <img src="assets/images/crypto/ethereum.svg" alt="Ethereum" class="coin-icon">
+                            <div class="coin-info">
+                                <div class="coin-name">Ethereum</div>
+                                <div class="coin-symbol">ETH</div>
+                            </div>
+                        </div>
+                        <div class="alert-actions">
+                            <button class="btn btn-icon btn-sm" title="Editar Alerta">
+                                <i class="icon-edit-2"></i>
+                            </button>
+                            <button class="btn btn-icon btn-sm active" title="Añadida a Favoritas">
+                                <i class="icon-star"></i>
+                            </button>
+                            <div class="dropdown">
+                                <button class="btn btn-icon btn-sm dropdown-toggle" id="alert2-actions" aria-label="Más acciones">
+                                    <i class="icon-more-horizontal"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <!-- Opciones similares a la alerta 1 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert-content">
+                        <div class="alert-type">
+                            <i class="icon-trending-down"></i>
+                            <span class="type-label">Precio por debajo de</span>
+                        </div>
+                        
+                        <div class="alert-details">
+                            <div class="alert-target">
+                                <div class="target-label">Objetivo</div>
+                                <div class="target-value">$2,000.00</div>
+                            </div>
+                            
+                            <div class="alert-current">
+                                <div class="current-label">Precio Actual</div>
+                                <div class="current-value">$2,456.78</div>
+                                <div class="distance-value">+22.8%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="alert-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 81.4%;"></div>
+                                <div class="progress-marker" style="left: 100%;"></div>
+                            </div>
+                            <div class="progress-labels">
+                                <div class="start-label">$0</div>
+                                <div class="target-label">$2,000</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert-footer">
+                        <div class="alert-notification">
+                            <i class="icon-bell"></i>
+                            <span>Notificar vía: </span>
+                            <span class="notification-methods">Email, Navegador, SMS</span>
+                        </div>
+                        
+                        <div class="alert-created">
+                            Creada: 10 Abr 2025
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Más alertas similares -->
+                <!-- Se omiten por brevedad -->
+            </div>
+            <!-- FIN: LISTA DE ALERTAS -->
+            
+            <div class="pagination-container">
+                <!-- Paginación similar a otras secciones -->
+            </div>
+        </div>
+        <!-- FIN: PESTAÑA ALERTAS ACTIVAS -->
+        
+        <!-- INICIO: PESTAÑA HISTORIAL -->
+        <div class="alerts-tab-content" id="history-alerts">
+            <!-- Contenido similar a las alertas activas pero con alertas pasadas -->
+            <!-- Se omite por brevedad -->
+        </div>
+        <!-- FIN: PESTAÑA HISTORIAL -->
+        
+        <!-- INICIO: PESTAÑA FAVORITAS -->
+        <div class="alerts-tab-content" id="favorite-alerts">
+            <!-- Contenido similar a las alertas activas pero solo con favoritas -->
+            <!-- Se omite por brevedad -->
+        </div>
+        <!-- FIN: PESTAÑA FAVORITAS -->
+    </div>
+    <!-- FIN: CONTENIDO DE ALERTAS -->
+</div>
+<!-- FIN: CONTENEDOR PRINCIPAL DE ALERTAS -->
+
+<!-- INICIO: MODAL PARA CREAR/EDITAR ALERTA -->
+<div class="modal" id="alert-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Nueva Alerta</h3>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar">
+                    <i class="icon-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="alert-form">
+                    <!-- Selector de criptomoneda -->
+                    <div class="form-group">
+                        <label for="alert-coin" class="form-label">Criptomoneda</label>
+                        <div class="coin-selector">
+                            <select id="alert-coin" class="form-control" required>
+                                <option value="" disabled selected>Seleccionar criptomoneda</option>
+                                <option value="BTC">Bitcoin (BTC)</option>
+                                <option value="ETH">Ethereum (ETH)</option>
+                                <option value="SOL">Solana (SOL)</option>
+                                <option value="ADA">Cardano (ADA)</option>
+                                <option value="XRP">XRP (XRP)</option>
+                                <!-- Más opciones -->
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Tipo de alerta -->
+                    <div class="form-group">
+                        <label class="form-label">Tipo de Alerta</label>
+                        <div class="alert-type-selector">
+                            <div class="type-option">
+                                <input type="radio" id="type-above" name="alert-type" value="price-above" checked>
+                                <label for="type-above" class="type-label">
+                                    <i class="icon-trending-up"></i>
+                                    <span>Precio por encima de</span>
+                                </label>
+                            </div>
+                            <div class="type-option">
+                                <input type="radio" id="type-below" name="alert-type" value="price-below">
+                                <label for="type-below" class="type-label">
+                                    <i class="icon-trending-down"></i>
+                                    <span>Precio por debajo de</span>
+                                </label>
+                            </div>
+                            <div class="type-option">
+                                <input type="radio" id="type-percent" name="alert-type" value="percent-change">
+                                <label for="type-percent" class="type-label">
+                                    <i class="icon-percent"></i>
+                                    <span>Cambio porcentual</span>
+                                </label>
+                            </div>
+                            <div class="type-option">
+                                <input type="radio" id="type-volume" name="alert-type" value="volume-spike">
+                                <label for="type-volume" class="type-label">
+                                    <i class="icon-bar-chart-2"></i>
+                                    <span>Pico de volumen</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Valor objetivo -->
+                    <div class="form-group">
+                        <label for="alert-target" class="form-label">Valor Objetivo</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="number" id="alert-target" class="form-control" min="0" step="0.01" required>
+                        </div>
+                        <div class="form-text">
+                            Recibirás una notificación cuando el precio alcance este valor.
+                        </div>
+                    </div>
+                    
+                    <!-- Opciones de repetición -->
+                    <div class="form-group">
+                        <label class="form-label">Repetición</label>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="repeat-once" name="alert-repeat" value="once" checked>
+                            <label class="form-check-label" for="repeat-once">Una sola vez</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" id="repeat-always" name="alert-repeat" value="always">
+                            <label class="form-check-label" for="repeat-always">Siempre que se cumpla la condición</label>
+                        </div>
+                    </div>
+                    
+                    <!-- Métodos de notificación -->
+                    <div class="form-group">
+                        <label class="form-label">Notificar vía</label>
+                        <div class="notification-methods">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="notify-email" name="notification[]" value="email" checked>
+                                <label class="form-check-label" for="notify-email">Email</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="notify-browser" name="notification[]" value="browser" checked>
+                                <label class="form-check-label" for="notify-browser">Navegador</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="notify-sms" name="notification[]" value="sms">
+                                <label class="form-check-label" for="notify-sms">SMS</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="notify-app" name="notification[]" value="app">
+                                <label class="form-check-label" for="notify-app">Aplicación Móvil</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Notas (opcional) -->
+                    <div class="form-group">
+                        <label for="alert-notes" class="form-label">Notas (opcional)</label>
+                        <textarea id="alert-notes" class="form-control" rows="2" placeholder="Añade notas para recordar el propósito de esta alerta..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="save-alert-btn">Guardar Alerta</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN: MODAL PARA CREAR/EDITAR ALERTA -->

@@ -1,0 +1,570 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DE VISIÓN GENERAL DEL MERCADO -->
+<div class="market-overview-container">
+    <!-- INICIO: CABECERA DEL MERCADO -->
+    <div class="market-header">
+        <h1 class="section-title">Visión General del Mercado</h1>
+        <div class="market-controls">
+            <div class="refresh-control">
+                <button class="btn btn-sm btn-outline" id="refresh-market-btn">
+                    <i class="icon-refresh-cw"></i> Actualizar
+                </button>
+                <div class="last-updated" id="last-updated">
+                    Última actualización: <span>hace 2 minutos</span>
+                </div>
+            </div>
+            <div class="view-mode-toggle">
+                <span class="toggle-label">Vista:</span>
+                <div class="toggle-buttons">
+                    <button class="toggle-btn active" data-view="all">
+                        <i class="icon-grid"></i> Todas
+                    </button>
+                    <button class="toggle-btn" data-view="favorites">
+                        <i class="icon-star"></i> Favoritas
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: CABECERA DEL MERCADO -->
+    
+    <!-- INICIO: ESTADÍSTICAS GLOBALES -->
+    <div class="global-stats">
+        <div class="stats-card">
+            <div class="stats-title">
+                <i class="icon-pie-chart"></i>
+                <span>Capitalización Total</span>
+            </div>
+            <div class="stats-value">$1.92T</div>
+            <div class="stats-change positive">
+                <i class="icon-trending-up"></i>
+                <span>+1.7% (24h)</span>
+            </div>
+        </div>
+        
+        <div class="stats-card">
+            <div class="stats-title">
+                <i class="icon-bar-chart"></i>
+                <span>Volumen 24h</span>
+            </div>
+            <div class="stats-value">$85.4B</div>
+            <div class="stats-change negative">
+                <i class="icon-trending-down"></i>
+                <span>-3.2% (24h)</span>
+            </div>
+        </div>
+        
+        <div class="stats-card">
+            <div class="stats-title">
+                <i class="icon-percent"></i>
+                <span>Dominancia BTC</span>
+            </div>
+            <div class="stats-value">42.3%</div>
+            <div class="stats-change negative">
+                <i class="icon-trending-down"></i>
+                <span>-0.5% (24h)</span>
+            </div>
+        </div>
+        
+        <div class="stats-card">
+            <div class="stats-title">
+                <i class="icon-activity"></i>
+                <span>Índice Miedo/Codicia</span>
+            </div>
+            <div class="stats-value">65</div>
+            <div class="stats-label">Codicia</div>
+        </div>
+        
+        <div class="stats-card">
+            <div class="stats-title">
+                <i class="icon-list"></i>
+                <span>Criptomonedas Activas</span>
+            </div>
+            <div class="stats-value">10,482</div>
+            <div class="stats-change positive">
+                <i class="icon-plus"></i>
+                <span>+124 (7d)</span>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: ESTADÍSTICAS GLOBALES -->
+    
+    <!-- INICIO: GRÁFICO DE MERCADO -->
+    <div class="market-chart-container card">
+        <div class="card-header">
+            <h2 class="card-title">Capitalización Total del Mercado</h2>
+            <div class="chart-controls">
+                <div class="timeframe-selector">
+                    <button class="timeframe-btn" data-timeframe="1d">1D</button>
+                    <button class="timeframe-btn" data-timeframe="1w">1S</button>
+                    <button class="timeframe-btn active" data-timeframe="1m">1M</button>
+                    <button class="timeframe-btn" data-timeframe="3m">3M</button>
+                    <button class="timeframe-btn" data-timeframe="1y">1A</button>
+                    <button class="timeframe-btn" data-timeframe="all">Todo</button>
+                </div>
+                <div class="chart-options">
+                    <button class="btn btn-sm btn-icon" id="toggle-volume-btn" title="Mostrar/Ocultar Volumen">
+                        <i class="icon-bar-chart-2"></i>
+                    </button>
+                    <button class="btn btn-sm btn-icon" id="toggle-log-btn" title="Escala Logarítmica">
+                        <i class="icon-sliders"></i>
+                    </button>
+                    <button class="btn btn-sm btn-icon" id="download-chart-btn" title="Descargar Gráfico">
+                        <i class="icon-download"></i>
+                    </button>
+                    <button class="btn btn-sm btn-icon" id="fullscreen-chart-btn" title="Pantalla Completa">
+                        <i class="icon-maximize-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="market-chart" id="market-cap-chart">
+                <!-- Gráfico generado dinámicamente -->
+                <div class="chart-placeholder">Cargando gráfico de capitalización...</div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: GRÁFICO DE MERCADO -->
+    
+    <!-- INICIO: TABLA DE CRIPTOMONEDAS -->
+    <div class="crypto-table-container card">
+        <div class="card-header">
+            <div class="table-title">
+                <h2 class="card-title">Principales Criptomonedas</h2>
+                <div class="coins-count">Mostrando <span>100</span> de <span>10,482</span> criptomonedas</div>
+            </div>
+            <div class="table-controls">
+                <div class="search-filter">
+                    <div class="input-with-icon">
+                        <i class="icon-search input-icon"></i>
+                        <input type="text" class="form-control" placeholder="Buscar criptomoneda..." id="crypto-search">
+                    </div>
+                </div>
+                <div class="dropdown filter-dropdown">
+                    <button class="btn btn-sm btn-outline dropdown-toggle" id="filter-dropdown-btn">
+                        <i class="icon-filter"></i> Filtros
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-header">Capitalización de Mercado</div>
+                        <a href="#" class="dropdown-item" data-filter="market-cap" data-value="large">Grande (>$10B)</a>
+                        <a href="#" class="dropdown-item" data-filter="market-cap" data-value="medium">Media ($1B-$10B)</a>
+                        <a href="#" class="dropdown-item" data-filter="market-cap" data-value="small">Pequeña ($100M-$1B)</a>
+                        <a href="#" class="dropdown-item" data-filter="market-cap" data-value="micro">Micro (<$100M)</a>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-header">Categoría</div>
+                        <a href="#" class="dropdown-item" data-filter="category" data-value="layer1">Layer 1</a>
+                        <a href="#" class="dropdown-item" data-filter="category" data-value="defi">DeFi</a>
+                        <a href="#" class="dropdown-item" data-filter="category" data-value="nft">NFT</a>
+                        <a href="#" class="dropdown-item" data-filter="category" data-value="exchange">Exchange</a>
+                        <a href="#" class="dropdown-item" data-filter="category" data-value="web3">Web3</a>
+                    </div>
+                </div>
+                <div class="dropdown view-dropdown">
+                    <button class="btn btn-sm btn-outline dropdown-toggle" id="columns-dropdown-btn">
+                        <i class="icon-columns"></i> Columnas
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-item">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="col-price" checked>
+                                <label class="form-check-label" for="col-price">Precio</label>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="col-24h" checked>
+                                <label class="form-check-label" for="col-24h">24h %</label>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="col-7d" checked>
+                                <label class="form-check-label" for="col-7d">7d %</label>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="col-market-cap" checked>
+                                <label class="form-check-label" for="col-market-cap">Cap. de Mercado</label>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="col-volume" checked>
+                                <label class="form-check-label" for="col-volume">Volumen (24h)</label>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="col-circulating">
+                                <label class="form-check-label" for="col-circulating">Suministro Circulante</label>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="col-chart" checked>
+                                <label class="form-check-label" for="col-chart">Gráfico (7d)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-sm btn-outline" id="export-table-btn">
+                    <i class="icon-download"></i> Exportar
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="crypto-table" id="crypto-table">
+                    <thead>
+                        <tr>
+                            <th class="th-rank">#</th>
+                            <th class="th-name">Nombre</th>
+                            <th class="th-price sortable" data-sort="price">Precio <i class="icon-chevron-down"></i></th>
+                            <th class="th-24h sortable" data-sort="24h">24h % <i class="icon-chevron-down"></i></th>
+                            <th class="th-7d sortable" data-sort="7d">7d % <i class="icon-chevron-down"></i></th>
+                            <th class="th-market-cap sortable" data-sort="market-cap">Cap. de Mercado <i class="icon-chevron-down"></i></th>
+                            <th class="th-volume sortable" data-sort="volume">Volumen (24h) <i class="icon-chevron-down"></i></th>
+                            <th class="th-chart">Gráfico (7d)</th>
+                            <th class="th-actions"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Fila 1: Bitcoin -->
+                        <tr>
+                            <td class="td-rank">1</td>
+                            <td class="td-name">
+                                <div class="coin-info">
+                                    <div class="coin-star">
+                                        <i class="icon-star-empty"></i>
+                                    </div>
+                                    <img src="assets/images/crypto/bitcoin.svg" alt="Bitcoin" class="coin-icon">
+                                    <div class="coin-name-info">
+                                        <div class="coin-name">Bitcoin</div>
+                                        <div class="coin-symbol">BTC</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="td-price">$45,230.65</td>
+                            <td class="td-24h positive">+2.45%</td>
+                            <td class="td-7d negative">-3.21%</td>
+                            <td class="td-market-cap">$865.4B</td>
+                            <td class="td-volume">$28.6B</td>
+                            <td class="td-chart">
+                                <div class="sparkline-chart positive">
+                                    <!-- Gráfico generado dinámicamente -->
+                                    <svg class="sparkline" width="100" height="30" stroke-width="2">
+                                        <path d="M0,15 L10,10 L20,12 L30,8 L40,6 L50,15 L60,18 L70,14 L80,16 L90,12 L100,10" fill="none" stroke="#16c784" />
+                                    </svg>
+                                </div>
+                            </td>
+                            <td class="td-actions">
+                                <div class="dropdown">
+                                    <button class="btn btn-icon dropdown-toggle" id="action-dropdown-1" aria-label="Acciones">
+                                        <i class="icon-more-horizontal"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="/crypto/bitcoin" class="dropdown-item">
+                                            <i class="icon-info"></i> Ver detalles
+                                        </a>
+                                        <a href="#" class="dropdown-item" data-action="add-to-portfolio" data-coin="BTC">
+                                            <i class="icon-briefcase"></i> Añadir a Portfolio
+                                        </a>
+                                        <a href="#" class="dropdown-item" data-action="set-alert" data-coin="BTC">
+                                            <i class="icon-bell"></i> Crear Alerta
+                                        </a>
+                                        <a href="#" class="dropdown-item" data-action="add-to-favorites" data-coin="BTC">
+                                            <i class="icon-star"></i> Añadir a Favoritos
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- Fila 2: Ethereum -->
+                        <tr>
+                            <td class="td-rank">2</td>
+                            <td class="td-name">
+                                <div class="coin-info">
+                                    <div class="coin-star">
+                                        <i class="icon-star"></i>
+                                    </div>
+                                    <img src="assets/images/crypto/ethereum.svg" alt="Ethereum" class="coin-icon">
+                                    <div class="coin-name-info">
+                                        <div class="coin-name">Ethereum</div>
+                                        <div class="coin-symbol">ETH</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="td-price">$2,456.78</td>
+                            <td class="td-24h negative">-1.23%</td>
+                            <td class="td-7d positive">+5.67%</td>
+                            <td class="td-market-cap">$295.6B</td>
+                            <td class="td-volume">$15.2B</td>
+                            <td class="td-chart">
+                                <div class="sparkline-chart positive">
+                                    <!-- Gráfico generado dinámicamente -->
+                                    <svg class="sparkline" width="100" height="30" stroke-width="2">
+                                        <path d="M0,20 L10,18 L20,15 L30,16 L40,12 L50,10 L60,8 L70,5 L80,10 L90,12 L100,8" fill="none" stroke="#16c784" />
+                                    </svg>
+                                </div>
+                            </td>
+                            <td class="td-actions">
+                                <div class="dropdown">
+                                    <button class="btn btn-icon dropdown-toggle" id="action-dropdown-2" aria-label="Acciones">
+                                        <i class="icon-more-horizontal"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <!-- Opciones similares a Bitcoin -->
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- Más filas similares para otras criptomonedas -->
+                        <!-- Se omiten por brevedad -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="table-pagination">
+                <div class="pagination-info">
+                    Mostrando <span>1-100</span> de <span>10,482</span> criptomonedas
+                </div>
+                <div class="pagination-controls">
+                    <button class="pagination-btn" disabled>
+                        <i class="icon-chevrons-left"></i>
+                    </button>
+                    <button class="pagination-btn" disabled>
+                        <i class="icon-chevron-left"></i>
+                    </button>
+                    <div class="pagination-pages">
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn">4</button>
+                        <button class="page-btn">5</button>
+                        <span class="page-separator">...</span>
+                        <button class="page-btn">105</button>
+                    </div>
+                    <button class="pagination-btn">
+                        <i class="icon-chevron-right"></i>
+                    </button>
+                    <button class="pagination-btn">
+                        <i class="icon-chevrons-right"></i>
+                    </button>
+                </div>
+                <div class="pagination-size">
+                    <select class="form-select form-select-sm" id="page-size-select">
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100" selected>100</option>
+                        <option value="200">200</option>
+                    </select>
+                    <span class="size-label">por página</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: TABLA DE CRIPTOMONEDAS -->
+    
+    <!-- INICIO: SECCIONES ADICIONALES -->
+    <div class="additional-sections">
+        <!-- INICIO: DISTRIBUCIÓN POR CATEGORÍAS -->
+        <div class="category-distribution card">
+            <div class="card-header">
+                <h2 class="card-title">Distribución por Categorías</h2>
+                <button class="btn btn-sm btn-icon" id="refresh-categories-btn" title="Actualizar">
+                    <i class="icon-refresh-cw"></i>
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="distribution-chart" id="category-chart">
+                    <!-- Gráfico generado dinámicamente -->
+                    <div class="chart-placeholder">Cargando distribución por categorías...</div>
+                </div>
+                <div class="category-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #4A90E2;"></div>
+                        <div class="legend-label">Layer 1</div>
+                        <div class="legend-value">42.7%</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #50E3C2;"></div>
+                        <div class="legend-label">DeFi</div>
+                        <div class="legend-value">18.5%</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #F5A623;"></div>
+                        <div class="legend-label">Exchange</div>
+                        <div class="legend-value">15.3%</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #BD10E0;"></div>
+                        <div class="legend-label">NFT</div>
+                        <div class="legend-value">9.8%</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #D0021B;"></div>
+                        <div class="legend-label">Web3</div>
+                        <div class="legend-value">7.2%</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: #9013FE;"></div>
+                        <div class="legend-label">Otros</div>
+                        <div class="legend-value">6.5%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIN: DISTRIBUCIÓN POR CATEGORÍAS -->
+        
+        <!-- INICIO: TENDENCIAS DEL MERCADO -->
+        <div class="market-trends card">
+            <div class="card-header">
+                <h2 class="card-title">Tendencias del Mercado</h2>
+                <div class="trend-timeframe">
+                    <button class="timeframe-btn active" data-trend-time="24h">24h</button>
+                    <button class="timeframe-btn" data-trend-time="7d">7d</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="trends-grid">
+                    <div class="trend-column gainers">
+                        <h3 class="trend-title">Mayores Ganancias</h3>
+                        <div class="trend-list">
+                            <div class="trend-item">
+                                <div class="coin-info mini">
+                                    <img src="assets/images/crypto/solana.svg" alt="Solana" class="coin-icon-sm">
+                                    <div class="coin-name-info">
+                                        <div class="coin-name">Solana</div>
+                                        <div class="coin-symbol">SOL</div>
+                                    </div>
+                                </div>
+                                <div class="trend-change positive">+32.5%</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="coin-info mini">
+                                    <img src="assets/images/crypto/arbitrum.svg" alt="Arbitrum" class="coin-icon-sm">
+                                    <div class="coin-name-info">
+                                        <div class="coin-name">Arbitrum</div>
+                                        <div class="coin-symbol">ARB</div>
+                                    </div>
+                                </div>
+                                <div class="trend-change positive">+28.7%</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="coin-info mini">
+                                    <img src="assets/images/crypto/apecoin.svg" alt="ApeCoin" class="coin-icon-sm">
+                                    <div class="coin-name-info">
+                                        <div class="coin-name">ApeCoin</div>
+                                        <div class="coin-symbol">APE</div>
+                                    </div>
+                                </div>
+                                <div class="trend-change positive">+24.3%</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="coin-info mini">
+                                    <img src="assets/images/crypto/injective.svg" alt="Injective" class="coin-icon-sm">
+                                    <div class="coin-name-info">
+                                        <div class="coin-name">Injective</div>
+                                        <div class="coin-symbol">INJ</div>
+                                    </div>
+                                </div>
+                                <div class="trend-change positive">+18.9%</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="coin-info mini">
+                                    <img src="assets/images/crypto/sui.svg" alt="Sui" class="coin-icon-sm">
+                                    <div class="coin-name-info">
+                                        <div class="coin-name">Sui</div>
+                                        <div class="coin-symbol">SUI</div>
+                                    </div>
+                                </div>
+                                <div class="trend-change positive">+16.2%</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trend-column losers">
+                        <h3 class="trend-title">Mayores Pérdidas</h3>
+                        <div class="trend-list">
+                            <div class="trend-item">
+                                <div class="coin-info mini">
+                                    <img src="assets/images/crypto/internet-computer.svg" alt="Internet Computer" class="coin-icon-sm">
+                                    <div class="coin-name-info">
+                                        <div class="coin-name">Internet Computer</div>
+                                        <div class="coin-symbol">ICP</div>
+                                    </div>
+                                </div>
+                                <div class="trend-change negative">-15.8%</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="coin-info mini">
+                                    <img src="assets/images/crypto/monero.svg" alt="Monero" class="coin-icon-sm">
+                                    <div class="coin-name-info">
+                                        <div class="coin-name">Monero</div>
+                                        <div class="coin-symbol">XMR</div>
+                                    </div>
+                                </div>
+                                <div class="trend-change negative">-12.4%</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="coin-info mini">
+                                    <img src="assets/images/crypto/filecoin.svg" alt="Filecoin" class="coin-icon-sm">
+                                    <div class="coin-name-info">
+                                        <div class="coin-name">Filecoin</div>
+                                        <div class="coin-symbol">FIL</div>
+                                    </div>
+                                </div>
+                                <div class="trend-change negative">-10.7%</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="coin-info mini">
+                                    <img src="assets/images/crypto/eos.svg" alt="EOS" class="coin-icon-sm">
+                                    <div class="coin-name-info">
+                                        <div class="coin-name">EOS</div>
+                                        <div class="coin-symbol">EOS</div>
+                                    </div>
+                                </div>
+                                <div class="trend-change negative">-9.3%</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="coin-info mini">
+                                    <img src="assets/images/crypto/theta.svg" alt="Theta" class="coin-icon-sm">
+                                    <div class="coin-name-info">
+                                        <div class="coin-name">Theta</div>
+                                        <div class="coin-symbol">THETA</div>
+                                    </div>
+                                </div>
+                                <div class="trend-change negative">-8.1%</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trend-column volume">
+                        <h3 class="trend-title">Mayor Volumen</h3>
+                        <div class="trend-list">
+                            <div class="trend-item">
+                                <div class="coin-info mini">
+                                    <img src="assets/images/crypto/bitcoin.svg" alt="Bitcoin" class="coin-icon-sm">
+                                    <div class="coin-name-info">
+                                        <div class="coin-name">Bitcoin</div>
+                                        <div class="coin-symbol">BTC</div>
+                                    </div>
+                                </div>
+                                <div class="trend-volume">$28.6B</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="coin-info mini">
+                                    <img src="assets/images/crypto/ethereum.svg" alt="Ethereum" class="coin-icon-sm">
+                                    <div class="coin-name-info">
+                                        <div class="coin-name">Ethereum</div>
+                                        <div class="coin-symbol">ETH</div>
+                                    </div>
+                                </div>
+                                <div class="trend-volume">$15.2B</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="coin-info mini">
+                                    <img src="assets/images/crypto/x

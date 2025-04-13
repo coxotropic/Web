@@ -1,0 +1,766 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DE LISTA DE SEGUIMIENTO -->
+<div class="watchlist-container">
+    <!-- INICIO: CABECERA DE LISTA DE SEGUIMIENTO -->
+    <div class="watchlist-header">
+        <div class="watchlist-title-section">
+            <h1 class="section-title">Lista de Seguimiento</h1>
+            <p class="section-subtitle">Monitoriza tus criptomonedas favoritas en un solo lugar</p>
+        </div>
+        
+        <div class="watchlist-actions">
+            <button class="btn btn-primary" id="add-crypto-btn">
+                <i class="icon-plus"></i> AÃ±adir Criptomoneda
+            </button>
+            <button class="btn btn-outline" id="export-watchlist-btn">
+                <i class="icon-download"></i> Exportar
+            </button>
+        </div>
+    </div>
+    <!-- FIN: CABECERA DE LISTA DE SEGUIMIENTO -->
+    
+    <!-- INICIO: ESTADÃSTICAS DE LA LISTA -->
+    <div class="watchlist-stats">
+        <div class="stats-card">
+            <div class="stats-label">Valor Total</div>
+            <div class="stats-value">$14,532.45</div>
+        </div>
+        <div class="stats-card">
+            <div class="stats-label">Rendimiento 24h</div>
+            <div class="stats-value positive">+2.4%</div>
+        </div>
+        <div class="stats-card">
+            <div class="stats-label">Rendimiento 7d</div>
+            <div class="stats-value negative">-1.8%</div>
+        </div>
+        <div class="stats-card">
+            <div class="stats-label">Mejor Activo</div>
+            <div class="stats-value">
+                <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/32/color/sol.png" alt="SOL" class="coin-icon-xs">
+                <span>SOL (+8.2%)</span>
+            </div>
+        </div>
+        <div class="stats-card">
+            <div class="stats-label">Activos Seguidos</div>
+            <div class="stats-value">12</div>
+        </div>
+    </div>
+    <!-- FIN: ESTADÃSTICAS DE LA LISTA -->
+    
+    <!-- INICIO: SELECTOR DE LISTAS -->
+    <div class="watchlist-selector">
+        <div class="list-tabs">
+            <button class="list-tab active" data-list="main">
+                <i class="icon-star"></i>
+                <span>Lista Principal</span>
+            </button>
+            <button class="list-tab" data-list="defi">
+                <i class="icon-layers"></i>
+                <span>DeFi</span>
+            </button>
+            <button class="list-tab" data-list="high-risk">
+                <i class="icon-alert-triangle"></i>
+                <span>Alto Riesgo</span>
+            </button>
+            <button class="list-tab" data-list="long-term">
+                <i class="icon-trending-up"></i>
+                <span>Largo Plazo</span>
+            </button>
+            <button class="list-tab add-list" id="add-list-btn">
+                <i class="icon-plus"></i>
+                <span>Nueva Lista</span>
+            </button>
+        </div>
+        
+        <div class="list-actions">
+            <button class="btn btn-sm btn-icon" id="edit-list-btn" title="Editar lista actual">
+                <i class="icon-edit-2"></i>
+            </button>
+            <div class="dropdown">
+                <button class="btn btn-sm btn-icon dropdown-toggle" id="list-actions-btn" aria-label="MÃ¡s acciones">
+                    <i class="icon-more-vertical"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="#" class="dropdown-item" data-action="rename-list">
+                        <i class="icon-edit"></i> Renombrar lista
+                    </a>
+                    <a href="#" class="dropdown-item" data-action="duplicate-list">
+                        <i class="icon-copy"></i> Duplicar lista
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item text-danger" data-action="delete-list">
+                        <i class="icon-trash-2"></i> Eliminar lista
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: SELECTOR DE LISTAS -->
+    
+    <!-- INICIO: FILTROS Y OPCIONES -->
+    <div class="watchlist-filters">
+        <div class="search-filter">
+            <div class="input-with-icon">
+                <i class="icon-search input-icon"></i>
+                <input type="text" class="form-control" placeholder="Buscar en esta lista..." id="watchlist-search">
+            </div>
+        </div>
+        
+        <div class="view-options">
+            <div class="dropdown">
+                <button class="btn btn-sm btn-outline dropdown-toggle" id="columns-dropdown">
+                    <i class="icon-columns"></i> Columnas
+                </button>
+                <div class="dropdown-menu">
+                    <div class="dropdown-item">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="col-price" checked>
+                            <label class="form-check-label" for="col-price">Precio</label>
+                        </div>
+                    </div>
+                    <div class="dropdown-item">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="col-24h" checked>
+                            <label class="form-check-label" for="col-24h">24h %</label>
+                        </div>
+                    </div>
+                    <div class="dropdown-item">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="col-7d" checked>
+                            <label class="form-check-label" for="col-7d">7d %</label>
+                        </div>
+                    </div>
+                    <div class="dropdown-item">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="col-market-cap">
+                            <label class="form-check-label" for="col-market-cap">Cap. de Mercado</label>
+                        </div>
+                    </div>
+                    <div class="dropdown-item">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="col-volume" checked>
+                            <label class="form-check-label" for="col-volume">Volumen (24h)</label>
+                        </div>
+                    </div>
+                    <div class="dropdown-item">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="col-chart" checked>
+                            <label class="form-check-label" for="col-chart">GrÃ¡fico (7d)</label>
+                        </div>
+                    </div>
+                    <div class="dropdown-item">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="col-alert">
+                            <label class="form-check-label" for="col-alert">Alertas</label>
+                        </div>
+                    </div>
+                    <div class="dropdown-item">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="col-holdings">
+                            <label class="form-check-label" for="col-holdings">Tenencias</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dropdown">
+                <button class="btn btn-sm btn-outline dropdown-toggle" id="sort-dropdown">
+                    <i class="icon-filter"></i> Ordenar
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item active" data-sort="manual">Orden personalizado</a>
+                    <a href="#" class="dropdown-item" data-sort="name-asc">Nombre (A-Z)</a>
+                    <a href="#" class="dropdown-item" data-sort="name-desc">Nombre (Z-A)</a>
+                    <a href="#" class="dropdown-item" data-sort="price-asc">Precio (menor a mayor)</a>
+                    <a href="#" class="dropdown-item" data-sort="price-desc">Precio (mayor a menor)</a>
+                    <a href="#" class="dropdown-item" data-sort="change-asc">Cambio % (menor a mayor)</a>
+                    <a href="#" class="dropdown-item" data-sort="change-desc">Cambio % (mayor a menor)</a>
+                    <a href="#" class="dropdown-item" data-sort="market-cap-desc">CapitalizaciÃ³n (mayor)</a>
+                    <a href="#" class="dropdown-item" data-sort="volume-desc">Volumen (mayor)</a>
+                </div>
+            </div>
+            
+            <div class="refresh-control">
+                <button class="btn btn-sm btn-icon" id="refresh-watchlist" title="Actualizar datos">
+                    <i class="icon-refresh-cw"></i>
+                </button>
+                <div class="last-updated">
+                    Actualizado: <span id="last-updated-time">hace 2 min</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: FILTROS Y OPCIONES -->
+    
+    <!-- INICIO: TABLA DE WATCHLIST -->
+    <div class="watchlist-table-container">
+        <div class="drag-instructions">
+            <i class="icon-move"></i> Arrastra las filas para reordenar
+        </div>
+        
+        <div class="table-responsive">
+            <table class="watchlist-table" id="watchlist-table">
+                <thead>
+                    <tr>
+                        <th class="th-drag"></th>
+                        <th class="th-name">Nombre</th>
+                        <th class="th-price sortable" data-sort="price">Precio <i class="icon-chevron-down sort-icon"></i></th>
+                        <th class="th-24h sortable" data-sort="24h">24h % <i class="icon-chevron-down sort-icon"></i></th>
+                        <th class="th-7d sortable" data-sort="7d">7d % <i class="icon-chevron-down sort-icon"></i></th>
+                        <th class="th-market-cap sortable" data-sort="market-cap">Cap. de Mercado <i class="icon-chevron-down sort-icon"></i></th>
+                        <th class="th-volume sortable" data-sort="volume">Volumen (24h) <i class="icon-chevron-down sort-icon"></i></th>
+                        <th class="th-chart">GrÃ¡fico (7d)</th>
+                        <th class="th-alert">Alertas</th>
+                        <th class="th-actions"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Fila 1: Bitcoin -->
+                    <tr class="watchlist-item" data-coin="BTC">
+                        <td class="td-drag">
+                            <i class="icon-move drag-handle"></i>
+                        </td>
+                        <td class="td-name">
+                            <div class="coin-info">
+                                <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/32/color/btc.png" alt="Bitcoin" class="coin-icon">
+                                <div class="coin-name-info">
+                                    <div class="coin-name">Bitcoin</div>
+                                    <div class="coin-symbol">BTC</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="td-price">$45,230.65</td>
+                        <td class="td-24h positive">+2.45%</td>
+                        <td class="td-7d negative">-3.21%</td>
+                        <td class="td-market-cap">$865.4B</td>
+                        <td class="td-volume">$28.6B</td>
+                        <td class="td-chart">
+                            <div class="sparkline-chart">
+                                <svg class="sparkline" width="100" height="30" stroke-width="2">
+                                    <path d="M0,15 L10,10 L20,12 L30,8 L40,6 L50,15 L60,18 L70,14 L80,16 L90,12 L100,10" fill="none" stroke="#16c784"></path>
+                                </svg>
+                            </div>
+                        </td>
+                        <td class="td-alert">
+                            <div class="alert-badges">
+                                <span class="alert-badge" title="Alerta: Precio > $50,000">
+                                    <i class="icon-trending-up"></i> $50K
+                                </span>
+                            </div>
+                            <button class="btn btn-sm btn-icon add-alert-btn" title="AÃ±adir alerta">
+                                <i class="icon-plus"></i>
+                            </button>
+                        </td>
+                        <td class="td-actions">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-icon dropdown-toggle" aria-label="Acciones">
+                                    <i class="icon-more-horizontal"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="/crypto/bitcoin" class="dropdown-item">
+                                        <i class="icon-external-link"></i> Ver detalles
+                                    </a>
+                                    <a href="#" class="dropdown-item" data-action="add-to-portfolio">
+                                        <i class="icon-briefcase"></i> AÃ±adir a Portfolio
+                                    </a>
+                                    <a href="#" class="dropdown-item" data-action="set-alert">
+                                        <i class="icon-bell"></i> Configurar alertas
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a href="#" class="dropdown-item" data-action="remove-from-list">
+                                        <i class="icon-trash-2"></i> Eliminar de la lista
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Fila 2: Ethereum -->
+                    <tr class="watchlist-item" data-coin="ETH">
+                        <td class="td-drag">
+                            <i class="icon-move drag-handle"></i>
+                        </td>
+                        <td class="td-name">
+                            <div class="coin-info">
+                                <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/32/color/eth.png" alt="Ethereum" class="coin-icon">
+                                <div class="coin-name-info">
+                                    <div class="coin-name">Ethereum</div>
+                                    <div class="coin-symbol">ETH</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="td-price">$2,456.78</td>
+                        <td class="td-24h negative">-1.23%</td>
+                        <td class="td-7d positive">+5.67%</td>
+                        <td class="td-market-cap">$295.6B</td>
+                        <td class="td-volume">$15.2B</td>
+                        <td class="td-chart">
+                            <div class="sparkline-chart">
+                                <svg class="sparkline" width="100" height="30" stroke-width="2">
+                                    <path d="M0,20 L10,18 L20,15 L30,16 L40,12 L50,10 L60,8 L70,5 L80,10 L90,12 L100,8" fill="none" stroke="#16c784"></path>
+                                </svg>
+                            </div>
+                        </td>
+                        <td class="td-alert">
+                            <div class="alert-badges">
+                                <span class="alert-badge" title="Alerta: Precio < $2,000">
+                                    <i class="icon-trending-down"></i> $2K
+                                </span>
+                                <span class="alert-badge" title="Alerta: Precio > $3,000">
+                                    <i class="icon-trending-up"></i> $3K
+                                </span>
+                            </div>
+                            <button class="btn btn-sm btn-icon add-alert-btn" title="AÃ±adir alerta">
+                                <i class="icon-plus"></i>
+                            </button>
+                        </td>
+                        <td class="td-actions">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-icon dropdown-toggle" aria-label="Acciones">
+                                    <i class="icon-more-horizontal"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <!-- Opciones similares a Bitcoin -->
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Fila 3: Solana -->
+                    <tr class="watchlist-item" data-coin="SOL">
+                        <td class="td-drag">
+                            <i class="icon-move drag-handle"></i>
+                        </td>
+                        <td class="td-name">
+                            <div class="coin-info">
+                                <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/32/color/sol.png" alt="Solana" class="coin-icon">
+                                <div class="coin-name-info">
+                                    <div class="coin-name">Solana</div>
+                                    <div class="coin-symbol">SOL</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="td-price">$98.32</td>
+                        <td class="td-24h positive">+8.21%</td>
+                        <td class="td-7d positive">+12.57%</td>
+                        <td class="td-market-cap">$41.2B</td>
+                        <td class="td-volume">$3.8B</td>
+                        <td class="td-chart">
+                            <div class="sparkline-chart">
+                                <svg class="sparkline" width="100" height="30" stroke-width="2">
+                                    <path d="M0,25 L10,20 L20,22 L30,18 L40,15 L50,10 L60,8 L70,5 L80,7 L90,3 L100,1" fill="none" stroke="#16c784"></path>
+                                </svg>
+                            </div>
+                        </td>
+                        <td class="td-alert">
+                            <button class="btn btn-sm btn-icon add-alert-btn" title="AÃ±adir alerta">
+                                <i class="icon-plus"></i>
+                            </button>
+                        </td>
+                        <td class="td-actions">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-icon dropdown-toggle" aria-label="Acciones">
+                                    <i class="icon-more-horizontal"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <!-- Opciones similares a Bitcoin -->
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Fila 4: Cardano -->
+                    <tr class="watchlist-item" data-coin="ADA">
+                        <td class="td-drag">
+                            <i class="icon-move drag-handle"></i>
+                        </td>
+                        <td class="td-name">
+                            <div class="coin-info">
+                                <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/32/color/ada.png" alt="Cardano" class="coin-icon">
+                                <div class="coin-name-info">
+                                    <div class="coin-name">Cardano</div>
+                                    <div class="coin-symbol">ADA</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="td-price">$0.98</td>
+                        <td class="td-24h positive">+3.75%</td>
+                        <td class="td-7d negative">-2.34%</td>
+                        <td class="td-market-cap">$31.5B</td>
+                        <td class="td-volume">$1.2B</td>
+                        <td class="td-chart">
+                            <div class="sparkline-chart">
+                                <svg class="sparkline" width="100" height="30" stroke-width="2">
+                                    <path d="M0,15 L10,17 L20,20 L30,18 L40,15 L50,13 L60,15 L70,18 L80,16 L90,12 L100,14" fill="none" stroke="#16c784"></path>
+                                </svg>
+                            </div>
+                        </td>
+                        <td class="td-alert">
+                            <div class="alert-badges">
+                                <span class="alert-badge" title="Alerta: Precio > $1">
+                                    <i class="icon-trending-up"></i> $1
+                                </span>
+                            </div>
+                            <button class="btn btn-sm btn-icon add-alert-btn" title="AÃ±adir alerta">
+                                <i class="icon-plus"></i>
+                            </button>
+                        </td>
+                        <td class="td-actions">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-icon dropdown-toggle" aria-label="Acciones">
+                                    <i class="icon-more-horizontal"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <!-- Opciones similares a Bitcoin -->
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Fila 5: Polkadot -->
+                    <tr class="watchlist-item" data-coin="DOT">
+                        <td class="td-drag">
+                            <i class="icon-move drag-handle"></i>
+                        </td>
+                        <td class="td-name">
+                            <div class="coin-info">
+                                <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/32/color/dot.png" alt="Polkadot" class="coin-icon">
+                                <div class="coin-name-info">
+                                    <div class="coin-name">Polkadot</div>
+                                    <div class="coin-symbol">DOT</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="td-price">$12.45</td>
+                        <td class="td-24h positive">+1.23%</td>
+                        <td class="td-7d negative">-4.56%</td>
+                        <td class="td-market-cap">$14.2B</td>
+                        <td class="td-volume">$0.9B</td>
+                        <td class="td-chart">
+                            <div class="sparkline-chart">
+                                <svg class="sparkline" width="100" height="30" stroke-width="2">
+                                    <path d="M0,10 L10,12 L20,15 L30,14 L40,10 L50,15 L60,18 L70,16 L80,10 L90,12 L100,15" fill="none" stroke="#16c784"></path>
+                                </svg>
+                            </div>
+                        </td>
+                        <td class="td-alert">
+                            <button class="btn btn-sm btn-icon add-alert-btn" title="AÃ±adir alerta">
+                                <i class="icon-plus"></i>
+                            </button>
+                        </td>
+                        <td class="td-actions">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-icon dropdown-toggle" aria-label="Acciones">
+                                    <i class="icon-more-horizontal"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <!-- Opciones similares a Bitcoin -->
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="empty-state" style="display: none;">
+            <div class="empty-icon">
+                <i class="icon-list"></i>
+            </div>
+            <h3 class="empty-title">No hay criptomonedas en esta lista</h3>
+            <p class="empty-description">AÃ±ade criptomonedas a tu lista de seguimiento para monitorizar sus precios y rendimiento.</p>
+            <button class="btn btn-primary" id="empty-add-crypto-btn">
+                <i class="icon-plus"></i> AÃ±adir Criptomoneda
+            </button>
+        </div>
+    </div>
+    <!-- FIN: TABLA DE WATCHLIST -->
+</div>
+<!-- FIN: CONTENEDOR PRINCIPAL DE LISTA DE SEGUIMIENTO -->
+
+<!-- INICIO: MODAL PARA AÃ‘ADIR CRIPTOMONEDA -->
+<div class="modal" id="add-crypto-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">AÃ±adir Criptomoneda</h3>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar">
+                    <i class="icon-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="search-container">
+                    <div class="input-with-icon">
+                        <i class="icon-search input-icon"></i>
+                        <input type="text" class="form-control" placeholder="Buscar criptomoneda..." id="crypto-search-input">
+                    </div>
+                </div>
+                
+                <div class="search-results">
+                    <div class="results-header">
+                        <div class="results-title">Resultados</div>
+                        <div class="results-count">Mostrando <span id="results-count">0</span> resultados</div>
+                    </div>
+                    
+                    <div class="results-list" id="crypto-search-results">
+                        <!-- Los resultados se cargarÃ¡n aquÃ­ dinÃ¡micamente -->
+                        <div class="search-placeholder">
+                            <p>Escribe para buscar criptomonedas</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="top-cryptos">
+                    <div class="section-header">
+                        <h4 class="section-title">Principales Criptomonedas</h4>
+                    </div>
+                    
+                    <div class="top-cryptos-grid">
+                        <div class="crypto-option" data-coin="BTC">
+                            <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/32/color/btc.png" alt="Bitcoin" class="coin-icon">
+                            <div class="crypto-info">
+                                <div class="crypto-name">Bitcoin</div>
+                                <div class="crypto-symbol">BTC</div>
+                            </div>
+                            <button class="btn btn-sm btn-outline add-coin-btn">
+                                <i class="icon-plus"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="crypto-option" data-coin="ETH">
+                            <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/32/color/eth.png" alt="Ethereum" class="coin-icon">
+                            <div class="crypto-info">
+                                <div class="crypto-name">Ethereum</div>
+                                <div class="crypto-symbol">ETH</div>
+                            </div>
+                            <button class="btn btn-sm btn-outline add-coin-btn">
+                                <i class="icon-plus"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="crypto-option" data-coin="BNB">
+                            <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/32/color/bnb.png" alt="Binance Coin" class="coin-icon">
+                            <div class="crypto-info">
+                                <div class="crypto-name">Binance Coin</div>
+                                <div class="crypto-symbol">BNB</div>
+                            </div>
+                            <button class="btn btn-sm btn-outline add-coin-btn">
+                                <i class="icon-plus"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="crypto-option" data-coin="SOL">
+                            <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/32/color/sol.png" alt="Solana" class="coin-icon">
+                            <div class="crypto-info">
+                                <div class="crypto-name">Solana</div>
+                                <div class="crypto-symbol">SOL</div>
+                            </div>
+                            <button class="btn btn-sm btn-outline add-coin-btn">
+                                <i class="icon-plus"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="crypto-option" data-coin="ADA">
+                            <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/32/color/ada.png" alt="Cardano" class="coin-icon">
+                            <div class="crypto-info">
+                                <div class="crypto-name">Cardano</div>
+                                <div class="crypto-symbol">ADA</div>
+                            </div>
+                            <button class="btn btn-sm btn-outline add-coin-btn">
+                                <i class="icon-plus"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="crypto-option" data-coin="XRP">
+                            <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/32/color/xrp.png" alt="XRP" class="coin-icon">
+                            <div class="crypto-info">
+                                <div class="crypto-name">XRP</div>
+                                <div class="crypto-symbol">XRP</div>
+                            </div>
+                            <button class="btn btn-sm btn-outline add-coin-btn">
+                                <i class="icon-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN: MODAL PARA AÃ‘ADIR CRIPTOMONEDA -->
+
+<!-- INICIO: MODAL PARA AÃ‘ADIR LISTA -->
+<div class="modal" id="add-list-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Nueva Lista de Seguimiento</h3>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar">
+                    <i class="icon-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="add-list-form">
+                    <div class="form-group">
+                        <label for="list-name" class="form-label">Nombre de la lista</label>
+                        <input type="text" id="list-name" class="form-control" placeholder="Ej: Portfolio DeFi" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="list-description" class="form-label">DescripciÃ³n (opcional)</label>
+                        <textarea id="list-description" class="form-control" placeholder="Describe el propÃ³sito de esta lista..." rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Ãcono</label>
+                        <div class="icon-selector">
+                            <button type="button" class="icon-option active" data-icon="star">
+                                <i class="icon-star"></i>
+                            </button>
+                            <button type="button" class="icon-option" data-icon="trending-up">
+                                <i class="icon-trending-up"></i>
+                            </button>
+                            <button type="button" class="icon-option" data-icon="layers">
+                                <i class="icon-layers"></i>
+                            </button>
+                            <button type="button" class="icon-option" data-icon="alert-triangle">
+                                <i class="icon-alert-triangle"></i>
+                            </button>
+                            <button type="button" class="icon-option" data-icon="dollar-sign">
+                                <i class="icon-dollar-sign"></i>
+                            </button>
+                            <button type="button" class="icon-option" data-icon="shield">
+                                <i class="icon-shield"></i>
+                            </button>
+                            <button type="button" class="icon-option" data-icon="briefcase">
+                                <i class="icon-briefcase"></i>
+                            </button>
+                            <button type="button" class="icon-option" data-icon="pie-chart">
+                                <i class="icon-pie-chart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="save-list-btn">Crear Lista</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN: MODAL PARA AÃ‘ADIR LISTA -->
+
+<!-- INICIO: MODAL PARA CONFIGURAR ALERTA -->
+<div class="modal" id="alert-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Configurar Alerta</h3>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar">
+                    <i class="icon-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert-coin-info">
+                    <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/32/color/btc.png" alt="Bitcoin" class="coin-icon" id="alert-coin-icon">
+                    <div class="coin-details">
+                        <div class="coin-name" id="alert-coin-name">Bitcoin</div>
+                        <div class="coin-meta">
+                            <span class="coin-symbol" id="alert-coin-symbol">BTC</span>
+                            <span class="coin-price" id="alert-coin-price">$45,230.65</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="alert-form">
+                    <div class="form-group">
+                        <label class="form-label">Tipo de Alerta</label>
+                        <div class="alert-type-selector">
+                            <div class="type-option">
+                                <input type="radio" id="type-above" name="alert-type" value="price-above" checked>
+                                <label for="type-above" class="type-label">
+                                    <i class="icon-trending-up"></i>
+                                    <span>Precio por encima de</span>
+                                </label>
+                            </div>
+                            <div class="type-option">
+                                <input type="radio" id="type-below" name="alert-type" value="price-below">
+                                <label for="type-below" class="type-label">
+                                    <i class="icon-trending-down"></i>
+                                    <span>Precio por debajo de</span>
+                                </label>
+                            </div>
+                            <div class="type-option">
+                                <input type="radio" id="type-percent" name="alert-type" value="percent-change">
+                                <label for="type-percent" class="type-label">
+                                    <i class="icon-percent"></i>
+                                    <span>Cambio porcentual</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="alert-value" class="form-label">Valor de Alerta</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="alert-prefix">$</span>
+                            </div>
+                            <input type="number" id="alert-value" class="form-control" min="0" step="0.01" value="50000" required>
+                        </div>
+                        <div class="form-text" id="alert-helper-text">
+                            RecibirÃ¡s una notificaciÃ³n cuando el precio supere este valor.
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Notificar vÃ­a</label>
+                        <div class="notification-methods">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="notify-email" name="notification[]" value="email" checked>
+                                <label class="form-check-label" for="notify-email">Email</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="notify-browser" name="notification[]" value="browser" checked>
+                                <label class="form-check-label" for="notify-browser">Navegador</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="notify-app" name="notification[]" value="app">
+                                <label class="form-check-label" for="notify-app">AplicaciÃ³n MÃ³vil</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="alert-expiry" class="form-label">ExpiraciÃ³n</label>
+                        <select id="alert-expiry" class="form-control">
+                            <option value="never">Nunca</option>
+                            <option value="24h">24 horas</option>
+                            <option value="1w">1 semana</option>
+                            <option value="1m">1 mes</option>
+                            <option value="custom">Personalizado</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group custom-expiry-group" style="display: none;">
+                        <label for="alert-expiry-date" class="form-label">Fecha de expiraciÃ³n</label>
+                        <input type="date" id="alert-expiry-date" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="alert-note" class="form-label">Nota (opcional)</label>
+                        <textarea id="alert-note" class="form-control" rows="2" placeholder="AÃ±ade una nota para recordar el propÃ³sito de esta alerta..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="save-alert-btn">Guardar Alerta</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN: MODAL PARA CONFIGURAR ALERTA -->

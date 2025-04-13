@@ -1,0 +1,693 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DEL FEED DE NOTICIAS -->
+<div class="news-feed-container">
+    <!-- INICIO: CABECERA DE NOTICIAS -->
+    <div class="news-header">
+        <h2 class="news-title">Noticias de Criptomonedas</h2>
+        <div class="news-view-options">
+            <button class="view-option active" data-view="grid">
+                <i class="icon-grid"></i>
+            </button>
+            <button class="view-option" data-view="list">
+                <i class="icon-list"></i>
+            </button>
+        </div>
+    </div>
+    <!-- FIN: CABECERA DE NOTICIAS -->
+
+    <!-- INICIO: BARRA DE FILTROS -->
+    <div class="news-filters">
+        <div class="filter-section">
+            <div class="filter-group">
+                <label for="news-category" class="filter-label">Categoría:</label>
+                <select id="news-category" class="filter-select">
+                    <option value="all">Todas las categorías</option>
+                    <option value="bitcoin">Bitcoin</option>
+                    <option value="ethereum">Ethereum</option>
+                    <option value="altcoins">Altcoins</option>
+                    <option value="defi">DeFi</option>
+                    <option value="nft">NFTs</option>
+                    <option value="regulation">Regulación</option>
+                    <option value="mining">Minería</option>
+                    <option value="exchanges">Exchanges</option>
+                    <option value="adoption">Adopción</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="news-time" class="filter-label">Período:</label>
+                <select id="news-time" class="filter-select">
+                    <option value="today">Hoy</option>
+                    <option value="week" selected>Esta semana</option>
+                    <option value="month">Este mes</option>
+                    <option value="all">Todo</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="news-impact" class="filter-label">Impacto:</label>
+                <select id="news-impact" class="filter-select">
+                    <option value="all">Todos</option>
+                    <option value="high">Alto impacto</option>
+                    <option value="medium">Impacto medio</option>
+                    <option value="low">Bajo impacto</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="filter-actions">
+            <button class="filter-btn">
+                <i class="icon-filter"></i> Filtrar
+            </button>
+            <button class="filter-reset">
+                <i class="icon-x"></i> Limpiar
+            </button>
+        </div>
+
+        <!-- Filtros adicionales solo para modo Pro -->
+        <div class="filter-pro hidden" id="pro-filters">
+            <div class="filter-group">
+                <label for="news-source" class="filter-label">Fuente:</label>
+                <select id="news-source" class="filter-select">
+                    <option value="all">Todas las fuentes</option>
+                    <option value="coindesk">CoinDesk</option>
+                    <option value="cointelegraph">CoinTelegraph</option>
+                    <option value="decrypt">Decrypt</option>
+                    <option value="bloomberg">Bloomberg</option>
+                    <option value="reuters">Reuters</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="news-sentiment" class="filter-label">Sentimiento:</label>
+                <select id="news-sentiment" class="filter-select">
+                    <option value="all">Todos</option>
+                    <option value="positive">Positivo</option>
+                    <option value="neutral">Neutral</option>
+                    <option value="negative">Negativo</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: BARRA DE FILTROS -->
+
+    <!-- INICIO: NOTICIAS DESTACADAS -->
+    <div class="featured-news">
+        <h3 class="section-title">Noticias Destacadas</h3>
+        <div class="featured-news-carousel">
+            <!-- Noticia Destacada 1 -->
+            <div class="featured-news-item">
+                <div class="featured-news-image">
+                    <img src="assets/images/news/featured-bitcoin.jpg" alt="Bitcoin alcanza nuevo máximo">
+                    <div class="news-impact high">
+                        <i class="icon-trending-up"></i> Alto Impacto
+                    </div>
+                </div>
+                <div class="featured-news-content">
+                    <div class="news-categories">
+                        <span class="news-category bitcoin">Bitcoin</span>
+                        <span class="news-category market">Mercado</span>
+                    </div>
+                    <h4 class="featured-news-title">Bitcoin supera los $60,000 por primera vez desde noviembre de 2021</h4>
+                    <p class="featured-news-summary">La criptomoneda líder ha roto resistencias clave impulsada por la aprobación de ETFs al contado y el aumento de adopción institucional.</p>
+                    <div class="news-meta">
+                        <span class="news-source">
+                            <img src="assets/images/sources/coindesk-logo.svg" alt="CoinDesk" class="source-icon">
+                            CoinDesk
+                        </span>
+                        <span class="news-time">Hace 2 horas</span>
+                        <div class="news-actions">
+                            <button class="action-btn favorite" aria-label="Añadir a favoritos">
+                                <i class="icon-star"></i>
+                            </button>
+                            <div class="share-dropdown">
+                                <button class="action-btn share" aria-label="Compartir">
+                                    <i class="icon-share-2"></i>
+                                </button>
+                                <div class="share-options">
+                                    <a href="#" class="share-option" aria-label="Compartir en Twitter">
+                                        <i class="icon-twitter"></i>
+                                    </a>
+                                    <a href="#" class="share-option" aria-label="Compartir en Facebook">
+                                        <i class="icon-facebook"></i>
+                                    </a>
+                                    <a href="#" class="share-option" aria-label="Compartir en Telegram">
+                                        <i class="icon-send"></i>
+                                    </a>
+                                    <a href="#" class="share-option" aria-label="Copiar enlace">
+                                        <i class="icon-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <span class="comments-count">
+                                <i class="icon-message-circle"></i> 42
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <a href="/noticias/bitcoin-supera-60000" class="news-link" aria-label="Leer más"></a>
+            </div>
+
+            <!-- Noticia Destacada 2 -->
+            <div class="featured-news-item">
+                <div class="featured-news-image">
+                    <img src="assets/images/news/featured-regulation.jpg" alt="Regulación de criptomonedas">
+                    <div class="news-impact high">
+                        <i class="icon-alert-triangle"></i> Alto Impacto
+                    </div>
+                </div>
+                <div class="featured-news-content">
+                    <div class="news-categories">
+                        <span class="news-category regulation">Regulación</span>
+                        <span class="news-category global">Global</span>
+                    </div>
+                    <h4 class="featured-news-title">Unión Europea aprueba definitivamente la regulación MiCA para criptoactivos</h4>
+                    <p class="featured-news-summary">El nuevo marco regulatorio establece reglas claras para exchanges, stablecoins y emisores de tokens, marcando un hito en la regulación de criptomonedas.</p>
+                    <div class="news-meta">
+                        <span class="news-source">
+                            <img src="assets/images/sources/bloomberg-logo.svg" alt="Bloomberg" class="source-icon">
+                            Bloomberg
+                        </span>
+                        <span class="news-time">Hace 5 horas</span>
+                        <div class="news-actions">
+                            <button class="action-btn favorite" aria-label="Añadir a favoritos">
+                                <i class="icon-star"></i>
+                            </button>
+                            <div class="share-dropdown">
+                                <button class="action-btn share" aria-label="Compartir">
+                                    <i class="icon-share-2"></i>
+                                </button>
+                                <div class="share-options">
+                                    <a href="#" class="share-option" aria-label="Compartir en Twitter">
+                                        <i class="icon-twitter"></i>
+                                    </a>
+                                    <a href="#" class="share-option" aria-label="Compartir en Facebook">
+                                        <i class="icon-facebook"></i>
+                                    </a>
+                                    <a href="#" class="share-option" aria-label="Compartir en Telegram">
+                                        <i class="icon-send"></i>
+                                    </a>
+                                    <a href="#" class="share-option" aria-label="Copiar enlace">
+                                        <i class="icon-link"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <span class="comments-count">
+                                <i class="icon-message-circle"></i> 28
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <a href="/noticias/union-europea-regulacion-mica" class="news-link" aria-label="Leer más"></a>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: NOTICIAS DESTACADAS -->
+
+    <!-- INICIO: LISTADO PRINCIPAL DE NOTICIAS -->
+    <div class="news-main-listing">
+        <div class="news-grid-header">
+            <h3 class="section-title">Últimas Noticias</h3>
+            <div class="news-sort">
+                <label for="news-sort-select" class="sort-label">Ordenar por:</label>
+                <select id="news-sort-select" class="sort-select">
+                    <option value="relevance">Relevancia</option>
+                    <option value="newest" selected>Más recientes</option>
+                    <option value="impact">Impacto</option>
+                    <option value="popularity">Popularidad</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="news-grid">
+            <!-- Noticia Grid 1 -->
+            <div class="news-card">
+                <div class="news-card-image">
+                    <img src="assets/images/news/ethereum-update.jpg" alt="Actualización Ethereum">
+                    <div class="news-impact medium">
+                        <i class="icon-alert-circle"></i> Impacto Medio
+                    </div>
+                </div>
+                <div class="news-card-content">
+                    <div class="news-categories">
+                        <span class="news-category ethereum">Ethereum</span>
+                        <span class="news-category technology">Tecnología</span>
+                    </div>
+                    <h4 class="news-card-title">Ethereum anuncia fecha para la próxima actualización de la red</h4>
+                    <p class="news-card-summary">Los desarrolladores han confirmado la fecha para la implementación de Cancun-Deneb, que incluirá mejoras en la escalabilidad y reducción de comisiones.</p>
+                    <div class="news-meta">
+                        <span class="news-source">
+                            <img src="assets/images/sources/decrypt-logo.svg" alt="Decrypt" class="source-icon">
+                            Decrypt
+                        </span>
+                        <span class="news-time">Hace 8 horas</span>
+                        <div class="news-actions">
+                            <button class="action-btn favorite" aria-label="Añadir a favoritos">
+                                <i class="icon-star"></i>
+                            </button>
+                            <button class="action-btn share" aria-label="Compartir">
+                                <i class="icon-share-2"></i>
+                            </button>
+                            <span class="comments-count">
+                                <i class="icon-message-circle"></i> 15
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <a href="/noticias/ethereum-proxima-actualizacion" class="news-link" aria-label="Leer más"></a>
+            </div>
+
+            <!-- Noticia Grid 2 -->
+            <div class="news-card">
+                <div class="news-card-image">
+                    <img src="assets/images/news/defi-growth.jpg" alt="Crecimiento DeFi">
+                    <div class="news-impact low">
+                        <i class="icon-info"></i> Bajo Impacto
+                    </div>
+                </div>
+                <div class="news-card-content">
+                    <div class="news-categories">
+                        <span class="news-category defi">DeFi</span>
+                        <span class="news-category market">Mercado</span>
+                    </div>
+                    <h4 class="news-card-title">El TVL en protocolos DeFi supera los $100 mil millones nuevamente</h4>
+                    <p class="news-card-summary">El Valor Total Bloqueado en plataformas de finanzas descentralizadas ha recuperado niveles no vistos desde 2022, liderado por Lido, Maker y Aave.</p>
+                    <div class="news-meta">
+                        <span class="news-source">
+                            <img src="assets/images/sources/defipulse-logo.svg" alt="DeFi Pulse" class="source-icon">
+                            DeFi Pulse
+                        </span>
+                        <span class="news-time">Hace 12 horas</span>
+                        <div class="news-actions">
+                            <button class="action-btn favorite" aria-label="Añadir a favoritos">
+                                <i class="icon-star"></i>
+                            </button>
+                            <button class="action-btn share" aria-label="Compartir">
+                                <i class="icon-share-2"></i>
+                            </button>
+                            <span class="comments-count">
+                                <i class="icon-message-circle"></i> 7
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <a href="/noticias/defi-tvl-100-mil-millones" class="news-link" aria-label="Leer más"></a>
+            </div>
+
+            <!-- Noticia Grid 3 -->
+            <div class="news-card">
+                <div class="news-card-image">
+                    <img src="assets/images/news/nft-market.jpg" alt="Mercado NFT">
+                    <div class="news-impact low">
+                        <i class="icon-info"></i> Bajo Impacto
+                    </div>
+                </div>
+                <div class="news-card-content">
+                    <div class="news-categories">
+                        <span class="news-category nft">NFT</span>
+                        <span class="news-category art">Arte</span>
+                    </div>
+                    <h4 class="news-card-title">Nueva colección NFT de artista reconocido rompe récords de ventas</h4>
+                    <p class="news-card-summary">La colección lanzada en OpenSea generó más de $30 millones en volumen en las primeras 24 horas, mostrando signos de recuperación en el mercado de NFTs.</p>
+                    <div class="news-meta">
+                        <span class="news-source">
+                            <img src="assets/images/sources/nftevening-logo.svg" alt="NFT Evening" class="source-icon">
+                            NFT Evening
+                        </span>
+                        <span class="news-time">Hace 1 día</span>
+                        <div class="news-actions">
+                            <button class="action-btn favorite" aria-label="Añadir a favoritos">
+                                <i class="icon-star"></i>
+                            </button>
+                            <button class="action-btn share" aria-label="Compartir">
+                                <i class="icon-share-2"></i>
+                            </button>
+                            <span class="comments-count">
+                                <i class="icon-message-circle"></i> 3
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <a href="/noticias/coleccion-nft-record-ventas" class="news-link" aria-label="Leer más"></a>
+            </div>
+
+            <!-- Noticia Grid 4 -->
+            <div class="news-card">
+                <div class="news-card-image">
+                    <img src="assets/images/news/altcoin-surge.jpg" alt="Altcoins en alza">
+                    <div class="news-impact medium">
+                        <i class="icon-alert-circle"></i> Impacto Medio
+                    </div>
+                </div>
+                <div class="news-card-content">
+                    <div class="news-categories">
+                        <span class="news-category altcoins">Altcoins</span>
+                        <span class="news-category market">Mercado</span>
+                    </div>
+                    <h4 class="news-card-title">Solana y otras altcoins lideran ganancias mientras Bitcoin consolida</h4>
+                    <p class="news-card-summary">Mientras Bitcoin se mantiene estable, varias altcoins de gran capitalización registran ganancias de dos dígitos, lideradas por Solana, Cardano y Avalanche.</p>
+                    <div class="news-meta">
+                        <span class="news-source">
+                            <img src="assets/images/sources/cointelegraph-logo.svg" alt="CoinTelegraph" class="source-icon">
+                            CoinTelegraph
+                        </span>
+                        <span class="news-time">Hace 1 día</span>
+                        <div class="news-actions">
+                            <button class="action-btn favorite" aria-label="Añadir a favoritos">
+                                <i class="icon-star"></i>
+                            </button>
+                            <button class="action-btn share" aria-label="Compartir">
+                                <i class="icon-share-2"></i>
+                            </button>
+                            <span class="comments-count">
+                                <i class="icon-message-circle"></i> 19
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <a href="/noticias/altcoins-ganancias-bitcoin-consolidacion" class="news-link" aria-label="Leer más"></a>
+            </div>
+
+            <!-- Noticia Grid 5 -->
+            <div class="news-card">
+                <div class="news-card-image">
+                    <img src="assets/images/news/mining-energy.jpg" alt="Minería sostenible">
+                    <div class="news-impact low">
+                        <i class="icon-info"></i> Bajo Impacto
+                    </div>
+                </div>
+                <div class="news-card-content">
+                    <div class="news-categories">
+                        <span class="news-category mining">Minería</span>
+                        <span class="news-category sustainability">Sostenibilidad</span>
+                    </div>
+                    <h4 class="news-card-title">Mineros de Bitcoin aumentan el uso de energías renovables a nivel global</h4>
+                    <p class="news-card-summary">Un nuevo informe muestra que más del 60% de la minería de Bitcoin ahora utiliza fuentes de energía renovable, principalmente hidroeléctrica y solar.</p>
+                    <div class="news-meta">
+                        <span class="news-source">
+                            <img src="assets/images/sources/bitcoinmagazine-logo.svg" alt="Bitcoin Magazine" class="source-icon">
+                            Bitcoin Magazine
+                        </span>
+                        <span class="news-time">Hace 2 días</span>
+                        <div class="news-actions">
+                            <button class="action-btn favorite" aria-label="Añadir a favoritos">
+                                <i class="icon-star"></i>
+                            </button>
+                            <button class="action-btn share" aria-label="Compartir">
+                                <i class="icon-share-2"></i>
+                            </button>
+                            <span class="comments-count">
+                                <i class="icon-message-circle"></i> 11
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <a href="/noticias/mineros-bitcoin-energia-renovable" class="news-link" aria-label="Leer más"></a>
+            </div>
+
+            <!-- Noticia Grid 6 -->
+            <div class="news-card">
+                <div class="news-card-image">
+                    <img src="assets/images/news/exchange-security.jpg" alt="Seguridad Exchange">
+                    <div class="news-impact high">
+                        <i class="icon-alert-triangle"></i> Alto Impacto
+                    </div>
+                </div>
+                <div class="news-card-content">
+                    <div class="news-categories">
+                        <span class="news-category exchanges">Exchanges</span>
+                        <span class="news-category security">Seguridad</span>
+                    </div>
+                    <h4 class="news-card-title">Exchange de criptomonedas sufre ataque; fondos de usuarios seguros</h4>
+                    <p class="news-card-summary">Un importante exchange detectó y neutralizó un intento de ataque informático. Los fondos están seguros, pero el servicio permanecerá suspendido 24 horas durante la investigación.</p>
+                    <div class="news-meta">
+                        <span class="news-source">
+                            <img src="assets/images/sources/theblock-logo.svg" alt="The Block" class="source-icon">
+                            The Block
+                        </span>
+                        <span class="news-time">Hace 2 días</span>
+                        <div class="news-actions">
+                            <button class="action-btn favorite" aria-label="Añadir a favoritos">
+                                <i class="icon-star"></i>
+                            </button>
+                            <button class="action-btn share" aria-label="Compartir">
+                                <i class="icon-share-2"></i>
+                            </button>
+                            <span class="comments-count">
+                                <i class="icon-message-circle"></i> 34
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <a href="/noticias/exchange-ataque-fondos-seguros" class="news-link" aria-label="Leer más"></a>
+            </div>
+        </div>
+
+        <!-- Carga más noticias -->
+        <div class="load-more-container">
+            <button class="load-more-btn">
+                <i class="icon-refresh-cw"></i> Cargar más noticias
+            </button>
+        </div>
+    </div>
+    <!-- FIN: LISTADO PRINCIPAL DE NOTICIAS -->
+
+    <!-- INICIO: RESUMEN AUTOMÁTICO DE NOTICIAS -->
+    <div class="auto-summary-section">
+        <div class="summary-header">
+            <h3 class="section-title">Resumen del Mercado</h3>
+            <span class="summary-update">Actualizado hace 30 minutos</span>
+        </div>
+        <div class="summary-content">
+            <div class="summary-icon">
+                <i class="icon-cpu"></i>
+            </div>
+            <div class="summary-text">
+                <p class="summary-generated">
+                    Las últimas 24 horas han mostrado un mercado alcista con Bitcoin rompiendo los $60,000, impulsado por ETFs al contado y creciente adopción institucional. Ethereum prepara su próxima actualización mientras el ecosistema DeFi supera los $100B en TVL. Los reguladores avanzan con marcos claros, especialmente en Europa con MiCA. Las altcoins, lideradas por Solana, registran fuertes ganancias. La minería de Bitcoin continúa su transición hacia energías renovables.
+                </p>
+                <p class="sentiment-indicator">
+                    <span class="sentiment positive">Sentimiento general: Positivo</span>
+                    <span class="market-trend bullish">Tendencia: Alcista</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: RESUMEN AUTOMÁTICO DE NOTICIAS -->
+
+    <!-- INICIO: NOTICIAS ESPECÍFICAS POR MODO (NOVATO/PRO) -->
+    <div class="mode-specific-news">
+        <!-- Noticias para modo Novato -->
+        <div class="novice-news" id="novice-news-section">
+            <div class="mode-news-header">
+                <h3 class="section-title">Recomendado para Principiantes</h3>
+                <p class="mode-news-description">Artículos educativos seleccionados para nuevos inversores</p>
+            </div>
+            <div class="mode-news-grid">
+                <div class="mode-news-card">
+                    <div class="mode-news-image">
+                        <img src="assets/images/news/crypto-basics.jpg" alt="Fundamentos de criptomonedas">
+                    </div>
+                    <div class="mode-news-content">
+                        <h4 class="mode-news-title">Guía completa: ¿Qué son las criptomonedas y cómo funcionan?</h4>
+                        <p class="mode-news-summary">Explicación sencilla de blockchain, Bitcoin y cómo comprar tus primeras criptomonedas de forma segura.</p>
+                        <span class="mode-news-tag">Educativo</span>
+                    </div>
+                    <a href="/guias/fundamentos-criptomonedas" class="mode-news-link" aria-label="Leer guía"></a>
+                </div>
+                <div class="mode-news-card">
+                    <div class="mode-news-image">
+                        <img src="assets/images/news/wallet-guide.jpg" alt="Guía de wallets">
+                    </div>
+                    <div class="mode-news-content">
+                        <h4 class="mode-news-title">Cómo elegir la wallet ideal para guardar tus criptomonedas</h4>
+                        <p class="mode-news-summary">Comparativa de diferentes tipos de wallets y consejos de seguridad para principiantes.</p>
+                        <span class="mode-news-tag">Tutorial</span>
+                    </div>
+                    <a href="/guias/wallets-criptomonedas" class="mode-news-link" aria-label="Leer guía"></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Noticias para modo Pro -->
+        <div class="pro-news hidden" id="pro-news-section">
+            <div class="mode-news-header">
+                <h3 class="section-title">Análisis Avanzado</h3>
+                <p class="mode-news-description">Informes técnicos y análisis profundo del mercado</p>
+            </div>
+            <div class="mode-news-grid">
+                <div class="mode-news-card">
+                    <div class="mode-news-image">
+                        <img src="assets/images/news/onchain-analysis.jpg" alt="Análisis on-chain">
+                    </div>
+                    <div class="mode-news-content">
+                        <h4 class="mode-news-title">Indicadores on-chain señalan posible agotamiento de vendedores</h4>
+                        <p class="mode-news-summary">Análisis profundo de métricas de cadena como SOPR, MVRV y flujos de exchanges que indican acumulación de holders a largo plazo.</p>
+                        <span class="mode-news-tag">Análisis Técnico</span>
+                    </div>
+                    <a href="/analisis/indicadores-onchain" class="mode-news-link" aria-label="Leer análisis"></a>
+                </div>
+                <div class="mode-news-card">
+                    <div class="mode-news-image">
+                        <img src="assets/images/news/options-market.jpg" alt="Mercado de opciones">
+                    </div>
+                    <div class="mode-news-content">
+                        <h4 class="mode-news-title">Estrategias de opciones para capitalizar la volatilidad actual</h4>
+                        <p class="mode-news-summary">Análisis del skew de opciones y estrategias de spread para aprovechar el entorno de alta volatilidad.</p>
+                        <span class="mode-news-tag">Derivados</span>
+                    </div>
+                    <a href="/analisis/estrategias-opciones" class="mode-news-link" aria-label="Leer análisis"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: NOTICIAS ESPECÍFICAS POR MODO -->
+
+    <!-- INICIO: SECCIÓN DE COMENTARIOS GLOBALES -->
+    <div class="global-comments-section">
+        <div class="comments-header">
+            <h3 class="section-title">Conversación Global</h3>
+            <p class="comments-description">Únete a la discusión sobre las últimas noticias</p>
+        </div>
+        
+        <div class="comments-sorting">
+            <select class="comments-sort-select">
+                <option value="newest">Más recientes</option>
+                <option value="likes">Más valorados</option>
+                <option value="responses">Más comentados</option>
+            </select>
+        </div>
+
+        <div class="comments-list">
+            <!-- Comentario 1 -->
+            <div class="comment-item">
+                <div class="comment-avatar">
+                    <img src="assets/images/avatars/user1.jpg" alt="Usuario">
+                </div>
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <span class="comment-user">CryptoExpert</span>
+                        <span class="comment-badge expert">Experto</span>
+                        <span class="comment-time">Hace 1 hora</span>
+                    </div>
+                    <p class="comment-text">
+                        La aprobación de MiCA en Europa era esperada, pero el detalle interesante es cómo afectará a los stablecoins. Creo que veremos más proyectos adaptándose a estas regulaciones en los próximos meses.
+                    </p>
+                    <div class="comment-actions">
+                        <button class="comment-action upvote">
+                            <i class="icon-thumbs-up"></i> 15
+                        </button>
+                        <button class="comment-action downvote">
+                            <i class="icon-thumbs-down"></i> 2
+                        </button>
+                        <button class="comment-action reply">
+                            <i class="icon-message-circle"></i> Responder
+                        </button>
+                    </div>
+                    
+                    <!-- Respuestas -->
+                    <div class="comment-replies">
+                        <div class="comment-reply-item">
+                            <div class="comment-avatar">
+                                <img src="assets/images/avatars/user2.jpg" alt="Usuario">
+                            </div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-user">Satoshi2023</span>
+                                    <span class="comment-badge intermediate">Intermedio</span>
+                                    <span class="comment-time">Hace 30 minutos</span>
+                                </div>
+                                <p class="comment-text">
+                                    ¿Crees que los proyectos basados en EE.UU. también adoptarán estándares similares o esperarán a que su propio país regule?
+                                </p>
+                                <div class="comment-actions">
+                                    <button class="comment-action upvote">
+                                        <i class="icon-thumbs-up"></i> 7
+                                    </button>
+                                    <button class="comment-action downvote">
+                                        <i class="icon-thumbs-down"></i> 0
+                                    </button>
+                                    <button class="comment-action reply">
+                                        <i class="icon-message-circle"></i> Responder
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comentario 2 -->
+            <div class="comment-item">
+                <div class="comment-avatar">
+                    <img src="assets/images/avatars/user3.jpg" alt="Usuario">
+                </div>
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <span class="comment-user">BlockchainNewbie</span>
+                        <span class="comment-badge novice">Novato</span>
+                        <span class="comment-time">Hace 3 horas</span>
+                    </div>
+                    <p class="comment-text">
+                        Soy nuevo en esto. Si Bitcoin está subiendo tanto, ¿es buen momento para comprar o debería esperar a que baje?
+                    </p>
+                    <div class="comment-actions">
+                        <button class="comment-action upvote">
+                            <i class="icon-thumbs-up"></i> 3
+                        </button>
+                        <button class="comment-action downvote">
+                            <i class="icon-thumbs-down"></i> 1
+                        </button>
+                        <button class="comment-action reply">
+                            <i class="icon-message-circle"></i> Responder
+                        </button>
+                    </div>
+                    
+                    <!-- Respuestas -->
+                    <div class="comment-replies">
+                        <div class="comment-reply-item">
+                            <div class="comment-avatar">
+                                <img src="assets/images/avatars/user4.jpg" alt="Usuario">
+                            </div>
+                            <div class="comment-content">
+                                <div class="comment-header">
+                                    <span class="comment-user">HODLForever</span>
+                                    <span class="comment-badge advanced">Avanzado</span>
+                                    <span class="comment-time">Hace 2 horas</span>
+                                </div>
+                                <p class="comment-text">
+                                    La estrategia de DCA (promediado) suele ser mejor que intentar acertar el momento exacto. Investiga sobre eso en la sección de novatos.
+                                </p>
+                                <div class="comment-actions">
+                                    <button class="comment-action upvote">
+                                        <i class="icon-thumbs-up"></i> 12
+                                    </button>
+                                    <button class="comment-action downvote">
+                                        <i class="icon-thumbs-down"></i> 0
+                                    </button>
+                                    <button class="comment-action reply">
+                                        <i class="icon-message-circle"></i> Responder
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Formulario de comentarios -->
+        <div class="comment-form">
+            <h4 class="comment-form-title">Deja tu comentario</h4>
+            <textarea class="comment-textarea" placeholder="Comparte tu opinión..." rows="3"></textarea>
+            <div class="comment-form-actions">
+                <button class="btn btn-secondary cancel-comment">Cancelar</button>
+                <button class="btn btn-primary submit-comment">Publicar</button>
+            </div>
+            <div class="login-prompt hidden">
+                <p>Necesitas <a href="/login" class="login-link">iniciar sesión</a> o <a href="/registro" class="register-link">registrarte</a> para comentar</p>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: SECCIÓN DE COMENTARIOS GLOBALES -->
+</div>
+<!-- FIN: CONTENEDOR PRINCIPAL DEL FEED DE NOTICIAS -->

@@ -1,0 +1,614 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DE MAPA DE CALOR -->
+<div class="heatmap-container">
+    <!-- INICIO: CABECERA DEL MAPA DE CALOR -->
+    <div class="heatmap-header">
+        <div class="heatmap-title">
+            <h1 class="section-title">Mapa de Calor del Mercado</h1>
+            <p class="section-subtitle">Visualización de rendimiento y capitalización del mercado de criptomonedas</p>
+        </div>
+        
+        <div class="heatmap-controls">
+            <button class="btn btn-outline btn-sm" id="refresh-heatmap-btn">
+                <i class="icon-refresh-cw"></i> Actualizar
+            </button>
+            <div class="last-updated" id="heatmap-last-updated">
+                Última actualización: <span>hace 5 minutos</span>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: CABECERA DEL MAPA DE CALOR -->
+    
+    <!-- INICIO: FILTROS Y CONTROLES -->
+    <div class="heatmap-filters">
+        <!-- INICIO: PERÍODOS DE TIEMPO -->
+        <div class="filter-group time-filters">
+            <label class="filter-label">Período:</label>
+            <div class="btn-group">
+                <button class="btn btn-sm btn-outline" data-period="1h">1H</button>
+                <button class="btn btn-sm btn-outline active" data-period="24h">24H</button>
+                <button class="btn btn-sm btn-outline" data-period="7d">7D</button>
+                <button class="btn btn-sm btn-outline" data-period="30d">30D</button>
+                <button class="btn btn-sm btn-outline" data-period="90d">90D</button>
+                <button class="btn btn-sm btn-outline" data-period="1y">1A</button>
+            </div>
+        </div>
+        <!-- FIN: PERÍODOS DE TIEMPO -->
+        
+        <!-- INICIO: CATEGORÍAS -->
+        <div class="filter-group category-filters">
+            <label class="filter-label">Categoría:</label>
+            <div class="dropdown">
+                <button class="btn btn-sm btn-outline dropdown-toggle" id="category-dropdown">
+                    <span>Todas</span> <i class="icon-chevron-down"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item active" data-category="all">Todas</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item" data-category="layer1">Layer-1</a>
+                    <a href="#" class="dropdown-item" data-category="defi">DeFi</a>
+                    <a href="#" class="dropdown-item" data-category="nft">NFT</a>
+                    <a href="#" class="dropdown-item" data-category="exchange">Exchange</a>
+                    <a href="#" class="dropdown-item" data-category="stablecoin">Stablecoins</a>
+                    <a href="#" class="dropdown-item" data-category="gaming">Gaming</a>
+                    <a href="#" class="dropdown-item" data-category="privacy">Privacidad</a>
+                </div>
+            </div>
+        </div>
+        <!-- FIN: CATEGORÍAS -->
+        
+        <!-- INICIO: ORDENACIÓN -->
+        <div class="filter-group sort-filters">
+            <label class="filter-label">Ordenar por:</label>
+            <div class="dropdown">
+                <button class="btn btn-sm btn-outline dropdown-toggle" id="sort-dropdown">
+                    <span>Capitalización</span> <i class="icon-chevron-down"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item active" data-sort="market_cap">Capitalización</a>
+                    <a href="#" class="dropdown-item" data-sort="volume">Volumen</a>
+                    <a href="#" class="dropdown-item" data-sort="performance_asc">Rendimiento (menor a mayor)</a>
+                    <a href="#" class="dropdown-item" data-sort="performance_desc">Rendimiento (mayor a menor)</a>
+                    <a href="#" class="dropdown-item" data-sort="name">Nombre</a>
+                </div>
+            </div>
+        </div>
+        <!-- FIN: ORDENACIÓN -->
+        
+        <!-- INICIO: MODO COMPARATIVO -->
+        <div class="filter-group compare-mode">
+            <div class="toggle-container">
+                <label class="toggle-label" for="compare-toggle">Modo comparativo:</label>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="compare-toggle">
+                    <span class="toggle-slider"></span>
+                </div>
+            </div>
+            <div class="compare-periods hidden" id="compare-periods">
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-outline dropdown-toggle" id="compare-dropdown">
+                        <span>7D vs 24H</span> <i class="icon-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item active" data-compare="7d_24h">7D vs 24H</a>
+                        <a href="#" class="dropdown-item" data-compare="30d_7d">30D vs 7D</a>
+                        <a href="#" class="dropdown-item" data-compare="90d_30d">90D vs 30D</a>
+                        <a href="#" class="dropdown-item" data-compare="1y_90d">1A vs 90D</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIN: MODO COMPARATIVO -->
+        
+        <!-- INICIO: OPCIONES DE VISUALIZACIÓN -->
+        <div class="filter-group viz-options">
+            <button class="btn btn-sm btn-outline" id="viz-options-btn">
+                <i class="icon-sliders"></i> Opciones de visualización
+            </button>
+        </div>
+        <!-- FIN: OPCIONES DE VISUALIZACIÓN -->
+    </div>
+    <!-- FIN: FILTROS Y CONTROLES -->
+    
+    <!-- INICIO: ESTADÍSTICAS DEL MERCADO -->
+    <div class="market-stats">
+        <div class="stat-item">
+            <div class="stat-label">Total Cap. de Mercado</div>
+            <div class="stat-value">$1.92T</div>
+            <div class="stat-change positive">+1.7% (24h)</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-label">Volumen Total 24h</div>
+            <div class="stat-value">$85.4B</div>
+            <div class="stat-change negative">-3.2% (24h)</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-label">BTC Dominancia</div>
+            <div class="stat-value">42.3%</div>
+            <div class="stat-change negative">-0.5% (24h)</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-label">Activos Mostrados</div>
+            <div class="stat-value">100</div>
+            <div class="stat-note">de 5,432 totales</div>
+        </div>
+    </div>
+    <!-- FIN: ESTADÍSTICAS DEL MERCADO -->
+    
+    <!-- INICIO: VISUALIZACIÓN DEL MAPA DE CALOR -->
+    <div class="heatmap-visualization-container">
+        <div class="heatmap-toolbar">
+            <div class="zoom-controls">
+                <button class="btn btn-sm btn-icon" id="zoom-out-btn" title="Alejar">
+                    <i class="icon-minus"></i>
+                </button>
+                <button class="btn btn-sm btn-icon" id="zoom-reset-btn" title="Restablecer zoom">
+                    <i class="icon-maximize-2"></i>
+                </button>
+                <button class="btn btn-sm btn-icon" id="zoom-in-btn" title="Acercar">
+                    <i class="icon-plus"></i>
+                </button>
+            </div>
+            
+            <div class="display-options">
+                <div class="toggle-container">
+                    <label class="toggle-label" for="labels-toggle">Etiquetas:</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="labels-toggle" checked>
+                        <span class="toggle-slider"></span>
+                    </div>
+                </div>
+                <div class="toggle-container">
+                    <label class="toggle-label" for="values-toggle">Valores:</label>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="values-toggle" checked>
+                        <span class="toggle-slider"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="export-options">
+                <button class="btn btn-sm btn-outline" id="share-heatmap-btn">
+                    <i class="icon-share-2"></i> Compartir
+                </button>
+                <button class="btn btn-sm btn-outline" id="export-heatmap-btn">
+                    <i class="icon-download"></i> Exportar
+                </button>
+            </div>
+        </div>
+        
+        <div class="heatmap-visualization" id="heatmap-container">
+            <!-- Aquí se renderizará el mapa de calor dinámicamente -->
+            <div class="heatmap-loading">
+                <div class="spinner"></div>
+                <div class="loading-text">Cargando visualización...</div>
+            </div>
+        </div>
+        
+        <div class="heatmap-legend">
+            <div class="legend-label">Rendimiento 24h:</div>
+            <div class="legend-scale">
+                <div class="legend-item">
+                    <div class="color-box negative-high"></div>
+                    <span>-10%+</span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box negative-medium"></div>
+                    <span>-5%</span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box negative-low"></div>
+                    <span>-2%</span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box neutral"></div>
+                    <span>0%</span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box positive-low"></div>
+                    <span>+2%</span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box positive-medium"></div>
+                    <span>+5%</span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box positive-high"></div>
+                    <span>+10%+</span>
+                </div>
+            </div>
+            <div class="legend-label">Tamaño = Capitalización de Mercado</div>
+        </div>
+    </div>
+    <!-- FIN: VISUALIZACIÓN DEL MAPA DE CALOR -->
+    
+    <!-- INICIO: PANEL DE DETALLES -->
+    <div class="detail-panel hidden" id="detail-panel">
+        <div class="detail-header">
+            <div class="detail-title">
+                <div class="detail-close">
+                    <button class="btn btn-icon" id="detail-close-btn">
+                        <i class="icon-x"></i>
+                    </button>
+                </div>
+                <div class="detail-coin-info">
+                    <img src="" alt="Criptomoneda" class="detail-coin-icon" id="detail-coin-icon">
+                    <div class="detail-coin-name-container">
+                        <h3 class="detail-coin-name" id="detail-coin-name">Bitcoin</h3>
+                        <div class="detail-coin-symbol" id="detail-coin-symbol">BTC</div>
+                    </div>
+                </div>
+                <div class="detail-price-info">
+                    <div class="detail-price" id="detail-price">$45,230.65</div>
+                    <div class="detail-change positive" id="detail-change">
+                        <i class="icon-trending-up"></i>
+                        <span>+2.45%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-actions">
+                <a href="#" class="btn btn-sm btn-primary" id="detail-view-btn">
+                    <i class="icon-external-link"></i> Ver Completo
+                </a>
+                <button class="btn btn-sm btn-outline" id="detail-watchlist-btn">
+                    <i class="icon-star"></i> Añadir a Watchlist
+                </button>
+                <button class="btn btn-sm btn-outline" id="detail-alert-btn">
+                    <i class="icon-bell"></i> Crear Alerta
+                </button>
+            </div>
+        </div>
+        
+        <div class="detail-content">
+            <div class="detail-summary">
+                <div class="detail-metric">
+                    <div class="metric-label">Ranking</div>
+                    <div class="metric-value" id="detail-rank">#1</div>
+                </div>
+                <div class="detail-metric">
+                    <div class="metric-label">Cap. de Mercado</div>
+                    <div class="metric-value" id="detail-market-cap">$865.4B</div>
+                </div>
+                <div class="detail-metric">
+                    <div class="metric-label">Volumen 24h</div>
+                    <div class="metric-value" id="detail-volume">$28.6B</div>
+                </div>
+                <div class="detail-metric">
+                    <div class="metric-label">Suministro Circulante</div>
+                    <div class="metric-value" id="detail-supply">19.12M</div>
+                </div>
+            </div>
+            
+            <div class="detail-chart" id="detail-chart">
+                <!-- Aquí se renderizará el gráfico de la moneda seleccionada -->
+                <div class="chart-placeholder">Cargando gráfico...</div>
+            </div>
+            
+            <div class="detail-time-selector">
+                <button class="time-btn active" data-time="1d">1D</button>
+                <button class="time-btn" data-time="7d">7D</button>
+                <button class="time-btn" data-time="30d">30D</button>
+                <button class="time-btn" data-time="90d">90D</button>
+                <button class="time-btn" data-time="1y">1A</button>
+                <button class="time-btn" data-time="all">Todo</button>
+            </div>
+            
+            <div class="detail-performance">
+                <h4 class="detail-section-title">Rendimiento</h4>
+                <div class="performance-grid">
+                    <div class="performance-item">
+                        <div class="performance-label">1h</div>
+                        <div class="performance-value positive" id="detail-perf-1h">+0.5%</div>
+                    </div>
+                    <div class="performance-item">
+                        <div class="performance-label">24h</div>
+                        <div class="performance-value positive" id="detail-perf-24h">+2.45%</div>
+                    </div>
+                    <div class="performance-item">
+                        <div class="performance-label">7d</div>
+                        <div class="performance-value negative" id="detail-perf-7d">-3.21%</div>
+                    </div>
+                    <div class="performance-item">
+                        <div class="performance-label">30d</div>
+                        <div class="performance-value positive" id="detail-perf-30d">+8.67%</div>
+                    </div>
+                    <div class="performance-item">
+                        <div class="performance-label">90d</div>
+                        <div class="performance-value positive" id="detail-perf-90d">+12.45%</div>
+                    </div>
+                    <div class="performance-item">
+                        <div class="performance-label">1a</div>
+                        <div class="performance-value positive" id="detail-perf-1y">+54.32%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="detail-description" id="detail-description">
+                <h4 class="detail-section-title">Acerca de Bitcoin</h4>
+                <p>Bitcoin es la primera criptomoneda descentralizada del mundo, creada en 2009 por una persona (o grupo) bajo el seudónimo de Satoshi Nakamoto. Utiliza tecnología blockchain para facilitar transacciones peer-to-peer sin intermediarios.</p>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: PANEL DE DETALLES -->
+</div>
+<!-- FIN: CONTENEDOR PRINCIPAL DE MAPA DE CALOR -->
+
+<!-- INICIO: MODAL DE OPCIONES DE VISUALIZACIÓN -->
+<div class="modal" id="viz-options-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Opciones de Visualización</h3>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar">
+                    <i class="icon-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Esquema de colores</label>
+                    <div class="color-scheme-options">
+                        <div class="color-option">
+                            <input type="radio" id="color-scheme-1" name="color-scheme" value="default" checked>
+                            <label for="color-scheme-1" class="option-label">
+                                <div class="color-preview default"></div>
+                                <span>Estándar</span>
+                            </label>
+                        </div>
+                        <div class="color-option">
+                            <input type="radio" id="color-scheme-2" name="color-scheme" value="monochrome">
+                            <label for="color-scheme-2" class="option-label">
+                                <div class="color-preview monochrome"></div>
+                                <span>Monocromático</span>
+                            </label>
+                        </div>
+                        <div class="color-option">
+                            <input type="radio" id="color-scheme-3" name="color-scheme" value="divergent">
+                            <label for="color-scheme-3" class="option-label">
+                                <div class="color-preview divergent"></div>
+                                <span>Divergente</span>
+                            </label>
+                        </div>
+                        <div class="color-option">
+                            <input type="radio" id="color-scheme-4" name="color-scheme" value="colorblind">
+                            <label for="color-scheme-4" class="option-label">
+                                <div class="color-preview colorblind"></div>
+                                <span>Daltónicos</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Número de activos a mostrar</label>
+                    <select class="form-select" id="assets-count">
+                        <option value="25">Top 25</option>
+                        <option value="50">Top 50</option>
+                        <option value="100" selected>Top 100</option>
+                        <option value="200">Top 200</option>
+                        <option value="500">Top 500</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Etiquetas de visualización</label>
+                    <div class="checkbox-group">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="show-symbol" checked>
+                            <label class="form-check-label" for="show-symbol">Mostrar símbolo</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="show-name" checked>
+                            <label class="form-check-label" for="show-name">Mostrar nombre</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="show-price" checked>
+                            <label class="form-check-label" for="show-price">Mostrar precio</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="show-percent" checked>
+                            <label class="form-check-label" for="show-percent">Mostrar porcentaje</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="show-market-cap">
+                            <label class="form-check-label" for="show-market-cap">Mostrar capitalización</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Rango de visualización de porcentaje</label>
+                    <div class="range-slider">
+                        <div class="range-values">
+                            <div class="range-value-min">-20%</div>
+                            <div class="range-value-max">+20%</div>
+                        </div>
+                        <div class="range-inputs">
+                            <input type="range" class="range-min" id="range-min" min="-50" max="0" value="-20">
+                            <input type="range" class="range-max" id="range-max" min="0" max="50" value="20">
+                        </div>
+                    </div>
+                    <div class="range-description">
+                        Ajusta los valores extremos para mejorar la visualización del mapa de calor.
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="apply-viz-options">Aplicar cambios</button>
+                <button type="button" class="btn btn-link" id="reset-viz-options">Restablecer por defecto</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN: MODAL DE OPCIONES DE VISUALIZACIÓN -->
+
+<!-- INICIO: MODAL DE COMPARTIR -->
+<div class="modal" id="share-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Compartir Mapa de Calor</h3>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar">
+                    <i class="icon-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Enlace directo</label>
+                    <div class="input-with-button">
+                        <input type="text" class="form-control" id="share-link" value="https://cryptinvest.com/herramientas/heatmap?period=24h&category=all" readonly>
+                        <button class="btn btn-primary" id="copy-link-btn">
+                            <i class="icon-copy"></i> Copiar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="social-share-options">
+                    <div class="share-label">Compartir en redes sociales:</div>
+                    <div class="share-buttons">
+                        <button class="share-btn twitter">
+                            <i class="icon-twitter"></i>
+                            <span>Twitter</span>
+                        </button>
+                        <button class="share-btn facebook">
+                            <i class="icon-facebook"></i>
+                            <span>Facebook</span>
+                        </button>
+                        <button class="share-btn linkedin">
+                            <i class="icon-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </button>
+                        <button class="share-btn telegram">
+                            <i class="icon-send"></i>
+                            <span>Telegram</span>
+                        </button>
+                        <button class="share-btn email">
+                            <i class="icon-mail"></i>
+                            <span>Email</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="embed-options">
+                    <div class="form-group">
+                        <label class="form-label">Código de inserción</label>
+                        <textarea class="form-control" id="embed-code" rows="3" readonly><iframe src="https://cryptinvest.com/embed/heatmap?period=24h&category=all" width="100%" height="500" frameborder="0"></iframe></textarea>
+                    </div>
+                    <button class="btn btn-sm btn-outline" id="copy-embed-btn">
+                        <i class="icon-copy"></i> Copiar código
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN: MODAL DE COMPARTIR -->
+
+<!-- INICIO: MODAL DE EXPORTAR -->
+<div class="modal" id="export-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Exportar Mapa de Calor</h3>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar">
+                    <i class="icon-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="export-options">
+                    <div class="export-option">
+                        <div class="option-icon">
+                            <i class="icon-image"></i>
+                        </div>
+                        <div class="option-details">
+                            <h4 class="option-title">Imagen (PNG)</h4>
+                            <p class="option-description">Exporta el mapa de calor como imagen PNG de alta resolución</p>
+                            <button class="btn btn-sm btn-outline" id="export-png-btn">
+                                <i class="icon-download"></i> Exportar PNG
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="export-option">
+                        <div class="option-icon">
+                            <i class="icon-file-text"></i>
+                        </div>
+                        <div class="option-details">
+                            <h4 class="option-title">Datos (CSV)</h4>
+                            <p class="option-description">Exporta los datos del mapa de calor en formato CSV</p>
+                            <button class="btn btn-sm btn-outline" id="export-csv-btn">
+                                <i class="icon-download"></i> Exportar CSV
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="export-option">
+                        <div class="option-icon">
+                            <i class="icon-file"></i>
+                        </div>
+                        <div class="option-details">
+                            <h4 class="option-title">Datos (JSON)</h4>
+                            <p class="option-description">Exporta los datos del mapa de calor en formato JSON</p>
+                            <button class="btn btn-sm btn-outline" id="export-json-btn">
+                                <i class="icon-download"></i> Exportar JSON
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="export-option">
+                        <div class="option-icon">
+                            <i class="icon-file"></i>
+                        </div>
+                        <div class="option-details">
+                            <h4 class="option-title">Documento (PDF)</h4>
+                            <p class="option-description">Exporta el mapa de calor como documento PDF</p>
+                            <button class="btn btn-sm btn-outline" id="export-pdf-btn">
+                                <i class="icon-download"></i> Exportar PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="export-options-advanced">
+                    <h4 class="options-title">Opciones avanzadas</h4>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Resolución de imagen</label>
+                        <div class="radio-group">
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="resolution-std" name="resolution" value="standard" checked>
+                                <label class="form-check-label" for="resolution-std">Estándar (1200×800px)</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="resolution-high" name="resolution" value="high">
+                                <label class="form-check-label" for="resolution-high">Alta (2400×1600px)</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" class="form-check-input" id="resolution-ultrahigh" name="resolution" value="ultrahigh">
+                                <label class="form-check-label" for="resolution-ultrahigh">Ultra Alta (3600×2400px)</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Incluir información adicional</label>
+                        <div class="checkbox-group">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="include-logo" checked>
+                                <label class="form-check-label" for="include-logo">Incluir logo y marca de agua</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="include-timestamp" checked>
+                                <label class="form-check-label" for="include-timestamp">Incluir fecha y hora</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="include-legend" checked>
+                                <label class="form-check-label" for="include-legend">Incluir leyenda</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN: MODAL DE EXPORTAR -->

@@ -1,0 +1,825 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DE PORTFOLIO -->
+<div class="portfolio-container" id="portfolio-container">
+    <!-- INICIO: CABECERA DE PORTFOLIO -->
+    <div class="portfolio-header bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg p-6 mb-6 text-white">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+            <div>
+                <h1 class="text-2xl md:text-3xl font-bold mb-2">Mi Portfolio de Criptomonedas</h1>
+                <p class="text-indigo-100">Última actualización: <span id="last-update">11 Junio, 2024 - 15:45</span></p>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-4 md:mt-0">
+                <button class="bg-white text-indigo-700 hover:bg-indigo-100 px-4 py-2 rounded-md text-sm font-medium flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                    Añadir Activo
+                </button>
+                <div class="dropdown relative">
+                    <button class="bg-indigo-700 hover:bg-indigo-800 px-4 py-2 rounded-md text-sm font-medium flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        Exportar
+                    </button>
+                    <div class="dropdown-menu hidden absolute right-0 mt-2 w-48 bg-white text-indigo-800 rounded-md shadow-lg z-50">
+                        <ul class="py-1">
+                            <li><a href="#" class="block px-4 py-2 hover:bg-indigo-100">Exportar CSV</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-indigo-100">Exportar JSON</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-indigo-100">Exportar Excel</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="dropdown relative">
+                    <button class="bg-indigo-700 hover:bg-indigo-800 px-4 py-2 rounded-md text-sm font-medium flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L4 8m4-4v12" />
+                        </svg>
+                        Importar
+                    </button>
+                    <div class="dropdown-menu hidden absolute right-0 mt-2 w-48 bg-white text-indigo-800 rounded-md shadow-lg z-50">
+                        <ul class="py-1">
+                            <li><a href="#" class="block px-4 py-2 hover:bg-indigo-100">Importar CSV</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-indigo-100">Importar JSON</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-indigo-100">Importar Excel</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: CABECERA DE PORTFOLIO -->
+
+    <!-- INICIO: VISTA SELECTOR -->
+    <div class="view-selector bg-white rounded-lg p-4 mb-6 shadow">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+            <div class="flex space-x-2 mb-4 sm:mb-0">
+                <button class="view-btn active px-4 py-2 text-sm font-medium bg-indigo-600 text-white rounded-md" data-view="summary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                    Resumen
+                </button>
+                <button class="view-btn px-4 py-2 text-sm font-medium bg-white text-indigo-700 border border-indigo-200 rounded-md hover:bg-indigo-50" data-view="assets">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    Activos
+                </button>
+                <button class="view-btn px-4 py-2 text-sm font-medium bg-white text-indigo-700 border border-indigo-200 rounded-md hover:bg-indigo-50" data-view="transactions">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Transacciones
+                </button>
+                <button class="view-btn px-4 py-2 text-sm font-medium bg-white text-indigo-700 border border-indigo-200 rounded-md hover:bg-indigo-50" data-view="analysis">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                    Análisis
+                </button>
+                <button class="view-btn px-4 py-2 text-sm font-medium bg-white text-indigo-700 border border-indigo-200 rounded-md hover:bg-indigo-50" data-view="simulator">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                    Simulador
+                </button>
+            </div>
+            <div class="mode-toggle flex">
+                <button class="mode-btn active px-3 py-1 text-xs font-medium bg-indigo-600 text-white rounded-l-md" data-mode="novato">
+                    Novato
+                </button>
+                <button class="mode-btn px-3 py-1 text-xs font-medium bg-white text-indigo-700 border border-indigo-200 rounded-r-md hover:bg-indigo-50" data-mode="pro">
+                    Pro
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: VISTA SELECTOR -->
+
+    <!-- INICIO: RESUMEN DE PORTFOLIO -->
+    <div class="view-content active" id="summary-view">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <!-- INICIO: VALOR TOTAL -->
+            <div class="portfolio-value-card bg-white rounded-lg shadow p-6">
+                <h3 class="text-lg font-medium text-gray-700 mb-4">Valor Total del Portfolio</h3>
+                <div class="flex items-center justify-between mb-4">
+                    <div class="value-amount text-3xl font-bold text-gray-900">$32,584.67</div>
+                    <div class="value-change text-lg font-medium text-green-500 flex items-center">
+                        +$1,245.32
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between text-sm text-gray-500">
+                    <div>Desde: 01/01/2024</div>
+                    <div class="flex items-center text-green-500 font-medium">
+                        +18.24%
+                    </div>
+                </div>
+                <div class="mt-4 border-t border-gray-200 pt-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="text-sm text-gray-600">Invertido</div>
+                        <div class="font-medium">$27,560.00</div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-sm text-gray-600">Ganancias</div>
+                        <div class="font-medium text-green-500">+$5,024.67</div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN: VALOR TOTAL -->
+
+            <!-- INICIO: DISTRIBUCIÓN DE ACTIVOS -->
+            <div class="portfolio-distribution-card bg-white rounded-lg shadow p-6">
+                <h3 class="text-lg font-medium text-gray-700 mb-4">Distribución de Activos</h3>
+                <div class="distribution-chart h-48 mb-4" id="distribution-chart">
+                    <!-- El gráfico se generará dinámicamente -->
+                    <div class="flex justify-center items-center h-full text-gray-400">
+                        <span>Gráfico de distribución</span>
+                    </div>
+                </div>
+                <div class="distribution-legend grid grid-cols-2 gap-2">
+                    <div class="flex items-center">
+                        <span class="w-3 h-3 inline-block rounded-full bg-blue-500 mr-2"></span>
+                        <span class="text-sm text-gray-600">BTC (45%)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-3 h-3 inline-block rounded-full bg-indigo-500 mr-2"></span>
+                        <span class="text-sm text-gray-600">ETH (30%)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-3 h-3 inline-block rounded-full bg-purple-500 mr-2"></span>
+                        <span class="text-sm text-gray-600">SOL (15%)</span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="w-3 h-3 inline-block rounded-full bg-pink-500 mr-2"></span>
+                        <span class="text-sm text-gray-600">Otros (10%)</span>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN: DISTRIBUCIÓN DE ACTIVOS -->
+
+            <!-- INICIO: RENDIMIENTO 30 DÍAS -->
+            <div class="portfolio-performance-card bg-white rounded-lg shadow p-6">
+                <h3 class="text-lg font-medium text-gray-700 mb-4">Rendimiento (30 días)</h3>
+                <div class="performance-chart h-48 mb-4" id="performance-chart">
+                    <!-- El gráfico se generará dinámicamente -->
+                    <div class="flex justify-center items-center h-full text-gray-400">
+                        <span>Gráfico de rendimiento</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                        <div class="text-sm text-gray-500">7 días</div>
+                        <div class="font-medium text-green-500">+4.2%</div>
+                    </div>
+                    <div>
+                        <div class="text-sm text-gray-500">30 días</div>
+                        <div class="font-medium text-green-500">+12.8%</div>
+                    </div>
+                    <div>
+                        <div class="text-sm text-gray-500">Año actual</div>
+                        <div class="font-medium text-green-500">+32.4%</div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN: RENDIMIENTO 30 DÍAS -->
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <!-- INICIO: MEJORES ACTIVOS -->
+            <div class="best-performers-card bg-white rounded-lg shadow">
+                <div class="p-6 border-b border-gray-200">
+                    <h3 class="text-lg font-medium text-gray-700">Mejores Activos</h3>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="asset-item flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/32/icon/sol.png" alt="SOL" class="w-8 h-8 mr-3">
+                                <div>
+                                    <div class="font-medium">Solana</div>
+                                    <div class="text-xs text-gray-500">SOL</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-medium">$118.45</div>
+                                <div class="text-sm text-green-500">+34.8%</div>
+                            </div>
+                        </div>
+                        <div class="asset-item flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/32/icon/eth.png" alt="ETH" class="w-8 h-8 mr-3">
+                                <div>
+                                    <div class="font-medium">Ethereum</div>
+                                    <div class="text-xs text-gray-500">ETH</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-medium">$3,245.67</div>
+                                <div class="text-sm text-green-500">+18.2%</div>
+                            </div>
+                        </div>
+                        <div class="asset-item flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/32/icon/ada.png" alt="ADA" class="w-8 h-8 mr-3">
+                                <div>
+                                    <div class="font-medium">Cardano</div>
+                                    <div class="text-xs text-gray-500">ADA</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-medium">$0.92</div>
+                                <div class="text-sm text-green-500">+12.4%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN: MEJORES ACTIVOS -->
+
+            <!-- INICIO: PEORES ACTIVOS -->
+            <div class="worst-performers-card bg-white rounded-lg shadow">
+                <div class="p-6 border-b border-gray-200">
+                    <h3 class="text-lg font-medium text-gray-700">Activos en Negativo</h3>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <div class="asset-item flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/32/icon/doge.png" alt="DOGE" class="w-8 h-8 mr-3">
+                                <div>
+                                    <div class="font-medium">Dogecoin</div>
+                                    <div class="text-xs text-gray-500">DOGE</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-medium">$0.082</div>
+                                <div class="text-sm text-red-500">-8.4%</div>
+                            </div>
+                        </div>
+                        <div class="asset-item flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/32/icon/xrp.png" alt="XRP" class="w-8 h-8 mr-3">
+                                <div>
+                                    <div class="font-medium">XRP</div>
+                                    <div class="text-xs text-gray-500">XRP</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-medium">$0.57</div>
+                                <div class="text-sm text-red-500">-3.2%</div>
+                            </div>
+                        </div>
+                        <div class="asset-item flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/32/icon/ltc.png" alt="LTC" class="w-8 h-8 mr-3">
+                                <div>
+                                    <div class="font-medium">Litecoin</div>
+                                    <div class="text-xs text-gray-500">LTC</div>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-medium">$82.45</div>
+                                <div class="text-sm text-red-500">-1.8%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN: PEORES ACTIVOS -->
+        </div>
+
+        <!-- INICIO: RECOMENDACIONES -->
+        <div class="recommendations-card bg-white rounded-lg shadow mb-6">
+            <div class="p-6 border-b border-gray-200">
+                <h3 class="text-lg font-medium text-gray-700">Recomendaciones para tu Portfolio</h3>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="recommendation-item p-4 border border-yellow-200 bg-yellow-50 rounded-lg">
+                        <div class="flex items-start mb-3">
+                            <div class="bg-yellow-200 p-2 rounded-full mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-yellow-800">Diversificación</h4>
+                                <p class="text-sm text-yellow-700 mt-1">Tu portfolio está muy concentrado en Bitcoin (45%). Considera diversificar.</p>
+                            </div>
+                        </div>
+                        <button class="text-sm text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                            Ver Sugerencias
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="recommendation-item p-4 border border-indigo-200 bg-indigo-50 rounded-lg">
+                        <div class="flex items-start mb-3">
+                            <div class="bg-indigo-200 p-2 rounded-full mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-indigo-800">Oportunidad</h4>
+                                <p class="text-sm text-indigo-700 mt-1">Polkadot (DOT) está mostrando señales alcistas. Considera añadirlo a tu portfolio.</p>
+                            </div>
+                        </div>
+                        <button class="text-sm text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                            Investigar DOT
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="recommendation-item p-4 border border-green-200 bg-green-50 rounded-lg">
+                        <div class="flex items-start mb-3">
+                            <div class="bg-green-200 p-2 rounded-full mr-3">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-green-800">DCA</h4>
+                                <p class="text-sm text-green-700 mt-1">Establecer un plan de inversión periódica puede reducir el impacto de la volatilidad.</p>
+                            </div>
+                        </div>
+                        <button class="text-sm text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                            Configurar DCA
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIN: RECOMENDACIONES -->
+
+        <!-- INICIO: ÚLTIMAS TRANSACCIONES -->
+        <div class="recent-transactions-card bg-white rounded-lg shadow">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-center">
+                <h3 class="text-lg font-medium text-gray-700">Últimas Transacciones</h3>
+                <a href="#" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium">Ver todas</a>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Activo</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cantidad</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">10/06/2024</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Compra</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/32/icon/btc.png" alt="BTC" class="w-5 h-5 mr-2">
+                                    <div class="text-sm font-medium text-gray-900">Bitcoin (BTC)</div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.15 BTC</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$45,240.00</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$6,786.00</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">08/06/2024</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Compra</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/32/icon/eth.png" alt="ETH" class="w-5 h-5 mr-2">
+                                    <div class="text-sm font-medium text-gray-900">Ethereum (ETH)</div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2.5 ETH</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$3,240.00</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$8,100.00</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">05/06/2024</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Venta</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/32/icon/doge.png" alt="DOGE" class="w-5 h-5 mr-2">
+                                    <div class="text-sm font-medium text-gray-900">Dogecoin (DOGE)</div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">5,000 DOGE</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$0.085</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$425.00</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">01/06/2024</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Compra</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/32/icon/sol.png" alt="SOL" class="w-5 h-5 mr-2">
+                                    <div class="text-sm font-medium text-gray-900">Solana (SOL)</div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">45 SOL</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$115.25</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$5,186.25</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- FIN: ÚLTIMAS TRANSACCIONES -->
+    </div>
+    <!-- FIN: RESUMEN DE PORTFOLIO -->
+
+    <!-- INICIO: VISTA DE ACTIVOS -->
+    <div class="view-content hidden" id="assets-view">
+        <div class="assets-controls bg-white rounded-lg shadow p-4 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="search-input">
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </span>
+                        <input type="text" placeholder="Buscar activo..." class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    </div>
+                </div>
+                <div class="filter-controls flex items-center">
+                    <label class="block text-sm font-medium text-gray-700 mr-3">Filtrar por:</label>
+                    <select class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                        <option value="all">Todos los Activos</option>
+                        <option value="profitable">En Ganancia</option>
+                        <option value="losing">En Pérdida</option>
+                        <option value="recent">Añadidos Recientemente</option>
+                    </select>
+                </div>
+                <div class="add-asset text-right">
+                    <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                        Añadir Activo
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="assets-table bg-white rounded-lg shadow overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Activo</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cantidad</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio Compra</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Precio Actual</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ganancia/Pérdida</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">% Cambio</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/32/icon/btc.png" alt="BTC" class="w-8 h-8 mr-3">
+                                    <div>
+                                        <div class="text-sm font-medium text-gray-900">Bitcoin</div>
+                                        <div class="text-xs text-gray-500">BTC</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1.25 BTC</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$38,245.00</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$45,230.65</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">$56,538.31</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-green-500">+$8,731.81</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">+18.3%</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <div class="flex space-x-2">
+                                    <button class="text-indigo-600 hover:text-indigo-900">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                        </svg>
+                                    </button>
+                                    <button class="text-indigo-600 hover:text-indigo-900">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                        </svg>
+                                    </button>
+                                    <button class="text-red-600 hover:text-red-900">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/32/icon/eth.png" alt="ETH" class="w-8 h-8 mr-3">
+                                    <div>
+                                        <div class="text-sm font-medium text-gray-900">Ethereum</div>
+                                        <div class="text-xs text-gray-500">ETH</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">12.5 ETH</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$2,850.00</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$3,245.67</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">$40,570.88</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-green-500">+$4,945.88</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">+13.9%</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <div class="flex space-x-2">
+                                    <button class="text-indigo-600 hover:text-indigo-900">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                        </svg>
+                                    </button>
+                                    <button class="text-indigo-600 hover:text-indigo-900">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                        </svg>
+                                    </button>
+                                    <button class="text-red-600 hover:text-red-900">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/32/icon/sol.png" alt="SOL" class="w-8 h-8 mr-3">
+                                    <div>
+                                        <div class="text-sm font-medium text-gray-900">Solana</div>
+                                        <div class="text-xs text-gray-500">SOL</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">75 SOL</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$85.40</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$118.45</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">$8,883.75</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-green-500">+$2,478.75</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">+38.7%</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <div class="flex space-x-2">
+                                    <button class="text-indigo-600 hover:text-indigo-900">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                        </svg>
+                                    </button>
+                                    <button class="text-indigo-600 hover:text-indigo-900">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                        </svg>
+                                    </button>
+                                    <button class="text-red-600 hover:text-red-900">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/32/icon/ada.png" alt="ADA" class="w-8 h-8 mr-3">
+                                    <div>
+                                        <div class="text-sm font-medium text-gray-900">Cardano</div>
+                                        <div class="text-xs text-gray-500">ADA</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2,500 ADA</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$0.82</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$0.92</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">$2,300.00</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-green-500">+$250.00</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">+12.2%</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <div class="flex space-x-2">
+                                    <button class="text-indigo-600 hover:text-indigo-900">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                        </svg>
+                                    </button>
+                                    <button class="text-indigo-600 hover:text-indigo-900">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                        </svg>
+                                    </button>
+                                    <button class="text-red-600 hover:text-red-900">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/32/icon/doge.png" alt="DOGE" class="w-8 h-8 mr-3">
+                                    <div>
+                                        <div class="text-sm font-medium text-gray-900">Dogecoin</div>
+                                        <div class="text-xs text-gray-500">DOGE</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15,000 DOGE</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$0.09</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$0.082</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">$1,230.00</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-red-500">-$120.00</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">-8.9%</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <div class="flex space-x-2">
+                                    <button class="text-indigo-600 hover:text-indigo-900">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                        </svg>
+                                    </button>
+                                    <button class="text-indigo-600 hover:text-indigo-900">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                        </svg>
+                                    </button>
+                                    <button class="text-red-600 hover:text-red-900">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex items-center justify-between">
+                <div class="text-sm text-gray-700">
+                    Mostrando <span class="font-medium">5</span> de <span class="font-medium">12</span> activos
+                </div>
+                <div class="flex space-x-2">
+                    <button class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                        Anterior
+                    </button>
+                    <button class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                        Siguiente
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: VISTA DE ACTIVOS -->
+
+    <!-- INICIO: VISTA DE TRANSACCIONES -->
+    <div class="view-content hidden" id="transactions-view">
+        <!-- Contenido de transacciones (se omite por brevedad) -->
+        <div class="bg-white rounded-lg shadow p-4 mb-6">
+            <div class="text-center text-gray-500 py-8">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p class="text-lg font-medium">Vista de Transacciones</p>
+                <p class="mt-2">El historial completo de tus transacciones se mostrará aquí</p>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: VISTA DE TRANSACCIONES -->
+
+    <!-- INICIO: VISTA DE ANÁLISIS -->
+    <div class="view-content hidden" id="analysis-view">
+        <!-- Contenido de análisis (se omite por brevedad) -->
+        <div class="bg-white rounded-lg shadow p-4 mb-6">
+            <div class="text-center text-gray-500 py-8">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                <p class="text-lg font-medium">Análisis de Rendimiento</p>
+                <p class="mt-2">Estadísticas detalladas y análisis de tu portfolio se mostrarán aquí</p>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: VISTA DE ANÁLISIS -->
+
+    <!-- INICIO: VISTA DE SIMULADOR -->
+    <div class="view-content hidden" id="simulator-view">
+        <!-- Contenido de simulador (se omite por brevedad) -->
+        <div class="bg-white rounded-lg shadow p-4 mb-6">
+            <div class="text-center text-gray-500 py-8">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-400 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                <p class="text-lg font-medium">Simulador de Escenarios</p>
+                <p class="mt-2">Simula diferentes escenarios de inversión y proyecciones de retorno</p>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: VISTA DE SIMULADOR -->
+</div>
+<!-- FIN: CONTENEDOR PRINCIPAL DE PORTFOLIO -->
+
+<!-- Importación de Tailwind CSS desde CDN -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<!-- Script básico para la funcionalidad de la página -->
+<script>
+    // Script para cambiar entre vistas
+    document.addEventListener('DOMContentLoaded', function() {
+        // Selector de vistas
+        const viewBtns = document.querySelectorAll('.view-btn');
+        const viewContents = document.querySelectorAll('.view-content');
+        
+        viewBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Eliminar clase activa de todos los botones
+                viewBtns.forEach(b => b.classList.remove('active', 'bg-indigo-600', 'text-white'));
+                viewBtns.forEach(b => b.classList.add('bg-white', 'text-indigo-700', 'border', 'border-indigo-200'));
+                
+                // Añadir clase activa al botón clickeado
+                this.classList.remove('bg-white', 'text-indigo-700', 'border', 'border-indigo-200');
+                this.classList.add('active', 'bg-indigo-600', 'text-white');
+                
+                // Ocultar todos los contenidos
+                viewContents.forEach(content => content.classList.add('hidden'));
+                
+                // Mostrar el contenido correspondiente
+                const viewToShow = document.getElementById(this.getAttribute('data-view') + '-view');
+                viewToShow.classList.remove('hidden');
+            });
+        });
+        
+        // Selector de modo novato/pro
+        const modeBtns = document.querySelectorAll('.mode-btn');
+        
+        modeBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                modeBtns.forEach(b => b.classList.remove('active', 'bg-indigo-600', 'text-white'));
+                modeBtns.forEach(b => b.classList.add('bg-white', 'text-indigo-700', 'border', 'border-indigo-200'));
+                
+                this.classList.remove('bg-white', 'text-indigo-700', 'border', 'border-indigo-200');
+                this.classList.add('active', 'bg-indigo-600', 'text-white');
+                
+                const mode = this.getAttribute('data-mode');
+                document.body.setAttribute('data-mode', mode);
+            });
+        });
+        
+        // Manejar dropdowns
+        const dropdownButtons = document.querySelectorAll('.dropdown > button');
+        
+        dropdownButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const dropdownMenu = this.nextElementSibling;
+                dropdownMenu.classList.toggle('hidden');
+            });
+        });
+        
+        // Cerrar dropdowns al hacer clic fuera
+        document.addEventListener('click', function(e) {
+            dropdownButtons.forEach(button => {
+                if (!button.contains(e.target)) {
+                    const dropdownMenu = button.nextElementSibling;
+                    if (!dropdownMenu.classList.contains('hidden')) {
+                        dropdownMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    });
+</script>

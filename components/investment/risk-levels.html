@@ -1,0 +1,302 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DE NIVELES DE RIESGO -->
+<div class="risk-levels-container">
+    <!-- INICIO: CABECERA DE SECCIÓN -->
+    <div class="section-header">
+        <h1 class="section-title">Niveles de Riesgo en Criptomonedas</h1>
+        <p class="section-subtitle">Guía para entender y seleccionar inversiones según tu tolerancia al riesgo</p>
+    </div>
+    <!-- FIN: CABECERA DE SECCIÓN -->
+    
+    <!-- INICIO: SELECTOR DE NIVEL DE RIESGO -->
+    <div class="risk-selector">
+        <div class="risk-selector-label">Selecciona tu nivel de riesgo preferido:</div>
+        <div class="risk-buttons">
+            <button class="risk-button low-risk active" data-risk="low">
+                <i class="icon-shield"></i> Bajo Riesgo
+            </button>
+            <button class="risk-button medium-risk" data-risk="medium">
+                <i class="icon-alert-circle"></i> Riesgo Medio
+            </button>
+            <button class="risk-button high-risk" data-risk="high">
+                <i class="icon-alert-triangle"></i> Alto Riesgo
+            </button>
+        </div>
+    </div>
+    <!-- FIN: SELECTOR DE NIVEL DE RIESGO -->
+
+    <!-- INICIO: CONTENIDO DE RIESGO BAJO -->
+    <div class="risk-content low-risk-content active" id="low-risk-content">
+        <div class="risk-header low-risk">
+            <div class="risk-icon">
+                <i class="icon-shield"></i>
+            </div>
+            <div class="risk-title-container">
+                <h2 class="risk-title">Inversiones de Bajo Riesgo</h2>
+                <p class="risk-subtitle">Opciones conservadoras con menor volatilidad</p>
+            </div>
+            <div class="risk-meter">
+                <div class="risk-meter-bar">
+                    <div class="risk-level" style="width: 25%;"></div>
+                </div>
+                <div class="risk-meter-label">Nivel de Riesgo: Bajo</div>
+            </div>
+        </div>
+        
+        <div class="risk-overview">
+            <div class="overview-card">
+                <div class="card-icon"><i class="icon-trending-down"></i></div>
+                <div class="card-label">Volatilidad</div>
+                <div class="card-value">Baja-Media</div>
+            </div>
+            <div class="overview-card">
+                <div class="card-icon"><i class="icon-dollar-sign"></i></div>
+                <div class="card-label">Potencial de Ganancia</div>
+                <div class="card-value">Moderado</div>
+            </div>
+            <div class="overview-card">
+                <div class="card-icon"><i class="icon-clock"></i></div>
+                <div class="card-label">Horizonte Recomendado</div>
+                <div class="card-value">Largo Plazo</div>
+            </div>
+            <div class="overview-card">
+                <div class="card-icon"><i class="icon-percent"></i></div>
+                <div class="card-label">Asignación Sugerida</div>
+                <div class="card-value">40-60%</div>
+            </div>
+        </div>
+        
+        <div class="risk-description card">
+            <div class="card-header">
+                <h3 class="card-title">Características de Inversiones de Bajo Riesgo</h3>
+            </div>
+            <div class="card-body">
+                <p>Las inversiones de bajo riesgo en criptomonedas se caracterizan por:</p>
+                <ul class="feature-list">
+                    <li>Mayor estabilidad relativa en un mercado volátil</li>
+                    <li>Proyectos establecidos con fundamentos sólidos</li>
+                    <li>Alta capitalización de mercado y liquidez</li>
+                    <li>Equipo de desarrollo experimentado y transparente</li>
+                    <li>Utilidad real y adopción demostrada</li>
+                    <li>Menor potencial de crecimiento explosivo pero mayor seguridad</li>
+                </ul>
+                <div class="info-box">
+                    <div class="info-icon"><i class="icon-info"></i></div>
+                    <div class="info-content">
+                        <p>Recuerda que incluso las criptomonedas consideradas de "bajo riesgo" siguen siendo más volátiles que inversiones tradicionales como bonos o fondos del mercado monetario.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="risk-assets card">
+            <div class="card-header">
+                <h3 class="card-title">Criptomonedas de Bajo Riesgo</h3>
+            </div>
+            <div class="card-body">
+                <div class="assets-table">
+                    <div class="table-header">
+                        <div class="header-cell">Criptomoneda</div>
+                        <div class="header-cell">Volatilidad</div>
+                        <div class="header-cell">Capitalización</div>
+                        <div class="header-cell">Características</div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="table-cell asset-name">
+                            <img src="assets/images/crypto/bitcoin.svg" alt="Bitcoin" class="asset-icon">
+                            <div class="asset-info">
+                                <div class="asset-title">Bitcoin</div>
+                                <div class="asset-ticker">BTC</div>
+                            </div>
+                        </div>
+                        <div class="table-cell asset-volatility">
+                            <div class="volatility-bar low"></div>
+                            <span>Media</span>
+                        </div>
+                        <div class="table-cell asset-cap">Alta</div>
+                        <div class="table-cell asset-features">
+                            <ul class="inline-list">
+                                <li>Primera criptomoneda</li>
+                                <li>Mayor adopción</li>
+                                <li>Reserva de valor</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="table-row">
+                        <div class="table-cell asset-name">
+                            <img src="assets/images/crypto/ethereum.svg" alt="Ethereum" class="asset-icon">
+                            <div class="asset-info">
+                                <div class="asset-title">Ethereum</div>
+                                <div class="asset-ticker">ETH</div>
+                            </div>
+                        </div>
+                        <div class="table-cell asset-volatility">
+                            <div class="volatility-bar low-medium"></div>
+                            <span>Media</span>
+                        </div>
+                        <div class="table-cell asset-cap">Alta</div>
+                        <div class="table-cell asset-features">
+                            <ul class="inline-list">
+                                <li>Smart Contracts</li>
+                                <li>Ecosistema DeFi</li>
+                                <li>Amplia adopción</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Más filas omitidas por brevedad -->
+                </div>
+                
+                <div class="asset-disclaimer">
+                    <p><strong>Nota:</strong> Incluso las criptomonedas listadas aquí como "bajo riesgo" pueden experimentar fluctuaciones significativas. Siempre investiga antes de invertir.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="risk-strategies card">
+            <div class="card-header">
+                <h3 class="card-title">Estrategias para Inversores Conservadores</h3>
+            </div>
+            <div class="card-body">
+                <div class="strategy-list">
+                    <div class="strategy-item">
+                        <div class="strategy-icon">
+                            <i class="icon-dollar-sign"></i>
+                        </div>
+                        <div class="strategy-content">
+                            <h4 class="strategy-title">Dollar Cost Averaging (DCA)</h4>
+                            <p class="strategy-description">Invierte una cantidad fija a intervalos regulares, independientemente del precio, para reducir el impacto de la volatilidad.</p>
+                            <a href="/estrategias/dca" class="btn btn-sm btn-outline">Saber más</a>
+                        </div>
+                    </div>
+                    
+                    <div class="strategy-item">
+                        <div class="strategy-icon">
+                            <i class="icon-pie-chart"></i>
+                        </div>
+                        <div class="strategy-content">
+                            <h4 class="strategy-title">Cartera 80/20</h4>
+                            <p class="strategy-description">Dedica el 80% a Bitcoin y Ethereum, y el 20% restante a otras criptomonedas establecidas.</p>
+                            <a href="/estrategias/cartera-80-20" class="btn btn-sm btn-outline">Saber más</a>
+                        </div>
+                    </div>
+                    
+                    <div class="strategy-item">
+                        <div class="strategy-icon">
+                            <i class="icon-lock"></i>
+                        </div>
+                        <div class="strategy-content">
+                            <h4 class="strategy-title">Staking de Stablecoins</h4>
+                            <p class="strategy-description">Genera rendimientos pasivos mediante el staking de stablecoins en plataformas confiables.</p>
+                            <a href="/estrategias/staking-stablecoins" class="btn btn-sm btn-outline">Saber más</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: CONTENIDO DE RIESGO BAJO -->
+
+    <!-- INICIO: CONTENIDO DE RIESGO MEDIO -->
+    <div class="risk-content medium-risk-content" id="medium-risk-content">
+        <!-- Contenido similar al de riesgo bajo pero adaptado para riesgo medio -->
+        <!-- Se omite por brevedad -->
+    </div>
+    <!-- FIN: CONTENIDO DE RIESGO MEDIO -->
+
+    <!-- INICIO: CONTENIDO DE RIESGO ALTO -->
+    <div class="risk-content high-risk-content" id="high-risk-content">
+        <!-- Contenido similar al de riesgo bajo pero adaptado para riesgo alto -->
+        <!-- Se omite por brevedad -->
+    </div>
+    <!-- FIN: CONTENIDO DE RIESGO ALTO -->
+
+    <!-- INICIO: COMPARATIVA DE RIESGOS -->
+    <div class="risk-comparison card">
+        <div class="card-header">
+            <h3 class="card-title">Comparativa de Niveles de Riesgo</h3>
+        </div>
+        <div class="card-body">
+            <div class="comparison-chart" id="risk-comparison-chart">
+                <!-- Gráfico generado dinámicamente -->
+                <div class="chart-placeholder">Cargando comparativa de riesgos...</div>
+            </div>
+            
+            <div class="comparison-table">
+                <div class="table-header">
+                    <div class="header-cell">Criterio</div>
+                    <div class="header-cell low-risk">Bajo Riesgo</div>
+                    <div class="header-cell medium-risk">Riesgo Medio</div>
+                    <div class="header-cell high-risk">Alto Riesgo</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-cell">Volatilidad</div>
+                    <div class="table-cell">Baja-Media</div>
+                    <div class="table-cell">Media-Alta</div>
+                    <div class="table-cell">Muy Alta</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-cell">Potencial Ganancia</div>
+                    <div class="table-cell">Moderado</div>
+                    <div class="table-cell">Alto</div>
+                    <div class="table-cell">Muy Alto</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-cell">Potencial Pérdida</div>
+                    <div class="table-cell">Moderado</div>
+                    <div class="table-cell">Alto</div>
+                    <div class="table-cell">Muy Alto</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-cell">Timeframe</div>
+                    <div class="table-cell">Largo Plazo</div>
+                    <div class="table-cell">Medio Plazo</div>
+                    <div class="table-cell">Corto-Medio Plazo</div>
+                </div>
+                
+                <div class="table-row">
+                    <div class="table-cell">Perfil Inversor</div>
+                    <div class="table-cell">Conservador</div>
+                    <div class="table-cell">Moderado</div>
+                    <div class="table-cell">Agresivo</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: COMPARATIVA DE RIESGOS -->
+
+    <!-- INICIO: CALCULADORA DE RIESGO -->
+    <div class="risk-calculator card">
+        <div class="card-header">
+            <h3 class="card-title">Calculadora de Perfil de Riesgo</h3>
+        </div>
+        <div class="card-body">
+            <p>Responde estas preguntas para determinar tu perfil de riesgo y recibir recomendaciones personalizadas:</p>
+            
+            <form class="calculator-form" id="risk-calculator-form">
+                <!-- Formulario omitido por brevedad -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Calcular Mi Perfil</button>
+                    <button type="reset" class="btn btn-outline">Reiniciar</button>
+                </div>
+            </form>
+            
+            <div class="calculator-result hidden" id="risk-calculator-result">
+                <h4 class="result-title">Tu Perfil de Riesgo:</h4>
+                <div class="result-profile" id="risk-profile-display">
+                    <!-- Resultado generado dinámicamente -->
+                </div>
+                <div class="result-recommendations" id="risk-recommendations">
+                    <!-- Recomendaciones generadas dinámicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: CALCULADORA DE RIESGO -->
+</div>
+<!-- FIN: CONTENEDOR PRINCIPAL DE NIVELES DE RIESGO -->

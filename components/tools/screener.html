@@ -1,0 +1,1352 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DEL SCREENER -->
+<div class="screener-container bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 p-4 rounded-lg shadow-sm">
+    <!-- INICIO: CABECERA DEL SCREENER -->
+    <div class="screener-header mb-6">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-4">
+            <div>
+                <h1 class="text-2xl font-bold">Screener de Criptomonedas</h1>
+                <p class="text-gray-600 dark:text-gray-400">Encuentra las mejores oportunidades con filtros avanzados y anÃ¡lisis tÃ©cnico</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+                <button class="btn-primary flex items-center gap-1" id="save-filters-btn">
+                    <i class="icon-save"></i>
+                    <span>Guardar Filtros</span>
+                </button>
+                <button class="btn-outline flex items-center gap-1" id="create-alert-btn">
+                    <i class="icon-bell"></i>
+                    <span>Crear Alerta</span>
+                </button>
+                <button class="btn-outline flex items-center gap-1" id="export-results-btn">
+                    <i class="icon-download"></i>
+                    <span>Exportar</span>
+                </button>
+                <div class="dropdown relative">
+                    <button class="btn-outline flex items-center gap-1" id="view-config-btn">
+                        <i class="icon-sliders"></i>
+                        <span>Configurar Vista</span>
+                    </button>
+                    <div class="dropdown-menu absolute right-0 hidden bg-white dark:bg-gray-800 shadow-lg rounded-md p-3 mt-1 z-10 w-60">
+                        <h4 class="font-medium text-sm mb-2">Modo de visualizaciÃ³n</h4>
+                        <div class="flex gap-2 mb-3">
+                            <button class="view-btn active p-2 rounded flex items-center justify-center" data-view="table">
+                                <i class="icon-list"></i>
+                            </button>
+                            <button class="view-btn p-2 rounded flex items-center justify-center" data-view="cards">
+                                <i class="icon-grid"></i>
+                            </button>
+                            <button class="view-btn p-2 rounded flex items-center justify-center" data-view="matrix">
+                                <i class="icon-layers"></i>
+                            </button>
+                        </div>
+                        <h4 class="font-medium text-sm mb-2">Columnas visibles</h4>
+                        <div class="column-toggles grid grid-cols-2 gap-2">
+                            <div class="flex items-center">
+                                <input type="checkbox" id="col-rank" class="mr-2" checked>
+                                <label for="col-rank" class="text-sm">Ranking</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="col-name" class="mr-2" checked>
+                                <label for="col-name" class="text-sm">Nombre</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="col-price" class="mr-2" checked>
+                                <label for="col-price" class="text-sm">Precio</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="col-change-24h" class="mr-2" checked>
+                                <label for="col-change-24h" class="text-sm">Cambio 24h</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="col-change-7d" class="mr-2" checked>
+                                <label for="col-change-7d" class="text-sm">Cambio 7d</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="col-market-cap" class="mr-2" checked>
+                                <label for="col-market-cap" class="text-sm">Cap. Mercado</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="col-volume" class="mr-2" checked>
+                                <label for="col-volume" class="text-sm">Volumen 24h</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="col-supply" class="mr-2">
+                                <label for="col-supply" class="text-sm">Suministro</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="col-chart" class="mr-2" checked>
+                                <label for="col-chart" class="text-sm">GrÃ¡fico</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="col-indicators" class="mr-2">
+                                <label for="col-indicators" class="text-sm">Indicadores</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+            <div class="saved-filters flex flex-wrap gap-2">
+                <button class="filter-preset active py-1 px-3 rounded-full text-sm">Todos los filtros</button>
+                <button class="filter-preset py-1 px-3 rounded-full text-sm">Alta capitalizaciÃ³n</button>
+                <button class="filter-preset py-1 px-3 rounded-full text-sm">Tendencia alcista</button>
+                <button class="filter-preset py-1 px-3 rounded-full text-sm">SeÃ±ales tÃ©cnicas</button>
+                <button class="filter-preset py-1 px-3 rounded-full text-sm">Alto crecimiento</button>
+                <button class="filter-preset py-1 px-3 rounded-full text-sm">Infravaloradas</button>
+            </div>
+            
+            <div class="results-info text-sm text-gray-600 dark:text-gray-400">
+                Mostrando <span class="font-semibold">120</span> de <span class="font-semibold">8,465</span> criptomonedas
+            </div>
+        </div>
+    </div>
+    <!-- FIN: CABECERA DEL SCREENER -->
+    
+    <!-- INICIO: FILTROS AVANZADOS -->
+    <div class="filters-section mb-6 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-semibold">Filtros Avanzados</h2>
+            <div class="flex gap-2">
+                <button class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-1" id="expand-filters-btn">
+                    <i class="icon-maximize-2"></i>
+                    <span>Expandir</span>
+                </button>
+                <button class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-1" id="clear-filters-btn">
+                    <i class="icon-x"></i>
+                    <span>Limpiar Filtros</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- INICIO: PESTAÃ‘AS DE FILTROS -->
+        <div class="filter-tabs-container">
+            <div class="filter-tabs flex border-b border-gray-200 dark:border-gray-700 mb-4">
+                <button class="filter-tab active py-2 px-4 text-sm border-b-2 -mb-px" data-tab="price">Precio & Mercado</button>
+                <button class="filter-tab py-2 px-4 text-sm" data-tab="technical">Indicadores TÃ©cnicos</button>
+                <button class="filter-tab py-2 px-4 text-sm" data-tab="fundamental">Fundamentales</button>
+                <button class="filter-tab py-2 px-4 text-sm" data-tab="onchain">MÃ©tricas On-Chain</button>
+                <button class="filter-tab py-2 px-4 text-sm" data-tab="advanced">Avanzado</button>
+            </div>
+            
+            <!-- INICIO: CONTENIDO PESTAÃ‘AS DE FILTROS -->
+            <div class="filter-content">
+                <!-- INICIO: TAB DE PRECIO Y MERCADO -->
+                <div class="filter-tab-content active" id="price-tab">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Precio (USD)</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">CapitalizaciÃ³n de Mercado</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Volumen 24h</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Suministro Circulante %</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0" max="100">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0" max="100">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Cambio de Precio 24h</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="-100">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="-100">
+                                <span>%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Cambio de Precio 7d</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="-100">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="-100">
+                                <span>%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Dominancia de Mercado</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0" max="100">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0" max="100">
+                                <span>%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">CategorÃ­a</label>
+                            <select class="form-select w-full text-sm">
+                                <option value="">Todas las categorÃ­as</option>
+                                <option value="layer1">Layer 1</option>
+                                <option value="defi">DeFi</option>
+                                <option value="exchange">Exchange</option>
+                                <option value="gaming">Gaming & Metaverso</option>
+                                <option value="privacy">Privacidad</option>
+                                <option value="stablecoin">Stablecoins</option>
+                                <option value="nft">NFT</option>
+                                <option value="web3">Web3</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- FIN: TAB DE PRECIO Y MERCADO -->
+                
+                <!-- INICIO: TAB DE INDICADORES TÃ‰CNICOS -->
+                <div class="filter-tab-content" id="technical-tab">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">RSI (14)</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0" max="100">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0" max="100">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Media MÃ³vil 50/200</label>
+                            <select class="form-select w-full text-sm">
+                                <option value="">Seleccionar condiciÃ³n</option>
+                                <option value="golden_cross">Golden Cross (MA50 > MA200)</option>
+                                <option value="death_cross">Death Cross (MA50 < MA200)</option>
+                                <option value="above_ma50">Precio > MA50</option>
+                                <option value="below_ma50">Precio < MA50</option>
+                                <option value="above_ma200">Precio > MA200</option>
+                                <option value="below_ma200">Precio < MA200</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">MACD</label>
+                            <select class="form-select w-full text-sm">
+                                <option value="">Seleccionar seÃ±al</option>
+                                <option value="bullish_cross">Cruce alcista</option>
+                                <option value="bearish_cross">Cruce bajista</option>
+                                <option value="above_zero">Por encima de cero</option>
+                                <option value="below_zero">Por debajo de cero</option>
+                                <option value="bullish_divergence">Divergencia alcista</option>
+                                <option value="bearish_divergence">Divergencia bajista</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Bollinger Bands (20,2)</label>
+                            <select class="form-select w-full text-sm">
+                                <option value="">Seleccionar posiciÃ³n</option>
+                                <option value="above_upper">Precio > Banda Superior</option>
+                                <option value="below_lower">Precio < Banda Inferior</option>
+                                <option value="within_bands">Dentro de las bandas</option>
+                                <option value="squeeze">CompresiÃ³n (bandas estrechas)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Distancia del ATH</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0" max="100">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0" max="100">
+                                <span>%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Volumen vs Promedio</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0">
+                                <span>x</span>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">PatrÃ³n de Velas</label>
+                            <select class="form-select w-full text-sm">
+                                <option value="">Seleccionar patrÃ³n</option>
+                                <option value="hammer">Martillo</option>
+                                <option value="engulfing_bullish">Envolvente Alcista</option>
+                                <option value="engulfing_bearish">Envolvente Bajista</option>
+                                <option value="doji">Doji</option>
+                                <option value="morning_star">Estrella del Amanecer</option>
+                                <option value="evening_star">Estrella del Atardecer</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Soporte/Resistencia</label>
+                            <select class="form-select w-full text-sm">
+                                <option value="">Seleccionar condiciÃ³n</option>
+                                <option value="near_support">Cerca del soporte</option>
+                                <option value="near_resistance">Cerca de la resistencia</option>
+                                <option value="breaking_support">Rompiendo soporte</option>
+                                <option value="breaking_resistance">Rompiendo resistencia</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- FIN: TAB DE INDICADORES TÃ‰CNICOS -->
+                
+                <!-- INICIO: TAB DE FUNDAMENTALES -->
+                <div class="filter-tab-content" id="fundamental-tab">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Actividad de Desarrollo</label>
+                            <select class="form-select w-full text-sm">
+                                <option value="">Seleccionar nivel</option>
+                                <option value="very_high">Muy alta</option>
+                                <option value="high">Alta</option>
+                                <option value="moderate">Moderada</option>
+                                <option value="low">Baja</option>
+                                <option value="inactive">Inactiva</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">GitHub Commits (30d)</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">AdopciÃ³n Real</label>
+                            <select class="form-select w-full text-sm">
+                                <option value="">Seleccionar nivel</option>
+                                <option value="very_high">Muy alta</option>
+                                <option value="high">Alta</option>
+                                <option value="moderate">Moderada</option>
+                                <option value="low">Baja</option>
+                                <option value="none">Sin uso real</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Inversores Institucionales</label>
+                            <select class="form-select w-full text-sm">
+                                <option value="">Seleccionar nivel</option>
+                                <option value="major">Principales instituciones</option>
+                                <option value="some">Algunas instituciones</option>
+                                <option value="few">Pocas instituciones</option>
+                                <option value="none">Sin inversiÃ³n institucional</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Equipo</label>
+                            <select class="form-select w-full text-sm">
+                                <option value="">Seleccionar caracterÃ­stica</option>
+                                <option value="public">Equipo pÃºblico (KYC)</option>
+                                <option value="anonymous">Equipo anÃ³nimo</option>
+                                <option value="experienced">Experiencia previa</option>
+                                <option value="technical">Equipo tÃ©cnico fuerte</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Modelo TokenÃ³mico</label>
+                            <select class="form-select w-full text-sm">
+                                <option value="">Seleccionar modelo</option>
+                                <option value="deflationary">Deflacionario</option>
+                                <option value="inflationary">Inflacionario</option>
+                                <option value="capped_supply">Suministro limitado</option>
+                                <option value="burn_mechanism">Mecanismo de quema</option>
+                                <option value="staking_rewards">Recompensas por staking</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Partnerships</label>
+                            <select class="form-select w-full text-sm">
+                                <option value="">Seleccionar nivel</option>
+                                <option value="major">Alianzas importantes</option>
+                                <option value="growing">Creciendo</option>
+                                <option value="few">Pocas alianzas</option>
+                                <option value="none">Sin alianzas</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Roadmap</label>
+                            <select class="form-select w-full text-sm">
+                                <option value="">Seleccionar estado</option>
+                                <option value="on_track">Cumpliendo plazos</option>
+                                <option value="some_delays">Algunos retrasos</option>
+                                <option value="major_delays">Retrasos importantes</option>
+                                <option value="unclear">No definido claramente</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- FIN: TAB DE FUNDAMENTALES -->
+                
+                <!-- INICIO: TAB DE MÃ‰TRICAS ON-CHAIN -->
+                <div class="filter-tab-content" id="onchain-tab">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Direcciones Activas (24h)</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Transacciones (24h)</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Tarifas de Red</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0">
+                                <span>$</span>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">DistribuciÃ³n de Tenedores</label>
+                            <select class="form-select w-full text-sm">
+                                <option value="">Seleccionar caracterÃ­stica</option>
+                                <option value="well_distributed">Bien distribuido</option>
+                                <option value="moderately">DistribuciÃ³n moderada</option>
+                                <option value="concentrated">Concentrado</option>
+                                <option value="highly_concentrated">Altamente concentrado</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Volumen On-Chain vs. Exchange</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0">
+                                <span>%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Staking Ratio</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0" max="100">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0" max="100">
+                                <span>%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">NVT Ratio</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Velocidad del Token</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- FIN: TAB DE MÃ‰TRICAS ON-CHAIN -->
+                
+                <!-- INICIO: TAB DE FILTROS AVANZADOS -->
+                <div class="filter-tab-content" id="advanced-tab">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="filter-group col-span-1 md:col-span-2 lg:col-span-3">
+                            <label class="block text-sm font-medium mb-1">ExpresiÃ³n Personalizada</label>
+                            <textarea class="form-textarea w-full text-sm" rows="2" placeholder="Ejemplo: (price > ma_200 AND rsi_14 < 30) OR (volume_change_24h > 200)"></textarea>
+                            <div class="text-xs text-gray-500 mt-1">Utiliza AND, OR, operadores de comparaciÃ³n y parÃ©ntesis para crear filtros complejos</div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">CorrelaciÃ³n con BTC</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="-1" max="1" step="0.1">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="-1" max="1" step="0.1">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Sharpe Ratio (30d)</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="-10" max="10" step="0.1">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="-10" max="10" step="0.1">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Volatilidad (30d)</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0" max="1000">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0" max="1000">
+                                <span>%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Listado en Exchanges</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Ratio MVRV</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0" step="0.1">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0" step="0.1">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label class="block text-sm font-medium mb-1">Ratio Precio/Utilidad</label>
+                            <div class="flex items-center gap-2">
+                                <input type="number" class="form-input w-full text-sm" placeholder="Min" min="0">
+                                <span>a</span>
+                                <input type="number" class="form-input w-full text-sm" placeholder="Max" min="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- FIN: TAB DE FILTROS AVANZADOS -->
+            </div>
+            <!-- FIN: CONTENIDO PESTAÃ‘AS DE FILTROS -->
+        </div>
+        <!-- FIN: PESTAÃ‘AS DE FILTROS -->
+        
+        <div class="flex justify-end mt-4">
+            <button class="btn-primary px-6" id="apply-filters-btn">
+                Aplicar Filtros
+            </button>
+        </div>
+    </div>
+    <!-- FIN: FILTROS AVANZADOS -->
+    
+    <!-- INICIO: RESULTADOS DEL SCREENER -->
+    <div class="results-container">
+        <!-- INICIO: VISTA DE TABLA (ACTIVA POR DEFECTO) -->
+        <div class="view-container table-view active" id="table-view">
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead class="bg-gray-100 dark:bg-gray-800">
+                        <tr>
+                            <th scope="col" class="px-3 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider sortable" data-sort="rank">
+                                <div class="flex items-center gap-1">
+                                    <span>#</span>
+                                    <i class="icon-chevron-down text-xs"></i>
+                                </div>
+                            </th>
+                            <th scope="col" class="px-3 py-3 text-left text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider sortable" data-sort="name">
+                                <div class="flex items-center gap-1">
+                                    <span>Nombre</span>
+                                    <i class="icon-chevron-down text-xs"></i>
+                                </div>
+                            </th>
+                            <th scope="col" class="px-3 py-3 text-right text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider sortable" data-sort="price">
+                                <div class="flex items-center justify-end gap-1">
+                                    <span>Precio</span>
+                                    <i class="icon-chevron-down text-xs"></i>
+                                </div>
+                            </th>
+                            <th scope="col" class="px-3 py-3 text-right text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider sortable" data-sort="change_24h">
+                                <div class="flex items-center justify-end gap-1">
+                                    <span>24h %</span>
+                                    <i class="icon-chevron-down text-xs"></i>
+                                </div>
+                            </th>
+                            <th scope="col" class="px-3 py-3 text-right text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider sortable" data-sort="change_7d">
+                                <div class="flex items-center justify-end gap-1">
+                                    <span>7d %</span>
+                                    <i class="icon-chevron-down text-xs"></i>
+                                </div>
+                            </th>
+                            <th scope="col" class="px-3 py-3 text-right text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider sortable" data-sort="market_cap">
+                                <div class="flex items-center justify-end gap-1">
+                                    <span>Cap. Mercado</span>
+                                    <i class="icon-chevron-down text-xs"></i>
+                                </div>
+                            </th>
+                            <th scope="col" class="px-3 py-3 text-right text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider sortable" data-sort="volume">
+                                <div class="flex items-center justify-end gap-1">
+                                    <span>Volumen (24h)</span>
+                                    <i class="icon-chevron-down text-xs"></i>
+                                </div>
+                            </th>
+                            <th scope="col" class="px-3 py-3 text-center text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider">
+                                GrÃ¡fico (7d)
+                            </th>
+                            <th scope="col" class="px-3 py-3 text-right text-xs font-medium text-gray-600 dark:text-gray-400 uppercase tracking-wider"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-800">
+                        <!-- Fila 1: Bitcoin -->
+                        <tr>
+                            <td class="px-3 py-4 whitespace-nowrap text-sm">
+                                <div class="text-gray-600 dark:text-gray-400">1</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-2">
+                                    <button class="favorite-btn" aria-label="AÃ±adir a favoritos">
+                                        <i class="icon-star text-gray-400 dark:text-gray-600"></i>
+                                    </button>
+                                    <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/btc.png" alt="Bitcoin" class="w-6 h-6">
+                                    <div>
+                                        <div class="font-medium">Bitcoin</div>
+                                        <div class="text-xs text-gray-500 dark:text-gray-400">BTC</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div class="font-medium">$42,567.89</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div class="text-green-600">+2.54%</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div class="text-red-600">-3.12%</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div>$817.4B</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div>$28.5B</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap">
+                                <div class="h-12 flex items-center justify-center">
+                                    <svg class="sparkline" width="120" height="40" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round">
+                                        <path d="M0,20 L10,15 L20,25 L30,18 L40,20 L50,10 L60,15 L70,12 L80,18 L90,16 L100,25 L110,20 L120,15"></path>
+                                    </svg>
+                                </div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div class="flex justify-end gap-1">
+                                    <button class="btn-icon-sm" title="AÃ±adir a Portfolio">
+                                        <i class="icon-briefcase"></i>
+                                    </button>
+                                    <button class="btn-icon-sm" title="Crear Alerta">
+                                        <i class="icon-bell"></i>
+                                    </button>
+                                    <div class="dropdown relative">
+                                        <button class="btn-icon-sm" title="MÃ¡s opciones">
+                                            <i class="icon-more-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu absolute right-0 hidden z-10 mt-1 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-md p-1">
+                                            <a href="/crypto/bitcoin" class="dropdown-item">
+                                                <i class="icon-info mr-2"></i> Ver detalles
+                                            </a>
+                                            <a href="#" class="dropdown-item">
+                                                <i class="icon-bar-chart-2 mr-2"></i> AnÃ¡lisis tÃ©cnico
+                                            </a>
+                                            <a href="#" class="dropdown-item">
+                                                <i class="icon-share-2 mr-2"></i> Compartir
+                                            </a>
+                                            <a href="#" class="dropdown-item">
+                                                <i class="icon-plus mr-2"></i> Comparar
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- Fila 2: Ethereum -->
+                        <tr>
+                            <td class="px-3 py-4 whitespace-nowrap text-sm">
+                                <div class="text-gray-600 dark:text-gray-400">2</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-2">
+                                    <button class="favorite-btn active" aria-label="Quitar de favoritos">
+                                        <i class="icon-star text-yellow-400"></i>
+                                    </button>
+                                    <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/eth.png" alt="Ethereum" class="w-6 h-6">
+                                    <div>
+                                        <div class="font-medium">Ethereum</div>
+                                        <div class="text-xs text-gray-500 dark:text-gray-400">ETH</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div class="font-medium">$2,876.42</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div class="text-green-600">+1.87%</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div class="text-green-600">+5.63%</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div>$346.2B</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div>$14.3B</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap">
+                                <div class="h-12 flex items-center justify-center">
+                                    <svg class="sparkline" width="120" height="40" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round">
+                                        <path d="M0,25 L10,20 L20,18 L30,15 L40,20 L50,18 L60,12 L70,10 L80,8 L90,12 L100,10 L110,8 L120,5"></path>
+                                    </svg>
+                                </div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div class="flex justify-end gap-1">
+                                    <button class="btn-icon-sm" title="AÃ±adir a Portfolio">
+                                        <i class="icon-briefcase"></i>
+                                    </button>
+                                    <button class="btn-icon-sm" title="Crear Alerta">
+                                        <i class="icon-bell"></i>
+                                    </button>
+                                    <div class="dropdown relative">
+                                        <button class="btn-icon-sm" title="MÃ¡s opciones">
+                                            <i class="icon-more-vertical"></i>
+                                        </button>
+                                        <div class="dropdown-menu absolute right-0 hidden z-10 mt-1 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-md p-1">
+                                            <!-- Opciones similares a Bitcoin -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- Fila 3: Cardano -->
+                        <tr>
+                            <td class="px-3 py-4 whitespace-nowrap text-sm">
+                                <div class="text-gray-600 dark:text-gray-400">3</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap">
+                                <div class="flex items-center gap-2">
+                                    <button class="favorite-btn" aria-label="AÃ±adir a favoritos">
+                                        <i class="icon-star text-gray-400 dark:text-gray-600"></i>
+                                    </button>
+                                    <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/ada.png" alt="Cardano" class="w-6 h-6">
+                                    <div>
+                                        <div class="font-medium">Cardano</div>
+                                        <div class="text-xs text-gray-500 dark:text-gray-400">ADA</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div class="font-medium">$0.5432</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div class="text-red-600">-0.95%</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div class="text-green-600">+7.21%</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div>$19.1B</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div>$856.7M</div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap">
+                                <div class="h-12 flex items-center justify-center">
+                                    <svg class="sparkline" width="120" height="40" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round">
+                                        <path d="M0,30 L10,28 L20,25 L30,28 L40,22 L50,20 L60,15 L70,18 L80,15 L90,12 L100,8 L110,12 L120,10"></path>
+                                    </svg>
+                                </div>
+                            </td>
+                            <td class="px-3 py-4 whitespace-nowrap text-right">
+                                <div class="flex justify-end gap-1">
+                                    <!-- Botones similares a los anteriores -->
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- MÃ¡s filas similares -->
+                        <!-- Se agregarÃ­an mÃ¡s filas de criptomonedas segÃºn los resultados del screener -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- FIN: VISTA DE TABLA -->
+        
+        <!-- INICIO: VISTA DE TARJETAS -->
+        <div class="view-container cards-view" id="cards-view">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                <!-- Tarjeta 1: Bitcoin -->
+                <div class="crypto-card bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-2">
+                            <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e374711a8554f31b17e4cb92c25fa5/128/color/btc.png" alt="Bitcoin" class="w-8 h-8">
+                            <div>
+                                <div class="font-medium">Bitcoin</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">BTC</div>
+                            </div>
+                        </div>
+                        <button class="favorite-btn" aria-label="AÃ±adir a favoritos">
+                            <i class="icon-star text-gray-400 dark:text-gray-600"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="flex justify-between items-baseline mb-3">
+                        <div class="text-xl font-semibold">$42,567.89</div>
+                        <div class="text-green-600 flex items-center">
+                            <i class="icon-trending-up mr-1"></i>
+                            <span>+2.54%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="h-16 mb-3">
+                        <svg class="sparkline w-full h-full" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round">
+                            <path d="M0,40 L20,30 L40,50 L60,36 L80,40 L100,20 L120,30 L140,24 L160,36 L180,32 L200,50 L220,40 L240,30"></path>
+                        </svg>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-2 mb-4 text-sm">
+                        <div>
+                            <div class="text-gray-500 dark:text-gray-400">Cap. Mercado</div>
+                            <div class="font-medium">$817.4B</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-500 dark:text-gray-400">Volumen 24h</div>
+                            <div class="font-medium">$28.5B</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-500 dark:text-gray-400">Cambio 7d</div>
+                            <div class="font-medium text-red-600">-3.12%</div>
+                        </div>
+                        <div>
+                            <div class="text-gray-500 dark:text-gray-400">Ranking</div>
+                            <div class="font-medium">#1</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-2">
+                        <a href="/crypto/bitcoin" class="btn-sm btn-outline flex-1 text-center">Ver</a>
+                        <button class="btn-icon-sm" title="AÃ±adir a Portfolio">
+                            <i class="icon-briefcase"></i>
+                        </button>
+                        <button class="btn-icon-sm" title="Crear Alerta">
+                            <i class="icon-bell"></i>
+                        </button>
+                        <div class="dropdown relative">
+                            <button class="btn-icon-sm" title="MÃ¡s opciones">
+                                <i class="icon-more-vertical"></i>
+                            </button>
+                            <div class="dropdown-menu absolute right-0 bottom-full hidden z-10 mb-1 w-48 bg-white dark:bg-gray-800 shadow-lg rounded-md p-1">
+                                <!-- Opciones similares a la vista de tabla -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- MÃ¡s tarjetas similares para las otras criptomonedas -->
+                <!-- Se omiten por brevedad -->
+            </div>
+        </div>
+        <!-- FIN: VISTA DE TARJETAS -->
+        
+        <!-- INICIO: VISTA DE MATRIZ -->
+        <div class="view-container matrix-view" id="matrix-view">
+            <div class="flex flex-col">
+                <div class="matrix-controls mb-4">
+                    <div class="flex flex-wrap gap-4 items-center">
+                        <div class="flex items-center gap-2">
+                            <label class="text-sm font-medium">Eje X:</label>
+                            <select class="form-select form-select-sm w-40">
+                                <option value="market_cap">CapitalizaciÃ³n de Mercado</option>
+                                <option value="volume">Volumen 24h</option>
+                                <option value="price_change">Cambio de Precio 24h</option>
+                                <option value="volatility">Volatilidad 30d</option>
+                                <option value="rsi">RSI (14)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="flex items-center gap-2">
+                            <label class="text-sm font-medium">Eje Y:</label>
+                            <select class="form-select form-select-sm w-40">
+                                <option value="price_change">Cambio de Precio 24h</option>
+                                <option value="market_cap">CapitalizaciÃ³n de Mercado</option>
+                                <option value="volume">Volumen 24h</option>
+                                <option value="volatility">Volatilidad 30d</option>
+                                <option value="rsi">RSI (14)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="flex items-center gap-2">
+                            <label class="text-sm font-medium">TamaÃ±o:</label>
+                            <select class="form-select form-select-sm w-40">
+                                <option value="volume">Volumen 24h</option>
+                                <option value="market_cap">CapitalizaciÃ³n de Mercado</option>
+                                <option value="price">Precio</option>
+                                <option value="fixed">TamaÃ±o Fijo</option>
+                            </select>
+                        </div>
+                        
+                        <div class="flex items-center gap-2">
+                            <label class="text-sm font-medium">Color:</label>
+                            <select class="form-select form-select-sm w-40">
+                                <option value="change_7d">Cambio 7d</option>
+                                <option value="change_24h">Cambio 24h</option>
+                                <option value="category">CategorÃ­a</option>
+                                <option value="volatility">Volatilidad</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="matrix-chart-container bg-white dark:bg-gray-800 rounded-lg shadow-sm p-4">
+                    <div class="w-full h-[500px] flex items-center justify-center">
+                        <!-- AquÃ­ se renderizarÃ­a el grÃ¡fico de matriz con D3.js o similar -->
+                        <div class="text-gray-500 dark:text-gray-400">
+                            Cargando matriz de criptomonedas...
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="matrix-legend mt-4 flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400">
+                    <div class="flex items-center gap-1">
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span>Cambio positivo</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <span>Cambio negativo</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <div class="w-3 h-3 rounded-full border border-gray-400 bg-transparent"></div>
+                        <span>Sin cambio</span>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <div class="w-6 h-3 bg-gradient-to-r from-red-500 via-yellow-500 to-green-500 rounded"></div>
+                        <span>Escala de cambio porcentual</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIN: VISTA DE MATRIZ -->
+        
+        <!-- INICIO: PAGINACIÃ“N -->
+        <div class="pagination-container mt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <span class="text-sm text-gray-600 dark:text-gray-400">Mostrar</span>
+                <select class="form-select form-select-sm w-16">
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100" selected>100</option>
+                    <option value="250">250</option>
+                </select>
+                <span class="text-sm text-gray-600 dark:text-gray-400">por pÃ¡gina</span>
+            </div>
+            
+            <div class="flex items-center justify-center">
+                <button class="pagination-btn" disabled>
+                    <i class="icon-chevrons-left"></i>
+                </button>
+                <button class="pagination-btn" disabled>
+                    <i class="icon-chevron-left"></i>
+                </button>
+                <div class="pagination-pages flex">
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn">4</button>
+                    <span class="page-separator">...</span>
+                    <button class="page-btn">85</button>
+                </div>
+                <button class="pagination-btn">
+                    <i class="icon-chevron-right"></i>
+                </button>
+                <button class="pagination-btn">
+                    <i class="icon-chevrons-right"></i>
+                </button>
+            </div>
+            
+            <div class="text-sm text-gray-600 dark:text-gray-400">
+                Mostrando 1-100 de 8,465 criptomonedas
+            </div>
+        </div>
+        <!-- FIN: PAGINACIÃ“N -->
+    </div>
+    <!-- FIN: RESULTADOS DEL SCREENER -->
+</div>
+<!-- FIN: CONTENEDOR PRINCIPAL DEL SCREENER -->
+
+<!-- INICIO: MODAL DE ALERTA -->
+<div class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden" id="alert-modal">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+        <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+            <h3 class="text-lg font-semibold">Crear Alerta</h3>
+            <button class="btn-icon-sm" id="close-alert-modal">
+                <i class="icon-x"></i>
+            </button>
+        </div>
+        <div class="p-4">
+            <form id="alert-form">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">Criptomoneda</label>
+                    <select class="form-select w-full" required>
+                        <option value="">Seleccionar criptomoneda</option>
+                        <option value="BTC">Bitcoin (BTC)</option>
+                        <option value="ETH">Ethereum (ETH)</option>
+                        <option value="ADA">Cardano (ADA)</option>
+                        <!-- MÃ¡s opciones -->
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">CondiciÃ³n</label>
+                    <select class="form-select w-full" id="alert-condition" required>
+                        <option value="price_above">Precio por encima de</option>
+                        <option value="price_below">Precio por debajo de</option>
+                        <option value="percent_change">Cambio porcentual</option>
+                        <option value="volume_change">Cambio de volumen</option>
+                        <option value="market_cap_above">CapitalizaciÃ³n por encima de</option>
+                        <option value="market_cap_below">CapitalizaciÃ³n por debajo de</option>
+                        <option value="technical">Indicador tÃ©cnico</option>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">Valor</label>
+                    <div class="flex items-center gap-2">
+                        <input type="number" class="form-input w-full" step="0.00000001" min="0" required>
+                        <span id="value-suffix">USD</span>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">Notificar vÃ­a</label>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="notify-email" class="mr-2" checked>
+                            <label for="notify-email" class="text-sm">Email</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="notify-browser" class="mr-2" checked>
+                            <label for="notify-browser" class="text-sm">Navegador</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="notify-app" class="mr-2">
+                            <label for="notify-app" class="text-sm">AplicaciÃ³n MÃ³vil</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">ExpiraciÃ³n</label>
+                    <select class="form-select w-full">
+                        <option value="never">Nunca</option>
+                        <option value="1d">1 dÃ­a</option>
+                        <option value="1w">1 semana</option>
+                        <option value="1m">1 mes</option>
+                        <option value="custom">Personalizado</option>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">Notas (opcional)</label>
+                    <textarea class="form-textarea w-full" rows="2" placeholder="AÃ±ade notas o recordatorios sobre esta alerta..."></textarea>
+                </div>
+                
+                <div class="flex justify-end gap-2">
+                    <button type="button" class="btn-outline" id="cancel-alert">Cancelar</button>
+                    <button type="submit" class="btn-primary">Crear Alerta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- FIN: MODAL DE ALERTA -->
+
+<!-- INICIO: MODAL DE GUARDAR FILTROS -->
+<div class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden" id="save-filters-modal">
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full">
+        <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+            <h3 class="text-lg font-semibold">Guardar ConfiguraciÃ³n de Filtros</h3>
+            <button class="btn-icon-sm" id="close-save-filters-modal">
+                <i class="icon-x"></i>
+            </button>
+        </div>
+        <div class="p-4">
+            <form id="save-filters-form">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">Nombre de la configuraciÃ³n</label>
+                    <input type="text" class="form-input w-full" placeholder="Ej: Altcoins prometedoras" required>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium mb-1">DescripciÃ³n (opcional)</label>
+                    <textarea class="form-textarea w-full" rows="2" placeholder="Describe el propÃ³sito de esta configuraciÃ³n de filtros..."></textarea>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="set-default" class="mr-2">
+                        <label for="set-default" class="text-sm">Establecer como configuraciÃ³n predeterminada</label>
+                    </div>
+                </div>
+                
+                <div class="flex justify-end gap-2">
+                    <button type="button" class="btn-outline" id="cancel-save-filters">Cancelar</button>
+                    <button type="submit" class="btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- FIN: MODAL DE GUARDAR FILTROS -->
+
+<style>
+/* Estilos base */
+:root {
+    --color-primary: #3b82f6;
+    --color-primary-hover: #2563eb;
+    --color-success: #22c55e;
+    --color-danger: #ef4444;
+    --color-warning: #f59e0b;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.btn-outline {
+    border: 1px solid #e5e7eb;
+    background-color: transparent;
+    color: currentColor;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.dark .btn-outline {
+    border-color: #4b5563;
+}
+
+.btn-outline:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.btn-sm {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+.btn-icon-sm {
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.btn-icon-sm:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: #e5e7eb;
+}
+
+.dark .btn-icon-sm:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: #4b5563;
+}
+
+.form-input, .form-select, .form-textarea {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    background-color: white;
+    color: #1f2937;
+    transition: border-color 0.2s;
+}
+
+.dark .form-input, .dark .form-select, .dark .form-textarea {
+    border-color: #4b5563;
+    background-color: #1f2937;
+    color: #f3f4f6;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    ring: 2px var(--color-primary);
+}
+
+/* Estilos especÃ­ficos del screener */
+.filter-tab {
+    cursor: pointer;
+    transition: all 0.2s;
+    border-color: transparent;
+}
+
+.filter-tab.active {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.filter-tab-content {
+    display: none;
+}
+
+.filter-tab-content.active {
+    display: block;
+}
+
+.view-container {
+    display: none;
+}
+
+.view-container.active {
+    display: block;
+}
+
+.view-btn {
+    background-color: transparent;
+    transition: all 0.2s;
+}
+
+.view-btn.active, .view-btn:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--color-primary);
+}
+
+.filter-preset {
+    background-color: rgba(0, 0, 0, 0.05);
+    transition: all 0.2s;
+}
+
+.dark .filter-preset {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.filter-preset.active, .filter-preset:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--color-primary);
+}
+
+.sortable {
+    cursor: pointer;
+}
+
+.favorite-btn {
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.favorite-btn:hover .icon-star {
+    color: #f59e0b !important;
+}
+
+.favorite-btn.active .icon-star {
+    color: #f59e0b !important;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark .dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.pagination-btn, .page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s;
+    border: 1px solid #e5e7eb;
+    background-color: white;
+    color: #1f2937;
+}
+
+.dark .pagination-btn, .dark .page-btn {
+    border-color: #4b5563;
+    background-color: #1f2937;
+    color: #f3f4f6;
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-btn.active {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.page-separator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    height: 2rem;
+}
+</style>

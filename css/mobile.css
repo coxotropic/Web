@@ -1,0 +1,444 @@
+/* mobile.css - Estilos específicos para la versión móvil del portal de criptomonedas */
+
+/* Ajustes base para dispositivos móviles */
+:root {
+  --mobile-padding: 10px;
+  --mobile-header-height: 60px;
+  --mobile-footer-height: 80px;
+  --mobile-menu-height: 50px;
+  --mobile-touch-target: 44px;
+}
+
+/* Ajustes generales para dispositivos móviles */
+body.mobile-device {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.app-container {
+  padding: 0;
+  max-width: 100%;
+}
+
+/* Header para móvil */
+.header-container {
+  height: var(--mobile-header-height);
+  padding: 0 var(--mobile-padding);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container .logo {
+  max-width: 150px;
+  height: auto;
+}
+
+.header-container .user-controls {
+  gap: 10px;
+}
+
+.header-container .user-controls button {
+  padding: 8px;
+  min-width: var(--mobile-touch-target);
+  min-height: var(--mobile-touch-target);
+}
+
+/* Menú hamburguesa y navegación */
+.menu-container {
+  position: fixed;
+  top: var(--mobile-header-height);
+  left: -80%;
+  width: 80%;
+  height: calc(100vh - var(--mobile-header-height));
+  background-color: var(--dark-bg-color);
+  transition: left 0.3s ease;
+  z-index: 999;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.menu-container.open {
+  left: 0;
+}
+
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: var(--mobile-header-height);
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+}
+
+.menu-overlay.active {
+  display: block;
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.hamburger-icon span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.hamburger-icon.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-icon.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-icon.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0;
+}
+
+.menu-items a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.menu-items a:last-child {
+  border-bottom: none;
+}
+
+.menu-items a i {
+  margin-right: 12px;
+  font-size: 1.2rem;
+}
+
+/* Selector de modo (Novato/Pro) */
+.mode-selector {
+  display: flex;
+  justify-content: center;
+  margin: 10px var(--mobile-padding);
+}
+
+.mode-selector .mode-btn {
+  flex: 1;
+  min-height: var(--mobile-touch-target);
+  font-size: 0.9rem;
+  padding: 8px 5px;
+}
+
+/* Contenedores principales */
+.main-content {
+  padding: var(--mobile-padding);
+  margin-bottom: 15px;
+}
+
+.content-container,
+.timeframe-container,
+.risk-container,
+.tools-container,
+.news-container,
+.social-container {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* Ajustes de tipografía */
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+p, li {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+/* Cards y elementos de contenido */
+.card {
+  margin-bottom: 15px;
+  padding: 12px;
+}
+
+.card-header {
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.card-content {
+  padding: 0;
+}
+
+/* Gráficos y tablas compactos */
+.chart-container {
+  height: 200px;
+  margin-bottom: 15px;
+  overflow-x: auto;
+}
+
+table {
+  font-size: 0.9rem;
+}
+
+table th, 
+table td {
+  padding: 8px 5px;
+}
+
+/* Optimizaciones para interacciones táctiles */
+button, 
+.btn,
+select,
+.tab,
+.nav-link,
+input[type="checkbox"],
+input[type="radio"] {
+  min-height: var(--mobile-touch-target);
+  min-width: var(--mobile-touch-target);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea {
+  font-size: 16px; /* Evita zoom en iOS */
+  padding: 12px 10px;
+  height: var(--mobile-touch-target);
+}
+
+/* Tabs para móvil */
+.tabs {
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.tab {
+  padding: 10px 15px;
+  font-size: 0.9rem;
+}
+
+/* Formularios en móvil */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+/* Índice de Miedo/Codicia adaptado */
+.fear-greed-index {
+  flex-direction: column;
+  align-items: center;
+}
+
+.fear-greed-meter {
+  width: 100%;
+  max-width: 300px;
+  height: 150px;
+  margin-bottom: 15px;
+}
+
+.fear-greed-labels {
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+/* Calculadoras y herramientas interactivas */
+.calculator {
+  padding: 12px;
+}
+
+.calculator-controls {
+  flex-direction: column;
+}
+
+.calculator-result {
+  margin-top: 15px;
+  padding: 10px;
+}
+
+/* Sección de noticias */
+.news-item {
+  padding: 12px;
+  margin-bottom: 15px;
+}
+
+.news-title {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.news-summary {
+  font-size: 0.9rem;
+  -webkit-line-clamp: 3;
+}
+
+.news-source {
+  font-size: 0.8rem;
+}
+
+/* Componentes sociales */
+.comment-box {
+  padding: 10px;
+}
+
+.comment-input {
+  padding: 10px;
+}
+
+.user-profile {
+  padding: 12px;
+}
+
+.follow-btn {
+  padding: 8px 12px;
+}
+
+/* Footer móvil */
+.footer-container {
+  padding: 15px var(--mobile-padding);
+  flex-direction: column;
+  text-align: center;
+  gap: 15px;
+}
+
+.footer-links,
+.footer-social {
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Tratamiento especial para el modo novato en móvil */
+body.mobile-device .novato-mode .explanation-text {
+  display: block;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  background-color: var(--highlight-bg);
+  border-radius: 8px;
+}
+
+body.mobile-device .novato-mode .term-definition {
+  padding: 8px;
+  margin: 10px 0;
+}
+
+body.mobile-device .novato-mode .step-by-step {
+  margin: 15px 0;
+}
+
+body.mobile-device .novato-mode .step-by-step li {
+  padding: 8px 0;
+}
+
+/* Ocultar elementos no esenciales en vista móvil */
+.desktop-only {
+  display: none !important;
+}
+
+.mobile-only {
+  display: block;
+}
+
+/* Modal para móvil */
+.modal .modal-content {
+  width: 90%;
+  max-width: 350px;
+  padding: 15px;
+}
+
+.modal .close-btn {
+  padding: 10px;
+}
+
+/* Loading indicator */
+.loading-indicator {
+  padding: 10px;
+}
+
+.loading-indicator .spinner {
+  width: 40px;
+  height: 40px;
+}
+
+/* Media queries para ajustes específicos */
+@media screen and (max-width: 360px) {
+  body.mobile-device {
+    font-size: 15px;
+  }
+  
+  .header-container .logo {
+    max-width: 120px;
+  }
+  
+  .mode-selector .mode-btn {
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .header-container {
+    position: relative;
+  }
+  
+  .menu-container {
+    top: 0;
+    height: 100vh;
+  }
+}
+
+/* Optimizaciones para interacciones táctiles en iOS */
+@supports (-webkit-touch-callout: none) {
+  input,
+  textarea {
+    font-size: 16px;
+  }
+  
+  .btn, button {
+    padding: 12px 15px;
+  }
+  
+  /* Fix para el 100vh en iOS */
+  .menu-container {
+    height: -webkit-fill-available;
+  }
+}

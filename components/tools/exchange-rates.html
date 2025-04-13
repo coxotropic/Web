@@ -1,0 +1,944 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DE TASAS DE CAMBIO -->
+<div class="exchange-rates-container">
+    <!-- INICIO: CABECERA DE TASAS DE CAMBIO -->
+    <div class="section-header flex justify-between items-center mb-6">
+        <div>
+            <h1 class="text-2xl font-bold">Tasas de Cambio</h1>
+            <p class="text-gray-600 dark:text-gray-400">Tasas actualizadas entre criptomonedas y divisas fiat</p>
+        </div>
+        <div class="flex space-x-2">
+            <button class="btn btn-primary flex items-center" id="refresh-rates-btn">
+                <i class="icon-refresh-cw mr-1"></i> Actualizar
+            </button>
+            <button class="btn btn-outline flex items-center" id="export-rates-btn">
+                <i class="icon-download mr-1"></i> Exportar
+            </button>
+            <div class="dropdown">
+                <button class="btn btn-outline dropdown-toggle" id="time-dropdown-btn">
+                    <i class="icon-clock mr-1"></i> Tiempo Real
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="#" class="dropdown-item active" data-time="live">Tiempo Real</a>
+                    <a href="#" class="dropdown-item" data-time="1m">Promedio 1 min</a>
+                    <a href="#" class="dropdown-item" data-time="5m">Promedio 5 min</a>
+                    <a href="#" class="dropdown-item" data-time="15m">Promedio 15 min</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: CABECERA DE TASAS DE CAMBIO -->
+    
+    <!-- INICIO: CONVERSOR MULTI-MONEDA -->
+    <div class="card mb-6">
+        <div class="card-header">
+            <h2 class="card-title flex items-center">
+                <i class="icon-repeat mr-2"></i> Conversor Multi-Moneda
+            </h2>
+        </div>
+        <div class="card-body">
+            <div class="converter-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Fila 1: Primera conversiÃ³n -->
+                <div class="converter-item">
+                    <div class="flex items-center mb-2">
+                        <input type="number" class="form-control flex-grow" value="1" min="0" step="0.000001" id="amount-1">
+                        <div class="currency-select ml-2">
+                            <select class="form-select" id="currency-from-1">
+                                <option value="BTC" selected>Bitcoin (BTC)</option>
+                                <option value="ETH">Ethereum (ETH)</option>
+                                <option value="SOL">Solana (SOL)</option>
+                                <option value="ADA">Cardano (ADA)</option>
+                                <option value="XRP">XRP (XRP)</option>
+                                <option value="DOT">Polkadot (DOT)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="equals-sign mx-2">=</div>
+                        <input type="number" class="form-control flex-grow" value="45230.65" readonly id="result-1">
+                        <div class="currency-select ml-2">
+                            <select class="form-select" id="currency-to-1">
+                                <option value="USD" selected>US Dollar (USD)</option>
+                                <option value="EUR">Euro (EUR)</option>
+                                <option value="GBP">British Pound (GBP)</option>
+                                <option value="JPY">Japanese Yen (JPY)</option>
+                                <option value="CNY">Chinese Yuan (CNY)</option>
+                                <option value="BTC">Bitcoin (BTC)</option>
+                                <option value="ETH">Ethereum (ETH)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fila 2: Segunda conversiÃ³n -->
+                <div class="converter-item">
+                    <div class="flex items-center mb-2">
+                        <input type="number" class="form-control flex-grow" value="1" min="0" step="0.000001" id="amount-2">
+                        <div class="currency-select ml-2">
+                            <select class="form-select" id="currency-from-2">
+                                <option value="BTC">Bitcoin (BTC)</option>
+                                <option value="ETH" selected>Ethereum (ETH)</option>
+                                <option value="SOL">Solana (SOL)</option>
+                                <option value="ADA">Cardano (ADA)</option>
+                                <option value="XRP">XRP (XRP)</option>
+                                <option value="DOT">Polkadot (DOT)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="equals-sign mx-2">=</div>
+                        <input type="number" class="form-control flex-grow" value="3256.78" readonly id="result-2">
+                        <div class="currency-select ml-2">
+                            <select class="form-select" id="currency-to-2">
+                                <option value="USD" selected>US Dollar (USD)</option>
+                                <option value="EUR">Euro (EUR)</option>
+                                <option value="GBP">British Pound (GBP)</option>
+                                <option value="JPY">Japanese Yen (JPY)</option>
+                                <option value="CNY">Chinese Yuan (CNY)</option>
+                                <option value="BTC">Bitcoin (BTC)</option>
+                                <option value="ETH">Ethereum (ETH)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fila 3: Tercera conversiÃ³n -->
+                <div class="converter-item">
+                    <div class="flex items-center mb-2">
+                        <input type="number" class="form-control flex-grow" value="1" min="0" step="0.01" id="amount-3">
+                        <div class="currency-select ml-2">
+                            <select class="form-select" id="currency-from-3">
+                                <option value="BTC">Bitcoin (BTC)</option>
+                                <option value="ETH">Ethereum (ETH)</option>
+                                <option value="SOL">Solana (SOL)</option>
+                                <option value="ADA">Cardano (ADA)</option>
+                                <option value="XRP">XRP (XRP)</option>
+                                <option value="DOT">Polkadot (DOT)</option>
+                                <option value="USD" selected>US Dollar (USD)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="equals-sign mx-2">=</div>
+                        <input type="number" class="form-control flex-grow" value="0.000022" readonly id="result-3">
+                        <div class="currency-select ml-2">
+                            <select class="form-select" id="currency-to-3">
+                                <option value="USD">US Dollar (USD)</option>
+                                <option value="EUR">Euro (EUR)</option>
+                                <option value="GBP">British Pound (GBP)</option>
+                                <option value="JPY">Japanese Yen (JPY)</option>
+                                <option value="CNY">Chinese Yuan (CNY)</option>
+                                <option value="BTC" selected>Bitcoin (BTC)</option>
+                                <option value="ETH">Ethereum (ETH)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-between items-center mt-4">
+                <div class="conversion-info text-sm text-gray-600 dark:text-gray-400">
+                    <span>Ãšltima actualizaciÃ³n: <span id="last-update-time">hace 5 segundos</span></span>
+                </div>
+                <div class="conversion-actions">
+                    <button class="btn btn-sm btn-outline" id="add-conversion-btn">
+                        <i class="icon-plus"></i> AÃ±adir conversiÃ³n
+                    </button>
+                    <button class="btn btn-sm btn-outline" id="reset-conversions-btn">
+                        <i class="icon-refresh-cw"></i> Reiniciar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: CONVERSOR MULTI-MONEDA -->
+    
+    <!-- INICIO: NAVEGACIÃ“N DE TASAS DE CAMBIO -->
+    <div class="rates-navigation">
+        <ul class="nav-tabs flex border-b">
+            <li class="nav-item">
+                <a href="#market-rates" class="nav-link active flex items-center px-4 py-2 border-b-2 border-blue-500" data-tab="market-rates">
+                    <i class="icon-globe mr-1"></i> Tasas de Mercado
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#historical-rates" class="nav-link flex items-center px-4 py-2" data-tab="historical-rates">
+                    <i class="icon-clock mr-1"></i> HistÃ³ricas
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#exchange-comparison" class="nav-link flex items-center px-4 py-2" data-tab="exchange-comparison">
+                    <i class="icon-bar-chart-2 mr-1"></i> Comparativa
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#favorites" class="nav-link flex items-center px-4 py-2" data-tab="favorites">
+                    <i class="icon-star mr-1"></i> Favoritos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#alerts" class="nav-link flex items-center px-4 py-2" data-tab="alerts">
+                    <i class="icon-bell mr-1"></i> Alertas
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- FIN: NAVEGACIÃ“N DE TASAS DE CAMBIO -->
+    
+    <!-- INICIO: CONTENIDO DE TASAS DE CAMBIO -->
+    <div class="rates-content mt-4">
+        <!-- INICIO: TASAS DE MERCADO -->
+        <div class="rates-tab-content active" id="market-rates">
+            <!-- INICIO: FILTROS DE TASAS -->
+            <div class="rates-filters flex flex-wrap items-center justify-between mb-4">
+                <div class="filters-left flex items-center space-x-2">
+                    <div class="base-currency">
+                        <label class="text-sm mb-1 block">Moneda Base:</label>
+                        <select class="form-select form-select-sm" id="base-currency-select">
+                            <option value="USD" selected>USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="BTC">BTC</option>
+                            <option value="ETH">ETH</option>
+                        </select>
+                    </div>
+                    
+                    <div class="currency-type ml-2">
+                        <label class="text-sm mb-1 block">Tipo:</label>
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-outline active" data-type="all">Todas</button>
+                            <button class="btn btn-sm btn-outline" data-type="crypto">Crypto</button>
+                            <button class="btn btn-sm btn-outline" data-type="fiat">Fiat</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filters-right flex items-center">
+                    <div class="search-filter">
+                        <div class="input-with-icon">
+                            <i class="icon-search input-icon"></i>
+                            <input type="text" class="form-control form-control-sm" placeholder="Buscar moneda..." id="currency-search">
+                        </div>
+                    </div>
+                    
+                    <div class="sort-filter ml-2">
+                        <select class="form-select form-select-sm" id="sort-select">
+                            <option value="name-asc">Nombre (A-Z)</option>
+                            <option value="name-desc">Nombre (Z-A)</option>
+                            <option value="rate-asc">Tasa (menor a mayor)</option>
+                            <option value="rate-desc" selected>Tasa (mayor a menor)</option>
+                            <option value="change-asc">Cambio (menor a mayor)</option>
+                            <option value="change-desc">Cambio (mayor a menor)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN: FILTROS DE TASAS -->
+            
+            <!-- INICIO: TABLA DE TASAS DE CAMBIO -->
+            <div class="card">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="rates-table w-full">
+                            <thead>
+                                <tr class="text-left bg-gray-100 dark:bg-gray-800">
+                                    <th class="p-3 font-semibold">Moneda</th>
+                                    <th class="p-3 font-semibold">SÃ­mbolo</th>
+                                    <th class="p-3 font-semibold">Tasa (USD)</th>
+                                    <th class="p-3 font-semibold">Cambio 24h</th>
+                                    <th class="p-3 font-semibold">Volatilidad</th>
+                                    <th class="p-3 font-semibold">GrÃ¡fico 7d</th>
+                                    <th class="p-3 font-semibold text-right">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Bitcoin -->
+                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                    <td class="p-3">
+                                        <div class="flex items-center">
+                                            <div class="currency-icon mr-2">
+                                                <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/128/color/btc.png" alt="Bitcoin" class="w-6 h-6">
+                                            </div>
+                                            <div class="currency-name">Bitcoin</div>
+                                        </div>
+                                    </td>
+                                    <td class="p-3">BTC</td>
+                                    <td class="p-3 font-semibold">$45,230.65</td>
+                                    <td class="p-3">
+                                        <div class="change positive">
+                                            <i class="icon-trending-up"></i>
+                                            <span>+2.45%</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-3">
+                                        <div class="volatility-meter">
+                                            <div class="volatility-bar medium" style="width: 65%"></div>
+                                            <span class="volatility-value">Media</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-3">
+                                        <div class="spark-chart">
+                                            <svg class="sparkline positive" width="100" height="30" stroke-width="2">
+                                                <path d="M0,15 L10,10 L20,12 L30,8 L40,6 L50,15 L60,18 L70,14 L80,16 L90,12 L100,10" fill="none" stroke="currentColor" />
+                                            </svg>
+                                        </div>
+                                    </td>
+                                    <td class="p-3 text-right">
+                                        <div class="flex justify-end space-x-1">
+                                            <button class="btn btn-sm btn-icon" title="AÃ±adir a favoritos">
+                                                <i class="icon-star"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-icon" title="Configurar alerta">
+                                                <i class="icon-bell"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-icon" title="Ver detalles">
+                                                <i class="icon-more-horizontal"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Ethereum -->
+                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                    <td class="p-3">
+                                        <div class="flex items-center">
+                                            <div class="currency-icon mr-2">
+                                                <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/128/color/eth.png" alt="Ethereum" class="w-6 h-6">
+                                            </div>
+                                            <div class="currency-name">Ethereum</div>
+                                        </div>
+                                    </td>
+                                    <td class="p-3">ETH</td>
+                                    <td class="p-3 font-semibold">$3,256.78</td>
+                                    <td class="p-3">
+                                        <div class="change negative">
+                                            <i class="icon-trending-down"></i>
+                                            <span>-1.23%</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-3">
+                                        <div class="volatility-meter">
+                                            <div class="volatility-bar high" style="width: 78%"></div>
+                                            <span class="volatility-value">Alta</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-3">
+                                        <div class="spark-chart">
+                                            <svg class="sparkline negative" width="100" height="30" stroke-width="2">
+                                                <path d="M0,10 L10,12 L20,15 L30,12 L40,18 L50,14 L60,16 L70,20 L80,22 L90,19 L100,22" fill="none" stroke="currentColor" />
+                                            </svg>
+                                        </div>
+                                    </td>
+                                    <td class="p-3 text-right">
+                                        <div class="flex justify-end space-x-1">
+                                            <button class="btn btn-sm btn-icon" title="AÃ±adir a favoritos">
+                                                <i class="icon-star"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-icon" title="Configurar alerta">
+                                                <i class="icon-bell"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-icon" title="Ver detalles">
+                                                <i class="icon-more-horizontal"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Solana -->
+                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                    <td class="p-3">
+                                        <div class="flex items-center">
+                                            <div class="currency-icon mr-2">
+                                                <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/128/color/sol.png" alt="Solana" class="w-6 h-6">
+                                            </div>
+                                            <div class="currency-name">Solana</div>
+                                        </div>
+                                    </td>
+                                    <td class="p-3">SOL</td>
+                                    <td class="p-3 font-semibold">$98.32</td>
+                                    <td class="p-3">
+                                        <div class="change positive">
+                                            <i class="icon-trending-up"></i>
+                                            <span>+5.62%</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-3">
+                                        <div class="volatility-meter">
+                                            <div class="volatility-bar very-high" style="width: 92%"></div>
+                                            <span class="volatility-value">Muy Alta</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-3">
+                                        <div class="spark-chart">
+                                            <svg class="sparkline positive" width="100" height="30" stroke-width="2">
+                                                <path d="M0,20 L10,18 L20,22 L30,15 L40,10 L50,5 L60,8 L70,12 L80,10 L90,6 L100,8" fill="none" stroke="currentColor" />
+                                            </svg>
+                                        </div>
+                                    </td>
+                                    <td class="p-3 text-right">
+                                        <div class="flex justify-end space-x-1">
+                                            <button class="btn btn-sm btn-icon" title="AÃ±adir a favoritos">
+                                                <i class="icon-star"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-icon" title="Configurar alerta">
+                                                <i class="icon-bell"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-icon" title="Ver detalles">
+                                                <i class="icon-more-horizontal"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Euro -->
+                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                    <td class="p-3">
+                                        <div class="flex items-center">
+                                            <div class="currency-icon mr-2 flex items-center justify-center bg-gray-200 dark:bg-gray-700 rounded-full w-6 h-6">
+                                                <span class="text-sm font-bold">â‚¬</span>
+                                            </div>
+                                            <div class="currency-name">Euro</div>
+                                        </div>
+                                    </td>
+                                    <td class="p-3">EUR</td>
+                                    <td class="p-3 font-semibold">$1.08</td>
+                                    <td class="p-3">
+                                        <div class="change positive">
+                                            <i class="icon-trending-up"></i>
+                                            <span>+0.23%</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-3">
+                                        <div class="volatility-meter">
+                                            <div class="volatility-bar low" style="width: 25%"></div>
+                                            <span class="volatility-value">Baja</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-3">
+                                        <div class="spark-chart">
+                                            <svg class="sparkline positive" width="100" height="30" stroke-width="2">
+                                                <path d="M0,15 L10,15.2 L20,15.1 L30,15.3 L40,15.2 L50,15.4 L60,15.3 L70,15.5 L80,15.4 L90,15.6 L100,15.5" fill="none" stroke="currentColor" />
+                                            </svg>
+                                        </div>
+                                    </td>
+                                    <td class="p-3 text-right">
+                                        <div class="flex justify-end space-x-1">
+                                            <button class="btn btn-sm btn-icon" title="AÃ±adir a favoritos">
+                                                <i class="icon-star"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-icon" title="Configurar alerta">
+                                                <i class="icon-bell"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-icon" title="Ver detalles">
+                                                <i class="icon-more-horizontal"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                
+                                <!-- MÃ¡s filas de monedas... -->
+                                <!-- Se incluirÃ­an aquÃ­ en el producto final -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- PaginaciÃ³n -->
+                <div class="card-footer flex justify-between items-center p-3">
+                    <div class="pagination-info text-sm text-gray-600 dark:text-gray-400">
+                        Mostrando <span>1-10</span> de <span>120</span> monedas
+                    </div>
+                    <div class="pagination-controls flex">
+                        <button class="btn btn-sm btn-icon" disabled>
+                            <i class="icon-chevrons-left"></i>
+                        </button>
+                        <button class="btn btn-sm btn-icon" disabled>
+                            <i class="icon-chevron-left"></i>
+                        </button>
+                        <div class="pagination-pages flex mx-2">
+                            <button class="btn btn-sm btn-page active">1</button>
+                            <button class="btn btn-sm btn-page">2</button>
+                            <button class="btn btn-sm btn-page">3</button>
+                            <button class="btn btn-sm btn-page">4</button>
+                            <span class="pagination-separator">...</span>
+                            <button class="btn btn-sm btn-page">12</button>
+                        </div>
+                        <button class="btn btn-sm btn-icon">
+                            <i class="icon-chevron-right"></i>
+                        </button>
+                        <button class="btn btn-sm btn-icon">
+                            <i class="icon-chevrons-right"></i>
+                        </button>
+                    </div>
+                    <div class="pagination-size flex items-center">
+                        <span class="text-sm mr-2">Mostrar:</span>
+                        <select class="form-select form-select-sm">
+                            <option value="10" selected>10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN: TABLA DE TASAS DE CAMBIO -->
+        </div>
+        <!-- FIN: TASAS DE MERCADO -->
+        
+        <!-- INICIO: TASAS HISTÃ“RICAS -->
+        <div class="rates-tab-content" id="historical-rates">
+            <div class="card">
+                <div class="card-header flex flex-wrap justify-between items-center">
+                    <h3 class="card-title">Tasas de Cambio HistÃ³ricas</h3>
+                    <div class="historical-controls flex flex-wrap items-center space-x-2">
+                        <div class="currency-pair">
+                            <label class="text-sm mb-1 block">Par:</label>
+                            <div class="flex items-center">
+                                <select class="form-select form-select-sm" id="historical-from-currency">
+                                    <option value="BTC" selected>BTC</option>
+                                    <option value="ETH">ETH</option>
+                                    <option value="SOL">SOL</option>
+                                    <option value="ADA">ADA</option>
+                                </select>
+                                <span class="mx-2">/</span>
+                                <select class="form-select form-select-sm" id="historical-to-currency">
+                                    <option value="USD" selected>USD</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="GBP">GBP</option>
+                                    <option value="JPY">JPY</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="time-range">
+                            <label class="text-sm mb-1 block">Rango de tiempo:</label>
+                            <div class="flex">
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-outline" data-range="1d">1D</button>
+                                    <button class="btn btn-sm btn-outline" data-range="1w">1S</button>
+                                    <button class="btn btn-sm btn-outline active" data-range="1m">1M</button>
+                                    <button class="btn btn-sm btn-outline" data-range="3m">3M</button>
+                                    <button class="btn btn-sm btn-outline" data-range="1y">1A</button>
+                                    <button class="btn btn-sm btn-outline" data-range="all">Todo</button>
+                                </div>
+                                <button class="btn btn-sm btn-outline ml-2" id="custom-range-btn">
+                                    <i class="icon-calendar"></i> Personalizado
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="data-granularity">
+                            <label class="text-sm mb-1 block">Intervalo:</label>
+                            <select class="form-select form-select-sm" id="data-interval">
+                                <option value="1h">1 hora</option>
+                                <option value="4h">4 horas</option>
+                                <option value="1d" selected>1 dÃ­a</option>
+                                <option value="1w">1 semana</option>
+                                <option value="1m">1 mes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-body">
+                    <div class="historical-chart-container">
+                        <div class="chart-container" id="historical-chart">
+                            <!-- GrÃ¡fico histÃ³rico generado dinÃ¡micamente -->
+                            <div class="chart-placeholder h-64 bg-gray-100 dark:bg-gray-800 flex items-center justify-center rounded">
+                                <span class="text-gray-500 dark:text-gray-400">Cargando grÃ¡fico histÃ³rico...</span>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-stats grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+                            <div class="stat-card p-3 bg-gray-50 dark:bg-gray-800 rounded">
+                                <div class="stat-title text-gray-600 dark:text-gray-400 text-sm">Apertura</div>
+                                <div class="stat-value font-bold">$42,150.23</div>
+                                <div class="stat-date text-xs text-gray-500">01 May 2025</div>
+                            </div>
+                            
+                            <div class="stat-card p-3 bg-gray-50 dark:bg-gray-800 rounded">
+                                <div class="stat-title text-gray-600 dark:text-gray-400 text-sm">Cierre</div>
+                                <div class="stat-value font-bold">$45,230.65</div>
+                                <div class="stat-date text-xs text-gray-500">31 May 2025</div>
+                            </div>
+                            
+                            <div class="stat-card p-3 bg-gray-50 dark:bg-gray-800 rounded">
+                                <div class="stat-title text-gray-600 dark:text-gray-400 text-sm">MÃ­nimo</div>
+                                <div class="stat-value font-bold">$41,856.12</div>
+                                <div class="stat-date text-xs text-gray-500">10 May 2025</div>
+                            </div>
+                            
+                            <div class="stat-card p-3 bg-gray-50 dark:bg-gray-800 rounded">
+                                <div class="stat-title text-gray-600 dark:text-gray-400 text-sm">MÃ¡ximo</div>
+                                <div class="stat-value font-bold">$46,128.75</div>
+                                <div class="stat-date text-xs text-gray-500">25 May 2025</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="data-actions flex justify-between mt-4">
+                        <button class="btn btn-sm btn-outline flex items-center">
+                            <i class="icon-download mr-1"></i> Exportar Datos
+                        </button>
+                        <div class="chart-type-selector">
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-outline active" data-chart-type="line">
+                                    <i class="icon-trending-up"></i> LÃ­nea
+                                </button>
+                                <button class="btn btn-sm btn-outline" data-chart-type="candle">
+                                    <i class="icon-bar-chart-2"></i> Velas
+                                </button>
+                                <button class="btn btn-sm btn-outline" data-chart-type="area">
+                                    <i class="icon-layers"></i> Ãrea
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIN: TASAS HISTÃ“RICAS -->
+        
+        <!-- INICIO: COMPARACIÃ“N DE EXCHANGES -->
+        <div class="rates-tab-content" id="exchange-comparison">
+            <div class="card">
+                <div class="card-header flex justify-between items-center">
+                    <h3 class="card-title">Comparativa de Exchanges</h3>
+                    <div class="exchange-controls flex items-center space-x-2">
+                        <div class="comparison-pair">
+                            <label class="text-sm mb-1 block">Par a comparar:</label>
+                            <div class="flex items-center">
+                                <select class="form-select form-select-sm" id="comparison-from-currency">
+                                    <option value="BTC" selected>BTC</option>
+                                    <option value="ETH">ETH</option>
+                                    <option value="SOL">SOL</option>
+                                    <option value="ADA">ADA</option>
+                                </select>
+                                <span class="mx-2">/</span>
+                                <select class="form-select form-select-sm" id="comparison-to-currency">
+                                    <option value="USD" selected>USD</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="USDT">USDT</option>
+                                    <option value="BTC">BTC</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-sm btn-primary" id="compare-btn">
+                            <i class="icon-search mr-1"></i> Comparar
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="exchange-comparison-table w-full">
+                            <thead>
+                                <tr class="text-left bg-gray-100 dark:bg-gray-800">
+                                    <th class="p-3 font-semibold">Exchange</th>
+                                    <th class="p-3 font-semibold">Precio</th>
+                                    <th class="p-3 font-semibold">Diferencia</th>
+                                    <th class="p-3 font-semibold">Volumen 24h</th>
+                                    <th class="p-3 font-semibold">Spread</th>
+                                    <th class="p-3 font-semibold">Ãšltima actualizaciÃ³n</th>
+                                    <th class="p-3 font-semibold text-right">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Binance -->
+                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                    <td class="p-3">
+                                        <div class="flex items-center">
+                                            <img src="https://cdn.jsdelivr.net/npm/cryptocurrency-icons@0.18.1/svg/icon/bnb.svg" class="w-5 h-5 mr-2" alt="Binance">
+                                            <span>Binance</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-3 font-semibold">$45,230.65</td>
+                                    <td class="p-3">
+                                        <div class="tag best-price">Mejor precio</div>
+                                    </td>
+                                    <td class="p-3">$3.2B</td>
+                                    <td class="p-3">0.12%</td>
+                                    <td class="p-3">Hace 5 segundos</td>
+                                    <td class="p-3 text-right">
+                                        <a href="https://www.binance.com" target="_blank" class="btn btn-sm btn-outline">
+                                            <i class="icon-external-link mr-1"></i> Visitar
+                                        </a>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Coinbase -->
+                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                    <td class="p-3">
+                                        <div class="flex items-center">
+                                            <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/svg/color/generic.svg" class="w-5 h-5 mr-2" alt="Coinbase">
+                                            <span>Coinbase</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-3 font-semibold">$45,285.42</td>
+                                    <td class="p-3">
+                                        <div class="difference positive">+$54.77 (+0.12%)</div>
+                                    </td>
+                                    <td class="p-3">$1.8B</td>
+                                    <td class="p-3">0.25%</td>
+                                    <td class="p-3">Hace 8 segundos</td>
+                                    <td class="p-3 text-right">
+                                        <a href="https://www.coinbase.com" target="_blank" class="btn btn-sm btn-outline">
+                                            <i class="icon-external-link mr-1"></i> Visitar
+                                        </a>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Kraken -->
+                                <tr class="border-b border-gray-200 dark:border-gray-700">
+                                    <td class="p-3">
+                                        <div class="flex items-center">
+                                            <img src="https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons/svg/color/generic.svg" class="w-5 h-5 mr-2" alt="Kraken">
+                                            <span>Kraken</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-3 font-semibold">$45,212.18</td>
+                                    <td class="p-3">
+                                        <div class="difference negative">-$18.47 (-0.04%)</div>
+                                    </td>
+                                    <td class="p-3">$950M</td>
+                                    <td class="p-3">0.16%</td>
+                                    <td class="p-3">Hace 12 segundos</td>
+                                    <td class="p-3 text-right">
+                                        <a href="https://www.kraken.com" target="_blank" class="btn btn-sm btn-outline">
+                                            <i class="icon-external-link mr-1"></i> Visitar
+                                        </a>
+                                    </td>
+                                </tr>
+                                
+                                <!-- MÃ¡s exchanges... -->
+                                <!-- Se incluirÃ­an aquÃ­ en el producto final -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="comparison-chart mt-4">
+                        <h4 class="text-lg font-semibold mb-2">Comparativa GrÃ¡fica</h4>
+                        <div class="chart-container" id="exchange-comparison-chart">
+                            <!-- GrÃ¡fico de comparaciÃ³n generado dinÃ¡micamente -->
+                            <div class="chart-placeholder h-64 bg-gray-100 dark:bg-gray-800 flex items-center justify-center rounded">
+                                <span class="text-gray-500 dark:text-gray-400">Cargando comparativa entre exchanges...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-footer p-3">
+                    <div class="text-sm text-gray-600 dark:text-gray-400">
+                        <i class="icon-info mr-1"></i> Las diferencias de precio entre exchanges pueden ofrecer oportunidades de arbitraje, pero recuerda considerar las comisiones y tiempos de transferencia.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIN: COMPARACIÃ“N DE EXCHANGES -->
+        
+        <!-- INICIO: FAVORITOS -->
+        <div class="rates-tab-content" id="favorites">
+            <!-- Contenido de Favoritos -->
+            <div class="favorites-empty flex flex-col items-center justify-center p-8 bg-gray-50 dark:bg-gray-800 rounded">
+                <div class="empty-icon text-gray-300 dark:text-gray-600 mb-4">
+                    <i class="icon-star text-6xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">No tienes pares favoritos</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-center mb-4">Agrega pares de divisas a tus favoritos para acceder rÃ¡pidamente a ellos aquÃ­.</p>
+                <button class="btn btn-primary">
+                    <i class="icon-plus mr-1"></i> AÃ±adir Favoritos
+                </button>
+            </div>
+        </div>
+        <!-- FIN: FAVORITOS -->
+        
+        <!-- INICIO: ALERTAS -->
+        <div class="rates-tab-content" id="alerts">
+            <div class="card">
+                <div class="card-header flex justify-between items-center">
+                    <h3 class="card-title">Alertas de Tasas de Cambio</h3>
+                    <button class="btn btn-primary" id="create-rate-alert-btn">
+                        <i class="icon-plus mr-1"></i> Nueva Alerta
+                    </button>
+                </div>
+                
+                <div class="card-body">
+                    <div class="alerts-filters flex flex-wrap justify-between mb-4">
+                        <div class="filters-left flex items-center">
+                            <div class="status-filter">
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-outline active" data-status="all">Todas</button>
+                                    <button class="btn btn-sm btn-outline" data-status="active">Activas</button>
+                                    <button class="btn btn-sm btn-outline" data-status="triggered">Activadas</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="filters-right">
+                            <div class="search-filter">
+                                <div class="input-with-icon">
+                                    <i class="icon-search input-icon"></i>
+                                    <input type="text" class="form-control form-control-sm" placeholder="Buscar alertas..." id="alerts-search">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alerts-list">
+                        <!-- Lista de alertas vacÃ­a -->
+                        <div class="alerts-empty flex flex-col items-center justify-center p-8 bg-gray-50 dark:bg-gray-800 rounded">
+                            <div class="empty-icon text-gray-300 dark:text-gray-600 mb-4">
+                                <i class="icon-bell text-6xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-2">No tienes alertas configuradas</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-center mb-4">Configura alertas para recibir notificaciones cuando los pares alcancen precios especÃ­ficos.</p>
+                            <button class="btn btn-primary">
+                                <i class="icon-plus mr-1"></i> Crear Primera Alerta
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIN: ALERTAS -->
+    </div>
+    <!-- FIN: CONTENIDO DE TASAS DE CAMBIO -->
+</div>
+<!-- FIN: CONTENEDOR PRINCIPAL DE TASAS DE CAMBIO -->
+
+<!-- INICIO: MODAL DE ALERTA DE TASAS -->
+<div class="modal" id="rate-alert-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Nueva Alerta de Tasa</h3>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar">
+                    <i class="icon-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="rate-alert-form">
+                    <!-- Par de divisas -->
+                    <div class="form-group mb-4">
+                        <label for="alert-pair" class="form-label">Par de Divisas</label>
+                        <div class="flex items-center">
+                            <select class="form-control" id="alert-from-currency">
+                                <option value="BTC" selected>Bitcoin (BTC)</option>
+                                <option value="ETH">Ethereum (ETH)</option>
+                                <option value="SOL">Solana (SOL)</option>
+                                <option value="ADA">Cardano (ADA)</option>
+                                <option value="XRP">XRP (XRP)</option>
+                            </select>
+                            <span class="mx-2">/</span>
+                            <select class="form-control" id="alert-to-currency">
+                                <option value="USD" selected>US Dollar (USD)</option>
+                                <option value="EUR">Euro (EUR)</option>
+                                <option value="GBP">British Pound (GBP)</option>
+                                <option value="JPY">Japanese Yen (JPY)</option>
+                                <option value="BTC">Bitcoin (BTC)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Tipo de alerta -->
+                    <div class="form-group mb-4">
+                        <label class="form-label">Tipo de Alerta</label>
+                        <div class="alert-type-selector grid grid-cols-1 md:grid-cols-2 gap-2">
+                            <div class="alert-type-option">
+                                <input type="radio" id="alert-price-above" name="alert-type" value="price-above" checked>
+                                <label for="alert-price-above" class="alert-type-label flex items-center p-3 border rounded cursor-pointer">
+                                    <i class="icon-trending-up mr-2"></i>
+                                    <span>Precio por encima de</span>
+                                </label>
+                            </div>
+                            <div class="alert-type-option">
+                                <input type="radio" id="alert-price-below" name="alert-type" value="price-below">
+                                <label for="alert-price-below" class="alert-type-label flex items-center p-3 border rounded cursor-pointer">
+                                    <i class="icon-trending-down mr-2"></i>
+                                    <span>Precio por debajo de</span>
+                                </label>
+                            </div>
+                            <div class="alert-type-option">
+                                <input type="radio" id="alert-percent-change" name="alert-type" value="percent-change">
+                                <label for="alert-percent-change" class="alert-type-label flex items-center p-3 border rounded cursor-pointer">
+                                    <i class="icon-percent mr-2"></i>
+                                    <span>Cambio porcentual</span>
+                                </label>
+                            </div>
+                            <div class="alert-type-option">
+                                <input type="radio" id="alert-volatility" name="alert-type" value="volatility">
+                                <label for="alert-volatility" class="alert-type-label flex items-center p-3 border rounded cursor-pointer">
+                                    <i class="icon-activity mr-2"></i>
+                                    <span>Volatilidad</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Valor objetivo -->
+                    <div class="form-group mb-4">
+                        <label for="alert-value" class="form-label">Valor Objetivo</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="number" id="alert-value" class="form-control" min="0" step="0.01" value="50000" required>
+                        </div>
+                        <div class="form-text text-sm text-gray-600 dark:text-gray-400 mt-1">
+                            <div class="current-price-info">
+                                <span>Precio actual: </span>
+                                <span class="font-medium">$45,230.65</span>
+                                <span class="price-diff text-gray-500"> (necesita subir un 10.55%)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Opciones de notificaciÃ³n -->
+                    <div class="form-group mb-4">
+                        <label class="form-label">Recibir notificaciÃ³n vÃ­a</label>
+                        <div class="notification-methods grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <div class="form-check flex items-start">
+                                <input type="checkbox" class="form-check-input mt-1" id="notify-email" name="notification[]" value="email" checked>
+                                <label class="form-check-label ml-2" for="notify-email">
+                                    <div class="font-medium">Email</div>
+                                    <div class="text-xs text-gray-500">user@example.com</div>
+                                </label>
+                            </div>
+                            <div class="form-check flex items-start">
+                                <input type="checkbox" class="form-check-input mt-1" id="notify-browser" name="notification[]" value="browser" checked>
+                                <label class="form-check-label ml-2" for="notify-browser">
+                                    <div class="font-medium">Navegador</div>
+                                    <div class="text-xs text-gray-500">Notificaciones en tiempo real</div>
+                                </label>
+                            </div>
+                            <div class="form-check flex items-start">
+                                <input type="checkbox" class="form-check-input mt-1" id="notify-mobile" name="notification[]" value="mobile">
+                                <label class="form-check-label ml-2" for="notify-mobile">
+                                    <div class="font-medium">AplicaciÃ³n MÃ³vil</div>
+                                    <div class="text-xs text-gray-500">Requiere app instalada</div>
+                                </label>
+                            </div>
+                            <div class="form-check flex items-start">
+                                <input type="checkbox" class="form-check-input mt-1" id="notify-sms" name="notification[]" value="sms">
+                                <label class="form-check-label ml-2" for="notify-sms">
+                                    <div class="font-medium">SMS</div>
+                                    <div class="text-xs text-gray-500">Configura tu nÃºmero</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Notas (opcional) -->
+                    <div class="form-group mb-4">
+                        <label for="alert-notes" class="form-label">Notas (opcional)</label>
+                        <textarea id="alert-notes" class="form-control" rows="2" placeholder="AÃ±ade notas para recordar el propÃ³sito de esta alerta..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer flex justify-between">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="save-alert-btn">Guardar Alerta</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN: MODAL DE ALERTA DE TASAS -->

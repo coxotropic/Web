@@ -1,0 +1,847 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DE CALCULADORA DE IMPUESTOS -->
+<div class="tax-calculator-container">
+    <!-- INICIO: CABECERA DE CALCULADORA DE IMPUESTOS -->
+    <div class="tax-header">
+        <h1 class="section-title">Calculadora de Impuestos para Criptomonedas</h1>
+        <p class="section-subtitle">Calcula tus obligaciones fiscales derivadas de operaciones con criptomonedas</p>
+    </div>
+    <!-- FIN: CABECERA DE CALCULADORA DE IMPUESTOS -->
+    
+    <!-- INICIO: CONFIGURACIÃ“N FISCAL -->
+    <div class="tax-settings card">
+        <div class="card-header">
+            <h2 class="card-title"><i class="icon-settings"></i> ConfiguraciÃ³n Fiscal</h2>
+        </div>
+        <div class="card-body">
+            <div class="settings-grid">
+                <div class="form-group">
+                    <label for="tax-country" class="form-label">PaÃ­s / JurisdicciÃ³n Fiscal <i class="icon-info" data-tooltip="Selecciona tu paÃ­s de residencia fiscal para aplicar la normativa correspondiente"></i></label>
+                    <select id="tax-country" class="form-control">
+                        <option value="" disabled selected>Selecciona tu paÃ­s</option>
+                        <option value="ES">EspaÃ±a</option>
+                        <option value="MX">MÃ©xico</option>
+                        <option value="AR">Argentina</option>
+                        <option value="CO">Colombia</option>
+                        <option value="CL">Chile</option>
+                        <option value="PE">PerÃº</option>
+                        <option value="US">Estados Unidos</option>
+                        <option value="DE">Alemania</option>
+                        <option value="UK">Reino Unido</option>
+                        <option value="AU">Australia</option>
+                        <!-- MÃ¡s paÃ­ses -->
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tax-year" class="form-label">AÃ±o Fiscal <i class="icon-info" data-tooltip="PerÃ­odo fiscal para el cual estÃ¡s calculando tus impuestos"></i></label>
+                    <select id="tax-year" class="form-control">
+                        <option value="2025">2025</option>
+                        <option value="2024" selected>2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="accounting-method" class="form-label">MÃ©todo Contable <i class="icon-info" data-tooltip="El mÃ©todo que se utilizarÃ¡ para calcular el costo base de tus criptomonedas"></i></label>
+                    <select id="accounting-method" class="form-control">
+                        <option value="fifo" selected>FIFO (Primero en entrar, primero en salir)</option>
+                        <option value="lifo">LIFO (Ãšltimo en entrar, primero en salir)</option>
+                        <option value="hifo">HIFO (Mayor precio en entrar, primero en salir)</option>
+                        <option value="weighted">Promedio ponderado</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="currency" class="form-label">Moneda de PresentaciÃ³n</label>
+                    <select id="currency" class="form-control">
+                        <option value="USD">USD - DÃ³lar Estadounidense</option>
+                        <option value="EUR" selected>EUR - Euro</option>
+                        <option value="GBP">GBP - Libra Esterlina</option>
+                        <option value="AUD">AUD - DÃ³lar Australiano</option>
+                        <option value="CAD">CAD - DÃ³lar Canadiense</option>
+                        <option value="JPY">JPY - Yen JaponÃ©s</option>
+                        <!-- MÃ¡s monedas -->
+                    </select>
+                </div>
+            </div>
+            
+            <div class="tax-info-box" id="tax-jurisdiction-info">
+                <div class="info-icon"><i class="icon-alert-circle"></i></div>
+                <div class="info-content">
+                    <h3 class="info-title">InformaciÃ³n Fiscal para EspaÃ±a</h3>
+                    <p>En EspaÃ±a, las ganancias por inversiones en criptomonedas se consideran ganancias de capital y estÃ¡n sujetas al impuesto sobre la renta.</p>
+                    <ul class="info-list">
+                        <li>Ganancias a corto plazo (menos de 1 aÃ±o): Se suman a tu base imponible general</li>
+                        <li>Ganancias a largo plazo (mÃ¡s de 1 aÃ±o): TributaciÃ³n como parte de la base del ahorro</li>
+                        <li>Tramos impositivos para la base del ahorro: 19% hasta 6.000â‚¬, 21% de 6.000â‚¬ a 50.000â‚¬, 23% de 50.000â‚¬ a 200.000â‚¬, 26% para mÃ¡s de 200.000â‚¬</li>
+                    </ul>
+                    <p><strong>Nota:</strong> Esta informaciÃ³n es orientativa. Te recomendamos consultar con un asesor fiscal para tu caso particular.</p>
+                    <a href="/learn/tax-guides/spain" class="btn btn-sm btn-outline">Ver guÃ­a fiscal completa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: CONFIGURACIÃ“N FISCAL -->
+    
+    <!-- INICIO: IMPORTACIÃ“N DE TRANSACCIONES -->
+    <div class="transactions-import card">
+        <div class="card-header">
+            <h2 class="card-title"><i class="icon-upload"></i> Importar Transacciones</h2>
+        </div>
+        <div class="card-body">
+            <div class="import-options">
+                <div class="import-option">
+                    <div class="option-header">
+                        <h3 class="option-title"><i class="icon-file"></i> Importar desde archivo</h3>
+                    </div>
+                    <div class="option-content">
+                        <p>Importa todas tus transacciones desde un archivo CSV, Excel o directamente desde exchanges populares.</p>
+                        
+                        <div class="import-section">
+                            <label class="form-label">Archivo CSV/Excel</label>
+                            <div class="file-upload-container">
+                                <input type="file" id="transaction-file" class="file-input" accept=".csv, .xlsx, .xls">
+                                <label for="transaction-file" class="file-upload-label">
+                                    <i class="icon-upload-cloud"></i>
+                                    <span>Seleccionar Archivo</span>
+                                </label>
+                                <div class="file-name" id="file-name">NingÃºn archivo seleccionado</div>
+                            </div>
+                            <div class="file-formats">
+                                <a href="#" class="format-link">Ver formatos compatibles</a>
+                                <a href="/templates/tax-import-template.csv" class="format-link">Descargar plantilla</a>
+                            </div>
+                        </div>
+                        
+                        <div class="import-section">
+                            <label class="form-label">Importar desde Exchange</label>
+                            <div class="exchange-buttons">
+                                <button class="exchange-btn" data-exchange="binance">
+                                    <img src="assets/images/exchanges/binance.svg" alt="Binance" class="exchange-icon">
+                                    <span>Binance</span>
+                                </button>
+                                <button class="exchange-btn" data-exchange="coinbase">
+                                    <img src="assets/images/exchanges/coinbase.svg" alt="Coinbase" class="exchange-icon">
+                                    <span>Coinbase</span>
+                                </button>
+                                <button class="exchange-btn" data-exchange="kraken">
+                                    <img src="assets/images/exchanges/kraken.svg" alt="Kraken" class="exchange-icon">
+                                    <span>Kraken</span>
+                                </button>
+                                <button class="exchange-btn" data-exchange="kucoin">
+                                    <img src="assets/images/exchanges/kucoin.svg" alt="KuCoin" class="exchange-icon">
+                                    <span>KuCoin</span>
+                                </button>
+                                <button class="exchange-btn more-exchanges" data-exchange="more">
+                                    <i class="icon-plus"></i>
+                                    <span>MÃ¡s</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="import-actions">
+                            <button class="btn btn-primary" id="import-transactions-btn">
+                                <i class="icon-upload"></i> Importar Transacciones
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="import-option">
+                    <div class="option-header">
+                        <h3 class="option-title"><i class="icon-edit"></i> Entrada Manual</h3>
+                    </div>
+                    <div class="option-content">
+                        <p>AÃ±ade transacciones manualmente si prefieres tener control total sobre tus datos.</p>
+                        
+                        <button class="btn btn-outline" id="add-transaction-btn">
+                            <i class="icon-plus"></i> AÃ±adir TransacciÃ³n
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: IMPORTACIÃ“N DE TRANSACCIONES -->
+    
+    <!-- INICIO: LISTA DE TRANSACCIONES -->
+    <div class="transactions-list card">
+        <div class="card-header">
+            <h2 class="card-title"><i class="icon-list"></i> Transacciones</h2>
+            <div class="card-actions">
+                <div class="form-group mb-0">
+                    <div class="input-with-icon">
+                        <i class="icon-search input-icon"></i>
+                        <input type="text" class="form-control form-control-sm" placeholder="Buscar transacciones..." id="search-transactions">
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-outline dropdown-toggle" id="filter-dropdown-btn">
+                        <i class="icon-filter"></i> Filtros
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-header">Tipo de TransacciÃ³n</div>
+                        <div class="dropdown-item">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="filter-buy" checked>
+                                <label class="form-check-label" for="filter-buy">Compras</label>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="filter-sell" checked>
+                                <label class="form-check-label" for="filter-sell">Ventas</label>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="filter-exchange" checked>
+                                <label class="form-check-label" for="filter-exchange">Intercambios</label>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="filter-mining" checked>
+                                <label class="form-check-label" for="filter-mining">MinerÃ­a</label>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="filter-staking" checked>
+                                <label class="form-check-label" for="filter-staking">Staking</label>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-header">Periodo</div>
+                        <div class="dropdown-item">
+                            <div class="form-group mb-0">
+                                <label for="filter-date-from" class="form-label">Desde</label>
+                                <input type="date" id="filter-date-from" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <div class="form-group mb-0">
+                                <label for="filter-date-to" class="form-label">Hasta</label>
+                                <input type="date" id="filter-date-to" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-item">
+                            <button class="btn btn-sm btn-primary btn-block" id="apply-filters-btn">Aplicar Filtros</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-sm btn-outline" id="export-transactions-btn">
+                    <i class="icon-download"></i> Exportar
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="transactions-summary">
+                <div class="summary-item">
+                    <div class="summary-label">Total Transacciones</div>
+                    <div class="summary-value">24</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Compras</div>
+                    <div class="summary-value">12</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Ventas</div>
+                    <div class="summary-value">8</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Otros</div>
+                    <div class="summary-value">4</div>
+                </div>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="transactions-table" id="transactions-table">
+                    <thead>
+                        <tr>
+                            <th class="th-date sortable" data-sort="date">Fecha <i class="icon-chevron-down"></i></th>
+                            <th class="th-type">Tipo</th>
+                            <th class="th-asset">Activo</th>
+                            <th class="th-amount sortable" data-sort="amount">Cantidad <i class="icon-chevron-down"></i></th>
+                            <th class="th-price sortable" data-sort="price">Precio <i class="icon-chevron-down"></i></th>
+                            <th class="th-value sortable" data-sort="value">Valor Total <i class="icon-chevron-down"></i></th>
+                            <th class="th-exchange">Exchange/Wallet</th>
+                            <th class="th-actions"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- TransacciÃ³n 1: Compra de Bitcoin -->
+                        <tr>
+                            <td class="td-date">15/01/2024</td>
+                            <td class="td-type">
+                                <span class="transaction-type buy">Compra</span>
+                            </td>
+                            <td class="td-asset">
+                                <div class="asset-info">
+                                    <img src="assets/images/crypto/bitcoin.svg" alt="Bitcoin" class="asset-icon-sm">
+                                    <span>Bitcoin (BTC)</span>
+                                </div>
+                            </td>
+                            <td class="td-amount">0.5 BTC</td>
+                            <td class="td-price">â‚¬40,215.30</td>
+                            <td class="td-value">â‚¬20,107.65</td>
+                            <td class="td-exchange">Binance</td>
+                            <td class="td-actions">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-icon dropdown-toggle" aria-label="Acciones">
+                                        <i class="icon-more-horizontal"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a href="#" class="dropdown-item" data-action="edit">
+                                            <i class="icon-edit"></i> Editar
+                                        </a>
+                                        <a href="#" class="dropdown-item" data-action="duplicate">
+                                            <i class="icon-copy"></i> Duplicar
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="#" class="dropdown-item text-danger" data-action="delete">
+                                            <i class="icon-trash-2"></i> Eliminar
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- TransacciÃ³n 2: Venta de Bitcoin -->
+                        <tr>
+                            <td class="td-date">03/03/2024</td>
+                            <td class="td-type">
+                                <span class="transaction-type sell">Venta</span>
+                            </td>
+                            <td class="td-asset">
+                                <div class="asset-info">
+                                    <img src="assets/images/crypto/bitcoin.svg" alt="Bitcoin" class="asset-icon-sm">
+                                    <span>Bitcoin (BTC)</span>
+                                </div>
+                            </td>
+                            <td class="td-amount">0.2 BTC</td>
+                            <td class="td-price">â‚¬45,780.25</td>
+                            <td class="td-value">â‚¬9,156.05</td>
+                            <td class="td-exchange">Binance</td>
+                            <td class="td-actions">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-icon dropdown-toggle" aria-label="Acciones">
+                                        <i class="icon-more-horizontal"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <!-- Opciones similares a la transacciÃ³n 1 -->
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- TransacciÃ³n 3: Compra de Ethereum -->
+                        <tr>
+                            <td class="td-date">22/01/2024</td>
+                            <td class="td-type">
+                                <span class="transaction-type buy">Compra</span>
+                            </td>
+                            <td class="td-asset">
+                                <div class="asset-info">
+                                    <img src="assets/images/crypto/ethereum.svg" alt="Ethereum" class="asset-icon-sm">
+                                    <span>Ethereum (ETH)</span>
+                                </div>
+                            </td>
+                            <td class="td-amount">3.0 ETH</td>
+                            <td class="td-price">â‚¬2,345.80</td>
+                            <td class="td-value">â‚¬7,037.40</td>
+                            <td class="td-exchange">Coinbase</td>
+                            <td class="td-actions">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-icon dropdown-toggle" aria-label="Acciones">
+                                        <i class="icon-more-horizontal"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <!-- Opciones similares a las anteriores -->
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- TransacciÃ³n 4: Staking de Ethereum -->
+                        <tr>
+                            <td class="td-date">15/02/2024</td>
+                            <td class="td-type">
+                                <span class="transaction-type staking">Staking</span>
+                            </td>
+                            <td class="td-asset">
+                                <div class="asset-info">
+                                    <img src="assets/images/crypto/ethereum.svg" alt="Ethereum" class="asset-icon-sm">
+                                    <span>Ethereum (ETH)</span>
+                                </div>
+                            </td>
+                            <td class="td-amount">0.05 ETH</td>
+                            <td class="td-price">â‚¬2,530.45</td>
+                            <td class="td-value">â‚¬126.52</td>
+                            <td class="td-exchange">Lido</td>
+                            <td class="td-actions">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-icon dropdown-toggle" aria-label="Acciones">
+                                        <i class="icon-more-horizontal"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <!-- Opciones similares a las anteriores -->
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="pagination-container">
+                <div class="pagination-info">
+                    Mostrando <span>1-4</span> de <span>24</span> transacciones
+                </div>
+                <div class="pagination-controls">
+                    <button class="pagination-btn" disabled>
+                        <i class="icon-chevrons-left"></i>
+                    </button>
+                    <button class="pagination-btn" disabled>
+                        <i class="icon-chevron-left"></i>
+                    </button>
+                    <div class="pagination-pages">
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn">4</button>
+                        <button class="page-btn">5</button>
+                        <span class="page-separator">...</span>
+                        <button class="page-btn">6</button>
+                    </div>
+                    <button class="pagination-btn">
+                        <i class="icon-chevron-right"></i>
+                    </button>
+                    <button class="pagination-btn">
+                        <i class="icon-chevrons-right"></i>
+                    </button>
+                </div>
+                <div class="pagination-size">
+                    <select class="form-select form-select-sm" id="page-size-select">
+                        <option value="10">10</option>
+                        <option value="20" selected>20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    <span class="size-label">por pÃ¡gina</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: LISTA DE TRANSACCIONES -->
+    
+    <!-- INICIO: RESULTADOS FISCALES -->
+    <div class="tax-results card">
+        <div class="card-header">
+            <h2 class="card-title"><i class="icon-dollar-sign"></i> Resultados Fiscales</h2>
+            <div class="card-actions">
+                <button class="btn btn-sm btn-primary" id="calculate-taxes-btn">
+                    <i class="icon-refresh-cw"></i> Recalcular
+                </button>
+                <button class="btn btn-sm btn-outline" id="export-report-btn">
+                    <i class="icon-file-text"></i> Generar Informe
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="results-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="summary">
+                        <i class="icon-clipboard"></i> Resumen
+                    </button>
+                    <button class="tab-btn" data-tab="by-asset">
+                        <i class="icon-pie-chart"></i> Por Activo
+                    </button>
+                    <button class="tab-btn" data-tab="by-term">
+                        <i class="icon-clock"></i> Corto/Largo Plazo
+                    </button>
+                    <button class="tab-btn" data-tab="by-transaction">
+                        <i class="icon-list"></i> Por TransacciÃ³n
+                    </button>
+                </div>
+                
+                <div class="tab-content">
+                    <!-- INICIO: PESTAÃ‘A RESUMEN -->
+                    <div class="tab-pane active" id="summary-tab">
+                        <div class="summary-grid">
+                            <div class="summary-card gain-card">
+                                <div class="summary-header">
+                                    <h3 class="summary-title">Ganancias Totales</h3>
+                                    <div class="summary-icon positive">
+                                        <i class="icon-trending-up"></i>
+                                    </div>
+                                </div>
+                                <div class="summary-value">â‚¬8,500.52</div>
+                                <div class="summary-info">
+                                    <div class="info-label">Ganancias realizadas</div>
+                                </div>
+                            </div>
+                            
+                            <div class="summary-card loss-card">
+                                <div class="summary-header">
+                                    <h3 class="summary-title">PÃ©rdidas Totales</h3>
+                                    <div class="summary-icon negative">
+                                        <i class="icon-trending-down"></i>
+                                    </div>
+                                </div>
+                                <div class="summary-value">â‚¬1,250.30</div>
+                                <div class="summary-info">
+                                    <div class="info-label">PÃ©rdidas realizadas</div>
+                                </div>
+                            </div>
+                            
+                            <div class="summary-card net-gain-card">
+                                <div class="summary-header">
+                                    <h3 class="summary-title">Ganancia Neta</h3>
+                                    <div class="summary-icon positive">
+                                        <i class="icon-dollar-sign"></i>
+                                    </div>
+                                </div>
+                                <div class="summary-value">â‚¬7,250.22</div>
+                                <div class="summary-info">
+                                    <div class="info-label">Resultado neto</div>
+                                </div>
+                            </div>
+                            
+                            <div class="summary-card tax-card">
+                                <div class="summary-header">
+                                    <h3 class="summary-title">Impuesto Estimado</h3>
+                                    <div class="summary-icon">
+                                        <i class="icon-percent"></i>
+                                    </div>
+                                </div>
+                                <div class="summary-value">â‚¬1,522.55</div>
+                                <div class="summary-info">
+                                    <div class="info-rate">Tasa efectiva: 21%</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="result-charts">
+                            <div class="chart-container">
+                                <h3 class="chart-title">DistribuciÃ³n de Ganancias/PÃ©rdidas</h3>
+                                <div class="chart-wrapper" id="gains-losses-chart">
+                                    <!-- GrÃ¡fico generado dinÃ¡micamente -->
+                                    <div class="chart-placeholder">Cargando grÃ¡fico...</div>
+                                </div>
+                            </div>
+                            
+                            <div class="chart-container">
+                                <h3 class="chart-title">DistribuciÃ³n por PerÃ­odo</h3>
+                                <div class="chart-wrapper" id="term-distribution-chart">
+                                    <!-- GrÃ¡fico generado dinÃ¡micamente -->
+                                    <div class="chart-placeholder">Cargando grÃ¡fico...</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tax-brackets">
+                            <h3 class="section-subtitle">Tramos Impositivos Aplicados</h3>
+                            <div class="table-responsive">
+                                <table class="brackets-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Tipo de Ganancia</th>
+                                            <th>Base Imponible</th>
+                                            <th>Tasa Aplicada</th>
+                                            <th>Impuesto Resultante</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Ganancias a Corto Plazo</td>
+                                            <td>â‚¬2,850.45</td>
+                                            <td>24%</td>
+                                            <td>â‚¬684.11</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ganancias a Largo Plazo</td>
+                                            <td>â‚¬4,399.77</td>
+                                            <td>19%</td>
+                                            <td>â‚¬835.96</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ingresos por Staking/Mining</td>
+                                            <td>â‚¬126.52</td>
+                                            <td>21%</td>
+                                            <td>â‚¬26.57</td>
+                                        </tr>
+                                        <tr class="total-row">
+                                            <td><strong>Totales</strong></td>
+                                            <td><strong>â‚¬7,376.74</strong></td>
+                                            <td><strong>21%</strong> (promedio)</td>
+                                            <td><strong>â‚¬1,522.55</strong></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FIN: PESTAÃ‘A RESUMEN -->
+                    
+                    <!-- INICIO: PESTAÃ‘A POR ACTIVO -->
+                    <div class="tab-pane" id="by-asset-tab">
+                        <!-- Contenido similar al resumen pero organizado por activo -->
+                        <!-- Se omite por brevedad -->
+                    </div>
+                    <!-- FIN: PESTAÃ‘A POR ACTIVO -->
+                    
+                    <!-- INICIO: PESTAÃ‘A CORTO/LARGO PLAZO -->
+                    <div class="tab-pane" id="by-term-tab">
+                        <!-- Contenido similar al resumen pero organizado por periodo -->
+                        <!-- Se omite por brevedad -->
+                    </div>
+                    <!-- FIN: PESTAÃ‘A CORTO/LARGO PLAZO -->
+                    
+                    <!-- INICIO: PESTAÃ‘A POR TRANSACCIÃ“N -->
+                    <div class="tab-pane" id="by-transaction-tab">
+                        <!-- Detalle de impuestos por cada transacciÃ³n -->
+                        <!-- Se omite por brevedad -->
+                    </div>
+                    <!-- FIN: PESTAÃ‘A POR TRANSACCIÃ“N -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: RESULTADOS FISCALES -->
+    
+    <!-- INICIO: INSTRUCCIONES PARA DECLARACIÃ“N -->
+    <div class="tax-instructions card">
+        <div class="card-header">
+            <h2 class="card-title"><i class="icon-file-text"></i> Instrucciones para la DeclaraciÃ³n</h2>
+        </div>
+        <div class="card-body">
+            <div class="instructions-content">
+                <div class="tax-form-info">
+                    <h3 class="info-title">Para contribuyentes en EspaÃ±a (Ejercicio 2024)</h3>
+                    <p>Para declarar correctamente tus ganancias y pÃ©rdidas en criptomonedas, deberÃ¡s seguir estos pasos en tu declaraciÃ³n de la Renta:</p>
+                    
+                    <div class="form-instructions">
+                        <h4 class="instructions-subtitle">Modelo 100 - DeclaraciÃ³n de la Renta:</h4>
+                        <ol class="instructions-list">
+                            <li>
+                                <strong>Ganancias y pÃ©rdidas patrimoniales:</strong> En el apartado "Ganancias y pÃ©rdidas patrimoniales derivadas de transmisiones de otros elementos patrimoniales" (casillas 1624-1636)
+                            </li>
+                            <li>
+                                <strong>Para cada operaciÃ³n:</strong> DeberÃ¡s indicar descripciÃ³n, fecha de adquisiciÃ³n, fecha de transmisiÃ³n, valor de adquisiciÃ³n y valor de transmisiÃ³n.
+                            </li>
+                            <li>
+                                <strong>Ingresos por minerÃ­a o staking:</strong> Se declaran como rendimientos de capital mobiliario (casillas 0025-0036).
+                            </li>
+                        </ol>
+                        
+                        <div class="form-note">
+                            <div class="note-icon"><i class="icon-alert-circle"></i></div>
+                            <div class="note-content">
+                                <p>Recuerda que debes conservar todos los justificantes de tus operaciones durante un perÃ­odo de 4 aÃ±os, ya que la AdministraciÃ³n Tributaria podrÃ­a solicitarlos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="actions-container">
+                        <button class="btn btn-primary" id="generate-tax-forms-btn">
+                            <i class="icon-file-text"></i> Generar Formularios
+                        </button>
+                        <a href="/learn/tax-guides/spain/detailed" class="btn btn-outline">
+                            <i class="icon-book-open"></i> GuÃ­a Fiscal Detallada
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: INSTRUCCIONES PARA DECLARACIÃ“N -->
+</div>
+<!-- FIN: CONTENEDOR PRINCIPAL DE CALCULADORA DE IMPUESTOS -->
+
+<!-- INICIO: MODAL PARA AÃ‘ADIR/EDITAR TRANSACCIÃ“N -->
+<div class="modal" id="transaction-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">AÃ±adir TransacciÃ³n</h3>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar">
+                    <i class="icon-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="transaction-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="transaction-type" class="form-label">Tipo de TransacciÃ³n</label>
+                            <select id="transaction-type" class="form-control" required>
+                                <option value="" disabled selected>Seleccionar tipo</option>
+                                <option value="buy">Compra</option>
+                                <option value="sell">Venta</option>
+                                <option value="exchange">Intercambio</option>
+                                <option value="mining">MinerÃ­a</option>
+                                <option value="staking">Staking</option>
+                                <option value="airdrop">Airdrop</option>
+                                <option value="gift">Regalo</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="transaction-date" class="form-label">Fecha</label>
+                            <input type="date" id="transaction-date" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="asset-select" class="form-label">Criptomoneda</label>
+                        <select id="asset-select" class="form-control" required>
+                            <option value="" disabled selected>Seleccionar criptomoneda</option>
+                            <option value="BTC">Bitcoin (BTC)</option>
+                            <option value="ETH">Ethereum (ETH)</option>
+                            <option value="SOL">Solana (SOL)</option>
+                            <option value="ADA">Cardano (ADA)</option>
+                            <option value="BNB">Binance Coin (BNB)</option>
+                            <option value="XRP">XRP</option>
+                            <option value="DOT">Polkadot (DOT)</option>
+                            <option value="DOGE">Dogecoin (DOGE)</option>
+                            <option value="AVAX">Avalanche (AVAX)</option>
+                            <option value="LINK">Chainlink (LINK)</option>
+                            <!-- MÃ¡s opciones -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="transaction-amount" class="form-label">Cantidad</label>
+                            <input type="number" id="transaction-amount" class="form-control" placeholder="0.00" step="0.00000001" min="0" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="transaction-price" class="form-label">Precio por unidad</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">â‚¬</span>
+                                </div>
+                                <input type="number" id="transaction-price" class="form-control" placeholder="0.00" step="0.01" min="0" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="transaction-total" class="form-label">Valor Total</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">â‚¬</span>
+                            </div>
+                            <input type="number" id="transaction-total" class="form-control" placeholder="0.00" step="0.01" min="0" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="transaction-fee" class="form-label">ComisiÃ³n (opcional)</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">â‚¬</span>
+                            </div>
+                            <input type="number" id="transaction-fee" class="form-control" placeholder="0.00" step="0.01" min="0">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="transaction-exchange" class="form-label">Exchange/Wallet</label>
+                        <input type="text" id="transaction-exchange" class="form-control" placeholder="Binance, Coinbase, etc.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="transaction-notes" class="form-label">Notas (opcional)</label>
+                        <textarea id="transaction-notes" class="form-control" rows="2" placeholder="Notas adicionales sobre esta transacciÃ³n..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="save-transaction-btn">Guardar TransacciÃ³n</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN: MODAL PARA AÃ‘ADIR/EDITAR TRANSACCIÃ“N -->
+
+<!-- INICIO: MODAL PARA EXPORTAR INFORME -->
+<div class="modal" id="export-report-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Exportar Informe Fiscal</h3>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar">
+                    <i class="icon-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="export-options">
+                    <h4 class="options-title">Formato del Informe</h4>
+                    <div class="format-options">
+                        <div class="format-option">
+                            <input type="radio" id="format-pdf" name="export-format" value="pdf" checked>
+                            <label for="format-pdf" class="format-label">
+                                <i class="icon-file-text"></i>
+                                <span>PDF</span>
+                                <span class="format-desc">Informe completo en formato PDF</span>
+                            </label>
+                        </div>
+                        
+                        <div class="format-option">
+                            <input type="radio" id="format-excel" name="export-format" value="excel">
+                            <label for="format-excel" class="format-label">
+                                <i class="icon-file"></i>
+                                <span>Excel</span>
+                                <span class="format-desc">Datos en formato editable Excel</span>
+                            </label>
+                        </div>
+                        
+                        <div class="format-option">
+                            <input type="radio" id="format-csv" name="export-format" value="csv">
+                            <label for="format-csv" class="format-label">
+                                <i class="icon-file"></i>
+                                <span>CSV</span>
+                                <span class="format-desc">Datos en formato CSV</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <h4 class="options-title">Contenido del Informe</h4>
+                    <div class="content-options">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="include-summary" checked>
+                            <label class="form-check-label" for="include-summary">Resumen de ganancias/pÃ©rdidas</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="include-transactions" checked>
+                            <label class="form-check-label" for="include-transactions">Listado de transacciones</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="include-tax-forms" checked>
+                            <label class="form-check-label" for="include-tax-forms">InformaciÃ³n para formularios fiscales</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="include-charts" checked>
+                            <label class="form-check-label" for="include-charts">GrÃ¡ficos y visualizaciones</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="generate-report-btn">
+                    <i class="icon-download"></i> Generar y Descargar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN: MODAL PARA EXPORTAR INFORME -->

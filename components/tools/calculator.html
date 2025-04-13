@@ -1,0 +1,80 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DE CALCULADORAS -->
+<div class="calculator-container">
+    <!-- INICIO: CABECERA DE CALCULADORAS -->
+    <div class="calculator-header">
+        <h1 class="section-title">Calculadoras de Inversión</h1>
+        <p class="section-subtitle">Herramientas para planificar y evaluar tus inversiones en criptomonedas</p>
+    </div>
+    <!-- FIN: CABECERA DE CALCULADORAS -->
+    
+    <!-- INICIO: NAVEGACIÓN DE CALCULADORAS -->
+    <div class="calculator-navigation">
+        <ul class="calculator-tabs">
+            <li class="tab-item active">
+                <a href="#converter-tab" class="tab-link" data-tab="converter">
+                    <i class="icon-repeat"></i>
+                    <span class="tab-label">Conversor</span>
+                </a>
+            </li>
+            <li class="tab-item">
+                <a href="#profit-loss-tab" class="tab-link" data-tab="profit-loss">
+                    <i class="icon-dollar-sign"></i>
+                    <span class="tab-label">Ganancias/Pérdidas</span>
+                </a>
+            </li>
+            <li class="tab-item">
+                <a href="#dca-tab" class="tab-link" data-tab="dca">
+                    <i class="icon-calendar"></i>
+                    <span class="tab-label">DCA</span>
+                </a>
+            </li>
+            <li class="tab-item">
+                <a href="#staking-tab" class="tab-link" data-tab="staking">
+                    <i class="icon-percent"></i>
+                    <span class="tab-label">Staking</span>
+                </a>
+            </li>
+            <li class="tab-item">
+                <a href="#projection-tab" class="tab-link" data-tab="projection">
+                    <i class="icon-trending-up"></i>
+                    <span class="tab-label">Proyección</span>
+                </a>
+            </li>
+            <li class="tab-item">
+                <a href="#tax-tab" class="tab-link" data-tab="tax">
+                    <i class="icon-file-text"></i>
+                    <span class="tab-label">Impuestos</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- FIN: NAVEGACIÓN DE CALCULADORAS -->
+    
+    <!-- INICIO: CONTENIDO DE CALCULADORAS -->
+    <div class="calculator-content">
+        <!-- INICIO: TAB CONVERSOR -->
+        <div class="calculator-tab active" id="converter-tab">
+            <div class="calculator-intro">
+                <h2 class="calculator-title">Conversor de Criptomonedas</h2>
+                <p class="calculator-description">Convierte fácilmente entre diferentes criptomonedas o a monedas fiduciarias (FIAT).</p>
+            </div>
+            
+            <div class="calculator-card card">
+                <div class="card-body">
+                    <form class="converter-form" id="converter-form">
+                        <!-- From Currency -->
+                        <div class="form-row">
+                            <div class="form-group col-flex-grow">
+                                <label for="from-amount" class="form-label">Cantidad</label>
+                                <input 
+                                    type="number" 
+                                    id="from-amount" 
+                                    class="form-control" 
+                                    value="1" 
+                                    min="0" 
+                                    step="0.000001" 
+                                    required
+                                >
+                            </div>
+                            
+                            <div class="form-group col-sm

@@ -1,0 +1,581 @@
+<!-- INICIO: COMPONENTE ÍNDICE DE MIEDO Y CODICIA -->
+<div class="fear-greed-container bg-gray-100 dark:bg-gray-800 rounded-xl p-4 md:p-6 mb-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    
+    <!-- INICIO: CABECERA DEL COMPONENTE -->
+    <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+        <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white">Índice de Miedo y Codicia</h2>
+            <p class="text-gray-600 dark:text-gray-300">Análisis del sentimiento actual del mercado</p>
+        </div>
+        
+        <!-- Selector modo Novato/Pro -->
+        <div class="mt-4 md:mt-0 bg-white dark:bg-gray-700 rounded-lg shadow-sm">
+            <div class="relative inline-flex">
+                <button id="novice-mode-btn" class="px-4 py-2 text-sm font-medium rounded-l-lg bg-blue-500 text-white">Modo Novato</button>
+                <button id="pro-mode-btn" class="px-4 py-2 text-sm font-medium rounded-r-lg bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200">Modo Pro</button>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: CABECERA DEL COMPONENTE -->
+
+    <!-- INICIO: SECCIÓN PRINCIPAL - MEDIDOR -->
+    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md p-4 md:p-6 mb-6">
+        <div class="flex flex-col md:flex-row items-center">
+            <!-- Medidor visual -->
+            <div class="w-full md:w-1/2 flex justify-center mb-6 md:mb-0">
+                <div class="relative">
+                    <!-- Gauge background -->
+                    <div class="w-64 h-32 overflow-hidden">
+                        <div class="w-64 h-64 rounded-full bg-gradient-to-r from-red-500 via-yellow-300 to-green-500 relative -top-32">
+                        </div>
+                    </div>
+                    
+                    <!-- Gauge needle -->
+                    <div id="gauge-needle" class="absolute left-32 top-0 w-1 h-32 bg-gray-800 dark:bg-white origin-bottom transform -rotate-12"></div>
+                    
+                    <!-- Gauge value -->
+                    <div class="absolute top-12 left-0 right-0 text-center">
+                        <div id="fear-greed-value" class="text-4xl font-bold text-gray-800 dark:text-white">65</div>
+                        <div id="fear-greed-label" class="text-xl font-semibold text-yellow-500">Codicia</div>
+                    </div>
+                    
+                    <!-- Gauge labels -->
+                    <div class="w-full flex justify-between px-2 mt-2">
+                        <span class="text-xs text-red-500 font-semibold">Miedo<br>Extremo</span>
+                        <span class="text-xs text-red-400 font-semibold">Miedo</span>
+                        <span class="text-xs text-yellow-500 font-semibold">Neutral</span>
+                        <span class="text-xs text-green-400 font-semibold">Codicia</span>
+                        <span class="text-xs text-green-500 font-semibold">Codicia<br>Extrema</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Información actual -->
+            <div class="w-full md:w-1/2 md:pl-6">
+                <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-3">Estado Actual del Mercado</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">El índice de miedo y codicia actual indica <span id="market-sentiment" class="font-semibold text-yellow-500">CODICIA</span>, lo que sugiere que los inversores están optimistas, pero hay que tener precaución.</p>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-gray-100 dark:bg-gray-600 p-3 rounded-lg">
+                        <div class="text-sm text-gray-500 dark:text-gray-400">Actualización</div>
+                        <div id="last-update" class="font-medium text-gray-800 dark:text-white">10-Mar-2025</div>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-600 p-3 rounded-lg">
+                        <div class="text-sm text-gray-500 dark:text-gray-400">Cambio desde ayer</div>
+                        <div id="daily-change" class="font-medium text-green-500">+5 pts</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: SECCIÓN PRINCIPAL - MEDIDOR -->
+    
+    <!-- INICIO: SECCIÓN DE EXPLICACIÓN -->
+    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md p-4 md:p-6 mb-6">
+        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">¿Qué es el Índice de Miedo y Codicia?</h3>
+        
+        <div class="novice-content">
+            <p class="text-gray-600 dark:text-gray-300 mb-4">El Índice de Miedo y Codicia es una herramienta que mide el sentimiento del mercado de criptomonedas en una escala de 0 a 100:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-red-100 dark:bg-red-900/20 p-4 rounded-lg">
+                    <div class="flex items-center mb-2">
+                        <div class="w-4 h-4 rounded-full bg-red-500 mr-2"></div>
+                        <h4 class="font-semibold text-red-800 dark:text-red-300">0-25: Miedo Extremo</h4>
+                    </div>
+                    <p class="text-sm text-gray-700 dark:text-gray-300">Los inversores están muy asustados. Puede ser un buen momento para comprar.</p>
+                </div>
+                
+                <div class="bg-yellow-100 dark:bg-yellow-900/20 p-4 rounded-lg">
+                    <div class="flex items-center mb-2">
+                        <div class="w-4 h-4 rounded-full bg-yellow-500 mr-2"></div>
+                        <h4 class="font-semibold text-yellow-800 dark:text-yellow-300">26-75: Neutral</h4>
+                    </div>
+                    <p class="text-sm text-gray-700 dark:text-gray-300">El mercado está indeciso. Es recomendable observar y analizar tendencias.</p>
+                </div>
+                
+                <div class="bg-green-100 dark:bg-green-900/20 p-4 rounded-lg">
+                    <div class="flex items-center mb-2">
+                        <div class="w-4 h-4 rounded-full bg-green-500 mr-2"></div>
+                        <h4 class="font-semibold text-green-800 dark:text-green-300">76-100: Codicia Extrema</h4>
+                    </div>
+                    <p class="text-sm text-gray-700 dark:text-gray-300">El mercado está sobrecomprado. Puede ser un buen momento para vender.</p>
+                </div>
+            </div>
+            
+            <p class="text-gray-600 dark:text-gray-300">Este índice se calcula utilizando múltiples fuentes de datos como volatilidad del mercado, volumen de operaciones, tendencias en redes sociales, encuestas y dominio de Bitcoin en el mercado.</p>
+        </div>
+        
+        <div class="pro-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">El Índice de Miedo y Codicia es un indicador contrario que mide el sentimiento del mercado basado en múltiples factores ponderados:</p>
+                    
+                    <ul class="list-disc pl-5 text-gray-600 dark:text-gray-300 space-y-2">
+                        <li><span class="font-semibold">Volatilidad (25%)</span>: Mide los movimientos de precios actuales comparados con promedios.</li>
+                        <li><span class="font-semibold">Momentum/Volumen (25%)</span>: Analiza volumen de trading y velocidad de cambios.</li>
+                        <li><span class="font-semibold">Redes Sociales (15%)</span>: Analiza hashtags y sentimiento en plataformas como Twitter.</li>
+                        <li><span class="font-semibold">Dominio (10%)</span>: Participación del mercado de Bitcoin vs. altcoins.</li>
+                        <li><span class="font-semibold">Tendencias (10%)</span>: Búsquedas en Google y comportamiento de búsqueda.</li>
+                        <li><span class="font-semibold">Encuestas (15%)</span>: Sentimiento directo de inversores e instituciones.</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">Interpretación Avanzada</h4>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">El valor del índice debe analizarse junto con otros indicadores técnicos:</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 dark:bg-blue-900/30 p-2 rounded">
+                                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-gray-600 dark:text-gray-300">Cuando el índice es bajo pero el precio forma un doble suelo, puede ser una señal alcista más fuerte.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 dark:bg-blue-900/30 p-2 rounded">
+                                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-gray-600 dark:text-gray-300">En mercados alcistas establecidos, valores de miedo moderado (30-40) pueden ser oportunidades de compra tácticas.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 dark:bg-blue-900/30 p-2 rounded">
+                                <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-gray-600 dark:text-gray-300">La divergencia entre el índice y el precio es especialmente importante: cuando el índice entra en codicia pero los indicadores técnicos muestran sobrecompra, aumenta el riesgo de corrección.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: SECCIÓN DE EXPLICACIÓN -->
+    
+    <!-- INICIO: SECCIÓN HISTÓRICA -->
+    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md p-4 md:p-6 mb-6">
+        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Histórico del Índice</h3>
+        
+        <!-- Tabs de períodos -->
+        <div class="flex border-b border-gray-200 dark:border-gray-600 mb-6">
+            <button class="px-4 py-2 text-sm font-medium text-blue-500 border-b-2 border-blue-500">7 días</button>
+            <button class="px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-400">30 días</button>
+            <button class="px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-400">3 meses</button>
+            <button class="px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-400">1 año</button>
+        </div>
+        
+        <!-- Gráfico del índice -->
+        <div class="w-full h-64 bg-white dark:bg-gray-800 rounded-lg overflow-hidden">
+            <!-- Gráfico simplificado para versión novato -->
+            <div class="novice-content">
+                <div class="w-full h-full relative">
+                    <!-- Etiquetas eje Y -->
+                    <div class="absolute left-0 top-0 bottom-0 w-10 flex flex-col justify-between text-xs text-gray-500 py-2">
+                        <div>100</div>
+                        <div>75</div>
+                        <div>50</div>
+                        <div>25</div>
+                        <div>0</div>
+                    </div>
+                    
+                    <!-- Líneas de referencia -->
+                    <div class="absolute left-10 right-0 top-0 bottom-0 flex flex-col justify-between">
+                        <div class="h-px bg-gray-200 dark:bg-gray-600"></div>
+                        <div class="h-px bg-gray-200 dark:bg-gray-600"></div>
+                        <div class="h-px bg-gray-200 dark:bg-gray-600"></div>
+                        <div class="h-px bg-gray-200 dark:bg-gray-600"></div>
+                        <div class="h-px bg-gray-200 dark:bg-gray-600"></div>
+                    </div>
+                    
+                    <!-- Gráfico simplificado -->
+                    <div class="absolute left-10 right-0 top-5 bottom-5">
+                        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <path d="M0,80 L5,75 L10,65 L15,55 L20,45 L25,40 L30,30 L35,25 L40,30 L45,35 L50,45 L55,50 L60,65 L65,60 L70,55 L75,45 L80,35 L85,30 L90,25 L95,35 L100,40" 
+                                  fill="none" 
+                                  stroke="#3B82F6" 
+                                  stroke-width="2" />
+                        </svg>
+                    </div>
+                    
+                    <!-- Etiquetas eje X -->
+                    <div class="absolute left-10 right-0 bottom-0 flex justify-between text-xs text-gray-500">
+                        <div>Lun</div>
+                        <div>Mar</div>
+                        <div>Mié</div>
+                        <div>Jue</div>
+                        <div>Vie</div>
+                        <div>Sáb</div>
+                        <div>Dom</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Gráfico avanzado para versión pro -->
+            <div class="pro-content hidden">
+                <div class="w-full h-full relative">
+                    <!-- Aquí iría un gráfico técnico más complejo para la versión Pro -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <p class="text-sm text-gray-500">En la versión implementada, esta sección contendrá un gráfico técnico avanzado con indicadores y capacidades de zoom.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Eventos del mercado -->
+        <div class="mt-6 pro-content hidden">
+            <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-3">Eventos de Mercado Significativos</h4>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha</th>
+                            <th class="px-4 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor del Índice</th>
+                            <th class="px-4 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Evento</th>
+                            <th class="px-4 py-3 bg-gray-50 dark:bg-gray-800 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Impacto en BTC</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                        <tr>
+                            <td class="px-4 py-2 text-sm text-gray-600 dark:text-gray-300">01/03/2025</td>
+                            <td class="px-4 py-2 text-sm text-gray-600 dark:text-gray-300">12 (Miedo Extremo)</td>
+                            <td class="px-4 py-2 text-sm text-gray-600 dark:text-gray-300">Caída del mercado de valores global</td>
+                            <td class="px-4 py-2 text-sm text-red-500">-15% (7 días)</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 text-sm text-gray-600 dark:text-gray-300">15/02/2025</td>
+                            <td class="px-4 py-2 text-sm text-gray-600 dark:text-gray-300">88 (Codicia Extrema)</td>
+                            <td class="px-4 py-2 text-sm text-gray-600 dark:text-gray-300">Aprobación ETF Bitcoin</td>
+                            <td class="px-4 py-2 text-sm text-green-500">+22% (7 días)</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-2 text-sm text-gray-600 dark:text-gray-300">05/01/2025</td>
+                            <td class="px-4 py-2 text-sm text-gray-600 dark:text-gray-300">25 (Miedo)</td>
+                            <td class="px-4 py-2 text-sm text-gray-600 dark:text-gray-300">Regulación restrictiva en Asia</td>
+                            <td class="px-4 py-2 text-sm text-red-500">-8% (7 días)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: SECCIÓN HISTÓRICA -->
+    
+    <!-- INICIO: ESTRATEGIAS RECOMENDADAS -->
+    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md p-4 md:p-6 mb-6">
+        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Estrategias Recomendadas</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Estrategia para Miedo Extremo -->
+            <div id="strategy-extreme-fear" class="p-4 rounded-lg bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 border border-red-200 dark:border-red-800/30">
+                <div class="flex items-center mb-3">
+                    <span class="w-10 h-10 flex items-center justify-center bg-red-100 dark:bg-red-800/30 rounded-full text-red-500 dark:text-red-400 mr-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    </span>
+                    <h4 class="text-lg font-semibold text-red-800 dark:text-red-400">Miedo Extremo (0-25)</h4>
+                </div>
+                
+                <div class="novice-content">
+                    <p class="text-gray-700 dark:text-gray-300 mb-3">Cuando el mercado muestra miedo extremo, puede ser un buen momento para considerar compras graduales.</p>
+                    
+                    <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-green-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Considera comprar pequeñas cantidades de Bitcoin</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-green-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Enfócate en proyectos establecidos con fundamentales sólidos</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-green-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Usa inversión por promedios (DCA) para mitigar riesgos</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="pro-content hidden">
+                    <p class="text-gray-700 dark:text-gray-300 mb-3">Período de acumulación potencial con estrategia defensiva-ofensiva escalonada.</p>
+                    
+                    <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-green-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Implementar estrategia de compra escalonada en niveles clave de soporte</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-green-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Considerar opciones de compra (calls) si hay confirmación técnica</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-green-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Analizar ratios de liquidez on-chain y posiciones de ballenas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-green-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Mantener 30-40% en stablecoins para oportunidades adicionales</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Estrategia para Neutral -->
+            <div id="strategy-neutral" class="p-4 rounded-lg bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20 border border-yellow-200 dark:border-yellow-800/30">
+                <div class="flex items-center mb-3">
+                    <span class="w-10 h-10 flex items-center justify-center bg-yellow-100 dark:bg-yellow-800/30 rounded-full text-yellow-500 dark:text-yellow-400 mr-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                    </span>
+                    <h4 class="text-lg font-semibold text-yellow-800 dark:text-yellow-400">Neutral (26-75)</h4>
+                </div>
+                
+                <div class="novice-content">
+                    <p class="text-gray-700 dark:text-gray-300 mb-3">En mercados neutrales, mantén una estrategia equilibrada y sigue el análisis técnico básico.</p>
+                    
+                    <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Mantén un balance entre criptomonedas y efectivo (50/50)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Busca señales técnicas claras antes de entrar o salir</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Establecer stop-loss y toma de beneficios en cada operación</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="pro-content hidden">
+                    <p class="text-gray-700 dark:text-gray-300 mb-3">Fase de consolidación que requiere estrategias dinámicas basadas en rango.</p>
+                    
+                    <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Trading en rango con niveles de soporte/resistencia definidos</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Estrategias de yield farming con APYs moderados (5-15%)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Arbitraje entre exchanges si el spread supera 0.5%</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-blue-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Mantener exposición a opciones con estrategias de spreads</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Estrategia para Codicia Extrema -->
+            <div id="strategy-extreme-greed" class="p-4 rounded-lg bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 border border-green-200 dark:border-green-800/30">
+                <div class="flex items-center mb-3">
+                    <span class="w-10 h-10 flex items-center justify-center bg-green-100 dark:bg-green-800/30 rounded-full text-green-500 dark:text-green-400 mr-3">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </span>
+                    <h4 class="text-lg font-semibold text-green-800 dark:text-green-400">Codicia Extrema (76-100)</h4>
+                </div>
+                
+                <div class="novice-content">
+                    <p class="text-gray-700 dark:text-gray-300 mb-3">En periodos de codicia extrema, considera tomar beneficios parciales y ser más conservador.</p>
+                    
+                    <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-red-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Considera vender parte de tus ganancias (20-30%)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-red-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>No entres en nuevas posiciones hasta confirmación</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-red-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Ajusta stop-loss a niveles más conservadores</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="pro-content hidden">
+                    <p class="text-gray-700 dark:text-gray-300 mb-3">Fase de distribución potencial que requiere estrategias defensivas graduales.</p>
+                    
+                    <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-red-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Implementar toma de beneficios escalonada en niveles clave</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-red-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Considerar coberturas con opciones put o futuros</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-red-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Rotar de altcoins de alto riesgo a BTC/ETH o stablecoins</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-red-500 mt-0.5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            <span>Buscar divergencias entre RSI y precio como señal de agotamiento</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: ESTRATEGIAS RECOMENDADAS -->
+    
+    <!-- INICIO: CORRELACIÓN CON PRECIO -->
+    <div class="bg-white dark:bg-gray-700 rounded-xl shadow-md p-4 md:p-6">
+        <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-4">Correlación con el Precio de Bitcoin</h3>
+        
+        <div class="novice-content">
+            <p class="text-gray-600 dark:text-gray-300 mb-6">El índice de miedo y codicia ha demostrado ser un indicador contrario efectivo. Históricamente, los períodos de miedo extremo suelen preceder a recuperaciones del precio, mientras que la codicia extrema a menudo anticipa correcciones.</p>
+            
+            <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg mb-6">
+                <h4 class="font-semibold text-blue-800 dark:text-blue-300 mb-2">¿Sabías que?</h4>
+                <p class="text-gray-700 dark:text-gray-300">Comprar cuando el índice marca "miedo extremo" y vender cuando indica "codicia extrema" ha resultado históricamente en mejores rendimientos que simplemente mantener Bitcoin (HODL) en varios ciclos de mercado.</p>
+            </div>
+            
+            <!-- Ejemplos de correlación simplificados -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Cuando el índice marcó 10 (Miedo Extremo)</h4>
+                    <p class="text-gray-600 dark:text-gray-300 mb-3">Marzo 2020 - Crash por COVID-19</p>
+                    <div class="flex items-center">
+                        <span class="text-green-500 font-semibold mr-2">+260% en 90 días después</span>
+                        <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                </div>
+                
+                <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Cuando el índice marcó 95 (Codicia Extrema)</h4>
+                    <p class="text-gray-600 dark:text-gray-300 mb-3">Enero 2018 - Pico del mercado alcista</p>
+                    <div class="flex items-center">
+                        <span class="text-red-500 font-semibold mr-2">-65% en 90 días después</span>
+                        <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0v-8m0 8l-8-8-4 4-6-6"></path></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pro-content hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">El índice muestra correlación negativa con el precio de Bitcoin en puntos extremos, pero la correlación no es constante en todos los ciclos de mercado.</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
+                        <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Correlación Estadística</h4>
+                        <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
+                            <li class="flex justify-between">
+                                <span>Correlación en puntos extremos:</span>
+                                <span class="font-mono font-medium">-0.82</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Correlación en mercado lateral:</span>
+                                <span class="font-mono font-medium">-0.31</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Retardo óptimo (lag):</span>
+                                <span class="font-mono font-medium">4-7 días</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>Efectividad señales extremas:</span>
+                                <span class="font-mono font-medium">78.5%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg">
+                        <h4 class="font-semibold text-yellow-800 dark:text-yellow-300 mb-2">Limitaciones</h4>
+                        <p class="text-gray-700 dark:text-gray-300 text-sm">El índice puede permanecer en zonas extremas durante períodos extendidos. Valores extremos indican mayor probabilidad de reversión, no su timing exacto. Combinar con indicadores técnicos como RSI, volumen y patrones de velas para mayor precisión.</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-gray-800 dark:text-white mb-4">Comportamiento con eventos macroeconómicos</h4>
+                    
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <h5 class="font-medium text-gray-800 dark:text-white">Decisiones de tipos de interés de la FED</h5>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 pl-7">El índice suele preceder a la volatilidad antes del anuncio y resalta el sentimiento post-anuncio. Correlación: Alta.</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <h5 class="font-medium text-gray-800 dark:text-white">Informes de inflación</h5>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 pl-7">El índice muestra una reacción retardada a informes de inflación. La correlación ha aumentado desde 2021. Correlación: Media.</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2">
+                            <svg class="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <h5 class="font-medium text-gray-800 dark:text-white">Adopción institucional</h5>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 pl-7">Anuncios de inversión por empresas o fondos tienen mayor impacto en el índice que en el precio. Correlación: Muy alta.</p>
+                    </div>
+                    
+                    <div>
+                        <div class="flex items-center mb-2">
+                            <svg class="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <h5 class="font-medium text-gray-800 dark:text-white">Cambios regulatorios</h5>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 pl-7">La reacción del índice a noticias regulatorias predice mejor la tendencia a medio plazo que el movimiento inmediato del precio. Correlación: Alta.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: CORRELACIÓN CON PRECIO -->
+
+    <!-- Scripts para funcionalidad -->
+    <script>
+        // Cambio entre modos novato y pro
+        document.getElementById('novice-mode-btn').addEventListener('click', function() {
+            this.classList.add('bg-blue-500', 'text-white');
+            this.classList.remove('bg-gray-200', 'text-gray-700', 'dark:bg-gray-600', 'dark:text-gray-200');
+            
+            document.getElementById('pro-mode-btn').classList.remove('bg-blue-500', 'text-white');
+            document.getElementById('pro-mode-btn').classList.add('bg-gray-200', 'text-gray-700', 'dark:bg-gray-600', 'dark:text-gray-200');
+            
+            document.querySelectorAll('.novice-content').forEach(el => el.classList.remove('hidden'));
+            document.querySelectorAll('.pro-content').forEach(el => el.classList.add('hidden'));
+        });
+        
+        document.getElementById('pro-mode-btn').addEventListener('click', function() {
+            this.classList.add('bg-blue-500', 'text-white');
+            this.classList.remove('bg-gray-200', 'text-gray-700', 'dark:bg-gray-600', 'dark:text-gray-200');
+            
+            document.getElementById('novice-mode-btn').classList.remove('bg-blue-500', 'text-white');
+            document.getElementById('novice-mode-btn').classList.add('bg-gray-200', 'text-gray-700', 'dark:bg-gray-600', 'dark:text-gray-200');
+            
+            document.querySelectorAll('.novice-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.pro-content').forEach(el => el.classList.remove('hidden'));
+        });
+        
+        // Posicionar la aguja del medidor según el valor
+        const gaugeSetting = () => {
+            const value = 65; // Valor actual del índice
+            const needle = document.getElementById('gauge-needle');
+            const rotation = -90 + (value * 1.8); // -90 grados es el inicio, 1.8 grados por punto del índice
+            needle.style.transform = `rotate(${rotation}deg)`;
+        };
+        
+        // Ejecutar al cargar
+        window.addEventListener('DOMContentLoaded', (event) => {
+            gaugeSetting();
+        });
+    </script>
+</div>
+<!-- FIN: COMPONENTE ÍNDICE DE MIEDO Y CODICIA -->

@@ -1,0 +1,204 @@
+.chart-container {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.chart-title {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.chart-controls {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.chart-timeframe-selector {
+    display: flex;
+    background-color: var(--background-alt);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+}
+
+.timeframe-option {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.timeframe-option.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Estilos para tipos específicos de gráficos */
+.price-chart {
+    height: 300px;
+    width: 100%;
+    position: relative;
+}
+
+.volume-chart {
+    height: 100px;
+    width: 100%;
+    margin-top: var(--spacing-md);
+}
+
+.indicator-chart {
+    height: 150px;
+    width: 100%;
+    margin-top: var(--spacing-md);
+}
+
+/* Tooltip personalizado para gráficos */
+.chart-tooltip {
+    background-color: var(--tooltip-bg);
+    color: var(--tooltip-text);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-md);
+    font-size: 0.85rem;
+    z-index: 50;
+    pointer-events: none;
+}
+
+.tooltip-label {
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.tooltip-value {
+    color: var(--primary-color);
+}
+
+/* Leyenda del gráfico */
+.chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+
+.legend-item.disabled {
+    opacity: 0.5;
+}
+
+/* Anotaciones en gráficos */
+.chart-annotation {
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.annotation-line {
+    width: 1px;
+    background-color: var(--warning-color);
+    height: 100%;
+}
+
+.annotation-label {
+    background-color: var(--warning-color);
+    color: white;
+    padding: 2px 6px;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+/* Estilos para la visualización del índice de Miedo y Codicia */
+.fear-greed-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-md);
+}
+
+.fear-greed-gauge {
+    width: 200px;
+    height: 100px;
+    position: relative;
+    margin-bottom: var(--spacing-md);
+}
+
+.fear-greed-scale {
+    width: 200px;
+    height: 20px;
+    background: linear-gradient(to right, 
+        var(--danger-color) 0%, 
+        var(--warning-color) 50%, 
+        var(--success-color) 100%
+    );
+    border-radius: var(--border-radius-sm);
+    position: relative;
+}
+
+.fear-greed-pointer {
+    position: absolute;
+    top: -15px;
+    width: 2px;
+    height: 15px;
+    background-color: var(--dark-color);
+    transform: translateX(-50%);
+}
+
+.fear-greed-label {
+    margin-top: var(--spacing-sm);
+    font-weight: 600;
+    text-align: center;
+}
+
+.fear-greed-value {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: var(--spacing-xs) 0;
+}
+
+/* Adaptaciones para modo Pro */
+body.pro-mode-active .chart-container {
+    padding: var(--spacing-sm);
+    background-color: var(--pro-card-bg);
+}
+
+body.pro-mode-active .price-chart {
+    height: 400px;
+}
+
+body.pro-mode-active .chart-advanced-controls {
+    display: flex;
+}
+
+.chart-advanced-controls {
+    display: none;
+    margin-top: var(--spacing-sm);
+    gap: var(--spacing-sm);
+}

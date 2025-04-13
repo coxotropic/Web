@@ -1,0 +1,488 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DE PERFIL -->
+<div class="profile-container">
+    <!-- INICIO: CABECERA DE PERFIL -->
+    <div class="profile-header">
+        <!-- INICIO: PORTADA DE PERFIL -->
+        <div class="profile-cover">
+            <div class="cover-overlay"></div>
+            <button class="edit-cover-btn" aria-label="Cambiar imagen de portada" id="edit-cover-btn">
+                <i class="icon-camera"></i>
+            </button>
+        </div>
+        <!-- FIN: PORTADA DE PERFIL -->
+        
+        <!-- INICIO: INFO BÁSICA DE PERFIL -->
+        <div class="profile-basic-info">
+            <div class="profile-avatar-container">
+                <img src="assets/images/avatars/default.jpg" alt="Avatar de usuario" class="profile-avatar" id="profile-avatar">
+                <button class="edit-avatar-btn" aria-label="Cambiar avatar" id="edit-avatar-btn">
+                    <i class="icon-camera"></i>
+                </button>
+            </div>
+            
+            <div class="profile-user-info">
+                <h1 class="profile-name">
+                    <span id="profile-display-name">Nombre Usuario</span>
+                    <span class="verified-badge" title="Cuenta verificada">
+                        <i class="icon-check-circle"></i>
+                    </span>
+                </h1>
+                
+                <div class="profile-username">@<span id="profile-username">username</span></div>
+                
+                <div class="profile-badges">
+                    <span class="profile-badge level-badge" id="profile-level">
+                        <i class="icon-award"></i> Intermedio
+                    </span>
+                    <span class="profile-badge join-badge" id="profile-joined">
+                        <i class="icon-calendar"></i> Miembro desde Abril 2024
+                    </span>
+                </div>
+                
+                <div class="profile-bio" id="profile-bio">
+                    Apasionado inversor en criptomonedas con interés en tecnología blockchain y su potencial para transformar las finanzas globales.
+                </div>
+            </div>
+            
+            <div class="profile-actions">
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="followers-count">258</div>
+                        <div class="stat-label">Seguidores</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="following-count">124</div>
+                        <div class="stat-label">Siguiendo</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="comments-count">85</div>
+                        <div class="stat-label">Comentarios</div>
+                    </div>
+                </div>
+                
+                <div class="profile-buttons">
+                    <button class="btn btn-primary" id="follow-btn">
+                        <i class="icon-user-plus"></i> Seguir
+                    </button>
+                    <button class="btn btn-outline" id="message-btn">
+                        <i class="icon-message-circle"></i> Mensaje
+                    </button>
+                    <div class="dropdown">
+                        <button class="btn btn-icon" id="profile-more-btn" aria-label="Más opciones">
+                            <i class="icon-more-horizontal"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item" id="share-profile">
+                                <i class="icon-share-2"></i> Compartir perfil
+                            </a>
+                            <a href="#" class="dropdown-item" id="report-profile">
+                                <i class="icon-flag"></i> Reportar usuario
+                            </a>
+                            <a href="#" class="dropdown-item text-danger" id="block-profile">
+                                <i class="icon-slash"></i> Bloquear usuario
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIN: INFO BÁSICA DE PERFIL -->
+    </div>
+    <!-- FIN: CABECERA DE PERFIL -->
+    
+    <!-- INICIO: NAVEGACIÓN DE PERFIL -->
+    <div class="profile-navigation">
+        <ul class="profile-nav-tabs">
+            <li class="nav-item active">
+                <a href="#profile-summary" class="nav-link" data-tab="summary">
+                    <i class="icon-home"></i> Resumen
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#profile-portfolio" class="nav-link" data-tab="portfolio">
+                    <i class="icon-briefcase"></i> Portfolio
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#profile-activity" class="nav-link" data-tab="activity">
+                    <i class="icon-activity"></i> Actividad
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#profile-followers" class="nav-link" data-tab="followers">
+                    <i class="icon-users"></i> Seguidores
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#profile-following" class="nav-link" data-tab="following">
+                    <i class="icon-user-check"></i> Siguiendo
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#profile-settings" class="nav-link" data-tab="settings">
+                    <i class="icon-settings"></i> Configuración
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- FIN: NAVEGACIÓN DE PERFIL -->
+    
+    <!-- INICIO: CONTENIDO DE PERFIL -->
+    <div class="profile-content">
+        <!-- INICIO: TAB RESUMEN -->
+        <div class="profile-tab-content active" id="profile-summary">
+            <div class="profile-grid">
+                <!-- INICIO: FAVORITOS DEL USUARIO -->
+                <div class="profile-grid-item favorites-card">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Favoritos</h3>
+                            <button class="btn-icon" aria-label="Más opciones">
+                                <i class="icon-more-horizontal"></i>
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <ul class="favorites-list">
+                                <li class="favorite-item">
+                                    <img src="assets/images/crypto/bitcoin.svg" alt="Bitcoin" class="crypto-icon">
+                                    <div class="favorite-info">
+                                        <div class="favorite-name">Bitcoin</div>
+                                        <div class="favorite-price">$45,230.65</div>
+                                    </div>
+                                    <div class="favorite-change positive">+2.4%</div>
+                                </li>
+                                <li class="favorite-item">
+                                    <img src="assets/images/crypto/ethereum.svg" alt="Ethereum" class="crypto-icon">
+                                    <div class="favorite-info">
+                                        <div class="favorite-name">Ethereum</div>
+                                        <div class="favorite-price">$3,256.78</div>
+                                    </div>
+                                    <div class="favorite-change positive">+1.8%</div>
+                                </li>
+                                <li class="favorite-item">
+                                    <img src="assets/images/crypto/cardano.svg" alt="Cardano" class="crypto-icon">
+                                    <div class="favorite-info">
+                                        <div class="favorite-name">Cardano</div>
+                                        <div class="favorite-price">$0.98</div>
+                                    </div>
+                                    <div class="favorite-change negative">-0.6%</div>
+                                </li>
+                                <li class="favorite-item">
+                                    <img src="assets/images/crypto/polkadot.svg" alt="Polkadot" class="crypto-icon">
+                                    <div class="favorite-info">
+                                        <div class="favorite-name">Polkadot</div>
+                                        <div class="favorite-price">$12.45</div>
+                                    </div>
+                                    <div class="favorite-change positive">+3.2%</div>
+                                </li>
+                            </ul>
+                            <button class="btn btn-sm btn-outline btn-block mt-md">
+                                <i class="icon-plus"></i> Añadir Favoritos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- FIN: FAVORITOS DEL USUARIO -->
+                
+                <!-- INICIO: ACTIVIDAD RECIENTE -->
+                <div class="profile-grid-item activity-card">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Actividad Reciente</h3>
+                            <a href="#profile-activity" class="btn-link">Ver todo</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="activity-timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-icon comment-icon">
+                                        <i class="icon-message-circle"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-header">
+                                            <span class="timeline-title">Comentó en una noticia</span>
+                                            <span class="timeline-time">2 horas</span>
+                                        </div>
+                                        <div class="timeline-body">
+                                            "Interesante análisis sobre el impacto de la regulación en el mercado de criptomonedas..."
+                                        </div>
+                                        <div class="timeline-footer">
+                                            <a href="#" class="timeline-link">Ver noticia</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-icon follow-icon">
+                                        <i class="icon-user-plus"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-header">
+                                            <span class="timeline-title">Comenzó a seguir a un usuario</span>
+                                            <span class="timeline-time">1 día</span>
+                                        </div>
+                                        <div class="timeline-body">
+                                            Ahora sigue a <a href="#" class="timeline-link">@crypto_expert</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-icon like-icon">
+                                        <i class="icon-heart"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-header">
+                                            <span class="timeline-title">Le gustó un comentario</span>
+                                            <span class="timeline-time">2 días</span>
+                                        </div>
+                                        <div class="timeline-body">
+                                            "La estrategia de DCA ha probado ser efectiva en mercados volátiles como el de las criptomonedas..."
+                                        </div>
+                                        <div class="timeline-footer">
+                                            <a href="#" class="timeline-link">Ver comentario</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- FIN: ACTIVIDAD RECIENTE -->
+                
+                <!-- INICIO: ESTADÍSTICAS DE RENDIMIENTO -->
+                <div class="profile-grid-item performance-card">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Estadísticas de Participación</h3>
+                            <div class="timeframe-selector">
+                                <button class="timeframe-btn active" data-time="1m">1M</button>
+                                <button class="timeframe-btn" data-time="3m">3M</button>
+                                <button class="timeframe-btn" data-time="1y">1A</button>
+                                <button class="timeframe-btn" data-time="all">Todo</button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="performance-chart" id="participation-chart">
+                                <!-- Gráfico generado dinámicamente -->
+                                <div class="chart-placeholder">Cargando estadísticas...</div>
+                            </div>
+                            
+                            <div class="performance-stats">
+                                <div class="stat-tile">
+                                    <div class="stat-value">85</div>
+                                    <div class="stat-label">Comentarios</div>
+                                </div>
+                                <div class="stat-tile">
+                                    <div class="stat-value">132</div>
+                                    <div class="stat-label">Me gusta</div>
+                                </div>
+                                <div class="stat-tile">
+                                    <div class="stat-value">46</div>
+                                    <div class="stat-label">Respuestas</div>
+                                </div>
+                                <div class="stat-tile">
+                                    <div class="stat-value">12</div>
+                                    <div class="stat-label">Publicaciones</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- FIN: ESTADÍSTICAS DE RENDIMIENTO -->
+                
+                <!-- INICIO: LOGROS -->
+                <div class="profile-grid-item achievements-card">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Logros</h3>
+                            <a href="#" class="btn-link">Ver todos</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="achievements-grid">
+                                <div class="achievement-item">
+                                    <div class="achievement-icon achieved">
+                                        <i class="icon-award"></i>
+                                    </div>
+                                    <div class="achievement-info">
+                                        <div class="achievement-name">Primeros Pasos</div>
+                                        <div class="achievement-desc">Completar el perfil</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="achievement-item">
+                                    <div class="achievement-icon achieved">
+                                        <i class="icon-message-square"></i>
+                                    </div>
+                                    <div class="achievement-info">
+                                        <div class="achievement-name">Conversador</div>
+                                        <div class="achievement-desc">50 comentarios</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="icon-trending-up"></i>
+                                    </div>
+                                    <div class="achievement-info">
+                                        <div class="achievement-name">Analista</div>
+                                        <div class="achievement-desc">10 análisis publicados</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">
+                                        <i class="icon-users"></i>
+                                    </div>
+                                    <div class="achievement-info">
+                                        <div class="achievement-name">Influyente</div>
+                                        <div class="achievement-desc">100 seguidores</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- FIN: LOGROS -->
+            </div>
+        </div>
+        <!-- FIN: TAB RESUMEN -->
+        
+        <!-- INICIO: TAB PORTFOLIO -->
+        <div class="profile-tab-content" id="profile-portfolio">
+            <!-- Contenido del portfolio -->
+            <div class="placeholder-message">
+                <i class="icon-briefcase placeholder-icon"></i>
+                <h3>Portfolio no visible</h3>
+                <p>El usuario ha establecido su portfolio como privado o esta función aún no está disponible.</p>
+            </div>
+        </div>
+        <!-- FIN: TAB PORTFOLIO -->
+        
+        <!-- INICIO: TAB ACTIVIDAD -->
+        <div class="profile-tab-content" id="profile-activity">
+            <!-- Contenido de actividad -->
+            <div class="activity-filters">
+                <div class="filter-label">Filtrar por:</div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Todo</button>
+                    <button class="filter-btn" data-filter="comments">Comentarios</button>
+                    <button class="filter-btn" data-filter="likes">Me gusta</button>
+                    <button class="filter-btn" data-filter="social">Social</button>
+                </div>
+            </div>
+            
+            <div class="activity-timeline full">
+                <!-- Actividad completa (similar a la del resumen pero con más elementos) -->
+                <!-- Se omite por brevedad -->
+            </div>
+            
+            <div class="load-more-container">
+                <button class="btn btn-outline btn-block" id="load-more-activity">
+                    <i class="icon-plus"></i> Cargar más actividad
+                </button>
+            </div>
+        </div>
+        <!-- FIN: TAB ACTIVIDAD -->
+        
+        <!-- INICIO: TAB SEGUIDORES -->
+        <div class="profile-tab-content" id="profile-followers">
+            <!-- Contenido de seguidores -->
+            <div class="users-search">
+                <div class="input-with-icon">
+                    <i class="icon-search input-icon"></i>
+                    <input type="text" class="form-control" placeholder="Buscar seguidores...">
+                </div>
+            </div>
+            
+            <div class="users-grid">
+                <!-- Lista de seguidores -->
+                <!-- Se omite por brevedad -->
+            </div>
+            
+            <div class="load-more-container">
+                <button class="btn btn-outline btn-block" id="load-more-followers">
+                    <i class="icon-plus"></i> Cargar más seguidores
+                </button>
+            </div>
+        </div>
+        <!-- FIN: TAB SEGUIDORES -->
+        
+        <!-- INICIO: TAB SIGUIENDO -->
+        <div class="profile-tab-content" id="profile-following">
+            <!-- Contenido de usuarios seguidos (similar a seguidores) -->
+            <!-- Se omite por brevedad -->
+        </div>
+        <!-- FIN: TAB SIGUIENDO -->
+        
+        <!-- INICIO: TAB CONFIGURACIÓN -->
+        <div class="profile-tab-content" id="profile-settings">
+            <!-- Contenido de configuración -->
+            <div class="settings-navigation">
+                <ul class="settings-nav-tabs">
+                    <li class="nav-item active">
+                        <a href="#settings-profile" class="nav-link" data-settings-tab="profile">
+                            <i class="icon-user"></i> Perfil
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#settings-account" class="nav-link" data-settings-tab="account">
+                            <i class="icon-shield"></i> Cuenta
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#settings-notifications" class="nav-link" data-settings-tab="notifications">
+                            <i class="icon-bell"></i> Notificaciones
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#settings-privacy" class="nav-link" data-settings-tab="privacy">
+                            <i class="icon-lock"></i> Privacidad
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="settings-content">
+                <div class="settings-tab-content active" id="settings-profile">
+                    <!-- Formulario de edición de perfil -->
+                    <!-- Se omite por brevedad -->
+                </div>
+                
+                <div class="settings-tab-content" id="settings-account">
+                    <!-- Configuración de cuenta -->
+                    <!-- Se omite por brevedad -->
+                </div>
+                
+                <div class="settings-tab-content" id="settings-notifications">
+                    <!-- Configuración de notificaciones -->
+                    <!-- Se omite por brevedad -->
+                </div>
+                
+                <div class="settings-tab-content" id="settings-privacy">
+                    <!-- Configuración de privacidad -->
+                    <!-- Se omite por brevedad -->
+                </div>
+            </div>
+        </div>
+        <!-- FIN: TAB CONFIGURACIÓN -->
+    </div>
+    <!-- FIN: CONTENIDO DE PERFIL -->
+</div>
+<!-- FIN: CONTENEDOR PRINCIPAL DE PERFIL -->
+
+<!-- INICIO: MODALES DEL PERFIL -->
+<div class="modal" id="edit-avatar-modal">
+    <!-- Modal para editar avatar -->
+    <!-- Se omite por brevedad -->
+</div>
+
+<div class="modal" id="edit-cover-modal">
+    <!-- Modal para editar portada -->
+    <!-- Se omite por brevedad -->
+</div>
+
+<div class="modal" id="share-profile-modal">
+    <!-- Modal para compartir perfil -->
+    <!-- Se omite por brevedad -->
+</div>
+<!-- FIN: MODALES DEL PERFIL -->

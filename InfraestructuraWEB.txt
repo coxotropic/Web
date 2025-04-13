@@ -1,0 +1,57 @@
+|- index.html (punto de entrada principal)
+|- css/
+   |- main.css (estilos base)
+   |- desktop.css (estilos para escritorio)
+   |- mobile.css (estilos para móvil)
+   |- components/ (estilos específicos de componentes)
+      |- header.css
+      |- menu.css
+      |- ...
+|- js/
+   |- main.js (inicialización y configuración)
+   |- utils/
+      |- device-detector.js
+      |- component-loader.js
+   |- auth/ (sistema de usuarios)
+      |- auth.js
+      |- user-profile.js
+   |- social/ (funciones de red social)
+      |- comments.js
+      |- follow.js
+   |- news/ (sistema de noticias)
+      |- news-api.js
+      |- news-summarizer.js
+   |- interactive/ (herramientas interactivas)
+      |- fear-greed-index.js
+      |- calculators.js
+|- components/
+   |- core/ (componentes principales)
+      |- header.html
+      |- menu.html
+      |- footer.html
+   |- content/ (contenido por nivel)
+      |- novato.html
+      |- intermedio.html
+      |- senior.html
+   |- investment/ (tipos de inversión)
+      |- risk-levels.html
+      |- timeframes.html
+   |- auth/ (componentes de autenticación)
+      |- login.html
+      |- register.html
+      |- profile.html
+   |- social/ (componentes sociales)
+      |- comments.html
+      |- feed.html
+      |- follow.html
+   |- news/ (sistema de noticias)
+      |- news-feed.html
+      |- news-summary.html
+|- api/ (endpoints para integración)
+   |- news-parser.php (o .js para Node.js)
+   |- user-service.php
+   |- social-service.php
+|- assets/
+   |- images/
+   |- icons/
+   |- data/

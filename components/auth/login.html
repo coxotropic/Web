@@ -1,0 +1,127 @@
+<!-- INICIO: CONTENEDOR PRINCIPAL DE LOGIN -->
+<div class="auth-container login-container">
+    <!-- INICIO: ENCABEZADO DE LOGIN -->
+    <div class="auth-header">
+        <div class="auth-logo">
+            <img src="assets/images/logo.svg" alt="CryptInvest Logo" class="auth-logo-img">
+        </div>
+        <h1 class="auth-title">Iniciar Sesión</h1>
+        <p class="auth-subtitle">Accede a tu cuenta para continuar</p>
+    </div>
+    <!-- FIN: ENCABEZADO DE LOGIN -->
+
+    <!-- INICIO: FORMULARIO DE LOGIN -->
+    <form class="auth-form login-form" id="login-form" novalidate>
+        <!-- Mensajes de alerta -->
+        <div class="alert alert-danger hidden" id="login-error">
+            <i class="icon-alert-circle"></i>
+            <span id="login-error-message">Las credenciales son incorrectas. Por favor, inténtalo de nuevo.</span>
+        </div>
+        
+        <div class="alert alert-info hidden" id="login-info">
+            <i class="icon-info"></i>
+            <span id="login-info-message">Has sido desconectado por inactividad.</span>
+        </div>
+        
+        <!-- Campo de usuario/email -->
+        <div class="form-group">
+            <label for="login-username" class="form-label">Email o nombre de usuario</label>
+            <div class="input-with-icon">
+                <i class="icon-user input-icon"></i>
+                <input 
+                    type="text" 
+                    id="login-username" 
+                    name="username" 
+                    class="form-control" 
+                    placeholder="tu@email.com o usuario" 
+                    required 
+                    autocomplete="username">
+            </div>
+            <div class="form-error" id="username-error"></div>
+        </div>
+        
+        <!-- Campo de contraseña -->
+        <div class="form-group">
+            <div class="form-label-group">
+                <label for="login-password" class="form-label">Contraseña</label>
+                <a href="/auth/recuperar-password" class="form-link">¿Olvidaste tu contraseña?</a>
+            </div>
+            <div class="input-with-icon">
+                <i class="icon-lock input-icon"></i>
+                <input 
+                    type="password" 
+                    id="login-password" 
+                    name="password" 
+                    class="form-control" 
+                    placeholder="Tu contraseña" 
+                    required 
+                    autocomplete="current-password">
+                <button type="button" class="input-icon-toggle" id="toggle-password" aria-label="Mostrar/ocultar contraseña">
+                    <i class="icon-eye"></i>
+                </button>
+            </div>
+            <div class="form-error" id="password-error"></div>
+        </div>
+        
+        <!-- Recordar sesión -->
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="remember-me" name="remember">
+            <label class="form-check-label" for="remember-me">Mantener sesión iniciada</label>
+        </div>
+        
+        <!-- Botón de inicio de sesión -->
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block" id="login-button">
+                <span class="btn-text">Iniciar Sesión</span>
+                <span class="btn-loader hidden">
+                    <i class="icon-loader"></i>
+                </span>
+            </button>
+        </div>
+    </form>
+    <!-- FIN: FORMULARIO DE LOGIN -->
+    
+    <!-- INICIO: SEPARADOR -->
+    <div class="auth-divider">
+        <span class="divider-text">O continúa con</span>
+    </div>
+    <!-- FIN: SEPARADOR -->
+    
+    <!-- INICIO: BOTONES DE REDES SOCIALES -->
+    <div class="social-login">
+        <button class="btn btn-social btn-google">
+            <img src="assets/icons/google.svg" alt="Google" class="social-icon">
+            <span>Google</span>
+        </button>
+        <button class="btn btn-social btn-facebook">
+            <img src="assets/icons/facebook.svg" alt="Facebook" class="social-icon">
+            <span>Facebook</span>
+        </button>
+        <button class="btn btn-social btn-twitter">
+            <img src="assets/icons/twitter.svg" alt="Twitter" class="social-icon">
+            <span>Twitter</span>
+        </button>
+    </div>
+    <!-- FIN: BOTONES DE REDES SOCIALES -->
+    
+    <!-- INICIO: ENLACE A REGISTRO -->
+    <div class="auth-footer">
+        <p class="auth-footer-text">
+            ¿No tienes una cuenta? <a href="/auth/registro" class="auth-link">Regístrate ahora</a>
+        </p>
+    </div>
+    <!-- FIN: ENLACE A REGISTRO -->
+    
+    <!-- INICIO: SELECTOR DE IDIOMA -->
+    <div class="lang-selector">
+        <select id="login-language-selector" class="form-select form-select-sm">
+            <option value="es" selected>Español</option>
+            <option value="en">English</option>
+            <option value="zh">中文</option>
+            <option value="fr">Français</option>
+            <option value="de">Deutsch</option>
+        </select>
+    </div>
+    <!-- FIN: SELECTOR DE IDIOMA -->
+</div>
+<!-- FIN: CONTENEDOR PRINCIPAL DE LOGIN -->
