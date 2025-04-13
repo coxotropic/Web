@@ -5,7 +5,7 @@
 /* de todos los módulos y características del portal.
 /* @version 1.0.1
 /* @author Coxotropic
-*
+*/
 
 // Importación de módulos
 import { ComponentLoader } from './utils/component-loader.js';
