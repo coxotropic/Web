@@ -25,6 +25,7 @@ import { UserPreferences } from './utils/user-preferences.js';
 /**
  * Clase principal de la aplicación
  */
+
 class CryptoApp {
     constructor() {
         // Inicialización de servicios y utilidades
