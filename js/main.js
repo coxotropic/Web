@@ -1,3 +1,4 @@
+ /*
  * main.js - Punto de entrada principal para el Portal de Inversiones en Criptomonedas
  * 
  * Este archivo contiene la inicialización de la aplicación y la coordinación
