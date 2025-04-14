@@ -523,6 +523,13 @@ input:checked + .switch-slider:before {
     padding: var(--spacing-md);
     background-color: var(--card-bg);
     box-shadow: var(--shadow-sm);
+    display: flex;
+    justify-content: space-between; /* Asegura que las tres secciones estén distribuidas */
+    align-items: center; /* Alinea los elementos verticalmente */
+    padding: 0 2rem; /* Añade espacio a los lados */
+    height: 70px; /* Define una altura fija */
+    background-color: var(--card-bg); /* Fondo para que se destaque */
+    box-shadow: var(--shadow-sm); /* Opcional: añade una sombra */
 }
 
 .mode-selector {
