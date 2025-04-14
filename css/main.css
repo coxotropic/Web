@@ -972,22 +972,19 @@ input:checked + .switch-slider:before {
    Media Queries de Respaldo
    ----------------------------------------------------- */
 @media (max-width: 768px) {
-    .grid-cols-2,
-    .grid-cols-3,
-    .grid-cols-4 {
-        grid-template-columns: 1fr;
-    }
-    
     .header-container {
-        padding: var(--spacing-sm);
+        flex-direction: column; /* Cambia a disposición vertical */
+        align-items: flex-start; /* Alinea los elementos al inicio */
     }
-    
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.75rem; }
-    h3 { font-size: 1.5rem; }
-    h4 { font-size: 1.25rem; }
-    h5 { font-size: 1.1rem; }
-    h6 { font-size: 1rem; }
+
+    .header-search {
+        margin-top: 1rem; /* Añade espacio entre secciones */
+        width: 100%; /* Ocupa todo el ancho disponible */
+    }
+
+    .header-controls {
+        margin-top: 1rem; /* Desplaza los controles hacia abajo */
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
