@@ -24,7 +24,7 @@
 
 .logo {
     height: '50px'; /* O ajusta el tamaño específico, como '50px' */
-    max-height: 100%; /* Asegúrate de que no exceda el marco superior */
+    max-height: '50px'; /* Asegúrate de que no exceda el marco superior */
     object-fit: contain; /* Ajusta el contenido sin distorsión */
 }
 
