@@ -47,6 +47,30 @@ p, ul, ol, dl, blockquote {
     overflow-wrap: break-word;
 }
 
+.main-section {
+    padding: 2rem;
+    background-color: #f9f9f9;
+}
+
+.main-header h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.featured-section,
+.news-section,
+.resources-section {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.featured-list li {
+    margin: 0.5rem 0;
+}
+
 /* -----------------------------------------------------
    Variables globales
    ----------------------------------------------------- */
