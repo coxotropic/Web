@@ -11,7 +11,7 @@
     align-items: center; /* Alinea los elementos verticalmente */
     padding: var(--spacing-md) 0; /* Espaciado superior e inferior */
     border-bottom: 1px solid var(--border-color); /* Línea de separación inferior */
-    height: 70px; /* Altura fija de la cabecera */
+    height: 100px; /* Altura fija de la cabecera */
     width: 100%; /* Ocupa todo el ancho disponible */
     background-color: var(--card-bg); /* Fondo de la cabecera */
     box-shadow: var(--shadow-sm); /* Sombra ligera para destacar */
@@ -26,7 +26,7 @@
 
 /* Imagen del logo */
 .logo {
-    height: 70px; /* Altura fija del logo */
+    height: 80px; /* Altura fija del logo */
     object-fit: contain; /* Asegura que la imagen no se deforme */
 }
 
