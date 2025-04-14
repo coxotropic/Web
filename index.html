@@ -7,19 +7,18 @@
     <title>CryptInvest - Portal de Inversiones en Criptomonedas</title>
     
     <!-- CSS Base -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="/Web/css/main.css">
     
     <!-- CSS Responsivo (se cargará dinámicamente según dispositivo) -->
     <link rel="stylesheet" id="responsive-css" href="">
     
     <!-- Preload de recursos críticos -->
-    <!-- <link rel="preload" href="js/main.js" as="script"> -->
-    <link rel="preload" href="js/main.js" as="script" crossorigin="anonymous">
-    <script src="js/main.js" crossorigin="anonymous" defer></script>
+    <link rel="preload" href="/Web/js/main.js" as="script" crossorigin="anonymous">
+    <script src="/Web/js/main.js" crossorigin="anonymous" defer></script>
 
     <!-- Favicon y PWA -->
-    <link rel="icon" type="image/png" href="assets/images/casa.png">
-    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="/Web/assets/images/casa.png">
+    <link rel="manifest" href="/Web/manifest.json">
     <meta name="theme-color" content="#2c3e50">
 </head>
 <body>
@@ -64,8 +63,9 @@
             <!-- Carga dinámica del footer -->
         </footer>
     </div>
-        <!-- Scripts principales -->
-    <script type="module" src="js/main.js"></script>
+    
+    <!-- Scripts principales -->
+    <script type="module" src="/Web/js/main.js"></script>
     
     <!-- Detector de dispositivo (inline para carga inmediata) -->
     <script>
@@ -73,7 +73,7 @@
         function loadResponsiveCSS() {
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
             const cssLink = document.getElementById('responsive-css');
-            cssLink.href = isMobile ? 'css/mobile.css' : 'css/desktop.css';
+            cssLink.href = isMobile ? '/Web/css/mobile.css' : '/Web/css/desktop.css';
             
             // Añadir clase al body para estilos específicos
             document.body.classList.add(isMobile ? 'mobile-device' : 'desktop-device');
@@ -84,6 +84,26 @@
         
         // Recargar CSS si cambia el tamaño de la ventana
         window.addEventListener('resize', loadResponsiveCSS);
+    </script>
+    
+    <!-- Cargar componentes dinámicos -->
+    <script>
+        async function loadComponent(id, url) {
+            const response = await fetch(url);
+            if (response.ok) {
+                const html = await response.text();
+                document.getElementById(id).innerHTML = html;
+            } else {
+                console.error(`Error al cargar ${url}: ${response.status}`);
+            }
+        }
+
+        // Cargar el header, menú y footer
+        window.addEventListener('DOMContentLoaded', () => {
+            loadComponent('header-container', '/Web/components/core/header.html');
+            loadComponent('menu-container', '/Web/components/core/menu.html');
+            loadComponent('footer-container', '/Web/components/core/footer.html');
+        });
     </script>
 </body>
 </html>
