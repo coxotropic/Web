@@ -1,3 +1,8 @@
+.resize-image {
+    width: 80px;
+    height: 80px;
+}
+
 /* Contenedor principal de la cabecera */
 .header-container {
     grid-area: header; /* Define la posición en el grid del layout */
