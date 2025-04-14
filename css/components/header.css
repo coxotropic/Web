@@ -11,6 +11,7 @@
     align-items: center; /* Alinea los elementos verticalmente */
     padding: 0 2rem; /* Añade espacio a los lados */
     height: 70px; /* Define una altura fija */
+    width: 100%; /* Ajusta el ancho máximo */
     max-width: 100%; /* Ajusta el ancho máximo */
     max-height: 70px; /* Ajusta la altura máxima */
     background-color: var(--card-bg); /* Fondo para que se destaque */
@@ -20,6 +21,8 @@
 .logo-container {
     display: flex;
     align-items: center;
+    height: 70px; /* Define una altura fija */
+    width: 100%; /* Ajusta el ancho máximo */
     max-width: 100%; /* Ajusta el ancho máximo */
     max-height: 70px; /* Ajusta la altura máxima */
     gap: var(--spacing-sm);
