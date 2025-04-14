@@ -1,6 +1,21 @@
 /* main.css - Estilos base para el portal */
 
 /* -----------------------------------------------------
+   Importar componentes
+   ----------------------------------------------------- */
+@import 'components/header.css';
+@import 'components/menu.css';
+@import 'components/footer.css';
+@import 'components/cards.css';
+@import 'components/buttons.css';
+@import 'components/forms.css';
+@import 'components/modals.css';
+@import 'components/charts.css';
+@import 'components/tables.css';
+@import 'components/notifications.css';
+@import 'components/auth.css';
+
+/* -----------------------------------------------------
    Reset CSS
    ----------------------------------------------------- */
 *, *::before, *::after {
@@ -780,150 +795,6 @@ input:checked + .switch-slider:before {
 .transition-normal { transition: all var(--transition-normal); }
 .transition-slow { transition: all var(--transition-slow); }
 
-/* -----------------------------------------------------
-   Componentes especiales para criptomonedas
-   ----------------------------------------------------- */
-/* Índice de Miedo y Codicia */
-.fear-greed-container {
-    padding: var(--spacing-md);
-    background-color: var(--card-bg);
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-sm);
-}
-
-.fear-greed-meter {
-    position: relative;
-    height: 20px;
-    background: linear-gradient(to right, 
-        var(--danger-color) 0%, 
-        var(--warning-color) 50%, 
-        var(--success-color) 100%
-    );
-    border-radius: var(--border-radius-sm);
-    margin: var(--spacing-md) 0;
-}
-
-.fear-greed-indicator {
-    position: absolute;
-    width: 4px;
-    height: 30px;
-    background-color: var(--dark-color);
-    top: -5px;
-    transform: translateX(-50%);
-}
-
-.fear-greed-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.75rem;
-}
-
-/* Gráficos de precios */
-.price-chart {
-    height: 300px;
-    background-color: var(--card-bg);
-    border-radius: var(--border-radius-md);
-    padding: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
-}
-
-/* Tabla de criptomonedas */
-.crypto-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.crypto-table th, 
-.crypto-table td {
-    padding: var(--spacing-sm);
-    text-align: left;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.crypto-table th {
-    background-color: var(--background-alt);
-    font-weight: 600;
-}
-
-.crypto-table tr:hover {
-    background-color: var(--background-alt);
-}
-
-.crypto-table .up {
-    color: var(--success-color);
-}
-
-.crypto-table .down {
-    color: var(--danger-color);
-}
-
-.crypto-logo {
-    width: 24px;
-    height: 24px;
-    margin-right: var(--spacing-sm);
-    vertical-align: middle;
-}
-
-/* Selector de Modo */
-.mode-btn {
-    background-color: var(--background-alt);
-    border: none;
-    padding: var(--spacing-sm) var(--spacing-md);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-}
-
-.mode-btn.active {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-/* Notificaciones y Alertas */
-.alert {
-    padding: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
-    border-radius: var(--border-radius-md);
-    border-left: 4px solid transparent;
-}
-
-.alert-success {
-    background-color: rgba(46, 204, 113, 0.1);
-    border-left-color: var(--success-color);
-    color: var(--success-color);
-}
-
-.alert-danger {
-    background-color: rgba(231, 76, 60, 0.1);
-    border-left-color: var(--danger-color);
-    color: var(--danger-color);
-}
-
-.alert-warning {
-    background-color: rgba(243, 156, 18, 0.1);
-    border-left-color: var(--warning-color);
-    color: var(--warning-color);
-}
-
-.alert-info {
-    background-color: rgba(52, 152, 219, 0.1);
-    border-left-color: var(--info-color);
-    color: var(--info-color);
-}
-
-/* Indicador de carga */
-.loading-indicator {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
 .spinner {
     width: 50px;
     height: 50px;
@@ -1041,18 +912,3 @@ input:checked + .switch-slider:before {
 .animate-slide-down {
     animation: slideInDown var(--transition-normal);
 }
-
-/* -----------------------------------------------------
-   Importar componentes
-   ----------------------------------------------------- */
-@import 'components/header.css';
-@import 'components/menu.css';
-@import 'components/footer.css';
-@import 'components/cards.css';
-@import 'components/buttons.css';
-@import 'components/forms.css';
-@import 'components/modals.css';
-@import 'components/charts.css';
-@import 'components/tables.css';
-@import 'components/notifications.css';
-@import 'components/auth.css';
