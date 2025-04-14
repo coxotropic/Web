@@ -4,15 +4,8 @@ import { ComponentLoader } from './utils/component-loader.js';
 import { DeviceDetector } from './utils/device-detector.js';
 import { ThemeManager } from './utils/theme-manager.js';
 import { Router } from './utils/router.js';
-import { StateManager } from './utils/state-manager.js';
-import { ApiService } from './services/api-service.js';
-import { AuthService } from './auth/auth-service.js';
 import { NewsService } from './news/news-service.js';
-import { SocialService } from './social/social-service.js';
 import { FearGreedIndex } from './interactive/fear-greed-index.js';
-import { CryptoDataService } from './services/crypto-data-service.js';
-import { NotificationService } from './services/notification-service.js';
-import { UserPreferences } from './utils/user-preferences.js';
 
 function loadPageContent(url) {
     const mainContent = document.getElementById('main-content');
