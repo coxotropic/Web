@@ -1,6 +1,5 @@
 
 // Importación de módulos
-import { NewsService } from './news/news-service.js';
 import { FearGreedIndex } from './interactive/fear-greed-index.js';
 
 function loadPageContent(url) {
