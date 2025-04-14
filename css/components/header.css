@@ -7,6 +7,13 @@
     align-items: center;
     padding: var(--spacing-md) 0;
     border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between; /* Asegura que las tres secciones estén distribuidas */
+    align-items: center; /* Alinea los elementos verticalmente */
+    padding: 0 2rem; /* Añade espacio a los lados */
+    height: 70px; /* Define una altura fija */
+    background-color: var(--card-bg); /* Fondo para que se destaque */
+    box-shadow: var(--shadow-sm); /* Opcional: añade una sombra */
 }
 
 .logo-container {
@@ -31,46 +38,41 @@
 
 .header-search {
     position: relative;
-    width: 300px;
+    flex: 1; /* Permite que ocupe todo el espacio disponible */
+    max-width: 400px; /* Tamaño máximo */
 }
 
 .header-search input {
     width: 100%;
-    padding: var(--spacing-sm) var(--spacing-md);
-    padding-right: calc(var(--spacing-md) * 2);
+    padding: 0.5rem 2rem; /* Añade espacio interno */
     border-radius: var(--border-radius-md);
     border: 1px solid var(--border-color);
-    background-color: var(--input-bg);
 }
 
 .header-search button {
     position: absolute;
-    right: var(--spacing-sm);
+    right: 10px; /* Espaciado desde el borde derecho */
     top: 50%;
     transform: translateY(-50%);
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
 }
 
 .header-controls {
     display: flex;
     align-items: center;
-    gap: var(--spacing-md);
+    gap: 1rem; /* Espaciado entre los controles */
 }
 
 .user-menu {
-    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Espaciado entre el avatar y el nombre */
 }
 
 .user-avatar {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    cursor: pointer;
-    object-fit: cover;
-    border: 2px solid var(--primary-color);
+    object-fit: cover; /* Ajusta la imagen sin distorsión */
 }
 
 .user-dropdown {
