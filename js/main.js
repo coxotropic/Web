@@ -1,6 +1,5 @@
 // Importación de módulos
 
-
 function loadPageContent(url) {
     const mainContent = document.getElementById('main-content');
     if (mainContent) {
