@@ -1,6 +1,5 @@
-
 // Importación de módulos
-import { FearGreedIndex } from './interactive/fear-greed-index.js';
+
 
 function loadPageContent(url) {
     const mainContent = document.getElementById('main-content');
