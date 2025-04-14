@@ -1,10 +1,10 @@
-* component-loader.js
+/* component-loader.js
  * Sistema para cargar componentes HTML de forma dinámica
  * 
  * Este módulo permite cargar componentes HTML desde archivos externos,
  * gestionar dependencias, adaptar según dispositivo y modo, y manejar
  * eventos después de la carga.
- */</span>
+ */
 
 <span class="comment">// Caché para componentes ya cargados</span>
 <span class="keyword">const</span> <span class="variable">componentCache</span> = <span class="keyword">new</span> <span class="class">Map</span>();
