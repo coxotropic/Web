@@ -11,7 +11,7 @@
     align-items: center; /* Alinea los elementos verticalmente */
     padding: var(--spacing-md) 0; /* Espaciado superior e inferior */
     border-bottom: 1px solid var(--border-color); /* Línea de separación inferior */
-    height: 100px; /* Altura fija de la cabecera */
+    height: 120px; /* Altura fija de la cabecera */
     width: 100%; /* Ocupa todo el ancho disponible */
     background-color: var(--card-bg); /* Fondo de la cabecera */
     box-shadow: var(--shadow-sm); /* Sombra ligera para destacar */
