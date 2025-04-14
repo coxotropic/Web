@@ -1,186 +1,67 @@
-.header-inner {
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.header-search {
-  display: flex;
-  align-items: center;
-}
-
-.search-input {
-  height: 30px; /* Ajusta la altura del campo de búsqueda */
-}
-
-.header-controls {
-  display: flex;
-  align-items: center;
-}
+/* Contenedor principal de la cabecera */
 .header-container {
-    grid-area: header;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--spacing-md) 0;
-    border-bottom: 1px solid var(--border-color);
-    display: flex;
-    justify-content: space-between; /* Asegura que las tres secciones estén distribuidas */
+    grid-area: header; /* Define la posición en el grid del layout */
+    display: flex; /* Usa flexbox para alinear los elementos */
+    justify-content: space-between; /* Espacia los elementos horizontalmente */
     align-items: center; /* Alinea los elementos verticalmente */
-    padding: 0 2rem; /* Añade espacio a los lados */
-    height: 70px; /* Define una altura fija */
-    width: 100%; /* Ajusta el ancho máximo */
-    max-width: 100%; /* Ajusta el ancho máximo */
-    max-height: 70px; /* Ajusta la altura máxima */
-    background-color: var(--card-bg); /* Fondo para que se destaque */
-    box-shadow: var(--shadow-sm); /* Opcional: añade una sombra */
+    padding: var(--spacing-md) 0; /* Espaciado superior e inferior */
+    border-bottom: 1px solid var(--border-color); /* Línea de separación inferior */
+    height: 70px; /* Altura fija de la cabecera */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    background-color: var(--card-bg); /* Fondo de la cabecera */
+    box-shadow: var(--shadow-sm); /* Sombra ligera para destacar */
 }
 
-.header-inner {
-    width: 100%;
-    max-width: 100%;
-    max-height: 100px;
-    width: 100%; /* Ajusta el ancho al de su contenedor */
-    box-sizing: border-box; /* Incluye padding y border en el tamaño total */
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100px;
-}
-
+/* Contenedor del logo */
 .logo-container {
-    display: flex;
-    align-items: center;
-    height: 70px; /* Define una altura fija */
-    width: 100%; /* Ajusta el ancho máximo */
-    max-width: 100%; /* Ajusta el ancho máximo */
-    max-height: 70px; /* Ajusta la altura máxima */
-    gap: var(--spacing-sm);
+    display: flex; /* Usa flexbox para alinear el logo y el texto */
+    align-items: center; /* Alinea verticalmente el logo y el texto */
+    gap: var(--spacing-sm); /* Espaciado entre el logo y el texto */
 }
 
+/* Imagen del logo */
 .logo {
-    height: 50px; /* O ajusta el tamaño específico, como '50px' */
-    max-width: 100%; /* Ajusta el ancho máximo */
-    max-height: 70px; /* Ajusta la altura máxima */
-    object-fit: contain; /* Mantiene la proporción sin recortar */
+    height: 50px; /* Altura fija del logo */
+    object-fit: contain; /* Asegura que la imagen no se deforme */
 }
 
+/* Título del sitio */
 .site-title {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    margin: 0;
+    font-family: var(--font-heading); /* Define la fuente usada */
+    font-weight: 700; /* Texto en negrita */
+    font-size: 1.5rem; /* Tamaño de la fuente */
+    color: var(--primary-color); /* Color del texto */
+    margin: 0; /* Elimina márgenes alrededor del título */
 }
 
+/* Contenedor de la barra de búsqueda */
 .header-search {
-    position: relative;
-    flex: 1; /* Permite que ocupe todo el espacio disponible */
-    max-width: 400px; /* Tamaño máximo */
+    position: relative; /* Posiciona elementos internos relativos al contenedor */
+    flex: 1; /* Permite que ocupe el espacio disponible */
+    max-width: 400px; /* Ancho máximo de la barra de búsqueda */
 }
 
+/* Campo de entrada de búsqueda */
 .header-search input {
-    width: 100%;
-    padding: 0.5rem 2rem; /* Añade espacio interno */
-    border-radius: var(--border-radius-md);
-    border: 1px solid var(--border-color);
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 0.5rem 2rem; /* Espaciado interno */
+    border-radius: var(--border-radius-md); /* Bordes redondeados */
+    border: 1px solid var(--border-color); /* Borde del campo */
 }
 
+/* Botón de búsqueda */
 .header-search button {
-    position: absolute;
+    position: absolute; /* Posiciona el botón dentro del contenedor */
     right: 10px; /* Espaciado desde el borde derecho */
-    top: 50%;
-    transform: translateY(-50%);
+    top: 50%; /* Centra verticalmente */
+    transform: translateY(-50%); /* Ajusta el centrado vertical */
 }
 
+/* Contenedor de controles de cabecera */
 .header-controls {
-    display: flex;
-    align-items: center;
+    display: flex; /* Usa flexbox para alinear los controles */
+    align-items: center; /* Alinea verticalmente los controles */
     gap: 1rem; /* Espaciado entre los controles */
 }
 
-.user-menu {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem; /* Espaciado entre el avatar y el nombre */
-}
-
-.user-avatar {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    object-fit: cover; /* Ajusta la imagen sin distorsión */
-}
-
-.user-dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 200px;
-    background-color: var(--card-bg);
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-md);
-    padding: var(--spacing-md);
-    z-index: 100;
-    display: none;
-}
-
-.user-menu:hover .user-dropdown {
-    display: block;
-}
-
-.user-dropdown-item {
-    padding: var(--spacing-sm) 0;
-    display: block;
-    text-decoration: none;
-    color: var(--text-color);
-}
-
-.user-dropdown-item:hover {
-    color: var(--primary-color);
-}
-
-/* Separador entre elementos del dropdown */
-.user-dropdown-divider {
-    height: 1px;
-    background-color: var(--border-color);
-    margin: var(--spacing-sm) 0;
-}
-
-/* Botón de notificaciones */
-.notification-btn {
-    position: relative;
-    background: none;
-    border: none;
-    color: var(--text-color);
-    cursor: pointer;
-}
-
-.notification-badge {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: var(--danger-color);
-    color: white;
-    border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    font-size: 0.75rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Estilos para cabecera en modo Pro */
-body.pro-mode-active .header-container {
-    background-color: var(--dark-color);
-    color: var(--light-color);
-}
-
-body.pro-mode-active .site-title {
-    color: var(--pro-primary);
-}
+/* Elementos adicionales como menú de usuario o notificaciones pueden ser añadidos aquí */
