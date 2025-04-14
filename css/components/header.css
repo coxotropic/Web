@@ -1,6 +1,6 @@
 .resize-image {
     max-width: 50%;
-    height: 80px;
+    height: 70px;
 }
 
 /* Contenedor principal de la cabecera */
@@ -37,7 +37,7 @@
 
 /* Imagen del logo */
 .logo {
-    height: 80px; /* Altura fija del logo */
+    height: 70px; /* Altura fija del logo */
     object-fit: contain; /* Asegura que la imagen no se deforme */
 }
 
