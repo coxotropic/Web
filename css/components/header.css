@@ -12,6 +12,8 @@
     align-items: center; /* Alinea los elementos verticalmente */
     padding: 0 2rem; /* Añade espacio a los lados */
     height: 70px; /* Define una altura fija */
+    max-width: 150px; /* Ajusta el ancho máximo */
+    max-height: 50px; /* Ajusta la altura máxima */
     background-color: var(--card-bg); /* Fondo para que se destaque */
     box-shadow: var(--shadow-sm); /* Opcional: añade una sombra */
 }
@@ -19,11 +21,13 @@
 .logo-container {
     display: flex;
     align-items: center;
+    max-width: 150px; /* Ajusta el ancho máximo */
+    max-height: 50px; /* Ajusta la altura máxima */
     gap: var(--spacing-sm);
 }
 
 .logo {
-    height: 50px; /* O ajusta el tamaño específico, como '50px' */
+    height: 70px; /* O ajusta el tamaño específico, como '50px' */
     max-width: 150px; /* Ajusta el ancho máximo */
     max-height: 50px; /* Ajusta la altura máxima */
     object-fit: contain; /* Mantiene la proporción sin recortar */
