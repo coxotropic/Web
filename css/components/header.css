@@ -23,9 +23,10 @@
 }
 
 .logo {
-    height: '50px'; /* O ajusta el tamaño específico, como '50px' */
-    max-height: '50px'; /* Asegúrate de que no exceda el marco superior */
-    object-fit: contain; /* Ajusta el contenido sin distorsión */
+    height: 50px; /* O ajusta el tamaño específico, como '50px' */
+    max-width: 150px; /* Ajusta el ancho máximo */
+    max-height: 50px; /* Ajusta la altura máxima */
+    object-fit: contain; /* Mantiene la proporción sin recortar */
 }
 
 .site-title {
