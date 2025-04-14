@@ -1,9 +1,6 @@
 
 // Importación de módulos
 import { ComponentLoader } from './utils/component-loader.js';
-import { DeviceDetector } from './utils/device-detector.js';
-import { ThemeManager } from './utils/theme-manager.js';
-import { Router } from './utils/router.js';
 import { NewsService } from './news/news-service.js';
 import { FearGreedIndex } from './interactive/fear-greed-index.js';
 
