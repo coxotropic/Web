@@ -14,6 +14,20 @@ import { CryptoDataService } from './services/crypto-data-service.js';
 import { NotificationService } from './services/notification-service.js';
 import { UserPreferences } from './utils/user-preferences.js';
 
+function loadPageContent(url) {
+    const mainContent = document.getElementById('main-content');
+    if (mainContent) {
+        fetch(url)
+            .then(response => response.text())
+            .then(html => {
+                mainContent.innerHTML = html;
+            })
+            .catch(error => console.error('Error al cargar la página:', error));
+    } else {
+        console.error('Elemento con id "main-content" no encontrado.');
+    }
+}
+
 /**
  * Clase principal de la aplicación
  */
