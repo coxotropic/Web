@@ -17,11 +17,22 @@
     box-shadow: var(--shadow-sm); /* Sombra ligera para destacar */
 }
 
+/* Contenedor interno del header */
+.header-inner {
+    display: flex; /* Organiza los elementos en fila */
+    justify-content: space-between; /* Espacia los elementos uniformemente */
+    align-items: center; /* Alineación vertical */
+    gap: 1rem; /* Espaciado entre columnas */
+    padding: 0 1rem; /* Espaciado lateral */
+    height: 100%; /* Asegura que ocupe toda la altura del contenedor */
+}
+
 /* Contenedor del logo */
 .logo-container {
     display: flex; /* Usa flexbox para alinear el logo y el texto */
     align-items: center; /* Alinea verticalmente el logo y el texto */
     gap: var(--spacing-sm); /* Espaciado entre el logo y el texto */
+    flex: 1; /* Ocupa una proporción del espacio disponible */
 }
 
 /* Imagen del logo */
@@ -42,8 +53,11 @@
 /* Contenedor de la barra de búsqueda */
 .header-search {
     position: relative; /* Posiciona elementos internos relativos al contenedor */
-    flex: 1; /* Permite que ocupe el espacio disponible */
-    max-width: 400px; /* Ancho máximo de la barra de búsqueda */
+    flex: 2; /* Ocupa dos proporciones del espacio disponible */
+    max-width: none; /* Permite que ocupe más espacio */
+    display: flex; /* Asegura que los elementos estén alineados en fila */
+    align-items: center; /* Alineación vertical */
+    gap: 0.5rem; /* Espaciado entre el input y el botón */
 }
 
 /* Campo de entrada de búsqueda */
@@ -52,14 +66,17 @@
     padding: 0.5rem 2rem; /* Espaciado interno */
     border-radius: var(--border-radius-md); /* Bordes redondeados */
     border: 1px solid var(--border-color); /* Borde del campo */
+    flex: 1; /* Ocupa el espacio disponible en la barra */
 }
 
 /* Botón de búsqueda */
 .header-search button {
-    position: absolute; /* Posiciona el botón dentro del contenedor */
-    right: 10px; /* Espaciado desde el borde derecho */
-    top: 50%; /* Centra verticalmente */
-    transform: translateY(-50%); /* Ajusta el centrado vertical */
+    padding: 0.5rem 1rem; /* Espaciado interno del botón */
+    border-radius: var(--border-radius-md); /* Bordes redondeados */
+    border: none; /* Elimina bordes del botón */
+    background-color: var(--primary-color); /* Color de fondo */
+    color: var(--card-bg); /* Color del texto */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
 }
 
 /* Contenedor de controles de cabecera */
@@ -67,6 +84,8 @@
     display: flex; /* Usa flexbox para alinear los controles */
     align-items: center; /* Alinea verticalmente los controles */
     gap: 1rem; /* Espaciado entre los controles */
+    flex: 1; /* Ocupa una proporción del espacio disponible */
+    justify-content: flex-end; /* Alinea los controles a la derecha */
 }
 
 /* Elementos adicionales como menú de usuario o notificaciones pueden ser añadidos aquí */
