@@ -1,4 +1,24 @@
+.header-inner {
+}
 
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.header-search {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  height: 30px; /* Ajusta la altura del campo de búsqueda */
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+}
 .header-container {
     grid-area: header;
     display: flex;
@@ -19,15 +39,17 @@
 }
 
 .header-inner {
-    height: 70px;
     width: 100%;
     max-width: 100%;
-    max-height: 70px;
+    max-height: 100px;
     width: 100%; /* Ajusta el ancho al de su contenedor */
-    height: 100%; /* Ajusta la altura al de su contenedor */
     box-sizing: border-box; /* Incluye padding y border en el tamaño total */
     margin: 0;
     padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
 }
 
 .logo-container {
