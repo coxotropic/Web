@@ -3,89 +3,17 @@
     <!-- INICIO: SECCIÓN LOGO -->
     <div class="logo-container">
         <a href="/" class="logo-link">
-            <img src="assets/images/logo.svg" alt="CryptInvest Logo" class="logo">
+            <img src="assets/images/casa.png" alt="CryptInvest Logo" class="logo">
             <h1 class="site-title">CryptInvest</h1>
         </a>
     </div>
     <!-- FIN: SECCIÓN LOGO -->
 
     <!-- INICIO: BARRA DE BÚSQUEDA -->
-    <div class="header-search">
-        <input type="text" placeholder="Buscar criptomonedas, noticias, guías..." id="search-input" class="search-input">
-        <button type="button" class="search-button" aria-label="Buscar">
-            <i class="icon-search"></i>
-        </button>
-        <div class="search-results" id="search-results"></div>
-    </div>
     <!-- FIN: BARRA DE BÚSQUEDA -->
 
     <!-- INICIO: CONTROLES DE CABECERA -->
     <div class="header-controls">
-        <!-- INICIO: SELECTOR DE IDIOMA -->
-        <div class="language-selector">
-            <button class="language-toggle" id="language-toggle">
-                <span class="current-language">ES</span>
-                <i class="icon-chevron-down"></i>
-            </button>
-            <div class="language-dropdown">
-                <a href="#" class="language-option active" data-lang="es">Español</a>
-                <a href="#" class="language-option" data-lang="en">English</a>
-                <a href="#" class="language-option" data-lang="zh">中文</a>
-                <a href="#" class="language-option" data-lang="fr">Français</a>
-                <a href="#" class="language-option" data-lang="de">Deutsch</a>
-            </div>
-        </div>
-        <!-- FIN: SELECTOR DE IDIOMA -->
-
-        <!-- INICIO: BOTÓN DE NOTIFICACIONES -->
-        <button class="notification-btn" id="notification-btn" aria-label="Notificaciones">
-            <i class="icon-bell"></i>
-            <span class="notification-badge" id="notification-count">3</span>
-        </button>
-        <!-- FIN: BOTÓN DE NOTIFICACIONES -->
-
-        <!-- INICIO: MENÚ DE USUARIO (LOGGED OUT) -->
-        <div class="user-menu logged-out" id="user-menu-logged-out">
-            <button class="btn btn-primary btn-sm" id="login-btn">Iniciar Sesión</button>
-            <button class="btn btn-outline btn-sm" id="register-btn">Registrarse</button>
-        </div>
-        <!-- FIN: MENÚ DE USUARIO (LOGGED OUT) -->
-
-        <!-- INICIO: MENÚ DE USUARIO (LOGGED IN) -->
-        <div class="user-menu logged-in hidden" id="user-menu-logged-in">
-            <div class="user-info">
-                <span class="user-name" id="user-name">Usuario</span>
-                <span class="user-level" id="user-level">Novato</span>
-            </div>
-            <img src="assets/images/avatar-default.png" alt="Avatar de usuario" class="user-avatar" id="user-avatar">
-            <div class="user-dropdown">
-                <div class="dropdown-user-info">
-                    <img src="assets/images/avatar-default.png" alt="Avatar" class="dropdown-avatar">
-                    <div>
-                        <div class="dropdown-user-name" id="dropdown-user-name">Usuario</div>
-                        <div class="dropdown-user-email" id="dropdown-user-email">usuario@ejemplo.com</div>
-                    </div>
-                </div>
-                <div class="user-dropdown-divider"></div>
-                <a href="/perfil" class="user-dropdown-item">
-                    <i class="icon-user"></i> Mi Perfil
-                </a>
-                <a href="/configuracion" class="user-dropdown-item">
-                    <i class="icon-settings"></i> Configuración
-                </a>
-                <a href="/portfolio" class="user-dropdown-item">
-                    <i class="icon-briefcase"></i> Mi Portfolio
-                </a>
-                <a href="/actividad" class="user-dropdown-item">
-                    <i class="icon-activity"></i> Actividad Reciente
-                </a>
-                <div class="user-dropdown-divider"></div>
-                <a href="#" class="user-dropdown-item text-danger" id="logout-btn">
-                    <i class="icon-log-out"></i> Cerrar Sesión
-                </a>
-            </div>
-        </div>
-        <!-- FIN: MENÚ DE USUARIO (LOGGED IN) -->
 
         <!-- INICIO: BOTÓN DE MENÚ MÓVIL -->
         <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menú">
