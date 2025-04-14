@@ -18,6 +18,18 @@
     box-shadow: var(--shadow-sm); /* Opcional: añade una sombra */
 }
 
+.header-inner {
+    height: 70px;
+    width: 100%;
+    max-width: 100%;
+    max-height: 70px;
+    width: 100%; /* Ajusta el ancho al de su contenedor */
+    height: 100%; /* Ajusta la altura al de su contenedor */
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+    margin: 0;
+    padding: 0;
+}
+
 .logo-container {
     display: flex;
     align-items: center;
