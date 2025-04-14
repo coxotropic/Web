@@ -9,13 +9,6 @@
             <p class="text-gray-600 dark:text-gray-300">Análisis del sentimiento actual del mercado</p>
         </div>
         
-        <!-- Selector modo Novato/Pro -->
-        <div class="mt-4 md:mt-0 bg-white dark:bg-gray-700 rounded-lg shadow-sm">
-            <div class="relative inline-flex">
-                <button id="novice-mode-btn" class="px-4 py-2 text-sm font-medium rounded-l-lg bg-blue-500 text-white">Modo Novato</button>
-                <button id="pro-mode-btn" class="px-4 py-2 text-sm font-medium rounded-r-lg bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200">Modo Pro</button>
-            </div>
-        </div>
     </div>
     <!-- FIN: CABECERA DEL COMPONENTE -->
 
@@ -466,116 +459,9 @@
             </div>
         </div>
         
-        <div class="pro-content hidden">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">El índice muestra correlación negativa con el precio de Bitcoin en puntos extremos, pero la correlación no es constante en todos los ciclos de mercado.</p>
-                    
-                    <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg mb-6">
-                        <h4 class="font-semibold text-gray-800 dark:text-white mb-2">Correlación Estadística</h4>
-                        <ul class="text-sm text-gray-600 dark:text-gray-300 space-y-2">
-                            <li class="flex justify-between">
-                                <span>Correlación en puntos extremos:</span>
-                                <span class="font-mono font-medium">-0.82</span>
-                            </li>
-                            <li class="flex justify-between">
-                                <span>Correlación en mercado lateral:</span>
-                                <span class="font-mono font-medium">-0.31</span>
-                            </li>
-                            <li class="flex justify-between">
-                                <span>Retardo óptimo (lag):</span>
-                                <span class="font-mono font-medium">4-7 días</span>
-                            </li>
-                            <li class="flex justify-between">
-                                <span>Efectividad señales extremas:</span>
-                                <span class="font-mono font-medium">78.5%</span>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg">
-                        <h4 class="font-semibold text-yellow-800 dark:text-yellow-300 mb-2">Limitaciones</h4>
-                        <p class="text-gray-700 dark:text-gray-300 text-sm">El índice puede permanecer en zonas extremas durante períodos extendidos. Valores extremos indican mayor probabilidad de reversión, no su timing exacto. Combinar con indicadores técnicos como RSI, volumen y patrones de velas para mayor precisión.</p>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 class="font-semibold text-gray-800 dark:text-white mb-4">Comportamiento con eventos macroeconómicos</h4>
-                    
-                    <div class="mb-4">
-                        <div class="flex items-center mb-2">
-                            <svg class="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <h5 class="font-medium text-gray-800 dark:text-white">Decisiones de tipos de interés de la FED</h5>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 pl-7">El índice suele preceder a la volatilidad antes del anuncio y resalta el sentimiento post-anuncio. Correlación: Alta.</p>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <div class="flex items-center mb-2">
-                            <svg class="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <h5 class="font-medium text-gray-800 dark:text-white">Informes de inflación</h5>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 pl-7">El índice muestra una reacción retardada a informes de inflación. La correlación ha aumentado desde 2021. Correlación: Media.</p>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <div class="flex items-center mb-2">
-                            <svg class="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <h5 class="font-medium text-gray-800 dark:text-white">Adopción institucional</h5>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 pl-7">Anuncios de inversión por empresas o fondos tienen mayor impacto en el índice que en el precio. Correlación: Muy alta.</p>
-                    </div>
-                    
-                    <div>
-                        <div class="flex items-center mb-2">
-                            <svg class="w-5 h-5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <h5 class="font-medium text-gray-800 dark:text-white">Cambios regulatorios</h5>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-300 pl-7">La reacción del índice a noticias regulatorias predice mejor la tendencia a medio plazo que el movimiento inmediato del precio. Correlación: Alta.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <!-- FIN: CORRELACIÓN CON PRECIO -->
 
     <!-- Scripts para funcionalidad -->
-    <script>
-        // Cambio entre modos novato y pro
-        document.getElementById('novice-mode-btn').addEventListener('click', function() {
-            this.classList.add('bg-blue-500', 'text-white');
-            this.classList.remove('bg-gray-200', 'text-gray-700', 'dark:bg-gray-600', 'dark:text-gray-200');
-            
-            document.getElementById('pro-mode-btn').classList.remove('bg-blue-500', 'text-white');
-            document.getElementById('pro-mode-btn').classList.add('bg-gray-200', 'text-gray-700', 'dark:bg-gray-600', 'dark:text-gray-200');
-            
-            document.querySelectorAll('.novice-content').forEach(el => el.classList.remove('hidden'));
-            document.querySelectorAll('.pro-content').forEach(el => el.classList.add('hidden'));
-        });
-        
-        document.getElementById('pro-mode-btn').addEventListener('click', function() {
-            this.classList.add('bg-blue-500', 'text-white');
-            this.classList.remove('bg-gray-200', 'text-gray-700', 'dark:bg-gray-600', 'dark:text-gray-200');
-            
-            document.getElementById('novice-mode-btn').classList.remove('bg-blue-500', 'text-white');
-            document.getElementById('novice-mode-btn').classList.add('bg-gray-200', 'text-gray-700', 'dark:bg-gray-600', 'dark:text-gray-200');
-            
-            document.querySelectorAll('.novice-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.pro-content').forEach(el => el.classList.remove('hidden'));
-        });
-        
-        // Posicionar la aguja del medidor según el valor
-        const gaugeSetting = () => {
-            const value = 65; // Valor actual del índice
-            const needle = document.getElementById('gauge-needle');
-            const rotation = -90 + (value * 1.8); // -90 grados es el inicio, 1.8 grados por punto del índice
-            needle.style.transform = `rotate(${rotation}deg)`;
-        };
-        
-        // Ejecutar al cargar
-        window.addEventListener('DOMContentLoaded', (event) => {
-            gaugeSetting();
-        });
-    </script>
 </div>
 <!-- FIN: COMPONENTE ÍNDICE DE MIEDO Y CODICIA -->
